@@ -35,9 +35,14 @@ const ordersSchema = new Schema(
           name: { type: String },
           size: { type: String },
           price: { type: Number },
-          quantity: { type: Number }
+          quantity: { type: Number },
+          productIDs: {
+            type: Schema.Types.ObjectId,
+            ref: "Products"
+          }
         }
-      ]
+      ],
+      orderTotal: { type: Number }
     }
   ]
 );
