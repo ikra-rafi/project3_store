@@ -1,3 +1,3 @@
-import AdminTable from "./AdminTable";
+import AccountInfo from "./AccountInfo";
 
-export default AdminTable;
+export default AccountInfo;

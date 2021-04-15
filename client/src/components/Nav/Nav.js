@@ -1,9 +1,9 @@
 import React from "react";
-import { useStoreContext } from "../../utils/GlobalState";
+//import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
 
 function Nav() {
-  const [store] = useStoreContext();
+//  const [store] = useStoreContext();
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
