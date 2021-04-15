@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const loginSchema = new Schema({
+const loginSchema = new Schema([
+  {
   email: { type: String},
   password: { type: String},
   securityQuestion: { type: String},
@@ -16,7 +17,9 @@ const loginSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Orders"
   }]
-});
+
+}]
+);
 
 const Login = mongoose.model("Login", loginSchema);
 
