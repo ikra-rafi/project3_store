@@ -9,8 +9,8 @@ function TempComment () {
     const [comments, setComments]= useState([]);
     const [trigger, setTrigger] = useState("1");
 
-    const storeComments = 
-        [{
+    const storeComments = [
+        {
             userComment: "Spice was very fresh.",
             productID: "GIN0003"
         },
@@ -19,24 +19,13 @@ function TempComment () {
             productID: "OREG0001"
         },
             
-        ];
+    ];
 
     // Load all saved books and store them with setBooks
     useEffect(() => {
         console.log("in comments useEffect");
         getComments();
       }, [])
-
-    // function to retrieve the saved books from database
-    // function loadSavedBooks() {
-    //     API.getBooks()
-    //       .then(res => {
-    //         // set state to returned list of saved books
-    //         setSavedBooks(res.data)
-    //       })
-    //     .catch(err => console.log(err));
-    // };
-
 
     function handleCommentBtnClick(event) {
         API.saveComments(storeComments)

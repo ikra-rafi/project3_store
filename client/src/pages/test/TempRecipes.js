@@ -97,7 +97,9 @@ function TempRecipes () {
         API.getRecipes()
         .then(res=> {
             console.log("recipes = " + res.data);
+            console.log(res.data[0])
             setRecipes(res.data);
+            console.log(recipes.length)
         })
         .catch(err => console.log(err))
     }
