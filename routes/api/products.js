@@ -4,7 +4,7 @@ const ordersController = require("../../controllers/ordersController");
 const recipesController = require("../../controllers/recipesController");
 const cartController = require("../../controllers/cartController");
 const loginController = require("../../controllers/loginController");
-const commentsController = require("../../controllers/commentsController");
+// const commentsController = require("../../controllers/commentsController");
 
 // Matches with "/api/products"
 router.route("/")
@@ -18,8 +18,8 @@ router.route("/")
   .post(cartController.create)
   .get(loginController.findAll)
   .post(loginController.create)
-  .get(commentsController.findAll)
-  .post(commentsController.create);
+  // .get(commentsController.findAll)
+  // .post(commentsController.create);
 
 
 // Matches with "/api/products/:id"

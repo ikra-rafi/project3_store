@@ -323,16 +323,15 @@ console.error(err);
 process.exit(1);
 });
 
-const commentSeed = 
-[{
+const commentSeed = [
+  {
     userComment: "Spice was very fresh.",
     productID: "GIN0003"
-},
-{
+  },
+  {
     userComment: "Bottle broken in shipping",
     productID: "OREG0001"
-},
-    
+  } 
 ];
 
 db.Comments

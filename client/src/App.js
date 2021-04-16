@@ -25,7 +25,7 @@ function App() {
           <Nav />
           <Hero />
           <Switch>
-            <Route exact path="/" component={Home}> <TempProducts /> <TempOrders /> <TempCart />  </Route>
+            <Route exact path="/" component={Home}> <TempProducts /> <TempOrders /> <TempCart /> <TempRecipes /><TempComment /> <TempLogin /></Route>
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/details" component={ProductDetails} />

@@ -26,6 +26,10 @@ export default {
     return axios.get("/api/comments");
   },
   
+  saveComments: function(storeComments) {
+    return axios.post("/api/comments", storeComments);
+  },
+
   getOrders: function() {
     return axios.get("/api/orders");
   },
@@ -57,21 +61,13 @@ export default {
   saveRecipes: function(storeRecipes) {
     return axios.post("/api/recipes", storeRecipes);
   },
-  
-  saveComments: function(commentData) {
-    return axios.post("/api/comment", commentData);
-  },
-
-  // getLogin: function() {
-  //   return axios.get("/api/login");
-  // },
 
   getLogin: function() {
     return axios.get("/api/login");
   },
 
-  saveLogin: function(loginData) {
-    return axios.post("/api/login", loginData)
+  saveLogin: function(storeLogin) {
+    return axios.post("/api/login", storeLogin)
   },
 
   updateLogin: function(loginData) {
