@@ -1,5 +1,8 @@
 import React , { useEffect, useState} from "react";
 // import Container from "../components/Container";
+import CartOrderContext from "../utils/cartOrderContext.js";
+//import { StateProvider, store } from "../utils/store";
+import { useTodoContext} from "../utils/store";
 import Cart from "../components/Cart";
 //import CreditCard from "../components/CreditCard";
 import CartData from "../components/Test/CartData"
@@ -11,13 +14,20 @@ function ShoppingCart() {
 
   const [cart, setCart]= useState([]);
   const [cartTotal, setCartTotal] = useState();
-  const [trigger, setTrigger] = useState({trigger: 1});
+  //const [trigger, setTrigger] = useState({trigger: 1});
+  const [orderTotal, setOrderTotal] = useState("0");
   const location = useLocation();
   var total = 0;
+  const [state, dispatch] = useTodoContext();
 
   useEffect(() => {
     console.log("cart Effect");
     getCart();
+    console.log("effect" + cartTotal);
+    dispatch({
+      type: "cartTotal",
+      orderTotal1: cartTotal,
+    });
   }, [])
 
   function getCart() {
@@ -28,6 +38,11 @@ function ShoppingCart() {
       res.data.forEach(element => {
         total = total + (element.prodInfo.price * element.prodInfo.quantity);
         setCartTotal(total);
+        console.log("getcart = " + cartTotal);
+        dispatch({
+          type: "cartTotal",
+          orderTotal1: total,
+        });
       });
     })
     .catch(err => console.log(err))
@@ -37,7 +52,23 @@ function ShoppingCart() {
     cart.forEach(element => {
       total = total + (element.prodInfo.price * element.prodInfo.quantity);
       setCartTotal(total);
+      console.log(cartTotal);
+      dispatch({
+        type: "cartTotal",
+        orderTotal1: total,
+      });
     });
+  }
+
+  function quantityUpdate(newQuantity, index) {
+    const newArray = [...cart];
+    newArray[index].prodInfo.quantity = newQuantity;
+    setCart(newArray);
+    updateCartTotal();
+    // dispatch({
+    //   type: "cartTotal",
+    //   orderTotal1: cartTotal,
+    // });
   }
 
   function handleDecBtnClick(e) {
@@ -53,11 +84,17 @@ function ShoppingCart() {
     if(newQuantity <= 0) {
       newQuantity = 0;
     }
-
-    const newArray = [...cart];
-    newArray[index].prodInfo.quantity = newQuantity;
-    setCart(newArray);
-    updateCartTotal();
+    quantityUpdate(newQuantity, index);
+  //  const newArray = [...cart];
+  //  newArray[index].prodInfo.quantity = newQuantity;
+  //  setCart(newArray);
+  //  updateCartTotal();
+// console.log("carttotal = " + cartTotal);
+//   dispatch({
+//     type: "cartTotal",
+//     orderTotal1: cartTotal,
+//     john: "hello"
+//   });
   }
 
   function handleIncBtnClick(e) {
@@ -71,19 +108,30 @@ function ShoppingCart() {
     }
     var newQuantity = cart[index].prodInfo.quantity + 1;
 
-    const newArray = [...cart];
-    newArray[index].prodInfo.quantity = newQuantity;
-    setCart(newArray);
-    updateCartTotal();
+    quantityUpdate(newQuantity, index);
+  //  const newArray = [...cart];
+  //  newArray[index].prodInfo.quantity = newQuantity;
+  //  setCart(newArray);
+  //  updateCartTotal();
   }
 
   return (
+    <CartOrderContext.Provider value={{ cart, cartTotal}}>
     <div>
       <Container fluid>
         <Container>
         <Cart />
           <div className="container-fluid containerColor marginBottomCont">
             <h1 className="text-center">Shopping Cart</h1>
+            <button className="btn btn-success mt-5 mb-5" onClick={() => dispatch({ type: "add" })}>
+        Add
+      </button>
+      <button className="btn btn-danger mt-5" onClick={() => dispatch({ type: "subtract" })}>
+        Subtract
+      </button>
+      <button className="btn btn-danger mt-5" onClick={() => dispatch({ type: "cartTotal", orderTotal1: cartTotal })}>
+        Cart Total      </button>
+      <div>{state.count}</div>            
             {cart.length ? (
               <div>
                   <table className="table table-curved table-responsive">
@@ -136,6 +184,7 @@ function ShoppingCart() {
         </Container>
       </Container>
     </div>
+   </CartOrderContext.Provider>
   );
 }
 
