@@ -1,11 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
 
-
 import "./style.css";
-
-
 
 
 function LoginForm() {
@@ -18,17 +14,14 @@ function LoginForm() {
     alert(JSON.stringify(data));
   };
   const intialValues = {
-    
+
     password: "",
     email: "",
-    
+
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-     
-
-      
+    <form onClick={handleSubmit(onSubmit)} >
       <label htmlFor="email">Email</label>
       <input
         defaultValue={intialValues.email}
@@ -36,7 +29,7 @@ function LoginForm() {
         type="email"
         {...register("email")}
       />
-      
+
       <label htmlFor="password">Password</label>
       <input
         defaultValue={intialValues.password}
@@ -47,15 +40,16 @@ function LoginForm() {
       />
       {errors. password&& <p>Your Password is less than 6 characters</p>}
 
-      
+
       <input type="submit" />
     </form>
+
   );
 }
 
 // const rootElement = document.getElementById("root");
 // ReactDOM.render(<LoginForm/>, rootElement);
 
-  
+
 
 export default LoginForm;
