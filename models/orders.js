@@ -30,7 +30,7 @@ const ordersSchema = new Schema(
           expirationDate: { type: Date }
         }
       },
-      spice: [
+      spices: [
         {
           name: { type: String },
           size: { type: String },

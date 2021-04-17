@@ -34,8 +34,8 @@ export default {
     return axios.get("/api/orders");
   },
 
-  saveOrders: function(storeOrders) {
-    return axios.post("/api/orders", storeOrders);
+  saveOrders: function(orderInfo) {
+    return axios.post("/api/orders", orderInfo);
   },
   
   updateOrders: function(orderData) {
