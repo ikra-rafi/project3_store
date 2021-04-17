@@ -26,13 +26,13 @@ function App() {
           <Nav />
           <Hero />
           <Switch>
-            <Route exact path="/" component={Home}> <TempProducts /> <TempOrders /> <TempCart /> <TempRecipes /><TempComment /> <TempLogin /></Route>
+            <Route exact path="/" component={Home}/>
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/details" component={ProductDetails} />
             <Route path="/admin" component={Admin} />
             <Route path="/account" component={Account} />
-            <Route path="/cart" component={ShoppingCart} /> 
+            <Route path="/cart" component={ShoppingCart} />
             <Route path="/checkout" component={Checkout} />
           </Switch>
           < Footer />
