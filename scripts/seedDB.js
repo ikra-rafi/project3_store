@@ -12,6 +12,8 @@ mongoose.connect(
     { orderNum: "AA0013",
       shippingAddress: {
           name: "Ashley Stith",
+          firstName: "Ashley",
+          lastName: "Stith",
           street: "221 Baker Street",
           city: "London",
           state: "CT",
@@ -22,6 +24,8 @@ mongoose.connect(
       creditCard: {
           billingAddress: {
               name: "Ashley Stith",
+              firstName: "Ashley",
+              lastName: "Stith",
               street: "221 Baker Street",
               city: "London",
               state: "CT",
@@ -49,11 +53,14 @@ mongoose.connect(
             quantity: 1,
         }
       ],
+      notes: "Please ring doorbell when delivering",
       orderTotal: 9.99
     },
     { orderNum: "AA0013",
       shippingAddress: {
           name: "John Toth",
+          firstName: "John",
+          lastName: "Toth",
           street: "125 Morning Mist Lane",
           city: "Frederick",
           state: "MD",
@@ -64,6 +71,8 @@ mongoose.connect(
       creditCard: {
           billingAddress: {
               name: "John Toth",
+              firstName: "John",
+              lastName: "Toth",
               street: "125 Morning Mist Lane",
               city: "Frederick",
               state: "MD",
@@ -91,6 +100,7 @@ mongoose.connect(
             quantity: 1,
         }
       ],
+      notes: "double wrap for shipping",
       orderTotal: 14.97
     },
 ]

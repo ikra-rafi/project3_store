@@ -4,16 +4,16 @@ import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
 import ForgotPasswordForm from "../components/ForgotPasswordForm";
 
-function Admin() {
+function Login() {
   return (
     <div>
-      <Container>
+      {/* <Container> */}
         <LoginForm />
         <SignUpForm />
         <ForgotPasswordForm />
-      </Container>
+      {/* </Container> */}
 </div>
   );
 }
 
-export default Admin;
+export default Login;

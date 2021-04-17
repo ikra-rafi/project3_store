@@ -9,12 +9,18 @@ import { Link, useLocation } from "react-router-dom";
 
 function ShoppingCart(props) {
   let shipName = React.createRef();
+  let shipFirstName = React.createRef();
+  let shipLastName = React.createRef();
   let shipStreet = React.createRef();
+  let shipAddress2 = React.createRef();
   let shipCity = React.createRef();
   let shipState = React.createRef();
   let shipZip = React.createRef();
   let billName = React.createRef();
+  let billFirstName = React.createRef();
+  let billLastName = React.createRef();
   let billStreet = React.createRef();
+  let billAddress2 = React.createRef();
   let billCity = React.createRef();
   let billState = React.createRef();
   let billZip = React.createRef();
@@ -25,6 +31,7 @@ function ShoppingCart(props) {
   let ccExpDate = React.createRef();
   let email = React.createRef();
   let phone = React.createRef();
+  let notes = React.createRef();
 
   const [cart, setCart]= useState([]);
   const [orders, setOrders] = useState([]);
