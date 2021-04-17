@@ -17,6 +17,7 @@ import TempCart from "./pages/test/TempCart";
 import TempRecipes from "./pages/test/TempRecipes";
 import TempLogin from "./pages/test/TempLogin";
 import TempComment from "./pages/test/TempComments";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/admin" component={Admin} />
             <Route path="/account" component={Account} />
             <Route path="/cart" component={ShoppingCart} /> 
+            <Route path="/checkout" component={Checkout} />
           </Switch>
           < Footer />
 

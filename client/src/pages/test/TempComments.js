@@ -7,19 +7,19 @@ import {Row, Container} from "../../components/Test/Grid";
 function TempComment () {
     // set up state for saved books and a trigger
     const [comments, setComments]= useState([]);
-    const [trigger, setTrigger] = useState("1");
+    // const [trigger, setTrigger] = useState("1");
 
-    const storeComments = [
-        {
-            userComment: "Spice was very fresh.",
-            productID: "GIN0003"
-        },
-        {
-            userComment: "Bottle broken in shipping",
-            productID: "OREG0001"
-        },
+    // const storeComments = [
+    //     {
+    //         userComment: "Spice was very fresh.",
+    //         productID: "GIN0003"
+    //     },
+    //     {
+    //         userComment: "Bottle broken in shipping",
+    //         productID: "OREG0001"
+    //     },
             
-    ];
+    // ];
 
     // Load all saved books and store them with setBooks
     useEffect(() => {
@@ -27,15 +27,15 @@ function TempComment () {
         getComments();
       }, [])
 
-    function handleCommentBtnClick(event) {
-        API.saveComments(storeComments)
-            .then(res => {
-                console.log("comments");
-                console.log(res.data);
-                setComments(res.data);
-            })
-            .catch(err => console.log(err));
-    }
+    // function handleCommentBtnClick(event) {
+    //     API.saveComments(storeComments)
+    //         .then(res => {
+    //             console.log("comments");
+    //             console.log(res.data);
+    //             setComments(res.data);
+    //         })
+    //         .catch(err => console.log(err));
+    // }
 
     function getComments() {
         API.getComments()
@@ -49,7 +49,7 @@ function TempComment () {
     // return the rendered saved books page
     return (
             <Container fluid>
-                <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleCommentBtnClick}><strong>Comments</strong></button>
+                <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} ><strong>Comments</strong></button>
                 <Row>
                 <div className="container-fluid containerColor marginBottomCont">
                     {comments.length ? (

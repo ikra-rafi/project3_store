@@ -7,37 +7,37 @@ import {Row, Container} from "../../components/Test/Grid";
 function TempCart () {
     // set up state for saved books and a trigger
     const [cart, setCart]= useState([]);
-    const [trigger, setTrigger] = useState("1");
-    var orderData = [];
+    // const [trigger, setTrigger] = useState("1");
+    // var orderData = [];
 
-    const storeCart = [ 
-        { name: "salt",
-          productID: "SA0003",
-          prodInfo: {
-            size: "4oz bottle",
-            price: "4.99",
-            quantity: 1
-          }
-        },
-        {
-          name: "ground ginger",
-          productID: "GIN0002",
-          prodInfo: {
-            size: "16oz package",
-            price: "12.99",
-            quantity: 1
-          }
-        },
-        {
-          name: "chamomile tea",
-          productID: "CHAM0015",
-          prodInfo: {
-            size: "4oz package",
-            price: "5.99",
-            quantity: 2
-          }
-        }
-    ]
+    // const storeCart = [ 
+    //     { name: "salt",
+    //       productID: "SA0003",
+    //       prodInfo: {
+    //         size: "4oz bottle",
+    //         price: "4.99",
+    //         quantity: 1
+    //       }
+    //     },
+    //     {
+    //       name: "ground ginger",
+    //       productID: "GIN0002",
+    //       prodInfo: {
+    //         size: "16oz package",
+    //         price: "12.99",
+    //         quantity: 1
+    //       }
+    //     },
+    //     {
+    //       name: "chamomile tea",
+    //       productID: "CHAM0015",
+    //       prodInfo: {
+    //         size: "4oz package",
+    //         price: "5.99",
+    //         quantity: 2
+    //       }
+    //     }
+    // ]
     // Load all saved books and store them with setBooks
     // useEffect(() => {
     //     console.log("in useEffect orders");
@@ -59,27 +59,27 @@ function TempCart () {
     // };
 
 
-    function saveCart(storeCart) {
-        console.log("inside cart");
-        console.log(storeCart);
-        API.saveCart(storeCart)
-        .then(res => API.getCart()
-                        .then(res=> { console.log("cart"); console.log(res.data); cart =res.data})
-                        .catch(err => console.log(err))
+    // function saveCart(storeCart) {
+    //     console.log("inside cart");
+    //     console.log(storeCart);
+    //     API.saveCart(storeCart)
+    //     .then(res => API.getCart()
+    //                     .then(res=> { console.log("cart"); console.log(res.data); cart =res.data})
+    //                     .catch(err => console.log(err))
             
-            )
-        .catch(err => console.log(err));
-    }
+    //         )
+    //     .catch(err => console.log(err));
+    // }
 
-    function handleCartBtnClick(event) {
-        API.saveCart(storeCart)
-            .then(res => {
-                console.log("cart");
-                console.log(res.data);
-                setCart(res.data);
-            })
-            .catch(err => console.log(err));
-    }
+    // function handleCartBtnClick(event) {
+    //     API.saveCart(storeCart)
+    //         .then(res => {
+    //             console.log("cart");
+    //             console.log(res.data);
+    //             setCart(res.data);
+    //         })
+    //         .catch(err => console.log(err));
+    // }
 
     function getCart() {
         API.getCart()
@@ -93,7 +93,7 @@ function TempCart () {
     // return the rendered saved books page
     return (
             <Container fluid>
-             <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleCartBtnClick}><strong>Cart</strong></button>
+             <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} ><strong>Cart</strong></button>
                 <Row>
                 <div className="container-fluid containerColor marginBottomCont">
                     {cart.length ? (
