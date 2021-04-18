@@ -1,14 +1,13 @@
-import React , { useEffect, useState, useContext} from "react";
+import React from "react";
 import Cart from "../components/Cart";
-import CartOrderContext from "../utils/cartOrderContext.js";
-//import CreditCard from "../components/CreditCard";
 import CartData from "../components/Test/CartData"
-import {Row, Container} from "../components/Test/Grid";
+import {Container} from "../components/Test/Grid";
 import API from "../utils/API";
+import { useTodoContext} from "../utils/store";
 import { Link, useLocation } from "react-router-dom";
 
-function ShoppingCart(props) {
-  let shipName = React.createRef();
+function Checkout() {
+  let shipCompanyName = React.createRef();
   let shipFirstName = React.createRef();
   let shipLastName = React.createRef();
   let shipStreet = React.createRef();
@@ -16,7 +15,7 @@ function ShoppingCart(props) {
   let shipCity = React.createRef();
   let shipState = React.createRef();
   let shipZip = React.createRef();
-  let billName = React.createRef();
+  let billCompanyName = React.createRef();
   let billFirstName = React.createRef();
   let billLastName = React.createRef();
   let billStreet = React.createRef();
@@ -33,87 +32,75 @@ function ShoppingCart(props) {
   let phone = React.createRef();
   let notes = React.createRef();
 
-  const [cart, setCart]= useState([]);
-  const [orders, setOrders] = useState([]);
-  const [trigger, setTrigger] = useState("1");
+  const [state, dispatch] = useTodoContext();
   
-  const {cartTotal} = useContext(CartOrderContext);
-  
-  console.log(cartTotal);
-  const orderInfo = 
-    {
-      orderNum: "",
-      shippingAddress: {
-        name: "",
-        street: "",
-        city: "",
-        state: "",
-        zip: ""
-      },
-      email: "",
-      phone: "",
-      creditCard: {
-        billingAddress: {
-          name: "",
-          street: "",
-          city: "",
-          state: "",
-          zip: "",
-        },
-        cardInfo: {
-          cardNumber: "",
-          cardType: "",
-          securityCode: "",
-          cardName: "",
-          expirationDate: ""
-        }
-      },
-      spices: [],
-      orderTotal: 0
-    }
+  const formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,      
+    maximumFractionDigits: 2,
+  });
 
-  useEffect(() => {
-    console.log("cart Effect");
-    getCart();
-  }, [])
-
-  const tempspices = 
-    {
-      name: "garlic",
-      size: "4oz bottle",
-      price: "4.99",
-      quantity: 2
-    }
-
-
-  function handleContBtnClick(event) {
-    event.preventDefault();
-
-    orderInfo.shippingAddress.name = shipName.current.value;
-    orderInfo.shippingAddress.street = shipStreet.current.value;
-    orderInfo.shippingAddress.city = shipCity.current.value;
-    orderInfo.shippingAddress.state = shipState.current.value;
-    orderInfo.shippingAddress.zip = shipZip.current.value;
-    orderInfo.creditCard.billingAddress.name = billName.current.value;
-    orderInfo.creditCard.billingAddress.street = billStreet.current.value;
-    orderInfo.creditCard.billingAddress.city = billCity.current.value;
-    orderInfo.creditCard.billingAddress.state = billState.current.value;
-    orderInfo.creditCard.billingAddress.zip = billZip.current.value;
-    orderInfo.email = email.current.value;
-    orderInfo.phone = phone.current.value;
-    orderInfo.creditCard.cardInfo.cardName = ccName.current.value;
-    orderInfo.creditCard.cardInfo.cardType = ccType.current.value;
-    orderInfo.creditCard.cardInfo.cardNumber = ccNumber.current.value;
-    orderInfo.creditCard.cardInfo.securitycode = ccSecurityCode.current.value;
-    orderInfo.creditCard.cardInfo.expirationDate = ccExpDate.current.value;
-    orderInfo.spices.push(tempspices);
-    orderInfo.orderNum = "BL0001";
-    console.log(orderInfo);
-  }
+  // useEffect(() => {
+  //   console.log("cart Effect");
+  //   getCart();
+  // }, [])
 
   function handleSubmitBtnClick(e) {
     e.preventDefault();
-    console.log(orderInfo);
+    const orderInfo = 
+    {
+      orderNum: "BL0001",
+      shippingAddress: {
+        companyName: shipCompanyName.current.value,
+        firstName: shipFirstName.current.value,
+        lastName: shipLastName.current.value,
+        street: shipStreet.current.value,
+        address2: shipAddress2.current.value,
+        city: shipCity.current.value,
+        state: shipState.current.value,
+        zip: shipZip.current.value
+      },
+      email: email.current.value,
+      phone: phone.current.value,
+      creditCard: {
+        billingAddress: {
+          companyName: billCompanyName.current.value,
+          firstName: billFirstName.current.value,
+          lastName: billLastName.current.value,
+          street: billStreet.current.value,
+          address2: billAddress2.current.value,
+          city: billCity.current.value,
+          state: billState.current.value,
+          zip: billZip.current.value,
+        },
+        cardInfo: {
+          cardNumber: ccNumber.current.value,
+          cardType: ccType.current.value,
+          securityCode: ccSecurityCode.current.value,
+          cardName: ccName.current.value,
+          expirationDate: ccExpDate.current.value
+        }
+      },
+      spices: [],
+      notes: notes.current.value,
+      orderTotal: 0
+    }
+
+    for(let i=0; i<state.cartItems.length; i++) {
+      const tempspices = 
+      {
+       name: "garlic",
+       size: "4oz bottle",
+       price: "4.99",
+       quantity: 2
+      }
+      tempspices.name = state.cartItems[i].name;
+      tempspices.size = state.cartItems[i].prodInfo.size;
+      tempspices.quantity = state.cartItems[i].prodInfo.quantity;
+      tempspices.price = state.cartItems[i].prodInfo.price;
+
+      orderInfo.spices[i] = tempspices;
+    }
+
     API.saveOrders(orderInfo)
       .then(res => {
         console.log("in save orders");
@@ -122,14 +109,14 @@ function ShoppingCart(props) {
       }) 
   }
 
-  function getCart() {
-    API.getCart()
-    .then(res=> {
-        console.log(res.data);
-        setCart(res.data);
-    })
-    .catch(err => console.log(err))
-  }
+  // function getCart() {
+  //   API.getCart()
+  //   .then(res=> {
+  //       console.log(res.data);
+  //       setCart(res.data);
+  //   })
+  //   .catch(err => console.log(err))
+  // }
 
   return (
     <div>
@@ -138,8 +125,8 @@ function ShoppingCart(props) {
         <Cart />
               <div className="container-fluid containerColor marginBottomCont">
                <h1 className="text-center">Checkout Page</h1> 
-               <h1 className="text-center">Cart Total = {cartTotal}</h1>
-               {cart.length ? (
+               <h1 className="text-center">Cart Total = ${state.orderTotal}</h1>
+               {state.cartItems.length ? (
                   <div>
                     <form id={1} className="searchForm justify-content-center m-2" key={1}>
 {/*                       <input
@@ -154,13 +141,19 @@ function ShoppingCart(props) {
                         if (e.key === 'Enter') e.preventDefault();
                         }}
                       /> */}
-                      <label className="label" htmlFor="exampleInputEmail1">Name</label>
-                      <input name="shipName" ref={shipName} id="shipName" className="form-control form-control-lg" placeholder="Ship Name" />
+                      <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
+                      <input name="shipCompanyName" ref={shipCompanyName} id="shipCompanyName" className="form-control form-control-lg" placeholder="Ship Company Name" />
+                      <label className="label" htmlFor="exampleInputEmail1">First Name</label>
+                      <input name="shipFirstName" ref={shipFirstName} id="shipFirstName" className="form-control form-control-lg" placeholder="Ship First Name" />
+                      <label className="label" htmlFor="exampleInputEmail1">Last Name</label>
+                      <input name="shipLastName" ref={shipLastName} id="shipLastName" className="form-control form-control-lg" placeholder="Ship Last Name" />
                       <label className="label" htmlFor="exampleInputEmail1">Street</label>
                       <input name="shipStreet" ref={shipStreet} id="shipStreet" className="form-control form-control-lg" placeholder="Shipping Street" />
+                      <label className="label" htmlFor="exampleInputEmail1">Street #2</label>
+                      <input name="shipAddress2" ref={shipAddress2} id="shipAddress2" className="form-control form-control-lg" placeholder="Shipping Address #2" />
                       <label className="label" htmlFor="exampleInputEmail1">City</label>
                       <input name="shipCity" ref={shipCity} id="shipCity" className="form-control form-control-lg" placeholder="Shipping City" />
-                      <label className="label" htmlFor="exampleInputEmail1">State</label>                      
+                      <label className="label" htmlFor="exampleInputEmail1">State</label>
                       <div className="select"><select ref={shipState} id="shipState" defaultValue="" required="">
                         <option value="" disabled="">Choose...</option>
                         <option value="AK">AK</option>
@@ -216,25 +209,32 @@ function ShoppingCart(props) {
                         <option value="WY">WY</option>
                       </select>
                     </div>
-                      <label className="label" htmlFor="exampleInputEmail1">Zip</label>                      
+                      <label className="label" htmlFor="exampleInputEmail1">Zip</label>
                       <input name="shipZip" ref={shipZip} id="shipZip" className="form-control form-control-lg" placeholder="Shipping Zip Code" maxLength="5"
                             size="5" required/>
                       <label className="label" htmlFor="exampleInputEmail1">Email</label>                      
                       <input type="email" ref={email} id="email" name="email" className="form-control form-control-lg" placeholder="email" />
-                      <label className="label" htmlFor="exampleInputEmail1">Phone</label>                      
-                      <input type="tel" ref={phone} id="phone" name="phone" className="form-control form-control-lg" placeholder="phone" placeholder="555-555-5555"
+                      <label className="label" htmlFor="exampleInputEmail1">Phone</label>
+                      <input type="tel" ref={phone} id="phone" name="phone" className="form-control form-control-lg" placeholder="555-555-5555"
                           maxLength="12" size="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
-                      <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleContBtnClick}><strong>Continue</strong></button>
+                      <label className="label" htmlFor="exampleInputEmail1">Notes</label>                      
+                      <input name="notes" ref={notes} id="notes" className="form-control form-control-lg" placeholder="notes" />
                     </form>
                     <br />
                     <form>
-                    <label className="label" htmlFor="exampleInputEmail1">Name</label>                      
-                      <input name="ccBillName" ref={billName} id="billName" className="form-control form-control-lg" placeholder="Billing Name" />
-                      <label className="label" htmlFor="exampleInputEmail1">Street</label>                      
+                    <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
+                      <input name="ccBillCompanyName" ref={billCompanyName} id="billCompanyName" className="form-control form-control-lg" placeholder="Billing Company Name" />
+                      <label className="label" htmlFor="exampleInputEmail1">First Name</label>
+                      <input name="ccBillFirstName" ref={billFirstName} id="billFirstName" className="form-control form-control-lg" placeholder="Billing First Name" />
+                      <label className="label" htmlFor="exampleInputEmail1">Last Name</label>
+                      <input name="ccBillLastName" ref={billLastName} id="billLastName" className="form-control form-control-lg" placeholder="Billing Last Name" />                      
+                      <label className="label" htmlFor="exampleInputEmail1">Street</label>
                       <input name="ccBillStreet" ref={billStreet} id="billStreet" className="form-control form-control-lg" placeholder="Billing Street" />
-                      <label className="label" htmlFor="exampleInputEmail1">City</label>                      
+                      <label className="label" htmlFor="exampleInputEmail1">Address 2</label>
+                      <input name="ccBillAddress2" ref={billAddress2} id="billAddress2" className="form-control form-control-lg" placeholder="Billing Address 2" />                      
+                      <label className="label" htmlFor="exampleInputEmail1">City</label>
                       <input name="ccBillCity" ref={billCity} id="billCity" className="form-control form-control-lg" placeholder="Billing City" />
-                      <label className="label" htmlFor="exampleInputEmail1">State</label>                      
+                      <label className="label" htmlFor="exampleInputEmail1">State</label>
                       <div className="select"><select ref={billState} id="billState" defaultValue="" required="">
                         <option value=""  disabled="">Choose...</option>
                         <option value="AK">AK</option>
@@ -290,33 +290,81 @@ function ShoppingCart(props) {
                         <option value="WY">WY</option>
                       </select>
                     </div>
-                      <label className="label" htmlFor="exampleInputEmail1">Zip</label>                      
+                      <label className="label" htmlFor="exampleInputEmail1">Zip</label>
                       <input name="ccBillZip" ref={billZip} id="billZip" className="form-control form-control-lg" placeholder="Billing Zip Code" maxLength="5"
                             size="5" required/>
                     </form>
                     <br />
                     <form>
-                    <label className="label" htmlFor="exampleInputEmail1">Name</label>                      
+                    <label className="label" htmlFor="exampleInputEmail1">Name</label>
                       <input name="ccName" ref={ccName} id="ccNameclassName=" className="form-control form-control-lg" placeholder="Name on Credit Card" />
-                      <label className="label" htmlFor="exampleInputEmail1">Type of Card</label>                      
+                      <label className="label" htmlFor="exampleInputEmail1">Type of Card</label>
                       <input name="ccType" ref={ccType} id="ccType" className="form-control form-control-lg" placeholder="Credit Card Type" />
-                      <label className="label" htmlFor="exampleInputEmail1">Card Number</label>                      
+                      <label className="label" htmlFor="exampleInputEmail1">Card Number</label>
                       <input name="ccNumber" ref={ccNumber} id="ccNumber" className="form-control form-control-lg" placeholder="Credit Card Number" />
-                      <label className="label" htmlFor="exampleInputEmail1">Security Code</label>                      
+                      <label className="label" htmlFor="exampleInputEmail1">Security Code</label>
                       <input name="ccSecurityCode" ref={ccSecurityCode} id="ccSecurityCode" className="form-control form-control-lg" placeholder="CC Security Code" />
-                      <label className="label" htmlFor="exampleInputEmail1">Expiration Date</label>                      
+                      <label className="label" htmlFor="exampleInputEmail1">Expiration Date</label>
                       <input name="ccExpirationDate" ref={ccExpDate} id="ccExpDate" className="form-control form-control-lg" placeholder="CC Expiration Date" />
                     </form>
-                      {cart.map(result => (
+                      {state.cartItems.map(result => (
                         <div key={result._id}>
                           <CartData
-                            // id = {result._id}
                             name = {result.name}
                             productID = {result.productID}
                             prodInfo = {result.prodInfo}
                           />
                         </div>
                       ))}
+                      <table>
+                      <thead>
+          <tr>
+            <th className="alignCenter">Product</th>
+            <th className="alignCenter">Package Size</th>
+            <th className="alignCenter">Quantity</th>
+            <th className="alignCenter">Price</th>
+            <th className="alignCenter">Item Total</th>
+          </tr>
+        </thead>
+                        <tbody>
+
+                        <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>SubTotal:</td>
+                        <td>${formatter.format(state.subTotal)}</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Discount ({state.discountAmt}%)</td>
+                        <td>${state.discountAmt/100 * state.subTotal}</td>
+                      </tr>
+                     <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Sales Tax ({state.salesTax}%)</td>
+                        <td>${state.salesTaxAmt}</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Shipping Fee (Flat Rate):</td>
+                        <td>${state.shipFee}</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Order Total:</td>
+                        <td>${state.orderTotal}</td>
+                      </tr>
+                        </tbody>
+                      </table>
                   </div>
                 ) : (
                  <div className="row text-center h-100">
@@ -336,4 +384,4 @@ function ShoppingCart(props) {
   );
 }
 
-export default ShoppingCart;
+export default Checkout;

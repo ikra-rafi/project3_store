@@ -11,12 +11,12 @@ import Account from "./pages/Account";
 import ShoppingCart from "./pages/ShoppingCart";
 import Footer from "./components/Footer";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import TempProducts from "./pages/test/TempProducts";
-import TempOrders from "./pages/test/TempOrders";
-import TempCart from "./pages/test/TempCart";
-import TempRecipes from "./pages/test/TempRecipes";
-import TempLogin from "./pages/test/TempLogin";
-import TempComment from "./pages/test/TempComments";
+// import TempProducts from "./pages/test/TempProducts";
+// import TempOrders from "./pages/test/TempOrders";
+// import TempCart from "./pages/test/TempCart";
+// import TempRecipes from "./pages/test/TempRecipes";
+// import TempLogin from "./pages/test/TempLogin";
+// import TempComment from "./pages/test/TempComments";
 import Checkout from "./pages/Checkout";
 
 function App() {

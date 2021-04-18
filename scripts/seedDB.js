@@ -11,7 +11,7 @@ mongoose.connect(
   const orderSeed = [
     { orderNum: "AA0013",
       shippingAddress: {
-          name: "Ashley Stith",
+          companyName: "ABC CORP",
           firstName: "Ashley",
           lastName: "Stith",
           street: "221 Baker Street",
@@ -23,7 +23,7 @@ mongoose.connect(
       phone: "555-222-1111",
       creditCard: {
           billingAddress: {
-              name: "Ashley Stith",
+              companyName: "XYZ Inc.",
               firstName: "Ashley",
               lastName: "Stith",
               street: "221 Baker Street",
