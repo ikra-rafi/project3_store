@@ -5,7 +5,7 @@ import "./style.css";
 
 
 function LoginForm() {
-  const {
+   const {
     register,
     handleSubmit,
     formState: { errors }
@@ -46,7 +46,6 @@ function LoginForm() {
 
   );
 }
-
 // const rootElement = document.getElementById("root");
 // ReactDOM.render(<LoginForm/>, rootElement);
 
