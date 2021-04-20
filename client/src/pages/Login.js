@@ -5,13 +5,16 @@ import ForgotPasswordForm from "../components/ForgotPasswordForm";
 
 function Login() {
   return (
-    <div>
-
-        <LoginForm />
-        <SignUpForm />
+   <div>
+  
+        <LoginForm /> 
+   
+       
+         <SignUpForm />
+       
         <ForgotPasswordForm />
+        </div>     
 
-</div>
   );
 }
 
