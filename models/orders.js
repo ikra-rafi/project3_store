@@ -6,7 +6,10 @@ const ordersSchema = new Schema(
     {
       orderNum: { type: String },
       shippingAddress: {
-        name: { type: String },
+        companyName: { type: String },
+        firstName: { type: String },
+        lastName: { type: String },
+        address2: { type: String },
         street: { type: String },
         city: {type: String },
         state: {type: String },
@@ -16,8 +19,11 @@ const ordersSchema = new Schema(
       phone: { type: String },
       creditCard: {
         billingAddress: {
-          name: { type: String },
+          companyName: { type: String },
+          firstName: { type: String },
+          lastName: { type: String },
           street: { type: String },
+          address2: { type: String },
           city: { type: String },
           state: { type: String },
           zip: { type: String },
@@ -42,6 +48,7 @@ const ordersSchema = new Schema(
           }
         }
       ],
+      notes: { type: String },
       orderTotal: { type: Number }
     }
   ]

@@ -14,8 +14,13 @@ body {
   
   h1 {
     font-weight: 100;
+<<<<<<< HEAD
     color: rgb(24, 11, 11);
     text-align: left;
+=======
+    color: black;
+    text-align: center;
+>>>>>>> 0db4ea6ddb3fe5818c04cd431c2b6a2bafe085fa
     padding-bottom: 10px;
     /* border-bottom: 1px solid rgb(79, 98, 148); */
   }
