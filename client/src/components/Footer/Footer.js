@@ -69,16 +69,16 @@ const Footer = () => {
                               <Link to={process.env.PUBLIC_URL + "/about"}>Customer Service</Link>
                           </li>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/services"}>Return & Cancellation</Link>
+                              <Link to={process.env.PUBLIC_URL + "/about"}>Return & Cancellation</Link>
                           </li>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/single-services"}>Online Organic Service</Link>
+                              <Link to={process.env.PUBLIC_URL + "/about"}>Online Organic Service</Link>
                           </li>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/team"}>Delivery Schedule</Link>
+                              <Link to={process.env.PUBLIC_URL + "/about"}>Delivery Schedule</Link>
                           </li>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/team"}>Terms and Conditions</Link>
+                              <Link to={process.env.PUBLIC_URL + "/about"}>Terms and Conditions</Link>
                           </li> 
                       </ul>
                   </div>
