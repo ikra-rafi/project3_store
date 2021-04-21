@@ -15,6 +15,9 @@ function ForgotPasswordForm() {
   };
   const intialValues = {
   email: "",
+  securityQuestion:"",
+    answer:"",
+    password: "",
 
   };
 
@@ -29,6 +32,32 @@ function ForgotPasswordForm() {
           type="email"
           {...register("email")}
         />
+         <label htmlFor="securityQuestion">Security Question</label>
+        <input
+          defaultValue={intialValues.securityQuestion}
+          placeholder="Security Question"
+          type="securityQuestion"
+          {...register("securityQuestion")}
+        />
+
+        <label htmlFor="answer">Answer</label>
+        <input
+          defaultValue={intialValues.answer}
+          placeholder="Answer"
+          type="answer"
+          {...register("answer")}
+        />
+  
+        <label htmlFor="password">Password</label>
+        <input
+          defaultValue={intialValues.password}
+          placeholder="Password"
+          {...register("password", {
+            validate: (value) => value.length > 6
+          })}
+        />
+        {errors. password&& <p>Your Password is less than 6 characters</p>}
+        
          <input type="submit" />
          <br></br>
          <Link href="Login">Login</Link>
