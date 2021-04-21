@@ -74,6 +74,7 @@ function SignUpForm() {
           })}
         />
         {errors. password&& <p>Your Password is less than 6 characters</p>}
+        
         <label htmlFor="confrimPassword">Confirm your Password</label>
         <input
           defaultValue={intialValues.confirmPassword}
