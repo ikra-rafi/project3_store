@@ -18,6 +18,8 @@ function SignUpForm() {
     password: "",
     confirmPassword:"",
     email: "",
+    securityQuestion:"",
+    answer:"",
 
   };
 
@@ -46,6 +48,22 @@ function SignUpForm() {
           type="lastName"
           {...register("lastName")}
         />
+
+        <label htmlFor="securityQuestion">Security Question</label>
+        <input
+          defaultValue={intialValues.securityQuestion}
+          placeholder="Security Question"
+          type="securityQuestion"
+          {...register("securityQuestion")}
+        />
+
+        <label htmlFor="answer">Answer</label>
+        <input
+          defaultValue={intialValues.answer}
+          placeholder="Answer"
+          type="answer"
+          {...register("answer")}
+        />
   
         <label htmlFor="password">Password</label>
         <input
@@ -65,6 +83,8 @@ function SignUpForm() {
           })}
         />
         {errors.confirmPassword&& <p>Your Password Doesn't Match!</p>}
+
+
   
   
         <input type="submit" />
