@@ -4,8 +4,24 @@ export default {
 
   // Gets all products from database
   getProducts: function() {
-    return axios.get("/api/products");
+    return axios
+    .get("/api/products")
+    .then(res => {
+      const products = res.data;
+      return products;
+    });
   },
+
+  getProductDetails: function(id) {
+    console.log(id);
+    return axios
+    .get("/api/products/" + id)
+    .then(res => {
+      const product = res.data;
+      return product;
+    });
+  },
+
 
   // Deletes the book with the given id
   deleteProduct: function(id) {
@@ -16,7 +32,7 @@ export default {
   saveProducts: function(storeProducts) {
     return axios.post("/api/products", storeProducts);
   },
-  
+
   // Update a product in the database
   updateProduct: function(productData) {
     return axios.post("/api/products", productData);
@@ -25,7 +41,7 @@ export default {
   getComments: function() {
     return axios.get("/api/comments");
   },
-  
+
   saveComments: function(storeComments) {
     return axios.post("/api/comments", storeComments);
   },
@@ -37,7 +53,7 @@ export default {
   saveOrders: function(orderInfo) {
     return axios.post("/api/orders", orderInfo);
   },
-  
+
   updateOrders: function(orderData) {
     return axios.post("api/orders", orderData);
   },
