@@ -18,6 +18,8 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 // import TempLogin from "./pages/test/TempLogin";
 // import TempComment from "./pages/test/TempComments";
 import Checkout from "./pages/Checkout";
+import john from "./pages/login-form";
+import johnSignup from "./pages/sign-up";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
             <Route path="/account" component={Account} />
             <Route path="/cart" component={ShoppingCart} />
             <Route path="/checkout" component={Checkout} />
+            <Route path="/john" component={john} />
+            <Route path="/johnSignup" component={johnSignup} />
           </Switch>
           < Footer />
 
