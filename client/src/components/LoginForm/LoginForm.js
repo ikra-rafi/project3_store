@@ -44,17 +44,11 @@ function LoginForm() {
 
 
       <input type="submit" />
-      <br></br>
-      <a href="">FORGOT YOUR PASSWORD?</a>
-
-      
   
-    </form>
+    </form >
 
   );
 }
-// const rootElement = document.getElementById("root");
-// ReactDOM.render(<LoginForm/>, rootElement);
 
 
 
