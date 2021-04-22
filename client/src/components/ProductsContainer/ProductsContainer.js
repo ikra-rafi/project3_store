@@ -5,7 +5,6 @@ import "./style.css";
 
 function ProductsContainer(props) {
   console.log(props);
-
   
   return (
     <div>
