@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Cart from "../components/Cart";
 import CartData from "../components/Test/CartData"
 import {Container} from "../components/Test/Grid";
@@ -33,19 +33,16 @@ function Checkout() {
   let notes = React.createRef();
 
   const [state, dispatch] = useTodoContext();
-  const [cart, setCart] = useState();
   
   const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,      
     maximumFractionDigits: 2,
   });
 
-  useEffect(() => {
-    console.log("cart Effect");
-    getCart();
-    console.log("checkout");
-
-  }, [])
+  // useEffect(() => {
+  //   console.log("cart Effect");
+  //   getCart();
+  // }, [])
 
   function handleSubmitBtnClick(e) {
     e.preventDefault();
@@ -112,22 +109,14 @@ function Checkout() {
       }) 
   }
 
-  function getCart() {
-
-    if(state.loggedIn) {
-      var salesTaxCalc = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)) * parseFloat(state.salesTax)/100);
-      var newSubTotal = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)));
-    }
-    else {
-      var salesTaxCalc = (parseFloat(state.subTotal)) * parseFloat(state.salesTax)/100;
-      var newSubTotal = (parseFloat(state.subTotal));
-    }
-
-    dispatch({
-      type: "orderTotal",
-      orderTotal: ((newSubTotal + parseFloat(salesTaxCalc) + parseInt(state.shipFee))),
-    })
-  }
+  // function getCart() {
+  //   API.getCart()
+  //   .then(res=> {
+  //       console.log(res.data);
+  //       setCart(res.data);
+  //   })
+  //   .catch(err => console.log(err))
+  // }
 
   return (
     <div>
@@ -136,10 +125,22 @@ function Checkout() {
         <Cart />
               <div className="container-fluid containerColor marginBottomCont">
                <h1 className="text-center">Checkout Page</h1> 
-               <h1 className="text-center">Cart Total = ${formatter.format(state.orderTotal)}</h1>
+               <h1 className="text-center">Cart Total = ${state.orderTotal}</h1>
                {state.cartItems.length ? (
                   <div>
                     <form id={1} className="searchForm justify-content-center m-2" key={1}>
+{/*                       <input
+                        value={props.searchString}
+                        onChange={props.handleInputChange}
+                        name="searchTerm"
+                        type="text"
+                        className="form-control form-control-lg"
+                        placeholder="Search Term"
+                        // disable the Enter key so a user hitting Enter doesn't accidentally reload the page with new data
+                        onKeyPress={e => {
+                        if (e.key === 'Enter') e.preventDefault();
+                        }}
+                      /> */}
                       <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
                       <input name="shipCompanyName" ref={shipCompanyName} id="shipCompanyName" className="form-control form-control-lg" placeholder="Ship Company Name" />
                       <label className="label" htmlFor="exampleInputEmail1">First Name</label>
@@ -334,30 +335,19 @@ function Checkout() {
                         <td>SubTotal:</td>
                         <td>${formatter.format(state.subTotal)}</td>
                       </tr>
-                      {state.discount ? (
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td>Discount ({state.discountAmt}%)</td>
-                          <td>${formatter.format(state.discountAmt/100 * state.subTotal)}</td>
-                        </tr>                        
-                      ) : (
-                        <tr>
+                      <tr>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>No discount applied</td>
-                        <td></td>
+                        <td>Discount ({state.discountAmt}%)</td>
+                        <td>${state.discountAmt/100 * state.subTotal}</td>
                       </tr>
-                      )}
-
                      <tr>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td>Sales Tax ({state.salesTax}%)</td>
-                        <td>${formatter.format(state.salesTaxAmt)}</td>
+                        <td>${state.salesTaxAmt}</td>
                       </tr>
                       <tr>
                         <td></td>
@@ -371,7 +361,7 @@ function Checkout() {
                         <td></td>
                         <td></td>
                         <td>Order Total:</td>
-                        <td>${formatter.format(state.orderTotal)}</td>
+                        <td>${state.orderTotal}</td>
                       </tr>
                         </tbody>
                       </table>
