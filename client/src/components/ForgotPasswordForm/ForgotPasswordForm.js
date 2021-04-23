@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import "./style.css";
-import Login from "../../pages/Login.js";
-import { Link } from "react-router-dom";
+// import Login from "../../pages/Login.js";
+// import { Link } from "react-router-dom";
 
 function ForgotPasswordForm() {
   const {
@@ -20,13 +20,19 @@ function ForgotPasswordForm() {
     password: "",
 
   };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
 
   return (
     <form  onSubmit={handleSubmit(onSubmit)} >
          <h1>Reset your password</h1>
          {/* <h2 id="h2">We will send you an email to reset your password.</h2> */}
         <label htmlFor="email">Email</label>
-        <input
+        <input 
           defaultValue={intialValues.email}
           placeholder="Email"
           type="email"
@@ -57,10 +63,10 @@ function ForgotPasswordForm() {
           })}
         />
         {errors. password&& <p>Your Password is less than 6 characters</p>}
-        
+
          <input type="submit" />
          <br></br>
-         <Link href="Login">Login</Link>
+         <label  id="luna"  onClick={scrollToTop}>LOGIN</label>
     </form>
   );
 }
