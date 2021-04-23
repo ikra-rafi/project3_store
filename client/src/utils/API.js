@@ -7,6 +7,10 @@ export default {
     return axios.get("/api/products");
   },
 
+<<<<<<< HEAD
+=======
+  // Deletes the book with the given id
+>>>>>>> parent of f1062d7... Updates to Products pages
   deleteProduct: function(id) {
     console.log("API id = " + id);
     return axios.delete("/api/products/" + id);
@@ -15,7 +19,7 @@ export default {
   saveProducts: function(storeProducts) {
     return axios.post("/api/products", storeProducts);
   },
-
+  
   // Update a product in the database
   updateProduct: function(productData) {
     return axios.post("/api/products", productData);
@@ -24,9 +28,13 @@ export default {
   getComments: function() {
     return axios.get("/api/comments");
   },
+<<<<<<< HEAD
 
   // Saves the comments to database
 
+=======
+  
+>>>>>>> parent of f1062d7... Updates to Products pages
   saveComments: function(storeComments) {
     return axios.post("/api/comments", storeComments);
   },
@@ -38,9 +46,13 @@ export default {
   saveOrders: function(orderInfo) {
     return axios.post("/api/orders", orderInfo);
   },
+<<<<<<< HEAD
 
   // Updates an order
 
+=======
+  
+>>>>>>> parent of f1062d7... Updates to Products pages
   updateOrders: function(orderData) {
     return axios.post("api/orders", orderData);
   },
