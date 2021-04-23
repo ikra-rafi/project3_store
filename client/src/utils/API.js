@@ -5,10 +5,26 @@ export default {
   //============PRODUCT ROUTES =================
   // Gets all products from database
   getProducts: function() {
-    return axios.get("/api/products");
+    return axios
+    .get("/api/products")
+    .then(res => {
+      const products = res.data;
+      return products;
+    });
   },
 
-  // Deletes the product with the given id
+  getProductDetails: function(id) {
+    console.log(id);
+    return axios
+    .get("/api/products/" + id)
+    .then(res => {
+      const product = res.data;
+      return product;
+    });
+  },
+
+
+  // Deletes the book with the given id
   deleteProduct: function(id) {
     console.log("API id = " + id);
     return axios.delete("/api/products/" + id);
@@ -18,7 +34,7 @@ export default {
   saveProducts: function(storeProducts) {
     return axios.post("/api/products", storeProducts);
   },
-  
+
   // Update a product in the database
   updateProduct: function(id) {
     return axios.post("/api/products/" + id);
@@ -29,7 +45,7 @@ export default {
   getComments: function() {
     return axios.get("/api/comments");
   },
-  
+
   // Saves the comments to database
   saveComments: function(storeComments) {
     return axios.post("/api/comments", storeComments);
@@ -45,7 +61,7 @@ export default {
   saveOrders: function(orderInfo) {
     return axios.post("/api/orders", orderInfo);
   },
-  
+
   // Updates an order
   updateOrders: function(orderData) {
     return axios.post("api/orders", orderData);
@@ -66,12 +82,12 @@ export default {
   updateCart: function(id, cartData) {
     return axios.put("/api/cart/" + id, cartData);
   },
-    
+
   deleteCart: function(id) {
     console.log("API id = " + id);
     return axios.delete("/api/cart/" + id);
   },
-  
+
   //==============RECIPE ROUTES ==================
   // Gets all recipes from database
   getRecipes: function() {

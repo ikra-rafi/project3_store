@@ -2,12 +2,12 @@ import React from "react";
 //import { useStoreContext } from "../../utils/GlobalState";
 import "./style.css";
 
-function Hero() {
+function Jumbotron() {
 
 
   return (
-   <div></div>
+   <div className = "jumbotron"></div>
   );
 }
 
-export default Hero;
+export default Jumbotron;

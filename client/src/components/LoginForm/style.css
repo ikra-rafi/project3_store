@@ -5,13 +5,13 @@ body {
       sans-serif;
       font-family: 'New Tegomin', serif;
   }
-  
+
   form {
     max-width: 300px;
     margin: 10%;
 
   }
-  
+
   h1 {
     font-weight: 100;
     color: rgb(24, 11, 11);
@@ -30,28 +30,41 @@ body {
 
   /* a:link{
     color:black
-   
+
   }
+
+  .form {
   a:hover {
     color:black;
     /* text-decoration: underline; */
   /* }  */
-  
+
   /* .form {
     background: #0e101c;
     max-width: 200px;
     margin: 0 auto;
-  } */
-  
+  }
+
   p {
     color: #bf1650;
   }
-  
+
+  p::before {
+    display: inline;
+    content: "⚠ ";
+  }
+
+  } */
+
+  p {
+    color: #bf1650;
+  }
+
   /* p::before {
     display: inline;
     content: "⚠ ";
   } */
-  
+
   input {
     display: block;
     box-sizing: border-box;
@@ -62,7 +75,7 @@ body {
     margin-bottom: 10px;
     font-size: 14px;
   }
-  
+
   label {
     line-height: 1px;
     text-align: left;
@@ -73,12 +86,12 @@ body {
     font-size: 14px;
     font-weight: 200;
   }
-  
+
   button[type="submit"],
   input[type="submit"] {
     background: #c44308;
     color: white;
-    
+
     text-transform: uppercase;
     border: none;
     margin-top: 40px;
@@ -87,7 +100,7 @@ body {
     font-weight: 100;
     letter-spacing: 10px;
   }
-  
+
   button[type="submit"]:hover,
   input[type="submit"]:hover {
     background: white;
@@ -95,7 +108,7 @@ body {
     border: 1px solid  #c44308;
     /* border: 1px solid #c44308; */
   }
-  
+
   button[type="submit"]:active,
   input[type="button"]:active,
   input[type="submit"]:active {
@@ -104,27 +117,27 @@ body {
     border: 1px solid  #c44308;
     opacity: 0.8;
   }
-  
+
   input:disabled {
     opacity: 0.4;
   }
-  
+
   input[type="button"]:hover {
     transition: 0.3s all;
     border: 1px solid #c44308;
   }
-  
+
   button[type="submit"],
   input[type="button"],
   input[type="submit"] {
     -webkit-appearance: none;
   }
-  
+
   .App {
     max-width: 600px;
     margin: 0 auto;
   }
-  
+
   button[type="button"] {
     display: block;
     appearance: none;
@@ -135,15 +148,15 @@ body {
     padding: 10px 20px;
     border-radius: 4px;
   }
-  
+
   pre {
     color: white;
   }
-  
+
   hr {
     margin-top: 30px;
   }
-  
+
   button {
     display: block;
     appearance: none;
@@ -154,4 +167,3 @@ body {
     padding: 10px 20px;
     border-radius: 4px;
   }
-  

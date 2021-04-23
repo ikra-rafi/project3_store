@@ -1,0 +1,40 @@
+.card {
+    border-radius: 2px;
+    height: 300px;
+    margin: 1rem;
+    position: relative;
+    width: 325px;
+    box-shadow: 0 3px 3px black, 0 3px 3px black;
+    text-align: left;
+  }
+
+  .product-card {
+    border-radius: 2px;
+    height: 400px;
+    margin: 1rem;
+    position: relative;
+    width: 325px;
+    box-shadow: 0 3px 3px black, 0 3px 3px black;
+    text-align: left;
+  }
+
+  .card > .img-container {
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center; /* vertical */
+    justify-content: center; /* horizontal */
+  }
+
+  .card > .content > ul {
+    list-style-type: none;
+  }
+
+  .inline {
+      display: inline;
+  }
+
+  .quantity {
+    width: 50px;
+  }
