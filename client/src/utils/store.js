@@ -1,120 +1,92 @@
-// import React, {createContext, useReducer, useContext} from 'react';
-
-// const initialState = {john: 5};
-// const store = createContext(initialState);
-// const {Provider} = store;
-// const StateProvider = ( { children})  => {
-//     const [state, dispatch] = useReducer(( state, action) => {
-//         switch(action.type) {
-//             case 'change john':
-// //                const newState = newState + 1;
-//                 return initialState + 7;
-//             default:
-//                 throw new Error();
-//         };
-//     }, initialState)
-//     return < Provider value={{state, dispatch}}>{children}</Provider>;
-// };
-
-// // const useStoreContext = () => {
-// //     return useContext(store);
-// // };
-
-// export {StateProvider, store};
-
-
 import React, { createContext, useReducer, useContext } from "react";
-
-/* const CountContext = createContext();
-const { Provider } = CountContext;
-
-const reducer = (state, action) => {
-  switch (action.type) {
-  case "add":
-    return { count: state.count + 1 };
-  case "subtract":
-    return { count: state.count - 1 };
-  default:
-    throw new Error(`Invalid action type: ${action.type}`);
-  }
-};
-
-const CountProvider = ({  ...props }) => {
-  const [state, dispatch] = useReducer(reducer, { count: 5 });
-
-  return <Provider value={[state, dispatch]} {...props} />;
-};
-
-const useCountContext = () => {
-  return useContext(CountContext);
-};
-
-export { CountProvider, useCountContext }; */
 
 const TodoContext = createContext();
   const { Provider } = TodoContext;
   
   function reducer(state, action) {
     switch (action.type) {
-    case "add":
+    case "cartTotal":
       return (
- //        ...state,
         {
-          count: state.count + 1,
-          name: "john",
-          test: state.test,
-          orderTotal1: state.orderTotal
+          orderTotal: state.orderTotal,
+          salesTax: state.salesTax,
+          salesTaxAmt: state.salesTaxAmt,
+          shipFee: state.shipFee,
+          subTotal: action.subTotal,
+          cartItems: state.cartItems = action.cartItems, 
+          discount: action.discount,
+          discountAmt: state.discountAmt,
+          discountTotal: action.discountTotal,
+          loggedIn: state.loggedIn,
+          email: state.email
         }
-    //    ];
       )
-      case "subtract":
-          console.log(action.orderTotal1);
-          console.log(action);
-          console.log(action.john);
-          return (
-           //    ...state,
-              {
-                  orderTotal1: action.orderTotal1,
-                  count: state.count - 1,
-                  name: action.john,
-                  test: state.test
-              }
-       //    ];
-       )
-       case "cartTotal":
-           return (
-               {
-                   orderTotal1: action.orderTotal1,
-                   count: state.count,
-                   name: action.john,
-                   test: state.test
-               }
-           )
-    //   case "remove":
-    //   return state.filter((_, index) => {
-    //     return index !== action.index;
-    //   });
-    // case "prioritize":
-    //   return state.map((item, index) => {
-    //     if (index === action.index) {
-    //       return Object.assign({}, item, {
-    //         priority: !item.priority
-    //       });
-    //     }
-    //     return item;
-    //   });
+      case "salesTaxAmt":
+        return (
+          {
+            orderTotal: state.orderTotal,
+            salesTax: state.salesTax,
+            salesTaxAmt: action.salesTaxAmt,
+            shipFee: state.shipFee,
+            subTotal: state.subTotal,
+            cartItems: state.cartItems, 
+            discount: state.discount,
+            discountAmt: state.discountAmt,
+            discountTotal: action.discountTotal,
+            loggedIn: state.loggedIn,
+            email: state.email
+          }
+        )      
+      case "orderTotal":
+        return (
+          {
+            orderTotal: action.orderTotal,
+            salesTax: state.salesTax,
+            salesTaxAmt: state.salesTaxAmt,
+            shipFee: state.shipFee,
+            subTotal: state.subTotal,
+            cartItems: state.cartItems, 
+            discount: state.discount,
+            discountAmt: state.discountAmt,
+            discountTotal: state.discountTotal,
+            loggedIn: state.loggedIn,
+            email: state.email
+          }
+        )      
+    case "loggedIn":
+      return (
+        {
+          orderTotal: state.orderTotal,
+          salesTax: state.salesTax,
+          salesTaxAmt: state.salesTaxAmt,
+          shipFee: state.shipFee,
+          subTotal: state.subTotal,
+          cartItems: state.cartItems,
+          discount: state.discount,
+          discountAmt: state.discountAmt,
+          discountTotal: state.discountTotal,
+          loggedIn: action.loggedIn,
+          email: action.email
+        }
+      )
     default:
       return state;
     }
   }
   
-  function TodoProvider({ count=5, ...props }) {
+  function TodoProvider({...props }) {
     const [state, dispatch] = useReducer(reducer, {
-        count: 0,
-        orderTotal1: 0,
-        name: "",
-        priority: false,
-        test: ['a', 'c', 'e'],
+        cartItems: [],
+        orderTotal: 0,
+        shipFee: 8,
+        salesTax: 6,
+        salesTaxAmt: 0,
+        subTotal: 0,
+        discount: false,
+        discountTotal: 0,
+        discountAmt: 10,
+        loggedIn: false,
+        email: ""
       });
   
     return <Provider value={[state, dispatch]} {...props} />;

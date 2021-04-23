@@ -157,7 +157,9 @@ db.Products
   const orderSeed = [
     { orderNum: "AA0013",
       shippingAddress: {
-          name: "Ashley Stith",
+          companyName: "ABC CORP",
+          firstName: "Ashley",
+          lastName: "Stith",
           street: "221 Baker Street",
           city: "London",
           state: "CT",
@@ -167,7 +169,9 @@ db.Products
       phone: "555-222-1111",
       creditCard: {
           billingAddress: {
-              name: "Ashley Stith",
+              companyName: "XYZ Inc.",
+              firstName: "Ashley",
+              lastName: "Stith",
               street: "221 Baker Street",
               city: "London",
               state: "CT",
@@ -195,11 +199,14 @@ db.Products
             quantity: 1,
         }
       ],
+      notes: "Please ring doorbell when delivering",
       orderTotal: 9.99
     },
     { orderNum: "AA0013",
       shippingAddress: {
           name: "John Toth",
+          firstName: "John",
+          lastName: "Toth",
           street: "125 Morning Mist Lane",
           city: "Frederick",
           state: "MD",
@@ -210,6 +217,8 @@ db.Products
       creditCard: {
           billingAddress: {
               name: "John Toth",
+              firstName: "John",
+              lastName: "Toth",
               street: "125 Morning Mist Lane",
               city: "Frederick",
               state: "MD",
@@ -237,6 +246,7 @@ db.Products
             quantity: 1,
         }
       ],
+      notes: "double wrap for shipping",
       orderTotal: 14.97
     },
 ]

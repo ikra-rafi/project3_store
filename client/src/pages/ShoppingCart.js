@@ -1,33 +1,35 @@
 import React , { useEffect, useState} from "react";
-// import Container from "../components/Container";
-import CartOrderContext from "../utils/cartOrderContext.js";
-//import { StateProvider, store } from "../utils/store";
 import { useTodoContext} from "../utils/store";
 import Cart from "../components/Cart";
-//import CreditCard from "../components/CreditCard";
-import CartData from "../components/Test/CartData"
-import {Row, Container} from "../components/Test/Grid";
+import {Container} from "../components/Test/Grid";
 import API from "../utils/API";
 import { Link, useLocation } from "react-router-dom";
 
 function ShoppingCart() {
 
   const [cart, setCart]= useState([]);
-  const [cartTotal, setCartTotal] = useState();
-  //const [trigger, setTrigger] = useState({trigger: 1});
-  const [orderTotal, setOrderTotal] = useState("0");
   const location = useLocation();
   var total = 0;
   const [state, dispatch] = useTodoContext();
 
+  const formatter = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 2,      
+    maximumFractionDigits: 2,
+  });
+
+  console.log(state);
+
+  var applyDiscount;
+ 
   useEffect(() => {
     console.log("cart Effect");
     getCart();
-    console.log("effect" + cartTotal);
-    dispatch({
-      type: "cartTotal",
-      orderTotal1: cartTotal,
-    });
+    if(state.loggedIn) {
+      applyDiscount = true;
+    }
+    else {
+      applyDiscount = false;
+    }
   }, [])
 
   function getCart() {
@@ -35,29 +37,100 @@ function ShoppingCart() {
     .then(res=> {
       console.log(res.data);
       setCart(res.data);
+      var cartProducts = [];
       res.data.forEach(element => {
+        cartProducts.push(element);
         total = total + (element.prodInfo.price * element.prodInfo.quantity);
-        setCartTotal(total);
-        console.log("getcart = " + cartTotal);
+      });
+
+      if(state.loggedIn) {
+        applyDiscount = true;
+        var discAmtCalc = ((parseFloat(total) - (parseFloat(total) * parseFloat(state.discountAmt)/100)))
         dispatch({
           type: "cartTotal",
-          orderTotal1: total,
+          subTotal: formatter.format(total),
+          cartItems: cartProducts,
+          discount: applyDiscount,
+          discountTotal: formatter.format(parseFloat(total) * parseFloat(state.discountAmt)/100)
         });
-      });
+      }
+      else {
+        applyDiscount = false;
+        var discAmtCalc = parseFloat(total) * parseFloat(state.discountAmt)/100;
+        dispatch({
+          type: "cartTotal",
+          subTotal: formatter.format(total),
+          cartItems: cartProducts,
+          discount: applyDiscount,
+          discountTotal: 0
+        });
+      }
+      if(state.loggedIn) {
+        var mydiscount = parseFloat(parseFloat(total) * parseFloat(state.discountAmt)/100);
+        var salesTaxCalc = ((parseFloat(total) - parseFloat(mydiscount)) * (parseFloat(state.salesTax)/100));
+        dispatch({
+          type: "salesTaxAmt",
+          discountTotal: parseFloat(parseFloat(total) * parseFloat(state.discountAmt)/100),
+          salesTaxAmt: formatter.format(salesTaxCalc)
+        })   
+      }
+      else {
+        var salesTaxCalc = (parseFloat(total)) * parseFloat(state.salesTax)/100;
+        console.log("sales tax = " + salesTaxCalc);
+        dispatch({
+          type: "salesTaxAmt",
+          discountTotal: 0,
+          salesTaxAmt: formatter.format(salesTaxCalc)
+        })   
+      }
     })
     .catch(err => console.log(err))
   }
 
   function updateCartTotal() {
+    var cartProducts = [];
     cart.forEach(element => {
       total = total + (element.prodInfo.price * element.prodInfo.quantity);
-      setCartTotal(total);
-      console.log(cartTotal);
+      cartProducts = [...cart];
+    })
+    if(state.loggedIn) {
+      applyDiscount = true;
+      var discAmtCalc = (parseFloat(total) - (parseFloat(total) * parseFloat(state.discountAmt/100)))
+        dispatch({
+          type: "cartTotal",
+          subTotal: formatter.format(total),
+          cartItems: cartProducts,
+          discount: applyDiscount,
+          discountTotal: formatter.format(parseFloat(discAmtCalc) * parseFloat(state.discountAmt)/100)
+        });
+      }
+    else {
+      applyDiscount = false;
       dispatch({
         type: "cartTotal",
-        orderTotal1: total,
+        subTotal: formatter.format(total),
+         cartItems: cartProducts,
+         discount: applyDiscount,
+         discountTotal: 0
       });
-    });
+    }
+    if(state.loggedIn) {
+      var mydiscount = parseFloat(parseFloat(total) * parseFloat(state.discountAmt)/100);
+      var salesTaxCalc = ((parseFloat(total) - parseFloat(mydiscount)) * (parseFloat(state.salesTax)/100));
+      dispatch({
+        type: "salesTaxAmt",
+        discountTotal: parseFloat(parseFloat(total) * parseFloat(state.discountAmt)/100),
+        salesTaxAmt: formatter.format(salesTaxCalc)
+      })   
+    }
+    else {
+      var salesTaxCalc = (parseFloat(total)) * parseFloat(state.salesTax)/100;
+      dispatch({
+        type: "salesTaxAmt",
+        discountTotal: 0,
+        salesTaxAmt: formatter.format(salesTaxCalc)
+      })   
+    }
   }
 
   function quantityUpdate(newQuantity, index) {
@@ -65,15 +138,10 @@ function ShoppingCart() {
     newArray[index].prodInfo.quantity = newQuantity;
     setCart(newArray);
     updateCartTotal();
-    // dispatch({
-    //   type: "cartTotal",
-    //   orderTotal1: cartTotal,
-    // });
   }
 
   function handleDecBtnClick(e) {
     var index;
-    // loop over saved books to find the object ID that matches the save button
     for (var i=0; i<cart.length; i++) {
       if ( cart[i]._id === e.target.id ) {
         index = i;
@@ -84,22 +152,17 @@ function ShoppingCart() {
     if(newQuantity <= 0) {
       newQuantity = 0;
     }
+
     quantityUpdate(newQuantity, index);
-  //  const newArray = [...cart];
-  //  newArray[index].prodInfo.quantity = newQuantity;
-  //  setCart(newArray);
-  //  updateCartTotal();
-// console.log("carttotal = " + cartTotal);
-//   dispatch({
-//     type: "cartTotal",
-//     orderTotal1: cartTotal,
-//     john: "hello"
-//   });
+
+    API.updateCart(cart[index]._id, cart[index])
+    .then(res=> {
+      console.log(res.data);
+    })
   }
 
   function handleIncBtnClick(e) {
-    var index;
-    // loop over saved books to find the object ID that matches the save button
+    var index; 
     for (var i=0; i<cart.length; i++) {
       if ( cart[i]._id === e.target.id ) {
         index = i;
@@ -107,31 +170,31 @@ function ShoppingCart() {
       }
     }
     var newQuantity = cart[index].prodInfo.quantity + 1;
-
     quantityUpdate(newQuantity, index);
-  //  const newArray = [...cart];
-  //  newArray[index].prodInfo.quantity = newQuantity;
-  //  setCart(newArray);
-  //  updateCartTotal();
+
+    API.updateCart(cart[index]._id, cart[index])
+    .then(res=> {
+      console.log(res.data);
+    })
+  }
+
+  function handleRemoveClick (e) {
+
+    API.deleteCart(e.target.id)
+      .then(res => {
+        console.log(res.data);
+        getCart();
+      })
+      .catch(err => console.log(err));
   }
 
   return (
-    <CartOrderContext.Provider value={{ cart, cartTotal}}>
     <div>
       <Container fluid>
         <Container>
         <Cart />
           <div className="container-fluid containerColor marginBottomCont">
             <h1 className="text-center">Shopping Cart</h1>
-            <button className="btn btn-success mt-5 mb-5" onClick={() => dispatch({ type: "add" })}>
-        Add
-      </button>
-      <button className="btn btn-danger mt-5" onClick={() => dispatch({ type: "subtract" })}>
-        Subtract
-      </button>
-      <button className="btn btn-danger mt-5" onClick={() => dispatch({ type: "cartTotal", orderTotal1: cartTotal })}>
-        Cart Total      </button>
-      <div>{state.count}</div>            
             {cart.length ? (
               <div>
                   <table className="table table-curved table-responsive">
@@ -141,34 +204,72 @@ function ShoppingCart() {
                         <th className="alignCenter">Package Size</th>
                         <th className="alignCenter">Quantity</th>
                         <th className="alignCenter">Price</th>
-                        <th className="alignCenter">SubTotal</th>
+                        <th className="alignCenter">Item Total</th>
                       </tr>
                     </thead>
                     <tbody >
                       {cart.map(result => (
                         <tr key={result._id}>
-                          <td className="align-middle text-center"><p>{result.name}</p></td>
+                          <td>
+                            <div className="row" style={{display: 'inline-block'}}>
+                              <button id={result._id} className="fa fa-trash-o"onClick={handleRemoveClick}></button>
+                              {result.name}
+                              </div></td>
                           <td className="align-middle text-center"><p>{result.prodInfo.size}</p></td>
                           <td className="align-middle text-center">
                             <div className="row" style={{display: 'inline-block'}}>
-                              <button onClick={handleDecBtnClick}><i id={result._id} className="fa fa-minus"></i></button>
+                              <button onClick={handleDecBtnClick} id={result._id} className="fa fa-minus"></button>
                               {result.prodInfo.quantity}
-                              <button id={result._id} onClick={handleIncBtnClick}><i id={result._id} className="fa fa-plus buttons"></i></button>
+                              <button id={result._id} className="fa fa-plus buttons" onClick={handleIncBtnClick}></button>
                             </div>
                           </td>
                           <td className="align-middle text-center"><p>{result.prodInfo.price}</p></td>
-                          <td className="align-middle text-center"><p>${result.prodInfo.price * result.prodInfo.quantity}</p></td>
+                          <td className="align-middle text-center"><p>${formatter.format(result.prodInfo.price * result.prodInfo.quantity)}</p></td>
                         </tr>
                       ))}
                       <tr>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>Total</td>
-                        <td>${cartTotal}</td>
+                        <td>SubTotal:</td>
+                        <td>${formatter.format(state.subTotal)}</td>
+                      </tr>
+                      {state.discount ? (
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>Discount ({state.discountAmt}%)</td>
+                          <td>${formatter.format(state.discountAmt/100 * state.subTotal)}</td>
+                        </tr>                        
+                      ) : (
+                        <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>No discount applied</td>
+                        <td></td>
+                      </tr>
+                      )}
+                     <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Sales Tax ({state.salesTax}%)</td>
+                        <td>${state.salesTaxAmt}</td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Shipping Fee (Flat Rate):</td>
+                        <td>${state.shipFee}</td>
                       </tr>
                     </tbody>
                   </table>
+                  <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/checkout" >
+                    Checkout
+                  </Link>
                 </div>
               ) : (
                 <div className="row text-center h-100">
@@ -178,13 +279,9 @@ function ShoppingCart() {
                 </div>
               )}
           </div>
-          <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/checkout" >
-              Checkout
-          </Link>
         </Container>
       </Container>
     </div>
-   </CartOrderContext.Provider>
   );
 }
 

@@ -12,13 +12,9 @@ import ShoppingCart from "./pages/ShoppingCart";
 import Footer from "./components/Footer";
 import AllProducts from "./pages/AllProducts";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import TempProducts from "./pages/test/TempProducts";
-import TempOrders from "./pages/test/TempOrders";
-import TempCart from "./pages/test/TempCart";
-import TempRecipes from "./pages/test/TempRecipes";
-import TempLogin from "./pages/test/TempLogin";
-import TempComment from "./pages/test/TempComments";
 import Checkout from "./pages/Checkout";
+import john from "./pages/login-form";
+import johnSignup from "./pages/sign-up";
 
 function App() {
   return (
@@ -36,6 +32,8 @@ function App() {
             <Route path="/cart" component={ShoppingCart} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/products" component={AllProducts} />
+            <Route path="/john" component={john} />
+            <Route path="/johnSignup" component={johnSignup} />
           </Switch>
           < Footer />
 
