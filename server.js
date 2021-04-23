@@ -18,8 +18,9 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  app.use(express.static("client/public"));
+
 }
+app.use(express.static("client/public"));
 //        store: new MongoStore({mongooseConnection: dbConnection}),
 app.use(session ({
         secret: 'fraggle rock',
