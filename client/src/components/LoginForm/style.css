@@ -7,9 +7,14 @@ body {
   }
   
   form {
+<<<<<<< HEAD
     max-width: 300px;
     margin: 10%;
 
+=======
+    max-width: 500px;
+    margin: 0 auto;
+>>>>>>> parent of f1062d7... Updates to Products pages
   }
   
   h1 {
@@ -19,6 +24,7 @@ body {
     padding-bottom: 10px;
     /* border-bottom: 1px solid rgb(79, 98, 148); */
   }
+<<<<<<< HEAD
   a {
     color:black;
      /* font-weight: 100;  */
@@ -32,6 +38,8 @@ body {
     color:black
 
   }
+=======
+>>>>>>> parent of f1062d7... Updates to Products pages
   
   .form {
     background: #0e101c;
@@ -96,9 +104,14 @@ body {
 /* 
     background: #bf1650;
 <<<<<<< HEAD
+<<<<<<< HEAD
   } */
 
 
+=======
+  }
+  
+>>>>>>> parent of f1062d7... Updates to Products pages
 =======
   }
   

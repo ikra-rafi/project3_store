@@ -30,11 +30,13 @@ function App() {
             <Route path="/account" component={Account} />
             <Route path="/cart" component={ShoppingCart} />
             <Route path="/checkout" component={Checkout} />
-<<<<<<< HEAD
+
             <Route path="/products" component={AllProducts} />
             {/* <Route path="/john" component={john} />
             <Route path="/johnSignup" component={johnSignup} /> */}
 
+=======
+>>>>>>> parent of f1062d7... Updates to Products pages
 =======
 >>>>>>> parent of f1062d7... Updates to Products pages
           </Switch>

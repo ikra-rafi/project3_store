@@ -8,7 +8,10 @@ export default {
   },
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of f1062d7... Updates to Products pages
   // Deletes the book with the given id
 >>>>>>> parent of f1062d7... Updates to Products pages
   deleteProduct: function(id) {
@@ -29,9 +32,13 @@ export default {
     return axios.get("/api/comments");
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   // Saves the comments to database
 
+=======
+  
+>>>>>>> parent of f1062d7... Updates to Products pages
 =======
   
 >>>>>>> parent of f1062d7... Updates to Products pages
@@ -47,9 +54,13 @@ export default {
     return axios.post("/api/orders", orderInfo);
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   // Updates an order
 
+=======
+  
+>>>>>>> parent of f1062d7... Updates to Products pages
 =======
   
 >>>>>>> parent of f1062d7... Updates to Products pages
