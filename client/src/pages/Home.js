@@ -88,6 +88,7 @@ function filterResults(products) {
     </ProductContext.Provider>
 
   );
+
 }
 
 export default Home;

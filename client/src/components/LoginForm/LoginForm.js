@@ -1,11 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+// import ForgotPasswordForm from "../ForgotPasswordForm";
 
 import "./style.css";
 
 
 function LoginForm() {
-  const {
+   const {
     register,
     handleSubmit,
     formState: { errors }
@@ -21,11 +22,12 @@ function LoginForm() {
   };
 
   return (
-    <form onClick={handleSubmit(onSubmit)} >
+    <form onSubmit={handleSubmit(onSubmit)} >
+      <h1>Log In</h1>
       <label htmlFor="email">Email</label>
       <input
         defaultValue={intialValues.email}
-        placeholder="name@gmail.com"
+        placeholder="Email"
         type="email"
         {...register("email")}
       />
@@ -33,7 +35,7 @@ function LoginForm() {
       <label htmlFor="password">Password</label>
       <input
         defaultValue={intialValues.password}
-        placeholder="password"
+        placeholder="Password"
         {...register("password", {
           validate: (value) => value.length > 6
         })}
@@ -42,11 +44,15 @@ function LoginForm() {
 
 
       <input type="submit" />
+      <br></br>
+      <a href="">FORGOT YOUR PASSWORD?</a>
+
+      
+  
     </form>
 
   );
 }
-
 // const rootElement = document.getElementById("root");
 // ReactDOM.render(<LoginForm/>, rootElement);
 
