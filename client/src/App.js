@@ -12,8 +12,6 @@ import ShoppingCart from "./pages/ShoppingCart";
 import Footer from "./components/Footer";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Checkout from "./pages/Checkout";
-import john from "./pages/login-form";
-import johnSignup from "./pages/sign-up";
 
 function App() {
   return (
@@ -31,11 +29,14 @@ function App() {
             <Route path="/cart" component={ShoppingCart} />
             <Route path="/checkout" component={Checkout} />
 <<<<<<< HEAD
+<<<<<<< HEAD
             <Route path="/products" component={AllProducts} />
             <Route path="/john" component={john} />
             <Route path="/johnSignup" component={johnSignup} />
 =======
 >>>>>>> parent of f1062d7... Updates to Products pages
+=======
+>>>>>>> parent of bab370a... Merge pull request #38 from ikra-rafi/authentication
           </Switch>
           < Footer />
 

@@ -1,39 +1,15 @@
 const router = require("express").Router();
-const passport = require("../../passport");
-console.log("in loginrouter");
+const loginController = require("../../controllers/loginController");
 
 // Matches with "/api/login"
+router.route("/")
+  .get(loginController.findAll)
+  .post(loginController.create);
 
-  router.post(
-    '/',
-    function (req, res, next) {
-        console.log('routes/user.js, login, req.body: ');
-        console.log(req.user)
-        console.log(req.data)
-        console.log(req.body)
-        console.log(req.params)
-        next()
-    },
-    passport.authenticate('local'),
-    (req, res) => {
-        console.log('logged in', req.user);
-        var userInfo = {
-            email: req.user.email
-        };
-        res.send(userInfo);
-    }
-)
-
-  router.get('/', (req, res, next) => {
-    console.log(req.user);
-   console.log('======user!!======');
-    if(req.user) {
-      res.json({ user: req.user});
-    }
-    else {
-      res.json({user: null});
-    }
-  }
-)
+// Matches with "/api/login/:id"
+router
+  .route("/:id")
+  .delete(loginController.remove)
+  .put(loginController.update);
 
 module.exports = router;

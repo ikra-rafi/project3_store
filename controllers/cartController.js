@@ -17,8 +17,8 @@ module.exports = {
   },
   update: function(req, res) {
     db.ShoppingCart
-      .findOneAndUpdate({ _id: req.params.id }, req.body, {new: true})
-      .then(dbModel => {res.json(dbModel); console.log(dbModel)})
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {

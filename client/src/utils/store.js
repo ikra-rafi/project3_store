@@ -6,69 +6,18 @@ const TodoContext = createContext();
   function reducer(state, action) {
     switch (action.type) {
     case "cartTotal":
-      return (
-        {
-          orderTotal: state.orderTotal,
-          salesTax: state.salesTax,
-          salesTaxAmt: state.salesTaxAmt,
-          shipFee: state.shipFee,
-          subTotal: action.subTotal,
-          cartItems: state.cartItems = action.cartItems, 
-          discount: action.discount,
-          discountAmt: state.discountAmt,
-          discountTotal: action.discountTotal,
-          loggedIn: state.loggedIn,
-          email: state.email
-        }
-      )
-      case "salesTaxAmt":
-        return (
-          {
-            orderTotal: state.orderTotal,
-            salesTax: state.salesTax,
-            salesTaxAmt: action.salesTaxAmt,
-            shipFee: state.shipFee,
-            subTotal: state.subTotal,
-            cartItems: state.cartItems, 
-            discount: state.discount,
-            discountAmt: state.discountAmt,
-            discountTotal: action.discountTotal,
-            loggedIn: state.loggedIn,
-            email: state.email
-          }
-        )      
-      case "orderTotal":
-        return (
-          {
-            orderTotal: action.orderTotal,
-            salesTax: state.salesTax,
-            salesTaxAmt: state.salesTaxAmt,
-            shipFee: state.shipFee,
-            subTotal: state.subTotal,
-            cartItems: state.cartItems, 
-            discount: state.discount,
-            discountAmt: state.discountAmt,
-            discountTotal: state.discountTotal,
-            loggedIn: state.loggedIn,
-            email: state.email
-          }
-        )      
-    case "loggedIn":
-      return (
-        {
-          orderTotal: state.orderTotal,
-          salesTax: state.salesTax,
-          salesTaxAmt: state.salesTaxAmt,
-          shipFee: state.shipFee,
-          subTotal: state.subTotal,
-          cartItems: state.cartItems,
-          discount: state.discount,
-          discountAmt: state.discountAmt,
-          discountTotal: state.discountTotal,
-          loggedIn: action.loggedIn,
-          email: action.email
-        }
-      )
+           return (
+               {
+                   orderTotal: action.orderTotal,
+                   salesTax: state.salesTax,
+                   salesTaxAmt: action.salesTaxAmt,
+                   shipFee: state.shipFee,
+                   subTotal: action.subTotal,
+                   cartItems: state.cartItems= action.cartItems,
+                   discount: action.discount,
+                   discountAmt: action.discountAmt
+               }
+           )
     default:
       return state;
     }
@@ -83,10 +32,7 @@ const TodoContext = createContext();
         salesTaxAmt: 0,
         subTotal: 0,
         discount: false,
-        discountTotal: 0,
-        discountAmt: 10,
-        loggedIn: false,
-        email: ""
+        discountAmt: 10
       });
   
     return <Provider value={[state, dispatch]} {...props} />;
