@@ -13,6 +13,8 @@ const loginSchema = new Schema([
   securityAnswer: {type: String},
   admin: { type: Boolean},
   discount: { type: Number },
+  firstName: { type: String},
+  lastName: { type: String},
   commentIDs: [{
       type: Schema.Types.ObjectId,
       ref: "Comments"

@@ -94,7 +94,7 @@ export default {
 
   // Saves login to database
   saveLogin: function(storeLogin) {
-    console.log(storeLogin)
+    console.log("saveLogin = " + storeLogin.securityQuestion)
     return axios.post("/api/signup", storeLogin);
   },
 
