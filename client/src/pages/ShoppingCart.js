@@ -1,5 +1,4 @@
 import React , { useEffect, useState} from "react";
-// import CartOrderContext from "../utils/cartOrderContext.js";
 import { useTodoContext} from "../utils/store";
 import Cart from "../components/Cart";
 import {Container} from "../components/Test/Grid";
@@ -17,17 +16,20 @@ function ShoppingCart() {
     minimumFractionDigits: 2,      
     maximumFractionDigits: 2,
   });
+
+  console.log(state);
+
+  var applyDiscount;
  
   useEffect(() => {
     console.log("cart Effect");
     getCart();
-    dispatch({
-      type: "cartTotal",
-      subTotal: formatter.format(total),
-      salesTaxAmt: formatter.format(total * (state.salesTax/100)),
-      orderTotal: formatter.format(state.subTotal * (state.salesTax/100) + state.shipFee + total),
-      cartItems: cart
-    });
+    if(state.loggedIn) {
+      applyDiscount = true;
+    }
+    else {
+      applyDiscount = false;
+    }
   }, [])
 
   function getCart() {
@@ -40,29 +42,95 @@ function ShoppingCart() {
         cartProducts.push(element);
         total = total + (element.prodInfo.price * element.prodInfo.quantity);
       });
-      dispatch({
-        type: "cartTotal",
-        subTotal: formatter.format(total),
-        salesTaxAmt: formatter.format(total * (state.salesTax/100)),
-        orderTotal: formatter.format(state.subTotal * (state.salesTax/100) + state.shipFee + total),
-        cartItems: cartProducts
-      });
+
+      if(state.loggedIn) {
+        applyDiscount = true;
+        var discAmtCalc = ((parseFloat(total) - (parseFloat(total) * parseFloat(state.discountAmt)/100)))
+        dispatch({
+          type: "cartTotal",
+          subTotal: formatter.format(total),
+          cartItems: cartProducts,
+          discount: applyDiscount,
+          discountTotal: formatter.format(parseFloat(total) * parseFloat(state.discountAmt)/100)
+        });
+      }
+      else {
+        applyDiscount = false;
+        var discAmtCalc = parseFloat(total) * parseFloat(state.discountAmt)/100;
+        dispatch({
+          type: "cartTotal",
+          subTotal: formatter.format(total),
+          cartItems: cartProducts,
+          discount: applyDiscount,
+          discountTotal: 0
+        });
+      }
+      if(state.loggedIn) {
+        var mydiscount = parseFloat(parseFloat(total) * parseFloat(state.discountAmt)/100);
+        var salesTaxCalc = ((parseFloat(total) - parseFloat(mydiscount)) * (parseFloat(state.salesTax)/100));
+        dispatch({
+          type: "salesTaxAmt",
+          discountTotal: parseFloat(parseFloat(total) * parseFloat(state.discountAmt)/100),
+          salesTaxAmt: formatter.format(salesTaxCalc)
+        })   
+      }
+      else {
+        var salesTaxCalc = (parseFloat(total)) * parseFloat(state.salesTax)/100;
+        console.log("sales tax = " + salesTaxCalc);
+        dispatch({
+          type: "salesTaxAmt",
+          discountTotal: 0,
+          salesTaxAmt: formatter.format(salesTaxCalc)
+        })   
+      }
     })
     .catch(err => console.log(err))
   }
 
   function updateCartTotal() {
-
+    var cartProducts = [];
     cart.forEach(element => {
       total = total + (element.prodInfo.price * element.prodInfo.quantity);
+      cartProducts = [...cart];
+    })
+    if(state.loggedIn) {
+      applyDiscount = true;
+      var discAmtCalc = (parseFloat(total) - (parseFloat(total) * parseFloat(state.discountAmt/100)))
+        dispatch({
+          type: "cartTotal",
+          subTotal: formatter.format(total),
+          cartItems: cartProducts,
+          discount: applyDiscount,
+          discountTotal: formatter.format(parseFloat(discAmtCalc) * parseFloat(state.discountAmt)/100)
+        });
+      }
+    else {
+      applyDiscount = false;
       dispatch({
         type: "cartTotal",
         subTotal: formatter.format(total),
-        salesTaxAmt: formatter.format(total * (state.salesTax/100)),
-        orderTotal: formatter.format(state.subTotal * (state.salesTax/100) + state.shipFee + total),
-        cartItems: cart
+         cartItems: cartProducts,
+         discount: applyDiscount,
+         discountTotal: 0
       });
-    });
+    }
+    if(state.loggedIn) {
+      var mydiscount = parseFloat(parseFloat(total) * parseFloat(state.discountAmt)/100);
+      var salesTaxCalc = ((parseFloat(total) - parseFloat(mydiscount)) * (parseFloat(state.salesTax)/100));
+      dispatch({
+        type: "salesTaxAmt",
+        discountTotal: parseFloat(parseFloat(total) * parseFloat(state.discountAmt)/100),
+        salesTaxAmt: formatter.format(salesTaxCalc)
+      })   
+    }
+    else {
+      var salesTaxCalc = (parseFloat(total)) * parseFloat(state.salesTax)/100;
+      dispatch({
+        type: "salesTaxAmt",
+        discountTotal: 0,
+        salesTaxAmt: formatter.format(salesTaxCalc)
+      })   
+    }
   }
 
   function quantityUpdate(newQuantity, index) {
@@ -74,7 +142,6 @@ function ShoppingCart() {
 
   function handleDecBtnClick(e) {
     var index;
-    // 
     for (var i=0; i<cart.length; i++) {
       if ( cart[i]._id === e.target.id ) {
         index = i;
@@ -85,12 +152,17 @@ function ShoppingCart() {
     if(newQuantity <= 0) {
       newQuantity = 0;
     }
+
     quantityUpdate(newQuantity, index);
+
+    API.updateCart(cart[index]._id, cart[index])
+    .then(res=> {
+      console.log(res.data);
+    })
   }
 
   function handleIncBtnClick(e) {
-    var index;
-    // 
+    var index; 
     for (var i=0; i<cart.length; i++) {
       if ( cart[i]._id === e.target.id ) {
         index = i;
@@ -98,8 +170,22 @@ function ShoppingCart() {
       }
     }
     var newQuantity = cart[index].prodInfo.quantity + 1;
-
     quantityUpdate(newQuantity, index);
+
+    API.updateCart(cart[index]._id, cart[index])
+    .then(res=> {
+      console.log(res.data);
+    })
+  }
+
+  function handleRemoveClick (e) {
+
+    API.deleteCart(e.target.id)
+      .then(res => {
+        console.log(res.data);
+        getCart();
+      })
+      .catch(err => console.log(err));
   }
 
   return (
@@ -124,13 +210,17 @@ function ShoppingCart() {
                     <tbody >
                       {cart.map(result => (
                         <tr key={result._id}>
-                          <td className="align-middle text-center"><p>{result.name}</p></td>
+                          <td>
+                            <div className="row" style={{display: 'inline-block'}}>
+                              <button id={result._id} className="fa fa-trash-o"onClick={handleRemoveClick}></button>
+                              {result.name}
+                              </div></td>
                           <td className="align-middle text-center"><p>{result.prodInfo.size}</p></td>
                           <td className="align-middle text-center">
                             <div className="row" style={{display: 'inline-block'}}>
-                              <button onClick={handleDecBtnClick}><i id={result._id} className="fa fa-minus"></i></button>
+                              <button onClick={handleDecBtnClick} id={result._id} className="fa fa-minus"></button>
                               {result.prodInfo.quantity}
-                              <button id={result._id} onClick={handleIncBtnClick}><i id={result._id} className="fa fa-plus buttons"></i></button>
+                              <button id={result._id} className="fa fa-plus buttons" onClick={handleIncBtnClick}></button>
                             </div>
                           </td>
                           <td className="align-middle text-center"><p>{result.prodInfo.price}</p></td>
@@ -144,13 +234,23 @@ function ShoppingCart() {
                         <td>SubTotal:</td>
                         <td>${formatter.format(state.subTotal)}</td>
                       </tr>
-                      <tr>
+                      {state.discount ? (
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>Discount ({state.discountAmt}%)</td>
+                          <td>${formatter.format(state.discountAmt/100 * state.subTotal)}</td>
+                        </tr>                        
+                      ) : (
+                        <tr>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>Discount ({state.discountAmt}%)</td>
-                        <td>${state.discountAmt/100 * state.subTotal}</td>
+                        <td>No discount applied</td>
+                        <td></td>
                       </tr>
+                      )}
                      <tr>
                         <td></td>
                         <td></td>
@@ -165,15 +265,11 @@ function ShoppingCart() {
                         <td>Shipping Fee (Flat Rate):</td>
                         <td>${state.shipFee}</td>
                       </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Order Total:</td>
-                        <td>${state.orderTotal}</td>
-                      </tr>
                     </tbody>
                   </table>
+                  <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/checkout" >
+                    Checkout
+                  </Link>
                 </div>
               ) : (
                 <div className="row text-center h-100">
@@ -183,9 +279,6 @@ function ShoppingCart() {
                 </div>
               )}
           </div>
-          <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/checkout" >
-              Checkout
-          </Link>
         </Container>
       </Container>
     </div>
