@@ -9,6 +9,7 @@ body {
   form {
     max-width: 300px;
     margin: 10%;
+    margin-bottom:0%;
 
   }
 
@@ -64,6 +65,29 @@ body {
     display: inline;
     content: "⚠ ";
   } */
+<<<<<<< HEAD
+  
+  #reset{
+    color:black;
+    margin-left:%;
+    /* margin:55px; */
+  } 
+ /* .wrapper{
+  margin:55px;
+  margin-top:1%;
+ } */
+
+  #forget{
+    color:black;
+    margin:55px;
+  }
+
+  #forget:hover{
+    color:black;
+    text-decoration: underline;
+  }
+ 
+
 
   input {
     display: block;

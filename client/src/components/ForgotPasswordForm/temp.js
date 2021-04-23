@@ -71,12 +71,6 @@ function ForgotPasswordForm() {
 
 
   };
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
 
   return (
     <form  onSubmit={handleSubmit(onSubmit)} >
@@ -119,10 +113,10 @@ function ForgotPasswordForm() {
           })}
         />
         {errors. password&& <p>Your Password is less than 6 characters</p>}
-
+        
          <input type="submit" />
          <br></br>
-         <label  id="luna"  onClick={scrollToTop}>LOGIN</label>
+         <Link href="Login">Login</Link>
     </form>
   );
 }
