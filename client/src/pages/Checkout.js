@@ -34,18 +34,38 @@ function Checkout() {
 
   const [state, dispatch] = useTodoContext();
   const [cart, setCart] = useState();
-  
+  const [loginInfo, setLoginInfo] = useState({_id: null, email: ""}); 
+
   const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,      
     maximumFractionDigits: 2,
   });
 
   useEffect(() => {
+    if(state.loggedIn) {
+//      setLoginInfo({...logInfo, email: state.email});
+//      var email = state.email;
+      getLogin();
+    }
     console.log("cart Effect");
     getCart();
     console.log("checkout");
 
   }, [])
+
+  function getLogin(){
+    var loginObj = {
+      password: "",
+      email: state.email
+    }
+    API.getOrdersAcct(loginObj)
+      .then(res => {
+
+         setLoginInfo({...loginInfo, email: state.email, _id: res.data._id })
+        console.log(res.data)
+      })
+      .catch(err => console.log(err));
+  }
 
   function handleSubmitBtnClick(e) {
     e.preventDefault();
@@ -85,7 +105,7 @@ function Checkout() {
       },
       spices: [],
       notes: notes.current.value,
-      orderTotal: 0
+      orderTotal: state.orderTotal
     }
 
     for(let i=0; i<state.cartItems.length; i++) {
@@ -104,12 +124,16 @@ function Checkout() {
       orderInfo.spices[i] = tempspices;
     }
 
-    API.saveOrders(orderInfo)
+    API.saveOrders(loginInfo._id, orderInfo)
       .then(res => {
+        if(res.status === 200) {
+          console.log("success on order save");
+        }
         console.log("in save orders");
         console.log(res.data);
         console.log(res.data._id);
       }) 
+      .catch(err => console.log(err));
   }
 
   function getCart() {
