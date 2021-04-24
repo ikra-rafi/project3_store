@@ -46,9 +46,16 @@ export default {
     return axios.get("/api/comments");
   },
 
+   getCommentAcct: function(loginData) {
+     console.log("in login acct");
+     return axios.post("/api/comments/acct", loginData);
+   },
+
   // Saves the comments to database
-  saveComments: function(storeComments) {
-    return axios.post("/api/comments", storeComments);
+  saveComments: function(id, storeComments) {
+    console.log("api id = " + id);
+    console.log("storeComments = " + storeComments)
+    return axios.post("/api/comments/" + id, storeComments);
   },
 
   // ==============ORDER ROUTES=====================
@@ -95,9 +102,9 @@ export default {
   },
 
   // Saves recipes to database
-  saveRecipes: function(storeRecipes) {
-    return axios.post("/api/recipes", storeRecipes);
-  },
+  // saveRecipes: function(storeRecipes) {
+  //   return axios.post("/api/recipes", storeRecipes);
+  // },
 
   //==============LOGIN ROUTES===================
 
@@ -108,9 +115,14 @@ export default {
     return axios.post("/api/login", loginData);
   },
 
+  // getLoginAcct: function(loginData) {
+  //   console.log("in login acct");
+  //   return axios.post("/api/login/acct", loginData);
+  // },
+
   // Saves login to database
   saveLogin: function(storeLogin) {
-    console.log(storeLogin)
+    console.log("saveLogin = " + storeLogin.securityQuestion)
     return axios.post("/api/signup", storeLogin);
   },
 
@@ -122,8 +134,24 @@ export default {
   Logout: function() {
     console.log("inapi logout route");
     return axios.post("/api/logout");
+  },
+
+  //=================RESET PASSWORD ROUTES=================
+  getAcctQuestionAnswer: function(loginData) {
+    console.log("in reset pwd");
+    console.log("/api/resetpwd/" + loginData.email);
+    return axios.post("/api/resetpwd/" + loginData.email);
+  },
+
+  resetPassword: function(email, password) {
+    console.log("in reset pwd");
+    console.log("email = " + email + "  password = " + password);
+    return axios.put("/api/resetpwd/" + email, password);
+  },
+
+  saveUpdate: function(storeLogin) {
+    console.log("save reset password");
+    return axios.post("/api/recipes", storeLogin);
   }
 
 };
-
-
