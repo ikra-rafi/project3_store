@@ -13,10 +13,15 @@ module.exports = {
   create: function(req, res) {
     var id = req.params.id;
     console.log("id=" + id);
+    console.log(req.params);
+    console.log(req.body);
+    console.log(req.body.comment);
+    console.log(req.body.productID);
     db.Comments
       .create(req.body)
       .then(dbModel => {
-        db.Login.findOneAndUpdate({ _id: req.params.id}, {$push: { comments: dbModel._id}}, {new: true})
+        console.log("dbModel = " + dbModel);
+        db.Login.findOneAndUpdate({ _id: id}, {$push: { commentIDs: dbModel._id}}, {new: true})
           .then(results => {console.log(results); res.json(results)})
           .catch(err => res.status(422).json(err));
       })
@@ -45,9 +50,9 @@ module.exports = {
 
   findOne: function(req, res) {
     console.log("in acct");
-    console.log(req.query.email);
+    console.log(req.body.email);
     db.Login
-      .findOne({email: req.query.email})
+      .findOne({email: req.body.email})
       .then(dbModel => {console.log(dbModel); res.json(dbModel)})
       .catch(err => console.log(err));
   }

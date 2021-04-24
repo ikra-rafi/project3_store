@@ -48,6 +48,7 @@ export default {
 
    getCommentAcct: function(loginData) {
      console.log("in login acct");
+     console.log("loginData = " + loginData.email, loginData._id)
      return axios.post("/api/comments/acct", loginData);
    },
 
