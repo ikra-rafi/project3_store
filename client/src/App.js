@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
 import React from "react";
-import Nav from "./components/Nav";
+import NavMenu from "./components/NavMenu";
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
@@ -21,7 +21,7 @@ function App() {
   return (
     <Router basename={`${process.env.PUBLIC_URL}/`}>
       <div id="app-content">
-          <Nav />
+          <NavMenu />
           <Jumbotron />
           <Switch>
             <Route exact path="/" component={Home}/>
