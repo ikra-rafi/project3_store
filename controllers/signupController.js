@@ -7,6 +7,12 @@ module.exports = {
   create: function(req, res) {
     var email = req.body[0].email;
     var password = req.body[0].password;
+    var securityQuestion = req.body[0].securityQuestion;
+    console.log(req.body[0]);
+    console.log(req.body[0].securityQuestion);
+    var securityAnswer = req.body[0].securityAnswer;
+    var firstName = req.body[0].firstName;
+    var lastName = req.body[0].lastName;
     Login.findOne({ email: req.body[0].email}, (err, user) => {
       if(err) {
         console.log("signup.js post error: ", err)
@@ -18,7 +24,11 @@ module.exports = {
       } else {
         const newUser = new Login({
           email: email,
-          password: password
+          password: password,
+          securityQuestion: securityQuestion,
+          securityAnswer: securityAnswer,
+          firstName: firstName,
+          lastName: lastName
         })
         newUser.save((err, savedUser) => {
           if(err) return res.json(err)
