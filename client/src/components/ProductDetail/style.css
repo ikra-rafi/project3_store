@@ -1,0 +1,40 @@
+#h1{
+    font-family: 'New Tegomin', serif;
+   
+} 
+p{
+    color:blue;
+} 
+
+.product-image{
+
+ width:550px;
+
+}
+
+
+#addCart{
+    margin-top:1%;
+    width: 150px;
+    height: 40px;
+    font-family: 'New Tegomin', serif;
+    background: #c44308;
+    color: white;
+    
+}
+#addCart:hover {
+    background: white;
+    color:#a73500;
+    border: 1px solid  #c44308;
+  }
+
+
+
+#des{
+    color:black;
+    font-family: "Cantarell", serif; 
+    font-size:20px;
+}
+
+
+
