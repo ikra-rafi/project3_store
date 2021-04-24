@@ -107,7 +107,7 @@ function loadProducts() {
           </div>
           <div className="col-4 col-mr-auto">
           <div id="top-filler"></div>
-              <img alt="logo" />
+              {/* <img alt="logo" /> */}
               <h1>MERN Passport</h1>
           </div>
       </header>
