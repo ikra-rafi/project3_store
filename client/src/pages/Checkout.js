@@ -385,7 +385,7 @@ function Checkout() {
                )}
              </div>
 
-             <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/checkout" >
+             <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" >
              <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
          </Link>
         </Container>

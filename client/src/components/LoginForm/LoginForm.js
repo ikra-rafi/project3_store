@@ -74,11 +74,11 @@ function LoginForm() {
       <h1>Log In</h1>
       <label htmlFor="email">Email</label>
       <input
-//        defaultValue={initialValues.email}
+        defaultValue={initialValues.email}
 //        value={loginData.email}
         placeholder="Email"
         type="email"
-        value={loginData.email}
+//        value={loginData.email}
         onChange={handleChange}
         {...register("email")}
       />

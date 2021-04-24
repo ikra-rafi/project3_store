@@ -1,76 +1,81 @@
-import React, {useEffect, useState} from "react";
-import { useForm } from "react-hook-form";
+import React, {useState} from "react";
+import { set, useForm } from "react-hook-form";
 import "./style.css";
 import API from "../../utils/API";
-import { useTodoContext} from "../../utils/store";
-import Login from "../../pages/Login.js";
-import { Link } from "react-router-dom";
+//import Login from "../../pages/Login.js";
+//import { Link } from "react-router-dom";
 
 function ForgotPasswordForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors }
   } = useForm();
 
-  const initialValues = {
+  var initialValues = {
     email: "",
     securityQuestion:"",
-      answer:"",
-      password: "",
+    answer:"",
+    password: "",
   
-    };
+  };
+  var storeLogin = [{
+    email: "",
+    password: "",
+    securityQuestion: "",
+    securityAnswer: "",
+    firstName: "",
+    lastName: "",
+    // _id: "",
+    password: ""
+  }]
+  const [showMe, setShowMe] = useState(false);
+  const [email, setEmail] = useState();
+  const [answer, setAnswer] = useState({question: "", userAnswer: "", answer: "", _id: null, password: "", firstName: "", lastName: ""});
 
-    const temp = {
-      email: "",
-      password: "",
-      securityQuestion: "",
-      securityAnswer: "",
-      firstName: "",
-      lastName: "",
+  function getSecurityInfo() {
+    var loginObj = {
+      email: email
     }
-
-    useEffect(() => {
-      getSecurityInfo();
-  })
-
-    const [state, dispatch] = useTodoContext();
-    const [reset, setReset] = useState(temp);
-
-    function getSecurityInfo() {
-      var john = {
-        password: "newfad",
-        email: "p@aol.com"
-      }
-      console.log(john)
-      API.getLogin(john)
+    API.getAcctQuestionAnswer(loginObj)
       .then(res => {
-        if(res.status ===200) {
-//          setJohnData({...johnData, email: res.data.email});
-//          dispatch({
-//            type: "loggedIn",
-//            loggedIn: true,
-//            email: data.email
-//          })
-          initialValues.securityQuestion = res.data.securityQuestion;
-          initialValues.answer = res.data.securityAnswer;
-          console.log(initialValues);
+        if(res.status ===200) { 
+          console.log(res.data);
+//          tempObj.email = email;
+//          tempObj.firstName = res.data.firstName;
+///          tempObj.lastName = res.data.lastName;
+//          tempObj.securityQuestion = res.data.securityQuestion;
+//          tempObj.securityAnswer = res.data.securityAnswer;
+//          tempObj._id = res.data._id;
+//          console.log(tempObj);
+        setAnswer({...answer, securityQuestion: res.data.securityQuestion, securityAnswer: res.data.securityAnswer, firstName: res.data.firstName, lastName: res.data.lastName, _id: res.data._id })
+          setValue("securityQuestion", res.data.securityQuestion);
         }
       })
       .catch(err => console.log(err));
-
-    }
-
-    function handleChange() {
-
     }
 
   const onSubmit = (data) => {
 //    alert(JSON.stringify(data));
+console.log("data.email = " + data.email);
+//setEmail("");
+//setAnswer({...answer, password: data.password});
+storeLogin[0] = answer;
+console.log(storeLogin)
+//setAnswer({...answer, securityQuestion: "", securityAnswer: "", answer: ""});
 
-
-
+console.log(storeLogin)
+console.log("data.password = " + data.password);
+    API.saveUpdate(storeLogin)
+      .then(res => {
+        if(res.status === 200) {
+          console.log("success");
+        }
+      })
+      .catch(err => console.log(err));
   };
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -78,51 +83,91 @@ function ForgotPasswordForm() {
     });
   }
 
+  const handleChange=e=>{
+    setEmail(e.target.value);
+  }
+
+  const handleAnswerChange=e=>{
+    setAnswer({...answer, answer: e.target.value});
+  }
+
+  const handlePasswordChange=e=>{
+    setAnswer({...answer, password: e.target.value});
+  }
+
+  function checkSecurityAnswer() {
+    if(answer.answer === answer.securityAnswer) {
+      setShowMe(true);
+    }
+    else {
+      alert("Security Answer is incorrect.");
+    }
+  }
+
   return (
     <form  onSubmit={handleSubmit(onSubmit)} >
-         <h1>Reset your password</h1>
-         {/* <h2 id="h2">We will send you an email to reset your password.</h2> */}
-        <label htmlFor="email">Email</label>
-        <input
-          defaultValue={initialValues.email}
-          placeholder="Email"
-          type="email"
-          onChange={handleChange}
-          {...register("email")}
-        />
-         <label htmlFor="securityQuestion">Security Question</label>
-        <input
-          defaultValue={initialValues.securityQuestion}
-          placeholder="Security Question"
-          type="securityQuestion"
-          onChange={handleChange}
-          {...register("securityQuestion")}
-        />
+      <h1>Reset your password</h1>
+      {/* <h2 id="h2">We will send you an email to reset your password.</h2> */}
+      <label htmlFor="email">Email</label>
+      <input
+        defaultValue={initialValues.email}
+        placeholder="Email"
+        type="email"
+        {...register("email")}
+        onChange={handleChange}
+      />
+      <button type="button"
+        onClick = { () => {
+          getSecurityInfo();
+        }}
+      />
+      {answer.securityQuestion ? 
+        <div>
+          <label htmlFor="securityQuestion">Security Question</label>
+          <input
+            defaultValue={initialValues.securityQuestion}
+            name="securityQuestion"
+            placeholder="Security Question"
+            {...register("securityQuestion")}
+          />
 
-        <label htmlFor="answer">Answer</label>
-        <input
-          defaultValue={initialValues.answer}
-          placeholder="Answer"
-          type="answer"
-          onChange={handleChange}
-          {...register("answer")}
-        />
+          <label htmlFor="answer">Answer</label>
+          <input
+            defaultValue={initialValues.answer}
+            placeholder="Answer"
+            {...register("answer")}
+            onChange={handleAnswerChange}
+          />
   
-        <label htmlFor="password">Password</label>
-        <input
-          defaultValue={initialValues.password}
-          placeholder="Password"
-          type="password"
-          onChange={handleChange}
-          {...register("password", {
-            validate: (value) => value.length >= 6
-          })}
-        />
-        {errors. password&& <p>Your Password is less than 6 characters</p>}
+          <button type="button"
+            onClick = {() => {
+              checkSecurityAnswer();
+            }}
+          />
 
-         <input type="submit" />
-         <br></br>
-         <label  id="luna"  onClick={scrollToTop}>LOGIN</label>
+          {showMe?
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                defaultValue={initialValues.password}
+                placeholder="Password"
+                type="password"
+                {...register("password", {
+                  validate: (value) => value.length >= 6
+                })}
+                onChange={handlePasswordChange}
+              />
+            </div>                  
+            :null
+          }
+        </div>
+          : null
+      }
+      {errors. password&& <p>Your Password is less than 6 characters</p>} 
+
+      <input type="submit" />
+      <br></br>
+      <label  id="luna"  onClick={scrollToTop}>LOGIN</label>
     </form>
   );
 }
