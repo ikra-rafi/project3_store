@@ -19,7 +19,7 @@ const TodoContext = createContext();
             discountTotal: action.discountTotal,
             loggedIn: state.loggedIn,
             email: state.email,
-            products: state.products
+            products: state.products = action.products
           }
         )
       case "cartTotal":
@@ -36,7 +36,7 @@ const TodoContext = createContext();
             discountTotal: action.discountTotal,
             loggedIn: state.loggedIn,
             email: state.email,
-            products: state.products
+            products: state.products = action.products
           }
         )
       case "salesTaxAmt":

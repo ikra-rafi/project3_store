@@ -13,15 +13,19 @@ export default {
     });
   },
 
-  getProductDetails: function(id) {
-    console.log(id);
-    return axios
-    .get("/api/products/" + id)
-    .then(res => {
-      const product = res.data;
-      return product;
-    });
+  getProductsFromStore: function() {
+    return axios.get("/api/products");
   },
+
+  // getProductDetails: function(id) {
+  //   console.log(id);
+  //   return axios
+  //   .get("/api/products/" + id)
+  //   .then(res => {
+  //     const product = res.data;
+  //     return product;
+  //   });
+  // },
 
 
   // Deletes the book with the given id
