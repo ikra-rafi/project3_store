@@ -16,16 +16,17 @@
     width: 325px;
     box-shadow: 0 3px 3px black, 0 3px 3px black;
     text-align: left;
-  }
+  } 
 
-  .card > .img-container {
-    height: 100%;
+   .card > .img-container {
+    
+    height: 200px;
     overflow: hidden;
     text-align: center;
     display: flex;
     align-items: center; /* vertical */
-    justify-content: center; /* horizontal */
-  }
+    justify-content: center;/* horizontal*/
+   }
 
   .card > .content > ul {
     list-style-type: none;
@@ -38,3 +39,18 @@
   .quantity {
     width: 50px;
   }
+
+  
+ #packaging{
+   width:150px;
+   margin-bottom:1%;
+   font-family: 'New Tegomin', serif;
+ }
+ #product-name{
+  font-family: 'New Tegomin', serif;
+ 
+ }
+ #product-image{
+   width:1px;
+   
+ }

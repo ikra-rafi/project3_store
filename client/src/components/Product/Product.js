@@ -49,7 +49,7 @@ function Product(props) {
                     </div>
 
                     <div className="col-6">
-                      <button>Add to Cart</button>
+                      <button id="addCart">Add to Cart</button>
                     </div>
                   </div>
               </div>
@@ -83,7 +83,7 @@ function Product(props) {
                     <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
                     <input type="text" className="inline quantity" id={props.product._id} defaultValue = "1"></input>
                     <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-                    <button>Add to Cart</button>
+                    <button id="addCart">Add to Cart</button>
                   </div>
 
               </div>
