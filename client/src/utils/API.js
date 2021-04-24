@@ -65,10 +65,23 @@ export default {
     return axios.get("/api/orders");
   },
 
-  // Saves the orders to database
-  saveOrders: function(orderInfo) {
-    return axios.post("/api/orders", orderInfo);
+  getOrdersAcct: function(loginData) {
+    console.log("in login acct");
+    console.log("loginData = " + loginData.email, loginData._id)
+    return axios.post("/api/orders/acct", loginData);
   },
+
+  // Saves the orders to database
+  saveOrders: function(id, storeOrders) {
+    console.log("api id = " + id);
+    console.log("storeOrders = " + storeOrders.orderNum)
+  return axios.post("/api/orders/" + id, storeOrders);
+ },
+
+  // // Saves the orders to database
+  // saveOrders: function(orderInfo) {
+  //   return axios.post("/api/orders", orderInfo);
+  // },
 
   // Updates an order
   updateOrders: function(orderData) {
