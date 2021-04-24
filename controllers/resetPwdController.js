@@ -1,7 +1,8 @@
 const { Login } = require("../models");
 const db = require("../models");
+const bcrypt = require("bcryptjs");
 
-// Defining methods for the LoginController
+// Defining methods for the reset password Controller
 module.exports = {
 
   findOne: function(req, res) {
@@ -14,15 +15,6 @@ module.exports = {
       .then(dbModel => { console.log("findOne"), res.json(dbModel)})
       .catch(err => res.status(403).json(err));
   },
-
-  // update: function(req, res, next) {
-  //   console.log(req.params.email);
-  //   console.log(req.body)
-  //   db.Login
-  //     .findOneAndUpdate({ email: req.params.email }, req.body)
-  //     .then(dbModel => {console.log("inside update reset"); console.log(dbModel); res.json(dbModel)})
-  //     .catch(err => res.status(422).json(err));
-  // },
 
   create: function(req, res) {
     console.log("in create");
@@ -55,45 +47,21 @@ module.exports = {
 
   update: function(req, res) {
 
-    console.log(req.body);
     console.log(req.params.email);
-    var password = req.body.password;
-    console.log(req.body.password);
+    var passwordChange = req.body.password;
     db.Login
       .findOne({email: req.params.email})
       .then(dbModel => { console.log("findOne"), 
         console.log(dbModel);
-
         console.log(dbModel._id);
-       const newUser = new Login({
-//         email: email,
-          firstName: "Kyle",
-//        firstName: "Joe",
-//         password: password,
-//         securityQuestion: securityQuestion,
-//         securityAnswer: securityAnswer,
-//         firstName: firstName,
-//         lastName: lastName
+        var newPassword = bcrypt.hashSync(passwordChange, 10);
+        db.Login.findOneAndUpdate({_id: dbModel._id}, {password: newPassword}, {new: true})
+          .then(result => {
+              console.log(result);
+              res.json(result);
+          })
+          .catch(err => console.log(err));
        })
-      console.log(newUser);
-      //  newUser.updateOne({ firstName: "Betty"}, (err, savedUser) => {
-      //    console.log(savedUser);
-      //    if(err) return res.json(err)
-      //    res.json(savedUser);
-      //  });
-
-       Login.updateOne({email: dbModel.email}, {$set: {password: password}}, (err, user) => {
-         if(err) console.log(res.json(err));
- //        res.json(user);
-       })
-
-//       save({_id: dbModel._id, firstName: "Peter", password: password}, (err, savedUser) => {
-//         console.log("json saveduser = " + JSON.stringify(savedUser));
-//         if(err) return res.json(err)
-//         res.json(savedUser);
-//       })
-//      }
-    })
   },
 
 };

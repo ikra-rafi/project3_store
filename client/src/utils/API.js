@@ -65,6 +65,7 @@ export default {
     return axios.get("/api/orders");
   },
 
+  // Get account info of logged in user
   getOrdersAcct: function(loginData) {
     console.log("in login acct");
     console.log("loginData = " + loginData.email, loginData._id)
@@ -84,9 +85,9 @@ export default {
   // },
 
   // Updates an order
-  updateOrders: function(orderData) {
-    return axios.post("api/orders", orderData);
-  },
+//  updateOrders: function(orderData) {
+//    return axios.post("api/orders", orderData);
+//  },
 
   //==============CART ROUTES====================
   // Gets all contents in cart from database
@@ -145,6 +146,7 @@ export default {
     return axios.post("/api/login", loginData);
   },
 
+  // Logout the user
   Logout: function() {
     console.log("inapi logout route");
     return axios.post("/api/logout");
@@ -163,9 +165,15 @@ export default {
     return axios.put("/api/resetpwd/" + email, password);
   },
 
-  saveUpdate: function(storeLogin) {
+  saveUpdate: function(id, storeLogin) {
     console.log("save reset password");
-    return axios.post("/api/recipes", storeLogin);
+    console.log("update pwd = " + storeLogin);
+    return axios.put("/api/resetpwd/" + id, storeLogin);
   }
+
+//  saveUpdate: function(storeLogin) {
+//    console.log("save reset password");
+//    return axios.post("/api/recipes", storeLogin);
+//  }
 
 };

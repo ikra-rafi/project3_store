@@ -2,8 +2,6 @@ import React, {useState} from "react";
 import { set, useForm } from "react-hook-form";
 import "./style.css";
 import API from "../../utils/API";
-//import Login from "../../pages/Login.js";
-//import { Link } from "react-router-dom";
 
 function ForgotPasswordForm() {
   const {
@@ -27,7 +25,6 @@ function ForgotPasswordForm() {
     securityAnswer: "",
     firstName: "",
     lastName: "",
-    // _id: "",
     password: ""
   }]
   const [showMe, setShowMe] = useState(false);
@@ -42,14 +39,7 @@ function ForgotPasswordForm() {
       .then(res => {
         if(res.status ===200) { 
           console.log(res.data);
-//          tempObj.email = email;
-//          tempObj.firstName = res.data.firstName;
-///          tempObj.lastName = res.data.lastName;
-//          tempObj.securityQuestion = res.data.securityQuestion;
-//          tempObj.securityAnswer = res.data.securityAnswer;
-//          tempObj._id = res.data._id;
-//          console.log(tempObj);
-        setAnswer({...answer, securityQuestion: res.data.securityQuestion, securityAnswer: res.data.securityAnswer, firstName: res.data.firstName, lastName: res.data.lastName, _id: res.data._id })
+          setAnswer({...answer, securityQuestion: res.data.securityQuestion, securityAnswer: res.data.securityAnswer, firstName: res.data.firstName, lastName: res.data.lastName, _id: res.data._id })
           setValue("securityQuestion", res.data.securityQuestion);
         }
       })
@@ -57,17 +47,16 @@ function ForgotPasswordForm() {
     }
 
   const onSubmit = (data) => {
-//    alert(JSON.stringify(data));
-console.log("data.email = " + data.email);
-//setEmail("");
-//setAnswer({...answer, password: data.password});
-storeLogin[0] = answer;
-console.log(storeLogin)
-//setAnswer({...answer, securityQuestion: "", securityAnswer: "", answer: ""});
 
-console.log(storeLogin)
-console.log("data.password = " + data.password);
-    API.saveUpdate(storeLogin)
+    console.log("data.email = " + data.email);
+    storeLogin[0] = answer;
+    console.log(storeLogin)
+    var passwordUpdate = {
+      password: data.password
+    }
+    console.log(storeLogin)
+    console.log("data.password = " + data.password);
+      API.resetPassword(email, passwordUpdate)
       .then(res => {
         if(res.status === 200) {
           console.log("success");
