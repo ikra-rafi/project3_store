@@ -2,25 +2,43 @@ import React, { createContext, useReducer, useContext } from "react";
 
 const TodoContext = createContext();
   const { Provider } = TodoContext;
-  
+
   function reducer(state, action) {
     switch (action.type) {
-    case "cartTotal":
-      return (
-        {
-          orderTotal: state.orderTotal,
-          salesTax: state.salesTax,
-          salesTaxAmt: state.salesTaxAmt,
-          shipFee: state.shipFee,
-          subTotal: action.subTotal,
-          cartItems: state.cartItems = action.cartItems, 
-          discount: action.discount,
-          discountAmt: state.discountAmt,
-          discountTotal: action.discountTotal,
-          loggedIn: state.loggedIn,
-          email: state.email
-        }
-      )
+      case "products":
+        return (
+          {
+            orderTotal: state.orderTotal,
+            salesTax: state.salesTax,
+            salesTaxAmt: state.salesTaxAmt,
+            shipFee: state.shipFee,
+            subTotal: action.subTotal,
+            cartItems: state.cartItems = action.cartItems,
+            discount: action.discount,
+            discountAmt: state.discountAmt,
+            discountTotal: action.discountTotal,
+            loggedIn: state.loggedIn,
+            email: state.email,
+            products: state.products
+          }
+        )
+      case "cartTotal":
+        return (
+          {
+            orderTotal: state.orderTotal,
+            salesTax: state.salesTax,
+            salesTaxAmt: state.salesTaxAmt,
+            shipFee: state.shipFee,
+            subTotal: action.subTotal,
+            cartItems: state.cartItems = action.cartItems,
+            discount: action.discount,
+            discountAmt: state.discountAmt,
+            discountTotal: action.discountTotal,
+            loggedIn: state.loggedIn,
+            email: state.email,
+            products: state.products
+          }
+        )
       case "salesTaxAmt":
         return (
           {
@@ -29,14 +47,15 @@ const TodoContext = createContext();
             salesTaxAmt: action.salesTaxAmt,
             shipFee: state.shipFee,
             subTotal: state.subTotal,
-            cartItems: state.cartItems, 
+            cartItems: state.cartItems,
             discount: state.discount,
             discountAmt: state.discountAmt,
             discountTotal: action.discountTotal,
             loggedIn: state.loggedIn,
-            email: state.email
+            email: state.email,
+            products: state.products
           }
-        )      
+        )
       case "orderTotal":
         return (
           {
@@ -45,14 +64,15 @@ const TodoContext = createContext();
             salesTaxAmt: state.salesTaxAmt,
             shipFee: state.shipFee,
             subTotal: state.subTotal,
-            cartItems: state.cartItems, 
+            cartItems: state.cartItems,
             discount: state.discount,
             discountAmt: state.discountAmt,
             discountTotal: state.discountTotal,
             loggedIn: state.loggedIn,
-            email: state.email
+            email: state.email,
+            products: state.products
           }
-        )      
+        )
     case "loggedIn":
       return (
         {
@@ -66,14 +86,15 @@ const TodoContext = createContext();
           discountAmt: state.discountAmt,
           discountTotal: state.discountTotal,
           loggedIn: action.loggedIn,
-          email: action.email
+          email: action.email,
+          products: state.products
         }
       )
     default:
       return state;
     }
   }
-  
+
   function TodoProvider({...props }) {
     const [state, dispatch] = useReducer(reducer, {
         cartItems: [],
@@ -86,14 +107,15 @@ const TodoContext = createContext();
         discountTotal: 0,
         discountAmt: 10,
         loggedIn: false,
-        email: ""
+        email: "",
+        products: []
       });
-  
+
     return <Provider value={[state, dispatch]} {...props} />;
   }
-  
+
   function useTodoContext() {
     return useContext(TodoContext);
   }
-  
+
   export { TodoProvider, useTodoContext };
