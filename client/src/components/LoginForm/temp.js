@@ -11,7 +11,6 @@ function LoginForm() {
    const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors }  } = useForm();
 
     const initialValues = {
@@ -57,7 +56,7 @@ function LoginForm() {
           dispatch({
             type: "loggedIn",
             loggedIn: true,
-            email: res.data.email
+            email: data.email
           })
         }
       })
@@ -65,8 +64,7 @@ function LoginForm() {
   };
 
   return (
-
-  <div>
+    <div>
     {loginData.redirectTo ? (
         <Redirect to={{ pathname: loginData.redirectTo }} />
     ) : (
@@ -78,7 +76,6 @@ function LoginForm() {
 //        value={loginData.email}
         placeholder="Email"
         type="email"
-//        value={loginData.email}
         onChange={handleChange}
         {...register("email")}
       />
@@ -96,12 +93,12 @@ function LoginForm() {
       />
       {errors. password&& <p>Your Password is less than 6 characters</p>}
       <input type="submit" />
-  
-    </form >
-
-  )}
-  </div>
-  )
+      <br></br>
+      <a href="">FORGOT YOUR PASSWORD?</a>  
+    </form>
+        )}
+        </div>
+  );
 }
 
 export default LoginForm;

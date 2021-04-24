@@ -290,7 +290,9 @@ const loginSeed =
     securityQuestion: "What is favorite color?",
     securityAnswer: "orange",
     admin: true,
-    discount: 10
+    discount: 10,
+    firstName: "Ashley",
+    lastName: "Stith"
 },
 {
     email: "john@aol.com",
@@ -298,7 +300,9 @@ const loginSeed =
     securityQuestion: "What was your first car?",
     securityAnswer: "corvette",
     admin: false,
-    discount: 25
+    discount: 25,
+    firstName: "John",
+    lastName: "Toth"
 },
 {
     email: "luna@gmail.com",
@@ -306,7 +310,9 @@ const loginSeed =
     securityQuestion: "What is your favorite cereal?",
     securityAnswer: "Shredded Wheat",
     admin: true,
-    discount: 10
+    discount: 10,
+    firstName: "Luna",
+    lastName: "Shaqir"
 }
     
 ];
