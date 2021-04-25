@@ -181,10 +181,10 @@
   }
   
   .news_letter_wrp .submit-contact {
-    height: 40px;
+    height: 80px;
     line-height: 40px;
     margin-top: 10px;
-    border-radius: 30px;
+    border-radius: 3px;
     font-size: 15px;
   }
   

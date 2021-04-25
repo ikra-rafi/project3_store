@@ -1,6 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
 import React from "react";
+import Header from "./components/Header";
 import NavMenu from "./components/NavMenu";
 import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
@@ -21,6 +22,7 @@ function App() {
   return (
     <Router basename={`${process.env.PUBLIC_URL}/`}>
       <div id="app-content">
+          <Header />
           <NavMenu />
           <Jumbotron />
           <Switch>

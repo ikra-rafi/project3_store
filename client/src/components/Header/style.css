@@ -1,0 +1,94 @@
+  /*----------------------------------------------------
+     2. Header Section
+  ------------------------------------------------------*/
+    /*----- Top bar -----*/
+    
+    .header_topbar {
+        background: #c9cead;
+      }
+      
+      .header_topbar .container {
+        display: flex;
+      }
+      
+      .top-bar .header_top_left {
+        padding: 0 0;
+      }
+      
+      .header_socil {
+        margin: 0 0 0 10px;
+        float: right;
+      }
+      
+      .header_socil li {
+        padding-left: 1px;
+        padding-right: 1px;
+      }
+      
+      .header_socil li {
+        font-size: 14px;
+        margin: 0;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+      }
+      
+      .header_socil li .fa {
+        color: #fff;
+        font-size: 14px;
+        margin-left: 8px;
+      }
+      
+      .header_socil li .fa:hover {
+        color: #9dca00;
+      }
+      
+      .header_socil li:nth-child(1) i {
+        margin-right: 8px;
+        color: #9dca00;
+      }
+      
+      .header_socil li:nth-child(1) {
+        border-right: 1px solid #645454;
+        padding-right: 20px;
+        color: #fff;
+        margin-right: 10px;
+      }
+      
+      .header_topbar .more-link {
+        margin-left: 20px;
+        border-radius: 0px;
+      }
+      
+      .header_top_left {
+        padding-left: 1px;
+        float: left;
+        display: flex;
+      }
+      
+      .header_top_right {
+        margin-right: auto; 
+      }
+      
+      .header_topbar ul { 
+        margin-top: 13px; 
+      }
+      
+      .header_top_right ul {
+        margin-right: 17px;
+      }
+      
+      .header_top_right li {
+        display: inline;
+        padding-right: 20px;
+        color: #fff;
+        font-size: 14px;
+      }
+      
+      .header_top_right li i {
+        margin-right: 10px;
+        color: #9dca00;
+        font-size: 15px;
+        position: relative;
+        top: 1px;
+      }
