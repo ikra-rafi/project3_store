@@ -77,16 +77,9 @@ export default {
   },
 
   // Saves the orders to database
-  saveOrders: function(id, storeOrders) {
-    console.log("api id = " + id);
-    console.log("storeOrders = " + storeOrders.orderNum)
-  return axios.post("/api/orders/" + id, storeOrders);
+  saveOrders: function(id, acct, storeOrders) {
+  return axios.post("/api/orders/" + id + "/acct" + acct, storeOrders);
  },
-
-  // // Saves the orders to database
-  // saveOrders: function(orderInfo) {
-  //   return axios.post("/api/orders", orderInfo);
-  // },
 
   // Updates an order
 //  updateOrders: function(orderData) {
