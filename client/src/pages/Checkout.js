@@ -34,17 +34,22 @@ function Checkout() {
 
   const [state, dispatch] = useTodoContext();
   const [cart, setCart] = useState();
-  const [loginInfo, setLoginInfo] = useState({_id: null, email: ""}); 
+  const [checkbox, setCheckbox] = useState();
+  const [loginInfo, setLoginInfo] = useState({_id: 0, email: ""}); 
 
   const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,      
     maximumFractionDigits: 2,
   });
 
+var billingCheck=false;
+  function handleCheck(e) {
+    billingCheck = e.target.checked;
+    setCheckbox(e.target.checked);
+  }
+
   useEffect(() => {
     if(state.loggedIn) {
-//      setLoginInfo({...logInfo, email: state.email});
-//      var email = state.email;
       getLogin();
     }
     console.log("cart Effect");
@@ -60,9 +65,13 @@ function Checkout() {
     }
     API.getOrdersAcct(loginObj)
       .then(res => {
-
-         setLoginInfo({...loginInfo, email: state.email, _id: res.data._id })
-        console.log(res.data)
+        if(state.loggedIn) {
+            setLoginInfo({...loginInfo, email: state.email, _id: res.data._id})
+            console.log(res.data)
+        } else if (!state.loggedIn)
+        {
+            setLoginInfo({...loginInfo, email: "", _id: 0})
+        }
       })
       .catch(err => console.log(err));
   }
@@ -86,14 +95,14 @@ function Checkout() {
       phone: phone.current.value,
       creditCard: {
         billingAddress: {
-          companyName: billCompanyName.current.value,
-          firstName: billFirstName.current.value,
-          lastName: billLastName.current.value,
-          street: billStreet.current.value,
-          address2: billAddress2.current.value,
-          city: billCity.current.value,
-          state: billState.current.value,
-          zip: billZip.current.value,
+          companyName: checkbox ? (shipCompanyName.current.value) : (billCompanyName.current.value),
+          firstName: checkbox ? (shipFirstName.current.value) : (billFirstName.current.value),
+          lastName: checkbox ? (shipLastName.current.value) : (billLastName.current.value),
+          street: checkbox ? (shipStreet.current.value) : (billStreet.current.value),
+          address2: checkbox ? (shipAddress2.current.value) : (billAddress2.current.value),
+          city: checkbox ? (shipCity.current.value) : (billCity.current.value),
+          state: checkbox ? (shipState.current.value) : (billState.current.value),
+          zip: checkbox ? (shipZip.current.value) : (billZip.current.value),
         },
         cardInfo: {
           cardNumber: ccNumber.current.value,
@@ -124,7 +133,7 @@ function Checkout() {
       orderInfo.spices[i] = tempspices;
     }
 
-    API.saveOrders(loginInfo._id, orderInfo)
+    API.saveOrders(loginInfo._id, state.loggedIn, orderInfo)
       .then(res => {
         if(res.status === 200) {
           console.log("success on order save");
@@ -243,80 +252,89 @@ function Checkout() {
                       <label className="label" htmlFor="exampleInputEmail1">Notes</label>                      
                       <input name="notes" ref={notes} id="notes" className="form-control form-control-lg" placeholder="notes" />
                     </form>
-                    <br />
-                    <form>
-                    <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
-                      <input name="ccBillCompanyName" ref={billCompanyName} id="billCompanyName" className="form-control form-control-lg" placeholder="Billing Company Name" />
-                      <label className="label" htmlFor="exampleInputEmail1">First Name</label>
-                      <input name="ccBillFirstName" ref={billFirstName} id="billFirstName" className="form-control form-control-lg" placeholder="Billing First Name" />
-                      <label className="label" htmlFor="exampleInputEmail1">Last Name</label>
-                      <input name="ccBillLastName" ref={billLastName} id="billLastName" className="form-control form-control-lg" placeholder="Billing Last Name" />                      
-                      <label className="label" htmlFor="exampleInputEmail1">Street</label>
-                      <input name="ccBillStreet" ref={billStreet} id="billStreet" className="form-control form-control-lg" placeholder="Billing Street" />
-                      <label className="label" htmlFor="exampleInputEmail1">Address 2</label>
-                      <input name="ccBillAddress2" ref={billAddress2} id="billAddress2" className="form-control form-control-lg" placeholder="Billing Address 2" />                      
-                      <label className="label" htmlFor="exampleInputEmail1">City</label>
-                      <input name="ccBillCity" ref={billCity} id="billCity" className="form-control form-control-lg" placeholder="Billing City" />
-                      <label className="label" htmlFor="exampleInputEmail1">State</label>
-                      <div className="select"><select ref={billState} id="billState" defaultValue="" required="">
-                        <option value=""  disabled="">Choose...</option>
-                        <option value="AK">AK</option>
-                        <option value="AL">AL</option>
-                        <option value="AR">AR</option>
-                        <option value="AZ">AZ</option>
-                        <option value="CA">CA</option>
-                        <option value="CO">CO</option>
-                        <option value="CT">CT</option>
-                        <option value="DC">DC</option>
-                        <option value="DE">DE</option>
-                        <option value="FL">FL</option>
-                        <option value="GA">GA</option>
-                        <option value="HI">HI</option>
-                        <option value="IA">IA</option>
-                        <option value="ID">ID</option>
-                        <option value="IL">IL</option>
-                        <option value="IN">IN</option>
-                        <option value="KS">KS</option>
-                        <option value="KY">KY</option>
-                        <option value="LA">LA</option>
-                        <option value="MA">MA</option>
-                        <option value="MD">MD</option>
-                        <option value="ME">ME</option>
-                        <option value="MI">MI</option>
-                        <option value="MN">MN</option>
-                        <option value="MO">MO</option>
-                        <option value="MS">MS</option>
-                        <option value="MT">MT</option>
-                        <option value="NC">NC</option>
-                        <option value="ND">ND</option>
-                        <option value="NE">NE</option>
-                        <option value="NH">NH</option>
-                        <option value="NJ">NJ</option>
-                        <option value="NM">NM</option>
-                        <option value="NV">NV</option>
-                        <option value="NY">NY</option>
-                        <option value="OH">OH</option>
-                        <option value="OK">OK</option>
-                        <option value="OR">OR</option>
-                        <option value="PA">PA</option>
-                        <option value="RI">RI</option>
-                        <option value="SC">SC</option>
-                        <option value="SD">SD</option>
-                        <option value="TN">TN</option>
-                        <option value="TX">TX</option>
-                        <option value="UT">UT</option>
-                        <option value="VA">VA</option>
-                        <option value="VT">VT</option>
-                        <option value="WA">WA</option>
-                        <option value="WI">WI</option>
-                        <option value="WV">WV</option>
-                        <option value="WY">WY</option>
-                      </select>
+                    <div style={{display: "inline-block"}}>
+                    <label className="label" htmlFor="billingAddr">Billing address same as Shipping address</label>
+                    <input type="checkbox" id="billingAddr" onClick={handleCheck} name="billing" value="same address"/>
                     </div>
-                      <label className="label" htmlFor="exampleInputEmail1">Zip</label>
-                      <input name="ccBillZip" ref={billZip} id="billZip" className="form-control form-control-lg" placeholder="Billing Zip Code" maxLength="5"
-                            size="5" required/>
-                    </form>
+                    <br />
+                    {!checkbox ? (
+                      <div>
+                        <form>
+                          <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
+                          <input name="ccBillCompanyName" ref={billCompanyName} id="billCompanyName" className="form-control form-control-lg" placeholder="Billing Company Name" />
+                          <label className="label" htmlFor="exampleInputEmail1">First Name</label>
+                          <input name="ccBillFirstName" ref={billFirstName} id="billFirstName" className="form-control form-control-lg" placeholder="Billing First Name" />
+                          <label className="label" htmlFor="exampleInputEmail1">Last Name</label>
+                          <input name="ccBillLastName" ref={billLastName} id="billLastName" className="form-control form-control-lg" placeholder="Billing Last Name" />                      
+                          <label className="label" htmlFor="exampleInputEmail1">Street</label>
+                          <input name="ccBillStreet" ref={billStreet} id="billStreet" className="form-control form-control-lg" placeholder="Billing Street" />
+                          <label className="label" htmlFor="exampleInputEmail1">Address 2</label>
+                          <input name="ccBillAddress2" ref={billAddress2} id="billAddress2" className="form-control form-control-lg" placeholder="Billing Address 2" />                      
+                          <label className="label" htmlFor="exampleInputEmail1">City</label>
+                          <input name="ccBillCity" ref={billCity} id="billCity" className="form-control form-control-lg" placeholder="Billing City" />
+                          <label className="label" htmlFor="exampleInputEmail1">State</label>
+                          <div className="select"><select ref={billState} id="billState" defaultValue="" required="">
+                            <option value=""  disabled="">Choose...</option>
+                            <option value="AK">AK</option>
+                            <option value="AL">AL</option>
+                            <option value="AR">AR</option>
+                            <option value="AZ">AZ</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DC">DC</option>
+                            <option value="DE">DE</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="HI">HI</option>
+                            <option value="IA">IA</option>
+                            <option value="ID">ID</option>
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="MA">MA</option>
+                            <option value="MD">MD</option>
+                            <option value="ME">ME</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MO">MO</option>
+                            <option value="MS">MS</option>
+                            <option value="MT">MT</option>
+                            <option value="NC">NC</option>
+                            <option value="ND">ND</option>
+                            <option value="NE">NE</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NV">NV</option>
+                            <option value="NY">NY</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VA">VA</option>
+                            <option value="VT">VT</option>
+                            <option value="WA">WA</option>
+                            <option value="WI">WI</option>
+                            <option value="WV">WV</option>
+                            <option value="WY">WY</option>
+                          </select>
+                        </div>
+                        <label className="label" htmlFor="exampleInputEmail1">Zip</label>
+                        <input name="ccBillZip" ref={billZip} id="billZip" className="form-control form-control-lg" placeholder="Billing Zip Code" maxLength="5"
+                          size="5" required/>
+                      </form>
+                    </div>
+                    )  : (null )
+                  }
                     <br />
                     <form>
                     <label className="label" htmlFor="exampleInputEmail1">Name</label>
@@ -341,16 +359,15 @@ function Checkout() {
                       ))}
                       <table>
                       <thead>
-          <tr>
-            <th className="alignCenter">Product</th>
-            <th className="alignCenter">Package Size</th>
-            <th className="alignCenter">Quantity</th>
-            <th className="alignCenter">Price</th>
-            <th className="alignCenter">Item Total</th>
-          </tr>
-        </thead>
-                        <tbody>
-
+                        <tr>
+                          <th className="alignCenter">Product</th>
+                          <th className="alignCenter">Package Size</th>
+                          <th className="alignCenter">Quantity</th>
+                          <th className="alignCenter">Price</th>
+                          <th className="alignCenter">Item Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
                         <tr>
                         <td></td>
                         <td></td>
@@ -375,7 +392,6 @@ function Checkout() {
                         <td></td>
                       </tr>
                       )}
-
                      <tr>
                         <td></td>
                         <td></td>
@@ -408,7 +424,6 @@ function Checkout() {
                  </div>
                )}
              </div>
-
              <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" >
              <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
          </Link>
