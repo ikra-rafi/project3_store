@@ -72,7 +72,7 @@ const Footer = () => {
                               <Link to={process.env.PUBLIC_URL + "/about"}>Return & Cancellation</Link>
                           </li>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/about"}>Online Organic Service</Link>
+                              <Link to={process.env.PUBLIC_URL + "/about"}>FAQ</Link>
                           </li>
                           <li>
                               <Link to={process.env.PUBLIC_URL + "/about"}>Delivery Schedule</Link>

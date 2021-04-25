@@ -2,7 +2,7 @@ import React from "react";
 //import { useStoreContext } from "../../utils/GlobalState";
 import MobileMenu from "../mobile-menu/MobileMenu";
 import MobileBtn from "../mobile-menu/MobileBtn";
-import "./style.css";
+import { Link } from 'react-router-dom';
 
 function NavMenu() {
 //  const [store] = useStoreContext();
@@ -23,52 +23,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
   return (
-   
-    // <>
-    // <div className="container">
-   
-    // <nav className="navbar navbar-expand-lg navbar-light">
-    // <div className="container-fluid">
-    //     <a className="navbar-brand" href="/"><img src="/assets/logo/spice-a-holic_logo-horizontal.png" alt="" width="250" /></a>
-	  //     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
-		//     <span className="navbar-toggler-icon"></span>
-	  //     </button>
-    //     <div className="collapse navbar-collapse" id="main_nav">
-    //       <ul className="navbar-nav">
-    //         {/* <li className="nav-item active"> <a className="nav-link" herf="#">Spice-A-Holic</a> </li> */}
-    //         {/* <li class="nav-item"><a class="nav-link" href="/"> Contact Us </a></li>
-		// 	      <li class="nav-item"><a class="nav-link" href="/"> Services </a></li> */}
-    //         <li class="nav-item dropdown has-megamenu">
-		// 	        	<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Mega menu  </a>
-		// 	        	<div class="dropdown-menu megamenu" role="menu">
-		// 		      	This is content of megamenu. 
-		// 		        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		// 			      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		// 		      	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		// 		      	consequat.
-		// 	        	</div>
-    //         </li>
-    //       </ul>
-    //       <div>
-    //       <ul class="navbar-nav ms-auto">
-		//       	<li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
-		//       	<li class="nav-item dropdown">
-		// 	    	<a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
-		// 	    <ul class="dropdown-menu dropdown-menu-end">
-		// 		     <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
-		// 		      <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
-		// 	    </ul>
-		// 	    </li>
-	  //     	</ul>
-
-
-    //       <div className="border-top pt-4 mb-5"><a class="btn btn-outline-primary w-100 mb-2" href="#">Log in</a><a className="btn btn-primary w-100" href="#">Sign up</a></div></div>
-    //   </div>
-    //  </div>
-    // </nav>
-
-    // </div>
-    // </>
  
 <div className="menu_area">	
     {/* Start: header navigation */}
@@ -85,10 +39,11 @@ document.addEventListener("DOMContentLoaded", function(){
                         <nav className="mr-auto">
                             <ul>
                                 <li className="active">
-                                <a href="/">Home </a></li>
+                                {/* <Link to="/">Home </Link> */}
+                                </li>
                                 <li className="has-sub"><a href="#/">Products</a>
                                     <ul>
-                                        <li><a href="gallery">Baking</a>
+                                        <li><a href="baking">Baking</a>
                                         </li>
                                         <li><a href="grilling">Grilling</a>
                                         </li>
@@ -112,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function(){
                                     </ul>
                                 </li>
                                 
-                                <li><a to="contact">Contact</a>
+                                <li><Link to="/contact">Contact</Link>
                                 </li>
                             </ul>
                         </nav> 
@@ -134,19 +89,18 @@ document.addEventListener("DOMContentLoaded", function(){
                     <ul>
                         <li className="header_search">
                             <a href="#" onClick={() => triggerSearch()} className="cart-toggler search_icon">
-                                <i className="icon-glyph-16"></i></a>
- 
+                                <i className="bi bi-search"></i></a>
                             <div className="search_icon_inr">
                                 <form action="#" method="POST">
-                                    <div>
-                                        <input placeholder="Search" type="text" />
+                                    <div className="form-group">
+                                        <input placeholder="Search" type="text" /> 
                                         <button className="btn-search" type="submit">
-                                            <i className="fa fa-search"></i>
+                                        <i className="bi bi-search"></i>
                                         </button>
                                     </div>
                                 </form>
                             </div> 
-                        </li>
+                          </li>
                         <li className="header_cart_icon">
                             <a href="cart"><i className="fa fa-shopping-cart"></i><span className="number_cart">0</span></a>
                         </li>

@@ -3,7 +3,7 @@ import './App.css';
 import React from "react";
 import Header from "./components/Header";
 import NavMenu from "./components/NavMenu";
-import Jumbotron from "./components/Jumbotron";
+// import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
@@ -17,6 +17,7 @@ import Checkout from "./pages/Checkout";
 import john from "./pages/login-form";
 import johnSignup from "./pages/sign-up";
 import Comments from "./pages/Comments";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -24,11 +25,12 @@ function App() {
       <div id="app-content">
           <Header />
           <NavMenu />
-          <Jumbotron />
+          {/* <Jumbotron /> */}
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
+            <Route path="/contact" component={Contact} />
             <Route path="/products/:id" component={ProductDetails} />
             <Route path="/admin" component={Admin} />
             <Route path="/account" component={Account} />
