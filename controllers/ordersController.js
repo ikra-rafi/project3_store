@@ -11,27 +11,25 @@ module.exports = {
   },
   create: function(req, res) {
     var id = req.params.id;
-    console.log("id = " + id);
     console.log(req.body);
-    db.Orders
-      .create(req.body)
-      .then(dbModel => {
-        console.log("dbModel=" + dbModel);
-        console.log(id ? "id exists" : "id empty")
-        if(id) {
+    if(req.params.acct==="acctfalse") {
+      db.Orders
+        .create(req.body)
+        .then(dbModel => {
+          res.json(dbModel);
+        })
+        .catch(err => console.log(err));
+    } else {
+      db.Orders
+        .create(req.body)
+        .then(dbModel => {
           db.Login.findOneAndUpdate({_id: id}, {$push: {orderIDs: dbModel._id}}, {new: true})
-          .then(results => {console.log(results); res.json(results)})
-          .catch(err => {console.log('update login from orders failed'); res.status(422).json(err)});
-        }
-      })
-      .catch(err => {console.log('save orders failed'); res.status(422).json(err)});
+            .then(results => {console.log(results); res.json(results)})
+            .catch(err => {console.log("update login failed"); res.status(422).json(err)})
+        })
+        .catch(err => console.log(err));
+    }
   },
-  // create: function(req, res) {
-  //   db.Orders
-  //     .create(req.body)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
   update: function(req, res) {
     db.Orders
       .findOneAndUpdate({ _id: req.params.id }, req.body)
