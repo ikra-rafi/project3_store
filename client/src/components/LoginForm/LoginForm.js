@@ -70,10 +70,10 @@ function LoginForm() {
     {loginData.redirectTo ? (
         <Redirect to={{ pathname: loginData.redirectTo }} />
     ) : (
-    <form onSubmit={handleSubmit(onSubmit)} >
-      <h1>Log In</h1>
+    <form className="login-form" onSubmit={handleSubmit(onSubmit)} >
+      <h1 className="login-h1">Log In</h1>
       <label htmlFor="email">Email</label>
-      <input
+      <input className="input-login"
         defaultValue={initialValues.email}
 //        value={loginData.email}
         placeholder="Email"
@@ -83,8 +83,8 @@ function LoginForm() {
         {...register("email")}
       />
 
-      <label htmlFor="password">Password</label>
-      <input
+      <label className="label-login" htmlFor="password">Password</label>
+      <input className="input-login"
 //        value={loginData.password}
         defaultValue={initialValues.password}
         placeholder="Password"
@@ -95,7 +95,7 @@ function LoginForm() {
         })}
       />
       {errors. password&& <p>Your Password is less than 6 characters</p>}
-      <input type="submit" />
+      <input className="input-login" type="submit" />
   
     </form >
 

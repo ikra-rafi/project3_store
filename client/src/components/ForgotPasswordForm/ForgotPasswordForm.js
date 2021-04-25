@@ -94,7 +94,7 @@ function ForgotPasswordForm() {
   }
 
   return (
-    <form  onSubmit={handleSubmit(onSubmit)} >
+    <form className="forgot-login"  onSubmit={handleSubmit(onSubmit)} >
       <h1>Reset your password</h1>
       {/* <h2 id="h2">We will send you an email to reset your password.</h2> */}
       <label htmlFor="email">Email</label>
@@ -105,7 +105,7 @@ function ForgotPasswordForm() {
         {...register("email")}
         onChange={handleChange}
       />
-      <button type="button"
+      <button className="login-forgot" type="button"
         onClick = { () => {
           getSecurityInfo();
         }}
@@ -128,7 +128,7 @@ function ForgotPasswordForm() {
             onChange={handleAnswerChange}
           />
   
-          <button type="button"
+          <button className="login-forgot" type="button"
             onClick = {() => {
               checkSecurityAnswer();
             }}

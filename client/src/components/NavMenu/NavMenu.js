@@ -1,34 +1,121 @@
 import React from "react";
 //import { useStoreContext } from "../../utils/GlobalState";
-// import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
-import "./style.css";
+import MobileMenu from "../mobile-menu/MobileMenu";
+import MobileBtn from "../mobile-menu/MobileBtn";
+import { Link } from 'react-router-dom';
 
 function NavMenu() {
 //  const [store] = useStoreContext();
+document.addEventListener("DOMContentLoaded", function(){
+  /////// Prevent closing from click inside dropdown
+  document.querySelectorAll('.dropdown-menu').forEach(function(element){
+    element.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+  })
+}); 
+
+
+  const triggerSearch = () => {
+    const offcanvasMobileMenu = document.querySelector(".search_icon_inr");
+    offcanvasMobileMenu.classList.toggle("active");
+  };
+
 
   return (
-   
-    <>
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="/">
-       spice-a-holic
-     </a>
-    </nav>
-    </>
-  //   <>
-  //   <Navbar bg="dark" variant="dark">
-  //   <Navbar.Brand href="#home">Spice-A-Holic</Navbar.Brand>
-  //   <Nav className="mr-auto">
-  //     <Nav.Link href="/">spice-a-holic</Nav.Link>
-  //     <Nav.Link href="#features">Features</Nav.Link>
-  //     <Nav.Link href="#pricing">Pricing</Nav.Link>
-  //   </Nav>
-  //   <Form inline>
-  //     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-  //     <Button variant="outline-info">Search</Button>
-  //   </Form>
-  // </Navbar>
-  // </>
+ 
+<div className="menu_area">	
+    {/* Start: header navigation */}
+    <div className="navigation">
+        <div className="container"> 
+                <div className="logo">
+                    <a href= "/"> 
+                    	<img src="/assets/logo/spice-a-holic_logo-horizontal.png" alt="spiceaholic" width="225"/>
+                    </a>
+                </div>
+
+                <div className="meun_wrp">
+                    <nav expand="lg" sticky="top" id="navigation">  
+                        <nav className="mr-auto">
+                            <ul>
+                                <li className="active">
+                                {/* <Link to="/">Home </Link> */}
+                                </li>
+                                <li className="has-sub"><a href="#/">Products</a>
+                                    <ul>
+                                        <li><a href="baking">Baking</a>
+                                        </li>
+                                        <li><a href="grilling">Grilling</a>
+                                        </li>
+                                        <li><a href="seasoning">Seasoning</a>
+                                        </li>
+                                        <li><a href="extract">Extract</a>
+                                        </li>
+                                        <li><a href="teas">Teas</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li className="has-sub"><a href="blog">Blog</a>
+                                    <ul>
+                                        <li><a href="https://www.marksdailyapple.com/health-benefits-turmeric/">Turmeric</a>
+                                        </li>
+                                        <li><a href="https://www.marksdailyapple.com/cumin/">Cumin</a>
+                                        </li> 
+                                        <li><a href="https://www.marksdailyapple.com/salt-what-is-it-good-for/">Salt</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <li><Link to="/contact">Contact</Link>
+                                </li>
+                            </ul>
+                        </nav> 
+                    </nav>
+                </div>
+                
+
+                {/* Mobile Menu */}
+
+                <MobileBtn /> 
+
+                <MobileMenu />
+
+                {/* End:  Mobile Menu */}
+
+
+                {/* Start: Cart  */}
+                <div className="header_cart">
+                    <ul>
+                        <li className="header_search">
+                            <a href="#" onClick={() => triggerSearch()} className="cart-toggler search_icon">
+                                <i className="bi bi-search"></i></a>
+                            <div className="search_icon_inr">
+                                <form action="#" method="POST">
+                                    <div className="form-group">
+                                        <input placeholder="Search" type="text" /> 
+                                        <button className="btn-search" type="submit">
+                                        <i className="bi bi-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div> 
+                          </li>
+                        <li className="header_cart_icon">
+                            <a href="cart"><i className="fa fa-shopping-cart"></i><span className="number_cart">0</span></a>
+                        </li>
+                    </ul>
+                </div>
+                 {/* End: Cart  */}
+ 
+        </div>
+        {/* container */} 
+    </div>
+    {/* End: header navigation */}
+
+ 
+</div>
+ 
 
 
   );

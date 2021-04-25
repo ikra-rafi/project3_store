@@ -32,7 +32,7 @@ const Footer = () => {
               <div className="col-lg-3 col-sm-12">
                   <div className="widget">
                       <div className="footer_logo">
-                          <img className="img-responsive" src="assets/images/footer_logo.png" alt="" />
+                          <img className="img-responsive" src="assets/logo/spice-a-holic_logo-horizontal.png" alt="spice-a-holic" width="200"/>
                       </div>
                       <div className="footer_p">
                           <p className="footer_para">Why do we use 100% biodegradable packaging? And encourage sustainable farming? And get certified as a green business? Ask your great grandchildren. The real question is, why doesn't everyone?</p>
@@ -72,7 +72,7 @@ const Footer = () => {
                               <Link to={process.env.PUBLIC_URL + "/about"}>Return & Cancellation</Link>
                           </li>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/about"}>Online Organic Service</Link>
+                              <Link to={process.env.PUBLIC_URL + "/about"}>FAQ</Link>
                           </li>
                           <li>
                               <Link to={process.env.PUBLIC_URL + "/about"}>Delivery Schedule</Link>
@@ -96,9 +96,9 @@ const Footer = () => {
                                   <span className="post-date">
                                       <i className="fa fa-calendar"></i>March 14, 2021
                                   </span>
-                                  <Link to={process.env.PUBLIC_URL + "https://www.marksdailyapple.com/health-benefits-turmeric/"}>
+                                  <a href="https://www.marksdailyapple.com/health-benefits-turmeric/" target="_blank">
                                       <span>The Health Benefits of Turmeric</span>
-                                  </Link>
+                                  </a>
                               </span>
                           </li>
                            <li> 
@@ -107,9 +107,9 @@ const Footer = () => {
                                   <span className="post-date">
                                       <i className="fa fa-calendar"></i>October 20, 2020
                                   </span>
-                                  <Link to={process.env.PUBLIC_URL + "https://www.marksdailyapple.com/cumin"}>
+                                  <a href="https://www.marksdailyapple.com/cumin" target="_blank">
                                       <span>Benefits of Cumin</span>
-                                  </Link>
+                                  </a>
                               </span>
                           </li>
                       </ul>
@@ -138,9 +138,7 @@ const Footer = () => {
               </div> 
               {/*  End:Start Subscribe  */} 
 
-              {/* <button className={`scrollup ${scroll > top ? "show" : ""}`} onClick={() => scrollToTop()} >
-                  <span className="icon-glyph-203"></span>
-              </button> */}
+ 
           </div>
       </div> 
       {/*  Start:Subfooter  */}
