@@ -7,22 +7,22 @@ import { Link } from "react-router-dom";
 function AdminTable() {
 
   const [state, dispatch] = useTodoContext();
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [sortedProducts, setSortedProducts] = useState([]);
   const [nameSort, setNameSort] = useState("ascending");
   const [productSort, setProductSort] = useState("ascending");
 
   useEffect(() => {
     if ( state.products.length > 0 ) {
-      setFilteredProducts(state.products);
+      setSortedProducts(state.products);
     }
   });
 
   function sortTableByName() {
 
-    const filteredResults = [filteredProducts];
+    const sortedResults = [sortedProducts];
 
     if ( nameSort === "ascending"){
-        const results = filteredResults[0].sort((a, b) => {
+        const results = sortedResults[0].sort((a, b) => {
             if (a.name < b.name) {
                 return -1;
             }
@@ -32,13 +32,13 @@ function AdminTable() {
 
             return 0;
         });
-        setFilteredProducts(results);
+        setSortedProducts(results);
         setNameSort("descending");
 
     }
 
     if ( nameSort === "descending"){
-        const results = filteredResults[0].sort((a, b) => {
+        const results = sortedResults[0].sort((a, b) => {
             if (a.name < b.name) {
                 return 1;
             }
@@ -48,17 +48,17 @@ function AdminTable() {
             return 0;
         });
 
-        setFilteredProducts(results);
+        setSortedProducts(results);
         setNameSort("ascending")
     }
   }
 
   function sortTableByProdID() {
 
-    const filteredResults = [filteredProducts];
+    const sortedResults = [sortedProducts];
 
     if ( productSort === "ascending"){
-        const results = filteredResults[0].sort((a, b) => {
+        const results = sortedResults[0].sort((a, b) => {
             if (a.productID < b.productID) {
                 return -1;
             }
@@ -68,13 +68,13 @@ function AdminTable() {
 
             return 0;
         });
-        setFilteredProducts(results);
+        setSortedProducts(results);
         setProductSort("descending");
 
     }
 
     if ( productSort === "descending"){
-      const results = filteredResults[0].sort((a, b) => {
+      const results = sortedResults[0].sort((a, b) => {
           if (a.productID < b.productID) {
               return 1;
           }
@@ -84,7 +84,7 @@ function AdminTable() {
 
           return 0;
       });
-      setFilteredProducts(results);
+      setSortedProducts(results);
       setProductSort("ascending");
 
   }
@@ -103,7 +103,7 @@ function AdminTable() {
           </tr>
         </thead>
         <tbody>
-          {filteredProducts.map(result=>(
+          {sortedProducts.map(result=>(
             console.log(result),
             result.packaging.map(res=>(
               console.log(res),
