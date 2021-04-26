@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function(){
                             </div> 
                           </li>
                         <li className="header_cart_icon">
-                            <a href="cart"><i className="fa fa-shopping-cart"></i><span className="number_cart">0</span></a>
+                            <Link to="/cart"><i className="fa fa-shopping-cart"></i><span className="number_cart">0</span></Link>
                         </li>
                     </ul>
                 </div>

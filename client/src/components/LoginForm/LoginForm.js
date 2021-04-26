@@ -53,10 +53,12 @@ function LoginForm() {
     API.getLogin(john)
       .then(res => {
         if(res.status ===200) {
+          console.log("data.admin = " + res.data.admin);
 //          setJohnData({...johnData, email: res.data.email});
           dispatch({
             type: "loggedIn",
             loggedIn: true,
+            admin: res.data.admin,
             email: res.data.email
           })
         }
