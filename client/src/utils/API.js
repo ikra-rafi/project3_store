@@ -166,11 +166,17 @@ export default {
     console.log("save reset password");
     console.log("update pwd = " + storeLogin);
     return axios.put("/api/resetpwd/" + id, storeLogin);
-  }
+  },
 
 //  saveUpdate: function(storeLogin) {
 //    console.log("save reset password");
 //    return axios.post("/api/recipes", storeLogin);
 //  }
+
+// //=================GET ENV VARS==================
+// getEnvVars: function() {
+//   console.log("in api getenvvars");
+//   return axios.get("/api/envVars");
+// }
 
 };

@@ -11,8 +11,7 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
-    "react-hook-form": "^7.1.1"
+    "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -30,13 +29,10 @@
     "emailjs-com": "^2.6.4",
     "express": "^4.16.3",
     "express-session": "^1.17.1",
-    "google-maps-react": "^2.0.6",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "react-hook-form": "^7.1.1",
-    "react-meta-tags": "^1.0.1"
+    "passport-local": "^1.0.0"
   }
 }

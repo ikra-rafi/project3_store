@@ -312,7 +312,7 @@ const loginSeed =
     admin: true,
     discount: 10,
     firstName: "Luna",
-    lastName: "Shaqir"
+    lastName: "Shuqair"
 }
     
 ];

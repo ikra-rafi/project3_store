@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import "./style.css";
 import API from "../../utils/API";
 
@@ -25,7 +25,6 @@ function ForgotPasswordForm() {
     securityAnswer: "",
     firstName: "",
     lastName: "",
-    password: ""
   }]
   const [showMe, setShowMe] = useState(false);
   const [email, setEmail] = useState();
@@ -152,7 +151,7 @@ function ForgotPasswordForm() {
         </div>
           : null
       }
-      {errors. password&& <p>Your Password is less than 6 characters</p>} 
+      {errors.password&& <p>Your Password is less than 6 characters</p>} 
 
       <input type="submit" />
       <br></br>

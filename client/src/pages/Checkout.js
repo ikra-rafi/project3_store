@@ -4,7 +4,7 @@ import CartData from "../components/Test/CartData"
 import {Container} from "../components/Test/Grid";
 import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Checkout() {
   let shipCompanyName = React.createRef();
@@ -33,7 +33,7 @@ function Checkout() {
   let notes = React.createRef();
 
   const [state, dispatch] = useTodoContext();
-  const [cart, setCart] = useState();
+ // const [cart, setCart] = useState();
   const [checkbox, setCheckbox] = useState();
   const [loginInfo, setLoginInfo] = useState({_id: 0, email: ""}); 
 
@@ -42,9 +42,9 @@ function Checkout() {
     maximumFractionDigits: 2,
   });
 
-var billingCheck=false;
+//var billingCheck=false;
   function handleCheck(e) {
-    billingCheck = e.target.checked;
+ //   billingCheck = e.target.checked;
     setCheckbox(e.target.checked);
   }
 
@@ -146,14 +146,15 @@ var billingCheck=false;
   }
 
   function getCart() {
-
+    var salesTaxCalc;
+    var newSubTotal;
     if(state.loggedIn) {
-      var salesTaxCalc = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)) * parseFloat(state.salesTax)/100);
-      var newSubTotal = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)));
+       salesTaxCalc = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)) * parseFloat(state.salesTax)/100);
+       newSubTotal = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)));
     }
     else {
-      var salesTaxCalc = (parseFloat(state.subTotal)) * parseFloat(state.salesTax)/100;
-      var newSubTotal = (parseFloat(state.subTotal));
+      salesTaxCalc = (parseFloat(state.subTotal)) * parseFloat(state.salesTax)/100;
+      newSubTotal = (parseFloat(state.subTotal));
     }
 
     dispatch({

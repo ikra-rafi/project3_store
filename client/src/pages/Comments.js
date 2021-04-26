@@ -7,7 +7,7 @@ function Comments() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+ //   formState: { errors }
   } = useForm();
 
   useEffect(() => {
