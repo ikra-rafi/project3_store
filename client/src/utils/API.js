@@ -102,9 +102,16 @@ export default {
     return axios.put("/api/cart/" + id, cartData);
   },
 
-  deleteCart: function(id) {
+  // Delete an item from shopping cart in database
+  deleteCartItem: function(id) {
     console.log("API id = " + id);
     return axios.delete("/api/cart/" + id);
+  },
+
+  // Delete all items in shopping cart 
+  deleteCart: function() {
+    console.log("in deleteCart");
+    return axios.delete("/api/cart");
   },
 
   //==============RECIPE ROUTES ==================
