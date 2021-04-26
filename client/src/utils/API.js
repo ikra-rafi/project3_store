@@ -36,6 +36,7 @@ export default {
 
   // Saves the products to database
   saveProducts: function(storeProducts) {
+    console.log("storeProducts = " + storeProducts)
     return axios.post("/api/products", storeProducts);
   },
 
