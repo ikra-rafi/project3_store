@@ -71,16 +71,7 @@ const MobileMenu = () => {
                 </ul>
               </li>
 
-              <li className="menuItemHasChildren">
-                <Link to={process.env.PUBLIC_URL + "/blog"}>Blog</Link>
-                <ul className="subMenu">
-                    <li><Link to={process.env.PUBLIC_URL + "/blog"}>Blog One</Link></li>
-                    <li><Link to={process.env.PUBLIC_URL + "/blog-two"}>Blog Two</Link></li> 
-                    <li><Link to={process.env.PUBLIC_URL + "/single-blog"}>Blog Details</Link></li>
-                </ul>
-              </li>
-
-              <li className="menuItemHasChildren">
+                      <li className="menuItemHasChildren">
                 <Link to={process.env.PUBLIC_URL + "/blog"}>Blog</Link>
                 <ul className="subMenu">
                 <li><a href="https://www.marksdailyapple.com/health-benefits-turmeric/">Turmeric</a>
@@ -93,7 +84,7 @@ const MobileMenu = () => {
               </li>
 
               <li>
-                <Link to={process.env.PUBLIC_URL + "/contact"}>Contact</Link>
+                <Link to="/recipes">Recipes</Link>
               </li>
 
             </ul>
