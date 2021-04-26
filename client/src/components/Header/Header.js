@@ -1,6 +1,7 @@
  
 import React from 'react';
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	return (
@@ -31,7 +32,10 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <a href="/login" className="more-link" >Login</a>
+                <Link className="more-link" to="/login" >
+                    Login
+                </Link>                
+{/*                 <a href="/login" className="more-link" >Login</a> */}
             </div>
  
     </div> 

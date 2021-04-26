@@ -12,8 +12,12 @@ function AdminTable() {
   const [productSort, setProductSort] = useState("ascending");
 
   useEffect(() => {
+    let isMounted = true;
     if ( state.products.length > 0 ) {
-      setSortedProducts(state.products);
+      if(isMounted) {
+        setSortedProducts(state.products);
+      }
+
     }
   });
 

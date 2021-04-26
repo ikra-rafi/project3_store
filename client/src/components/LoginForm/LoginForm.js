@@ -11,7 +11,7 @@ function LoginForm() {
    const {
     register,
     handleSubmit,
-    setValue,
+//setValue,
     formState: { errors }  } = useForm();
 
     const initialValues = {
@@ -94,7 +94,7 @@ function LoginForm() {
           validate: (value) => value.length >= 6
         })}
       />
-      {errors. password&& <p>Your Password is less than 6 characters</p>}
+      {errors.password&& <p>Your Password is less than 6 characters</p>}
       <input className="input-login" type="submit" />
   
     </form >

@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
+import { Redirect, useHistory } from "react-router-dom";
 import Cart from "../components/Cart";
 import CartData from "../components/Test/CartData"
 import {Container} from "../components/Test/Grid";
 import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Checkout() {
   let shipCompanyName = React.createRef();
@@ -33,8 +34,10 @@ function Checkout() {
   let notes = React.createRef();
 
   const [state, dispatch] = useTodoContext();
-  const [cart, setCart] = useState();
+ // const [cart, setCart] = useState();
+ let history = useHistory();
   const [checkbox, setCheckbox] = useState();
+  const [changePage, setChangePage] = useState({redirectTo: null});
   const [loginInfo, setLoginInfo] = useState({_id: 0, email: ""}); 
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -42,9 +45,9 @@ function Checkout() {
     maximumFractionDigits: 2,
   });
 
-var billingCheck=false;
+//var billingCheck=false;
   function handleCheck(e) {
-    billingCheck = e.target.checked;
+ //   billingCheck = e.target.checked;
     setCheckbox(e.target.checked);
   }
 
@@ -137,6 +140,13 @@ var billingCheck=false;
       .then(res => {
         if(res.status === 200) {
           console.log("success on order save");
+          API.deleteCart()
+            .then(result => {
+              if(res.status===200) {
+                console.log("deleted cart");
+                history.push("/ThankYou");
+              }
+            })
         }
         console.log("in save orders");
         console.log(res.data);
@@ -146,14 +156,15 @@ var billingCheck=false;
   }
 
   function getCart() {
-
+    var salesTaxCalc;
+    var newSubTotal;
     if(state.loggedIn) {
-      var salesTaxCalc = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)) * parseFloat(state.salesTax)/100);
-      var newSubTotal = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)));
+       salesTaxCalc = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)) * parseFloat(state.salesTax)/100);
+       newSubTotal = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)));
     }
     else {
-      var salesTaxCalc = (parseFloat(state.subTotal)) * parseFloat(state.salesTax)/100;
-      var newSubTotal = (parseFloat(state.subTotal));
+      salesTaxCalc = (parseFloat(state.subTotal)) * parseFloat(state.salesTax)/100;
+      newSubTotal = (parseFloat(state.subTotal));
     }
 
     dispatch({
@@ -424,9 +435,9 @@ var billingCheck=false;
                  </div>
                )}
              </div>
-             <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" >
+{/*              <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" > */}
              <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
-         </Link>
+{/*          </Link> */}
         </Container>
       </Container>
     </div>
