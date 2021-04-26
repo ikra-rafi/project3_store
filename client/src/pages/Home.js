@@ -5,6 +5,10 @@ import ProductContext from "../utils/productContext";
 import ProductsContainer from "../components/ProductsContainer";
 import { useTodoContext} from "../utils/store";
 import { Link } from 'react-router-dom';
+import MetaTags from "react-meta-tags";
+import Jumbotron from '../components/Jumbotron';
+
+
 
 
 function Home() {
@@ -82,9 +86,18 @@ function loadProducts() {
   console.log("loggedIn = " + loggedIn);
 
   return (
-    <ProductContext.Provider value={{product, products}}>
+    <><MetaTags>
+        <title>spice-A-holic | Home</title>
+        <meta
+          name="description"
+          content="Organic Spices."
+        />
+      </MetaTags>
+      <Jumbotron />
 
-    <div>
+    <ProductContext.Provider value={{product, products}}>
+{/* MERN */}
+    {/* <div>
       <header className="navbar App-header" id="nav-container">
           <div className="col-4" >
               {loggedIn ? (
@@ -106,51 +119,66 @@ function loadProducts() {
                   )}
           </div>
           <div className="col-4 col-mr-auto">
-          <div id="top-filler"></div>
+          <div id="top-filler"></div> */}
               {/* <img alt="logo" /> */}
-              <h1>MERN Passport</h1>
+              {/* <h1>MERN Passport</h1>
           </div>
       </header>
-    </div>
-
+    </div> */}
+{/* Mern */}
 
       <div>
-        <h1 style={{color:'black'}}>Baking</h1>
+      <section className="product-section">
+      <div className="container">
+          <div className="base-header">
+              <small> Our Featured Items</small>  
+              <h3>Organic products</h3> 
+          </div>
+          
+      </div>
+  </section>
+
+
+        <h1 className="base-header" style={{color:'black'}}>Baking</h1>
         <ProductsContainer
           products = {bakingProducts}
           family = "baking"
           page = "home"/>
-        <h1 style={{color:'black'}}>Grilling</h1>
+        <h1 className="base-header" style={{color:'black'}}>Grilling</h1>
         <ProductsContainer
           products = {grillingProducts}
           family = "grilling"
           page = "home"/>
-        <h1 style={{color:'black'}}>Seasoning</h1>
+        <h1 className="base-header" style={{color:'black'}}>Seasoning</h1>
         <ProductsContainer
           products = {seasoningProducts}
           family = "seasoning"
           page = "home"/>
-        <h1 style={{color:'black'}}>Extract</h1>
+        <h1 className="base-header" style={{color:'black'}}>Extract</h1>
         <ProductsContainer
           products = {extractProducts}
           family = "extract"
           page = "home"/>
-        <h1 style={{color:'black'}}>Teas</h1>
+        <h1 className="base-header" className="base-header"style={{color:'black'}}>Teas</h1>
         <ProductsContainer
           products = {teaProducts}
           family = "teas"
           page = "home"/>
-        <div>
-          <Link to={{
+          <div className="container">
+        <div className="project_btn text-center">
+          <Link className="more-link" to={{
             pathname:"/products",
             state: {products: {products}}
           }}>View All</Link>
+        </div>
+        <br className="footer-spacing"></br>
         </div>
         {/* <ContactUsForm /> */}
       </div>
 
     </ProductContext.Provider>
-
+    
+</>
   )
 
 }

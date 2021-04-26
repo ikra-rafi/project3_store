@@ -2,7 +2,9 @@
     height: 100%;
     display: flex;
     flex-flow: row wrap;
-    padding: 20px;
+    margin-bottom: 49px;
+
+    padding: 0px;
     justify-content: space-around;
     align-content: flex-start;
     overflow: auto;
