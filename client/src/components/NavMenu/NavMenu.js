@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function(){
                                     </ul>
                                 </li>
                                 
-                                <li><Link to="/contact">Contact</Link>
+                                <li><Link to="/recipes">Recipes</Link>
                                 </li>
                             </ul>
                         </nav> 
@@ -88,21 +88,29 @@ document.addEventListener("DOMContentLoaded", function(){
                 <div className="header_cart">
                     <ul>
                         <li className="header_search">
-                            <a href="#" onClick={() => triggerSearch()} className="cart-toggler search_icon">
-                                <i className="bi bi-search"></i></a>
+                            {/* <a href="#" onClick={() => triggerSearch()} className="cart-toggler search_icon">
+                                <i className="bi bi-search"></i></a> */}
+                                {/* <figure> */}
+                            <a href="#">
+                              <img src="./assets/icons/search.png" 
+                                 className="cart-toggler search_icon" 
+                                 type="button" width="12px"
+                                 onClick={() => triggerSearch()}
+                              /></a>
+          
                             <div className="search_icon_inr">
                                 <form action="#" method="POST">
                                     <div className="form-group">
                                         <input placeholder="Search" type="text" /> 
                                         <button className="btn-search" type="submit">
-                                        <i className="bi bi-search"></i>
+                                        <img src="assets/icons/search" className="bi bi-search" />
                                         </button>
                                     </div>
                                 </form>
                             </div> 
                           </li>
                         <li className="header_cart_icon">
-                            <a href="cart"><i className="fa fa-shopping-cart"></i><span className="number_cart">0</span></a>
+                            <Link to="/cart"><i className="fa fa-shopping-cart"></i><span className="number_cart">0</span></Link>
                         </li>
                     </ul>
                 </div>

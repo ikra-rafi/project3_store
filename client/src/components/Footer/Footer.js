@@ -66,7 +66,7 @@ const Footer = () => {
                       <h5>Quick Links</h5>
                       <ul>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/about"}>Customer Service</Link>
+                              <Link to={process.env.PUBLIC_URL + "/contact"}>Who We Are</Link>
                           </li>
                           <li>
                               <Link to={process.env.PUBLIC_URL + "/about"}>Return & Cancellation</Link>

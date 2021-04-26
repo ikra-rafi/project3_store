@@ -19,6 +19,7 @@ import Checkout from "./pages/Checkout";
 import Comments from "./pages/Comments";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
+import AddProducts from "./pages/AddProducts";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             <Route path="/johnSignup" component={johnSignup} /> */}
             <Route path="/comments" component={Comments} />
             <Route path="/ThankYou" component={ThankYou} />
+            <Route path="/AddProducts" component={AddProducts} />
           </Switch>
           < Footer />
 

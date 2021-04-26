@@ -104,11 +104,14 @@ function ForgotPasswordForm() {
         {...register("email")}
         onChange={handleChange}
       />
-      <button className="login-forgot" type="button"
+        <figure>
+        <img src="./assets/icons/click.png" className="btn btn-link" type="button"
         onClick = { () => {
           getSecurityInfo();
         }}
       />
+       <figcaption>click here</figcaption>
+      </figure>
       {answer.securityQuestion ? 
         <div>
           <label htmlFor="securityQuestion">Security Question</label>
@@ -126,12 +129,14 @@ function ForgotPasswordForm() {
             {...register("answer")}
             onChange={handleAnswerChange}
           />
-  
-          <button className="login-forgot" type="button"
+          <figcaption>click here</figcaption>
+          <figure>
+          <img src="./assets/icons/click.png" className="btn btn-link" type="button"
             onClick = {() => {
               checkSecurityAnswer();
             }}
           />
+          </figure>
 
           {showMe?
             <div>
