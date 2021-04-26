@@ -126,14 +126,14 @@ function AddProducts() {
       healthBenefit: healthBenefit.current.value,
       picLink: picURLInput,
       historyDetails: historyDetails.current.value,
-      family: [{
+      family: {
           baking: family.baking,
           grilling: family.grilling,
           seasoning: family.seasoning,
           extracts: family.extract,
           teas: family.tea
-      }],
-      region: [{
+      },
+      region: {
           india: region.india,
           asia: region.asia,
           carribean: region.carribean,
@@ -141,7 +141,7 @@ function AddProducts() {
           african: region.africa,
           latinAmerica: region.latinAmerica,
           europe: region.europe
-      }],
+      },
       productID: productID.current.value,
     }
 
