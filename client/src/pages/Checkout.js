@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { Redirect, useHistory } from "react-router-dom";
 import Cart from "../components/Cart";
 import CartData from "../components/Test/CartData"
 import {Container} from "../components/Test/Grid";
@@ -34,7 +35,9 @@ function Checkout() {
 
   const [state, dispatch] = useTodoContext();
  // const [cart, setCart] = useState();
+ let history = useHistory();
   const [checkbox, setCheckbox] = useState();
+  const [changePage, setChangePage] = useState({redirectTo: null});
   const [loginInfo, setLoginInfo] = useState({_id: 0, email: ""}); 
 
   const formatter = new Intl.NumberFormat('en-US', {
@@ -137,6 +140,7 @@ function Checkout() {
       .then(res => {
         if(res.status === 200) {
           console.log("success on order save");
+          history.push("/ThankYou");
         }
         console.log("in save orders");
         console.log(res.data);
@@ -425,9 +429,9 @@ function Checkout() {
                  </div>
                )}
              </div>
-             <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" >
+{/*              <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" > */}
              <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
-         </Link>
+{/*          </Link> */}
         </Container>
       </Container>
     </div>
