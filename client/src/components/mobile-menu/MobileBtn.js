@@ -12,7 +12,7 @@ const HeaderBtn = () => {
  
       <div className="mobile-button-wrapper d-block d-lg-none text-right">
         <button className="mobile-aside-button" onClick={() => triggerMobileMenu()} >
-            <i className="icon-glyph-233"></i>
+            <i className="bi bi-list"></i>
         </button>
       </div>
       
