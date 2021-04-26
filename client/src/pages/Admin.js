@@ -183,14 +183,12 @@ function Admin() {
   // }
 
   return (
-    <div>
-      {/* <Container fluid> */}
-        {/* <Container> */}
+
+
         <AdminTable />
 
-        {/* </Container> */}
-      {/* // </Container> */}
-    </div>
+
+
   );
 }
 
