@@ -37,7 +37,7 @@ function SignUpForm() {
       securityAnswer: data.answer,
       firstName: data.firstName,
       lastName: data.lastName,
-      admin: true,
+      admin: false,
       discount: 10
     }]
   

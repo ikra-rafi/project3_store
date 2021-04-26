@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useEffect, useState} from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import {Container} from "../components/Test/Grid";
 import API from "../utils/API";
@@ -42,6 +42,20 @@ function AddProducts() {
     europe: false
     }
     
+    useEffect(() => {
+      console.log("add products");
+      if(!state.admin) {
+        history.push("/");
+      }
+      // if(state.loggedIn) {
+      //   applyDiscount = true;
+      // }
+      // else {
+      //   applyDiscount = false;
+      // }
+    }, [])
+
+
   var picURLInput;
 
   const [family, setFamily] = useState(familyCheckbox);

@@ -17,7 +17,7 @@ const Header = () => {
                 </div>
                 <div className="header_top_left">
                     <ul className="header_socil list-inline pull-left">  
-                        <li><a href="/contact" target="_blank"><i className="fa fa-envelope"></i>Contact Us</a></li>
+                        <li><Link to="/contact"><i className="fa fa-envelope"></i>Contact Us</Link></li>
                         <li>
                             <a href="//facebook.com" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook"></i></a>
                         </li>
