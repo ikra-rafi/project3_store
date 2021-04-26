@@ -1,45 +1,42 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./style.css";
+import StarRating from 'react-star-ratings';
 
-class Ratings extends Component {
+function Ratings(props) {
 
-    constructor(props) {
+    const [average, setAverage] = useState(0);
 
-        super(props);
+    useEffect(() => {
+        let isMounted = true;
+        if ( props.ratings.length> 0 ) {
+          if(isMounted) {
+            console.log(props.ratings);
+            getAverage(props.ratings);
+          }
 
-        console.log(props);
-
-        this.state = {
-            ratings: props.ratings,
-            average: 0
         }
+      });
 
-    }
-
-    componentDidMount() {
-        this.getAverage();
-        // this.setState({ratings: this.props.ratings})
-        // console.log(this.state.ratings)
-    }
-    getAverage = () => {
+    function getAverage(results){
+        console.log(results);
         var avg = 0;
 
-        for (var i=0; i< this.state.ratings.length; i++){
-            const rating = parseInt(this.state.ratings[i].stars);
+        for (var i=0; i < results.length; i++){
+            const rating = parseInt(props.ratings[i].stars);
             avg += rating;
         }
-        const average = avg / this.state.ratings.length;
+        const average = avg / props.ratings.length;
 
-        this.setState({
-            average: average
-        });
+        setAverage(average);
+        console.log(average);
     }
 
-    render(){
-        return(
-            <div>{this.state.average}</div>
-        );
-    }
+    return(
+        <StarRating
+            rating = {average}
+            numberofStars = {5}
+            />
+    );
 
 }
 

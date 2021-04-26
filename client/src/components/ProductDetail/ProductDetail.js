@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import Ratings from "../Ratings"
 
+
+
 function ProductDetail(props) {
-  console.log(props)
+
 
   const handleIncrement= (e) => {
     const id = e.target.id.split('-')[1];
@@ -34,7 +36,7 @@ function ProductDetail(props) {
      <img className="product-image" alt={props.product.name} src={props.product.picLink} />
     </div>
     <div className="col-lg-6 col-xm-12">
-     {/* <Ratings ratings= {props.product.ratings}/> */}
+     <Ratings ratings= {props.ratings}/>
      <h1 id="h1" style={{color:'black'}}>{props.product.name}</h1>
       <p id="des">{props.product.description}</p>
       <p id="des">{props.product.historyDetails}</p>
