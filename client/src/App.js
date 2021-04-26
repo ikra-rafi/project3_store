@@ -18,6 +18,7 @@ import Checkout from "./pages/Checkout";
 //import johnSignup from "./pages/sign-up";
 import Comments from "./pages/Comments";
 import Contact from "./pages/Contact";
+import ThankYou from "./pages/ThankYou";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
 {/*             <Route path="/john" component={john} />
             <Route path="/johnSignup" component={johnSignup} /> */}
             <Route path="/comments" component={Comments} />
+            <Route path="/ThankYou" component={ThankYou} />
           </Switch>
           < Footer />
 
