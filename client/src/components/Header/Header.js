@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	return (
@@ -11,7 +12,7 @@ const Header = () => {
         <div className="container"> 
                 <div className="header_top_right list-unstyled">
                     <ul>
-                        <li><i className="fa fa-tags"></i>Free Shipping on purchases when you spend $50!</li>
+                        <li><i className="fa fa-tags"></i>Members receive 10% off their purchase!</li>
                         <li><i className="fa fa-heart"></i>Favorites</li>
                     </ul>
                 </div>
@@ -34,7 +35,7 @@ const Header = () => {
                 </div>
                 <Link className="more-link" to="/login" >
                     Login
-                </Link>
+                </Link>                
             </div>
  
     </div> 

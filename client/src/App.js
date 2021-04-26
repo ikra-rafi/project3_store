@@ -14,10 +14,11 @@ import Footer from "./components/Footer";
 import AllProducts from "./pages/AllProducts";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Checkout from "./pages/Checkout";
-import john from "./pages/login-form";
-import johnSignup from "./pages/sign-up";
+//import john from "./pages/login-form";
+//import johnSignup from "./pages/sign-up";
 import Comments from "./pages/Comments";
 import Contact from "./pages/Contact";
+import ThankYou from "./pages/ThankYou";
 
 function App() {
   return (
@@ -37,9 +38,10 @@ function App() {
             <Route path="/cart" component={ShoppingCart} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/products" component={AllProducts} />
-            <Route path="/john" component={john} />
-            <Route path="/johnSignup" component={johnSignup} />
+{/*             <Route path="/john" component={john} />
+            <Route path="/johnSignup" component={johnSignup} /> */}
             <Route path="/comments" component={Comments} />
+            <Route path="/ThankYou" component={ThankYou} />
           </Switch>
           < Footer />
 
