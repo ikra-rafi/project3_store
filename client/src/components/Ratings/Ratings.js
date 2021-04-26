@@ -35,6 +35,7 @@ function Ratings(props) {
         <StarRating
             rating = {average}
             numberofStars = {5}
+            starDimension = {"20px"}
             />
     );
 

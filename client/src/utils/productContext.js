@@ -10,6 +10,7 @@ const ProductContext = React.createContext({
   region: {},
   productId: "",
   ratings: [{}],
+  commentIDs: [],
   handleBtnClick: () => {}
 });
 
