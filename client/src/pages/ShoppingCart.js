@@ -238,7 +238,7 @@ console.log(process.env.REACT_APP_UPLOAD_PRESET);
 
   function handleRemoveClick (e) {
 
-    API.deleteCart(e.target.id)
+    API.deleteCartItem(e.target.id)
       .then(res => {
         console.log(res.data);
         getCart();

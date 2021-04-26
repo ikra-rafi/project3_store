@@ -140,7 +140,13 @@ function Checkout() {
       .then(res => {
         if(res.status === 200) {
           console.log("success on order save");
-          history.push("/ThankYou");
+          API.deleteCart()
+            .then(result => {
+              if(res.status===200) {
+                console.log("deleted cart");
+                history.push("/ThankYou");
+              }
+            })
         }
         console.log("in save orders");
         console.log(res.data);
