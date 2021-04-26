@@ -83,8 +83,8 @@ function loadProducts() {
 
   return (
     <ProductContext.Provider value={{product, products}}>
-
-    <div>
+{/* MERN */}
+    {/* <div>
       <header className="navbar App-header" id="nav-container">
           <div className="col-4" >
               {loggedIn ? (
@@ -106,13 +106,13 @@ function loadProducts() {
                   )}
           </div>
           <div className="col-4 col-mr-auto">
-          <div id="top-filler"></div>
+          <div id="top-filler"></div> */}
               {/* <img alt="logo" /> */}
-              <h1>MERN Passport</h1>
+              {/* <h1>MERN Passport</h1>
           </div>
       </header>
-    </div>
-
+    </div> */}
+{/* Mern */}
 
       <div>
         <h1 style={{color:'black'}}>Baking</h1>

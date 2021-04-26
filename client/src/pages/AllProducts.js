@@ -59,6 +59,18 @@ function filterResults(event) {
 }
 
   return (
+    <><section className="product-section">
+      <div className="container">
+          <div className="base-header">
+              <small> Our Featured Items</small>  
+              <h3>Organic products</h3> 
+          </div>
+          <div className="row">
+
+        
+          </div>
+      </div>
+  </section>
     <ProductContext.Provider value={{product, products}}>
       <form>
           <label style={{color:'black'}}>Search Products: </label><input id="searchInput" onKeyUp={handleInputChange} ></input>
@@ -76,7 +88,7 @@ function filterResults(event) {
       </div>
 
     </ProductContext.Provider>
-
+</>
   );
 }
 

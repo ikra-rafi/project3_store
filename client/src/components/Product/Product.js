@@ -1,7 +1,8 @@
 import React from 'react';
-import "./style.css";
 import Ratings from "../Ratings";
 import { Link } from "react-router-dom";
+import "./style.css";
+
 function Product(props) {
   console.log(props);
   const handleIncrement= (e) => {
@@ -22,23 +23,24 @@ function Product(props) {
   }
   if (props.page === "home"){
     return (
-      <div className="row">
+     
+     <div className="row">
           <div className="col-4">
             <div className="card">
               <div className="img-container">
                 <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image" alt={props.product.name} src={props.product.picLink} /></Link>
               </div>
               <div className="content">
-                  <h3 className="product-name">
+                  <h4 className="product-name">
                    {props.product.name}
-                  </h3>
+                  </h4>
                   <div className="row">
                     <div className="col-6">
-                      <p>${props.product.packaging[0].price}</p>
-                      <p>{props.product.packaging[0].size}</p>
+                      <p className="product_price">${props.product.packaging[0].price}</p>
+                      <p className="product_info">{props.product.packaging[0].size}</p>
                     </div>
                     <div className="col-6">
-                      <button id="addCart">Add to Cart</button>
+                      <button className="project_view" id="addCart">Add to Cart <i className="fa fa-shopping-cart"></i></button>
                     </div>
                   </div>
               </div>
@@ -74,7 +76,11 @@ function Product(props) {
             </div>
           </div>
       </div>
-    );
-  }
+      
+    );}
+
+   
+  
+  
 }
 export default Product;
