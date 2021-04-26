@@ -8,6 +8,8 @@ function ProductsContainer(props) {
 
   
   return (
+
+    
     <div>
       <div className="container product-wrapper">
         {props.products.map(product => (

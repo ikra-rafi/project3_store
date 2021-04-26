@@ -30,17 +30,19 @@ function Product(props) {
               <div className="img-container">
                 <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image" alt={props.product.name} src={props.product.picLink} /></Link>
               </div>
-              <div className="content">
+              <div className="product_info">
                   <h4 className="product-name">
                    {props.product.name}
                   </h4>
                   <div className="row">
                     <div className="col-6">
                       <p className="product_price">${props.product.packaging[0].price}</p>
+                    </div>
+                    <div className="col-6">  
                       <p className="product_info">{props.product.packaging[0].size}</p>
                     </div>
-                    <div className="col-6">
-                      <button className="project_view" id="addCart">Add to Cart <i className="fa fa-shopping-cart"></i></button>
+                    <div className="project_view">
+                      <button id="addCart"><i className="fa fa-shopping-cart"></i></button>
                     </div>
                   </div>
               </div>

@@ -1791,7 +1791,7 @@ right: 0px !important;
   ------------------------------------------------------*/
   .product-section {
     padding-bottom: 0px;
-    padding-top: 2px;
+    padding-top: 50px;
   }
   
   .product_wrp {
@@ -2706,6 +2706,11 @@ right: 0px !important;
     /*----------------------------------------------------
      16. Footer Section
   ------------------------------------------------------*/
+  .footer-spacing {
+    margin-bottom: 100px;
+  }
+  
+  
   .home-page .footer-section {
     padding-top: 285px;
     margin-top: -300px;
@@ -5708,20 +5713,25 @@ right: 0px !important;
 
 
 /* mobile menu */
+.bi-list{
+  color: #ca3c08;
+
+}
 .mobile-aside-button {
   font-size: 34px;
   width: 30px;
   height: 30px;
+  margin-top: 20px;
   padding: 0;
   cursor: pointer;
-  color: #fff;
+  color: #ca3c08 i !important;
   border: none;
   background: none;
 }
 .mobile-aside-button svg {
   width: 100%;
   height: 100%;
-  margin-top: 5px;
+  margin-top: 15px;
   vertical-align: top;
 }
 .mobile-aside-button:focus {

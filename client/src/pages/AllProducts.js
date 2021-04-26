@@ -65,10 +65,7 @@ function filterResults(event) {
               <small> Our Featured Items</small>  
               <h3>Organic products</h3> 
           </div>
-          <div className="row">
-
-        
-          </div>
+          
       </div>
   </section>
     <ProductContext.Provider value={{product, products}}>
