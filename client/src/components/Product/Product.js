@@ -33,63 +33,71 @@ function Product(props) {
     return (
       <div className="row">
           <div className="col-4">
-            <div className="card">
-              <div className="img-container">
-                <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image" alt={props.product.name} src={props.product.picLink} /></Link>
+            <div className="card" id="ls">
+              <div className="img-container"id="cont" >
+                <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image"  alt={props.product.name} src={props.product.picLink} /></Link>
               </div>
               <div className="content">
 
                   <h3 className="product-name">
                    {props.product.name}
                   </h3>
-                  <div className="row">
-                    <div className="col-6">
-                      <p>${props.product.packaging[0].price}</p>
-                      <p>{props.product.packaging[0].size}</p>
-                    </div>
+                  
+                      <p >${props.product.packaging[0].price}</p>
+                      <p >{props.product.packaging[0].size}</p>
+                   
 
-                    <div className="col-6">
+                    
                       <button id="addCart">Add to Cart</button>
-                    </div>
+                    
                   </div>
               </div>
             </div>
           </div>
-      </div>
+   
     );
 
   } else {
     return (
       <div className="row">
           <div className="col-4">
-            <div className="card">
-              <div className="img-container">
+            <div className="card" id="ls">
+              <div className="img-container" id="image">
               <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image" alt={props.product.name} src={props.product.picLink} /></Link>
               </div>
               <div className="content">
 
-                  <h3 className="product-name">
+                  <h3 className="product-name" id="h5">
                    {props.product.name}
                   </h3>
-                  <Ratings ratings= {props.product.ratings}/>
-                  <p>{props.product.description}</p>
+                  <Ratings id="rate" ratings= {props.product.ratings}/>
+                  <p id="description">{props.product.description}</p>
 
                   <select name="packaging-choices" id="packaging">
                     <option value = {props.product.packaging[0].size}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>
                     <option value = {props.product.packaging[1].size}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
                   </select>
-
+                  
+                    
                   <div id = "quantityDiv">
-                    <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
-                    <input type="text" className="inline quantity" id={props.product._id} defaultValue = "1"></input>
-                    <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-                    <button id="addCart">Add to Cart</button>
+                
+                  
+                    <button className = "inline btn" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
+                    <input  type="text" className="inline quantity btn" id={props.product._id} defaultValue = "1"></input>
+                    <button className = "inline btn" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
+                
+                  
+                    <button id="addCart1">Add to Cart</button>  
                   </div>
+                  </div>
+                  </div>
+                  
 
-              </div>
-            </div>
-          </div>
-      </div>
+                  </div>
+</div>
+            
+          
+    
     );
 
   }

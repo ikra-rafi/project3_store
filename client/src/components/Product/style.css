@@ -1,11 +1,15 @@
 .card {
-    border-radius: 2px;
-    height: 300px;
+    border-radius: 1px;
+    height: 400px;
     margin: 1rem;
     position: relative;
-    width: 325px;
-    box-shadow: 0 3px 3px black, 0 3px 3px black;
+    width: 300px;
+    /* color:pink; */
+    box-shadow: 0 3px 3px #383838, 0 3px 3px #383838;
     text-align: left;
+    /* margin-left:5%; */
+   
+   
   }
 
   .product-card {
@@ -16,24 +20,30 @@
     width: 325px;
     box-shadow: 0 3px 3px black, 0 3px 3px black;
     text-align: left;
+    background:gray;
+   
   } 
 
-   .card > .img-container {
+    .card > .img-container {
     
     height: 200px;
     overflow: hidden;
     text-align: center;
-    display: flex;
-    align-items: center; /* vertical */
-    justify-content: center;/* horizontal*/
-   }
+    display: flex; 
+    /* align-items: left; vertical */
+   /* justify-content: center;horizontal */
+
+    
+     }  
 
   .card > .content > ul {
     list-style-type: none;
+   
   }
 
   .inline {
       display: inline;
+     
   }
 
   .quantity {
@@ -41,16 +51,95 @@
   }
 
   
- #packaging{
-   width:150px;
-   margin-bottom:1%;
-   font-family: 'New Tegomin', serif;
- }
  #product-name{
   font-family: 'New Tegomin', serif;
  
  }
- #product-image{
-   width:1px;
+ .product-image{
+   width:400px;
    
  }
+ 
+ #image{
+   padding-top:20%;
+   width:300px;
+   height:200px;
+   margin:1%;
+   padding:1px; 
+   overflow: hidden;
+    text-align: center;
+    display: flex;
+   
+ }
+ /* #ls{
+  margin:1%;
+  padding:1%;
+  color:blue;
+ } */
+
+ /* #cont{
+   background:blue;
+ } */
+ #h5{
+   font-size:20px;
+   font-family: 'New Tegomin', serif;
+   margin-left:5%;
+   color:#c44308;
+ }
+
+ #rate{
+  font-size:5px;
+  margin-left:5%
+ }
+
+ #description{
+  font-size:15px;
+  margin-left:5%;
+  color:black;
+ }
+
+ #packaging{
+  width:100px;
+  font-size:13px;
+  margin-bottom:1%;
+  font-family: 'New Tegomin', serif;
+  margin-left:5%;
+}
+
+/* .inline{ 
+ /* background:w; */
+  /* width:10px;
+  height:40px; */
+  /* padding:1% 1%;
+  margin:1%; */
+/*  */
+
+
+/* .inlinequantity{
+  width:10px;
+  background:blue;
+} */
+
+
+#addCart1{
+  margin-top:1%;
+  width: 100px;
+  height: 40px;
+  font-family: 'New Tegomin', serif;
+  background: #c44308;
+  color: white;
+  font-size:12px;
+  margin-left:5%;
+  text-align: center;
+  
+}
+#addCart:hover {
+  background: white;
+  color:#a73500;
+  border: 1px solid  #c44308;
+}
+
+#ls{
+  
+  background:	#F5F5F5;
+}
