@@ -1,80 +1,116 @@
 import React, { useEffect, useState } from "react";
-import { useTodoContext} from "../../utils/store";
+import API from "../../utils/API";
+import {useTodoContext} from "../../utils/store";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 function AdminTable() {
 
   const [state, dispatch] = useTodoContext();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [nameSort, setNameSort] = useState("ascending");
+  const [productSort, setProductSort] = useState("ascending");
 
-//   console.log(state);
-//   console.log(nameSort);
+  useEffect(() => {
+    if ( state.products.length > 0 ) {
+      setFilteredProducts(state.products);
+    }
+  });
 
-//   useEffect(() => {
-//     setFilteredProducts(state.products);
-//     console.log(filteredProducts);
-//   }, []);
+  function sortTableByName() {
 
+    const filteredResults = [filteredProducts];
 
-//   function sortTableByName() {
-//     // let filteredResults = [state.products];
+    if ( nameSort === "ascending"){
+        const results = filteredResults[0].sort((a, b) => {
+            if (a.name < b.name) {
+                return -1;
+            }
+            if (a.name > b.name) {
+                return 1;
+            }
 
-//     setFilteredProducts(state.products);
+            return 0;
+        });
+        setFilteredProducts(results);
+        setNameSort("descending");
 
-//     console.log(filteredProducts);
+    }
 
-//     // if ( nameSort === "ascending"){
-//     //     filteredResults.sort((a, b) => {
-//     //         if (a.name < b.name) {
-//     //             return -1;
-//     //         }
-//     //         if (a.name > b.name) {
-//     //             return 1;
-//     //         }
+    if ( nameSort === "descending"){
+        const results = filteredResults[0].sort((a, b) => {
+            if (a.name < b.name) {
+                return 1;
+            }
+            if (a.name > b.name) {
+                return -1;
+            }
+            return 0;
+        });
 
-//     //         return 0;
-//     //     });
-//     //     setFilteredProducts(filteredResults);
-//     //     setNameSort("descending");
-//     // }
+        setFilteredProducts(results);
+        setNameSort("ascending")
+    }
+  }
 
-//     // if ( nameSort === "descending"){
-//     //     filteredResults.sort((a, b) => {
-//     //         if (a.name < b.name) {
-//     //             return 1;
-//     //         }
-//     //         if (a.name > b.name) {
-//     //             return -1;
-//     //         }
-//     //         return 0;
-//     //     });
+  function sortTableByProdID() {
 
-//     //     setFilteredProducts(filteredResults);
-//     //     setNameSort("ascending")
-//     // }
-// }
+    const filteredResults = [filteredProducts];
 
+    if ( productSort === "ascending"){
+        const results = filteredResults[0].sort((a, b) => {
+            if (a.productID < b.productID) {
+                return -1;
+            }
+            if (a.productID > b.productID) {
+                return 1;
+            }
+
+            return 0;
+        });
+        setFilteredProducts(results);
+        setProductSort("descending");
+
+    }
+
+    if ( productSort === "descending"){
+      const results = filteredResults[0].sort((a, b) => {
+          if (a.productID < b.productID) {
+              return 1;
+          }
+          if (a.productID > b.productID) {
+              return -1;
+          }
+
+          return 0;
+      });
+      setFilteredProducts(results);
+      setProductSort("ascending");
+
+  }
+  }
   return (
    <div>
      <table className="table table-hover table-striped">
         <thead>
           <tr>
             <th></th>
-            <th><button>Product ID</button></th>
-            <th><button>Product Name</button></th>
+            <th><button onClick={sortTableByProdID}>Product ID</button></th>
+            <th><button onClick={sortTableByName}>Product Name</button></th>
             <th>Description</th>
             <th>Size</th>
             <th>Quantity</th>
           </tr>
         </thead>
         <tbody>
-          {state.products.map(result=>(
+          {filteredProducts.map(result=>(
             console.log(result),
             result.packaging.map(res=>(
               console.log(res),
               <tr key={result._id + res.size}>
-                <td></td>
+                <td>
+                <Link className="nav-link" to={{pathname: `/products/${result._id}`}} ><img className="thumbnail-image" alt={result.name} src={result.picLink} /></Link>
+                </td>
                 <td><p> {result.productID}</p></td>
                 <td><p> {result.name}</p></td>
                 <td><p> {result.description}</p></td>

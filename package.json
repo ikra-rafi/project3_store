@@ -25,6 +25,7 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.4.1",
+    "bootstrap-star-rating": "^4.0.6",
     "connect-mongo": "^4.4.1",
     "dotenv": "^8.2.0",
     "emailjs-com": "^2.6.4",
