@@ -96,7 +96,7 @@ const Footer = () => {
                                   <span className="post-date">
                                       <i className="fa fa-calendar"></i>March 14, 2021
                                   </span>
-                                  <a href="https://www.marksdailyapple.com/health-benefits-turmeric/" target="_blank">
+                                  <a href="https://www.marksdailyapple.com/health-benefits-turmeric/" target="_blank" rel="noopener noreferrer">
                                       <span>The Health Benefits of Turmeric</span>
                                   </a>
                               </span>
@@ -107,7 +107,7 @@ const Footer = () => {
                                   <span className="post-date">
                                       <i className="fa fa-calendar"></i>October 20, 2020
                                   </span>
-                                  <a href="https://www.marksdailyapple.com/cumin" target="_blank">
+                                  <a href="https://www.marksdailyapple.com/cumin" target="_blank" rel="noopener noreferrer">
                                       <span>Benefits of Cumin</span>
                                   </a>
                               </span>

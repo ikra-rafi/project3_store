@@ -1,7 +1,7 @@
-import React, { useEffect, useState, Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+//import { Redirect } from 'react-router-dom'
 import API from "../utils/API";
-import {useTodoContext} from "../utils/store";
+//import {useTodoContext} from "../utils/store";
 
 
 function SignUp() {
@@ -12,7 +12,7 @@ function SignUp() {
 	}
 
 	const [signup, setSignUp] = useState(temp);
-	const [state, dispatch] = useTodoContext();
+//	const [state, dispatch] = useTodoContext();
 
 	useEffect(() => {
 		console.log("in signup effect");

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Container from "../components/Container";
+//import Container from "../components/Container";
 import ProductDetail from "../components/ProductDetail";
 import API from '../utils/API';
 

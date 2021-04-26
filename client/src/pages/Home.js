@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/API";
 import ProductContext from "../utils/productContext";
-import ContactUsForm from "../components/ContactUsForm.js";
+//import ContactUsForm from "../components/ContactUsForm.js";
 import ProductsContainer from "../components/ProductsContainer";
 import { useTodoContext} from "../utils/store";
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function Home() {
@@ -17,7 +17,7 @@ function Home() {
   const [extractProducts, setExtractProducts] = useState([]);
   const [teaProducts, setTeaProducts] = useState([]);
   const [state, dispatch] = useTodoContext();
-  const [logout, setLogout] = useState();
+//  const [logout, setLogout] = useState();
 
 // When the component mounts, a call will be made to get random users.
 useEffect(() => {
