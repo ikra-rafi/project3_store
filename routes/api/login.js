@@ -15,6 +15,7 @@ console.log("in loginrouter");
         console.log('logged in', req.user);
         var userInfo = {
             email: req.user.email,
+            admin: req.user.admin
         };
         res.send(userInfo);
     }

@@ -36,6 +36,7 @@ export default {
 
   // Saves the products to database
   saveProducts: function(storeProducts) {
+    console.log("storeProducts = " + storeProducts)
     return axios.post("/api/products", storeProducts);
   },
 
@@ -102,9 +103,16 @@ export default {
     return axios.put("/api/cart/" + id, cartData);
   },
 
-  deleteCart: function(id) {
+  // Delete an item from shopping cart in database
+  deleteCartItem: function(id) {
     console.log("API id = " + id);
     return axios.delete("/api/cart/" + id);
+  },
+
+  // Delete all items in shopping cart 
+  deleteCart: function() {
+    console.log("in deleteCart");
+    return axios.delete("/api/cart");
   },
 
   //==============RECIPE ROUTES ==================
@@ -166,11 +174,17 @@ export default {
     console.log("save reset password");
     console.log("update pwd = " + storeLogin);
     return axios.put("/api/resetpwd/" + id, storeLogin);
-  }
+  },
 
 //  saveUpdate: function(storeLogin) {
 //    console.log("save reset password");
 //    return axios.post("/api/recipes", storeLogin);
 //  }
+
+// //=================GET ENV VARS==================
+// getEnvVars: function() {
+//   console.log("in api getenvvars");
+//   return axios.get("/api/envVars");
+// }
 
 };

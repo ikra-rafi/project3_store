@@ -11,8 +11,7 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
-    "react-hook-form": "^7.1.1"
+    "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -36,7 +35,7 @@
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "react-hook-form": "^7.1.1",
-    "react-meta-tags": "^1.0.1"
+    "react-meta-tags": "^1.0.1",
+    "react-star-ratings": "^2.3.0"
   }
 }

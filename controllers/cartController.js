@@ -21,11 +21,23 @@ module.exports = {
       .then(dbModel => {res.json(dbModel); console.log(dbModel)})
       .catch(err => res.status(422).json(err));
   },
-  remove: function(req, res) {
+  removeItem: function(req, res) {
     console.log("controller id = " + req.params.id);
     db.ShoppingCart
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
+      .then(dbModel => {
+        res.json(dbModel)})
+      .catch(err => {
+        console.log(err)
+        res.status(422).json(err)
+      }
+      );
+  },
+  remove: function(req, res) {
+    console.log("remove all cart items")
+    db.ShoppingCart
+      .remove()
       .then(dbModel => {
         res.json(dbModel)})
       .catch(err => {

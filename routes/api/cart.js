@@ -5,12 +5,13 @@ const cartController = require("../../controllers/cartController");
 // Matches with "/api/cart"
 router.route("/")
   .get(cartController.findAll)
-  .post(cartController.create);
+  .post(cartController.create)
+  .delete(cartController.remove);
 
 // Matches with "/api/cart/:id"
 router
   .route("/:id")
-  .delete(cartController.remove)
+  .delete(cartController.removeItem)
   .put(cartController.update);
 
 module.exports = router;

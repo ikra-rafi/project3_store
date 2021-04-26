@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import "./style.css";
 import API from "../../utils/API";
 
@@ -25,7 +25,6 @@ function ForgotPasswordForm() {
     securityAnswer: "",
     firstName: "",
     lastName: "",
-    password: ""
   }]
   const [showMe, setShowMe] = useState(false);
   const [email, setEmail] = useState();
@@ -105,11 +104,14 @@ function ForgotPasswordForm() {
         {...register("email")}
         onChange={handleChange}
       />
-      <button className="login-forgot" type="button"
+        <figure>
+        <img src="./assets/icons/click.png" className="btn btn-link" type="button"
         onClick = { () => {
           getSecurityInfo();
         }}
       />
+       <figcaption>click here</figcaption>
+      </figure>
       {answer.securityQuestion ? 
         <div>
           <label htmlFor="securityQuestion">Security Question</label>
@@ -127,12 +129,14 @@ function ForgotPasswordForm() {
             {...register("answer")}
             onChange={handleAnswerChange}
           />
-  
-          <button className="login-forgot" type="button"
+          <figcaption>click here</figcaption>
+          <figure>
+          <img src="./assets/icons/click.png" className="btn btn-link" type="button"
             onClick = {() => {
               checkSecurityAnswer();
             }}
           />
+          </figure>
 
           {showMe?
             <div>
@@ -152,7 +156,7 @@ function ForgotPasswordForm() {
         </div>
           : null
       }
-      {errors. password&& <p>Your Password is less than 6 characters</p>} 
+      {errors.password&& <p>Your Password is less than 6 characters</p>} 
 
       <input type="submit" />
       <br></br>

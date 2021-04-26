@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import API from "../../utils/API";
-import {useTodoContext} from "../../utils/store";
+//import {useTodoContext} from "../../utils/store";
 import "./style.css";
 
 function SignUpForm() {
@@ -19,7 +19,7 @@ function SignUpForm() {
   }
 
   const [signup, setSignup] = useState(temp);
-  const [state, dispatch] = useTodoContext();
+//  const [state, dispatch] = useTodoContext();
 
   function handleChange(event) {
     setSignup({
@@ -28,7 +28,6 @@ function SignUpForm() {
   }
 
   const onSubmit = (data) => {
-//    alert(JSON.stringify(data));
 
     console.log('sign-up email: ' + signup.email)
     const storeLogin = [{
@@ -38,7 +37,7 @@ function SignUpForm() {
       securityAnswer: data.answer,
       firstName: data.firstName,
       lastName: data.lastName,
-      admin: true,
+      admin: false,
       discount: 10
     }]
   
@@ -131,7 +130,7 @@ function SignUpForm() {
             validate: (value) => value.length >= 6
           })}
         />
-        {errors. password&& <p>Your Password is less than 6 characters</p>}
+        {errors.password&& <p>Your Password is less than 6 characters</p>}
         
         <label htmlFor="confrimPassword">Confirm your Password</label>
         <input

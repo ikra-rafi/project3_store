@@ -19,7 +19,8 @@ const TodoContext = createContext();
             discountTotal: action.discountTotal,
             loggedIn: state.loggedIn,
             email: state.email,
-            products: state.products = action.products
+            products: state.products = action.products,
+            admin: state.admin
           }
         )
       case "cartTotal":
@@ -36,7 +37,8 @@ const TodoContext = createContext();
             discountTotal: action.discountTotal,
             loggedIn: state.loggedIn,
             email: state.email,
-            products: state.products = action.products
+            products: state.products = action.products,
+            admin: state.admin
           }
         )
       case "salesTaxAmt":
@@ -53,7 +55,8 @@ const TodoContext = createContext();
             discountTotal: action.discountTotal,
             loggedIn: state.loggedIn,
             email: state.email,
-            products: state.products
+            products: state.products,
+            admin: state.admin
           }
         )
       case "orderTotal":
@@ -70,7 +73,8 @@ const TodoContext = createContext();
             discountTotal: state.discountTotal,
             loggedIn: state.loggedIn,
             email: state.email,
-            products: state.products
+            products: state.products,
+            admin: state.admin
           }
         )
     case "loggedIn":
@@ -87,7 +91,8 @@ const TodoContext = createContext();
           discountTotal: state.discountTotal,
           loggedIn: action.loggedIn,
           email: action.email,
-          products: state.products
+          products: state.products,
+          admin: action.admin
         }
       )
     default:
@@ -108,6 +113,7 @@ const TodoContext = createContext();
         discountAmt: 10,
         loggedIn: false,
         email: "",
+        admin: "",
         products: []
       });
 
