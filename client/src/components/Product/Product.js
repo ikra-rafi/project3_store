@@ -203,16 +203,16 @@ function Product(props) {
                    {props.product.name}
                   </h3>
                   <Ratings ratings= {props.product.ratings}/>
-                  <p>{props.product.description}</p>
-                  <select onChange={selectSize} name="packaging-choices" id={`packaging-${props.product._id}`}>
+                  <p id="description">{props.product.description}</p>
+                  <select onChange={selectSize} className="packaging-choices" id={`packaging-${props.product._id}`} >
                   <option  value = "Null">---Select Size---</option>
                     <option value = {`${props.product.packaging[0].size}-${props.product.packaging[0].price}`}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>
                     <option value = {`${props.product.packaging[1].size}-${props.product.packaging[1].price}`}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
                   </select>
                   <div id = "quantityDiv">
-                    <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
-                    <input type="text" className="inline quantity" id={props.product._id} defaultValue = "1"></input>
-                    <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
+                    <button className = "inline btn" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
+                    <input type="text" className="inline quantity btn" id={props.product._id} defaultValue = "1"></input>
+                    <button className = "inline btn" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
                     <button id="addCart" onClick = {addToCartProducts}>Add to Cart</button>
                   </div>
               </div>

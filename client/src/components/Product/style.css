@@ -95,7 +95,7 @@
   margin-left:6%;
 }
 
-#addCart1{
+#addCart{
   margin-top:1%;
   width: 100px;
   height: 40px;
@@ -107,7 +107,7 @@
   text-align: center;
   
 }
-#addCart1:hover {
+#addCart:hover {
   background: white;
   color:#a73500;
   border: 1px solid  #c44308;
@@ -147,4 +147,12 @@
 #prod{
   margin-left:3%;
   font-family: 'New Tegomin', serif;
+}
+
+.packaging-choices{
+  width:100px;
+  font-size:13px;
+  margin-bottom:1%;
+  font-family: 'New Tegomin', serif;
+  margin-left:6%;
 }
