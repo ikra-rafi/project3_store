@@ -66,19 +66,19 @@ const Footer = () => {
                       <h5>Quick Links</h5>
                       <ul>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/contact"}>Who We Are</Link>
+                              <Link to="/contact">Who We Are</Link>
                           </li>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/about"}>Return & Cancellation</Link>
+                              <Link to="/about">Return & Cancellation</Link>
                           </li>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/about"}>FAQ</Link>
+                              <Link to="/about">FAQ</Link>
                           </li>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/about"}>Delivery Schedule</Link>
+                              <Link to="/about">Delivery Schedule</Link>
                           </li>
                           <li>
-                              <Link to={process.env.PUBLIC_URL + "/about"}>Terms and Conditions</Link>
+                              <Link to="/about">Terms and Conditions</Link>
                           </li> 
                       </ul>
                   </div>
@@ -143,7 +143,7 @@ const Footer = () => {
       </div> 
       {/*  Start:Subfooter  */}
       <div className="subfooter">
-          <p>2021 © Copyright <Link to={process.env.PUBLIC_URL + "/"}>spice-A-holic.</Link> All rights Reserved.</p>
+          <p>2021 © Copyright <Link to= "/">spice-A-holic.</Link> All rights Reserved.</p>
       </div> 
       {/* End:Subfooter  */}
   </footer> 

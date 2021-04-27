@@ -1,5 +1,7 @@
-import React , { useEffect, useState} from "react";
+import React , { Fragment, useEffect, useState} from "react";
 import { useTodoContext} from "../utils/store";
+import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
+import MetaTags from "react-meta-tags";
 import Cart from "../components/Cart";
 import {Container} from "../components/Test/Grid";
 import API from "../utils/API";
@@ -247,102 +249,171 @@ console.log(process.env.REACT_APP_UPLOAD_PRESET);
   }
 
   return (
-    <div>
+    <Fragment>
+    <MetaTags>
+      <title>spice-A-holic | Shopping Cart</title>
+      <meta
+        name="Shopping Cart"
+        content="Organic Spices in your Shopping Cart."
+      />
+    </MetaTags>
+    <div className="cart-page">
+                {/*====================  breadcrumb area ====================*/}
+
+                <Breadcrumb title="Shopping Cart" />
+                
+                {/*====================  End of breadcrumb area  ====================*/} 
+
+
+                {/*====================  Cart area ====================*/}
+    <div className="shop_cart">
       <Container fluid>
         <Container>
-        <Cart />
-          <div className="container-fluid containerColor marginBottomCont">
-            <h1 className="text-center">Shopping Cart</h1>
-            {cart.length ? (
-              <div>
-                  <table className="table table-curved table-responsive">
-                    <thead>
-                      <tr>
-                        <th className="alignCenter">Product</th>
-                        <th className="alignCenter">Package Size</th>
-                        <th className="alignCenter">Quantity</th>
-                        <th className="alignCenter">Price</th>
-                        <th className="alignCenter">Item Total</th>
-                      </tr>
-                    </thead>
-                    <tbody >
-                      {cart.map(result => (
-                        <tr key={result._id}>
-                          <td>
-                            <div className="row" style={{display: 'inline-block'}}>
-                              <button id={result._id} className="fa fa-trash-o"onClick={handleRemoveClick}></button>
-                              {result.name}
-                              </div></td>
-                          <td className="align-middle text-center"><p>{result.prodInfo.size}</p></td>
-                          <td className="align-middle text-center">
-                            <div className="row" style={{display: 'inline-block'}}>
-                              <button onClick={handleDecBtnClick} id={result._id} className="fa fa-minus"></button>
-                              {result.prodInfo.quantity}
-                              <button id={result._id} className="fa fa-plus buttons" onClick={handleIncBtnClick}></button>
+          <Cart />
+          <div className="container">
+                  <div className="shop_cart_title"> 
+                    <h2>Shopping Cart</h2> 
+                  </div>
+
+                    <div className="container-fluid containerColor marginBottomCont">
+                      {/* <h1 className="text-center">Shopping Cart</h1> */}
+                      <br></br>
+                      {cart.length ? (
+                        <div>
+                            <div className="row">
+                            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div className="table-responsive text-center">
+                              <table className="table table-bordered">
+                              <thead>
+                                <tr className="shop_cart_tr">
+                                  <th className="text-center">Product</th>
+                                  <th className="text-center">Package Size</th>
+                                  <th className="text-center">Quantity</th>
+                                  <th className="text-center">Price</th>
+                                  <th className="text-center">Item Total</th>
+                                </tr>
+                              </thead>
+                              <tbody >
+                                {cart.map(result => (
+                                  <tr key={result._id}>
+                                    <td className="ptitle">
+                                      <div className="row" style={{display: 'inline-block'}}>
+                                        <button id={result._id} id="deleteItem"  onClick={handleRemoveClick}><i className="fa fa-trash"></i></button>
+                                        {result.name}
+                                      </div>
+                                      {/* row inline block end */}
+
+                                    </td>
+                                    <td className="align-middle text-center"><p>{result.prodInfo.size}</p></td>
+                                    <td className="align-middle text-center">
+                                      <div className="row" style={{display: 'inline-block'}}>
+                                        <button onClick={handleDecBtnClick} id={result._id} className="fa fa-minus"></button>
+                                        {result.prodInfo.quantity}
+                                        <button id={result._id}  className="fa fa-plus buttons" onClick={handleIncBtnClick}></button>
+                                      </div>
+                                      {/* row inline block end */}
+                                      
+                                    </td>
+                                    <td className="align-middle text-center"><p>{result.prodInfo.price}</p></td>
+                                    <td className="align-middle text-center"><p>${formatter.format(result.prodInfo.price * result.prodInfo.quantity)}</p></td>
+                                  </tr>
+                                ))}
+                                        
+
+                              </tbody>
+                            </table>
                             </div>
-                          </td>
-                          <td className="align-middle text-center"><p>{result.prodInfo.price}</p></td>
-                          <td className="align-middle text-center"><p>${formatter.format(result.prodInfo.price * result.prodInfo.quantity)}</p></td>
-                        </tr>
-                      ))}
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>SubTotal:</td>
-                        <td>${formatter.format(state.subTotal)}</td>
-                      </tr>
-                      {state.discount ? (
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td>Discount ({state.discountAmt}%)</td>
-                          <td>${formatter.format(state.discountAmt/100 * state.subTotal)}</td>
-                        </tr>                        
-                      ) : (
-                        <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>No discount applied</td>
-                        <td></td>
-                      </tr>
-                      )}
-                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Sales Tax ({state.salesTax}%)</td>
-                        <td>${state.salesTaxAmt}</td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Shipping Fee (Flat Rate):</td>
-                        <td>${state.shipFee}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/checkout" >
-                    Checkout
-                  </Link>
-                  <div id="photo-form-container">
-                    <button onClick={showWidget}>Upload Photo</button>
-                  </div>
-                </div>
-              ) : (
-                <div className="row text-center h-100">
-                  <div className="col-md-12 text-center my-auto">
-                    <h3><strong>No Saved Items in Cart</strong></h3>
-                  </div>
-                </div>
-              )}
-          </div>
-        </Container>
-      </Container>
-    </div>
+                            </div>
+                            </div>
+
+
+                            <div className="shop_cart_bottom">
+                              <div className="container">
+                                    <div className="row">
+
+                                    <div className="col-lg-4 col-sm-12">
+                                          <div className="discount-coupon">
+                                              <h4>Wish List</h4>
+                                              <p>Not ready to purchase? Save for later!</p>
+                                              
+                                              <Link to="/cart" className="app-coupon">Save</Link>
+                                          </div>
+                                      </div>
+                                                                            
+                                      <div className="col-lg-4 col-sm-12">
+                                          <div className="discount-coupon">
+                                              <h4>Discount Code</h4>
+                                              <p>Enter your coupon code if you have one.</p>
+                                              <form action="#">
+                                                  <input className="coupon" type="text" />
+                                              </form>
+                                              <Link to="/cart" className="app-coupon">Apply Coupon</Link>
+                                          </div>
+                                      </div>
+                                <div className="col-lg-4 col-sm-12">
+                                <div className="grand-total-area">
+                                <h4>Cart SubTotal</h4>
+                                
+                                  <p className="sub-total">SubTotal: 
+                                  <span className="amt">${formatter.format(state.subTotal)}</span></p>
+                                  
+                                
+                                {state.discount ? (
+                                
+                                    <p className="discount">Discount ({state.discountAmt}%) 
+                                    <span className="amt">${formatter.format(state.discountAmt/100 * state.subTotal)}</span></p>
+                                    
+                                ) : (
+                                
+                                  <p className="discount">No discount applied 
+                                  <span className="amt"></span></p>
+                                  
+                                )}
+                             
+                                  <p className="amt">Sales Tax ({state.salesTax}%) 
+                                  <span className="amt">${state.salesTaxAmt}</span></p>
+                                  
+                               
+                                  <p className="delivery">Shipping Fee (Flat Rate): 
+                                  <span className="amt">${state.shipFee}</span></p>
+                                  
+                                  
+                                <Link className="pro-checkout"
+                            // "mr-auto brand btn myButton buttonMargin font-weight-bold"
+                            to="/checkout" >
+                              Checkout
+                            </Link>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                             
+                            
+                            <div id="photo-form-container">
+                              <button onClick={showWidget}>Upload Photo</button>
+                            </div>
+                          </div>
+                          
+                        ) : (
+                          <div className="row text-center h-100">
+                            <div className="col-md-12 text-center my-auto">
+                              <h3><strong>No Saved Items in Cart</strong></h3>
+                              <br></br>
+                            </div>
+                          </div>
+                          
+                        )}
+                    </div>
+                    </div>
+                  </Container>
+                </Container>
+  {/* shop_cart */}
+  </div>
+  {/* cart page*/}
+  </div> 
+  </Fragment>
+
   );
 }
 

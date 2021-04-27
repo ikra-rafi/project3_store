@@ -1032,9 +1032,9 @@
     background: #f0f0f0 url("/assets/images/slider2.jpg") no-repeat scroll right center;
   }
   
-  .slide_bg_3 {
+  /* .slide_bg_3 {
     background: #f0f0f0 url("/assets/images/slider3.jpg") no-repeat scroll right center;
-  }
+  } */
   
   .single_slider {
     background-color: #dddd;

@@ -63,16 +63,16 @@ const MobileMenu = () => {
               <li className="menuItemHasChildren">
                 <Link to={process.env.PUBLIC_URL + "#/"}>Products</Link>
                 <ul className="subMenu">
-                  <li> <Link to={process.env.PUBLIC_URL + "/baking"}>Baking</Link> </li>
-                  <li> <Link to={process.env.PUBLIC_URL + "/grilling"}>Grilling</Link></li>
-                  <li><Link to={process.env.PUBLIC_URL + "/seasonings"}>Seasoning</Link></li>
-                  <li><Link to={process.env.PUBLIC_URL + "/extracts"}>Extracts</Link></li>
-                  <li><Link to={process.env.PUBLIC_URL + "/teas"}>Teas</Link></li>
+                  <li> <Link to="/baking">Baking</Link> </li>
+                  <li> <Link to="/grilling">Grilling</Link></li>
+                  <li><Link to="/seasonings">Seasoning</Link></li>
+                  <li><Link to="/extracts">Extracts</Link></li>
+                  <li><Link to="/teas">Teas</Link></li>
                 </ul>
               </li>
 
                       <li className="menuItemHasChildren">
-                <Link to={process.env.PUBLIC_URL + "/blog"}>Blog</Link>
+                <Link to="/blog">Blog</Link>
                 <ul className="subMenu">
                 <li><a href="https://www.marksdailyapple.com/health-benefits-turmeric/">Turmeric</a>
                                         </li>
@@ -104,13 +104,13 @@ const MobileMenu = () => {
           <div className="header_top_right list-unstyled">
             <ul>
               <li>
-              <i className="fa fa-phone"></i> +234 567 234 875
+              <i className="fa fa-phone"></i> 555 555 5555
               </li>
               <li>
-              <i className="fa fa-envelope"></i> info@yourdomain.com
+              <i className="fa fa-envelope"></i> spiceaholic@email.com
               </li>
               <li>
-              <i className="fa fa-globe"></i> 1st Avenue, Boston
+              <i className="fa fa-globe"></i> 1234 Northern Ave.
               </li>
             </ul>
           </div>
