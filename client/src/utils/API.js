@@ -17,17 +17,6 @@ export default {
     return axios.get("/api/products");
   },
 
-  // getProductDetails: function(id) {
-  //   console.log(id);
-  //   return axios
-  //   .get("/api/products/" + id)
-  //   .then(res => {
-  //     const product = res.data;
-  //     return product;
-  //   });
-  // },
-
-
   // Deletes the book with the given id
   deleteProduct: function(id) {
     console.log("API id = " + id);
@@ -109,7 +98,7 @@ export default {
     return axios.delete("/api/cart/" + id);
   },
 
-  // Delete all items in shopping cart 
+  // Delete all items in shopping cart
   deleteCart: function() {
     console.log("in deleteCart");
     return axios.delete("/api/cart");

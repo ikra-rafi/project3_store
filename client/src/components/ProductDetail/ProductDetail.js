@@ -6,6 +6,7 @@ import Ratings from "../Ratings"
 
 function ProductDetail(props) {
 
+  const [amount, setAmount] = useState(2);
 
   const handleIncrement= (e) => {
     const id = e.target.id.split('-')[1];
@@ -14,6 +15,9 @@ function ProductDetail(props) {
     const value = parseInt(quantity.value);
 
     quantity.value = value + 1;
+    const val = value + 1;
+    setAmount(parseInt(val));
+    console.log(amount);
   }
 
   const handleDecrement= (e) => {
@@ -28,7 +32,15 @@ function ProductDetail(props) {
       quantity.value = 0;
     }
 
+    const val = value - 1;
+    setAmount(parseInt(val));
+    console.log(amount);
   }
+
+  const addToCart = () => {
+    console.log("add to cart");
+  }
+
   return (
    <div className="container py-5">
     <div className="row">
@@ -49,7 +61,7 @@ function ProductDetail(props) {
                     <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
                     <input type="text" className="inline quantity" id={props.product._id} defaultValue = "1"></input>
                     <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-                    <button id="addCart">ADD TO CART</button>
+                    <button id="addCart" onClick={addToCart}>ADD TO CART</button>
                   </div>
    </div>
    </div>
