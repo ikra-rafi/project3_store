@@ -31,16 +31,15 @@ function Product(props) {
                 <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image"  alt={props.product.name} src={props.product.picLink} /></Link>
               </div>
               <div className="product_info">
-                  <h4 className="product-name">
+                  <h4 id="h4"className="product-name">
                    {props.product.name}
                   </h4>
                   <div className="row">
                     <div className="col-6">
                       <p className="product_price">${props.product.packaging[0].price}</p>
+                      <p id="prod"className="product_info">{props.product.packaging[0].size}</p>
                     </div>
-                    <div className="col-6">  
-                      <p className="product_info">{props.product.packaging[0].size}</p>
-                    </div>
+                
                     <div className="project_view">
                       <button id="addCart"><i className="fa fa-shopping-cart"></i></button>
                     </div>
@@ -62,7 +61,7 @@ function Product(props) {
                   <h3 className="product-name" id="h5">
                    {props.product.name}
                   </h3>
-                  <Ratings id="rate"ratings= {props.product.ratings}/>
+                  <Ratings ratings= {props.product.ratings}/>
                   <p id="description">{props.product.description}</p>
                   <select name="packaging-choices" id="packaging">
                     <option value = {props.product.packaging[0].size}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>
@@ -76,7 +75,7 @@ function Product(props) {
                     <button className = "inline btn" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
                 
                   
-                    <button id="addCart1">Add to Cart</button>  
+                    <button id="addCart1"><i className="fa fa-shopping-cart"></i></button>  
                   </div>
                   </div>
                   </div>

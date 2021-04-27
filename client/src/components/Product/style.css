@@ -71,30 +71,19 @@
     display: flex;
    
  }
- /* #ls{
-  margin:1%;
-  padding:1%;
-  color:blue;
- } */
-
- /* #cont{
-   background:blue;
- } */
+ 
  #h5{
    font-size:20px;
    font-family: 'New Tegomin', serif;
-   margin-left:5%;
-   color:#c44308;
+   margin-left:6%;
+   color:#050201;
  }
 
- #rate{
-  font-size:5px;
-  margin-left:5%
- }
+
 
  #description{
   font-size:15px;
-  margin-left:5%;
+  margin-left:6%;
   color:black;
  }
 
@@ -103,23 +92,8 @@
   font-size:13px;
   margin-bottom:1%;
   font-family: 'New Tegomin', serif;
-  margin-left:5%;
+  margin-left:6%;
 }
-
-/* .inline{ 
- /* background:w; */
-  /* width:10px;
-  height:40px; */
-  /* padding:1% 1%;
-  margin:1%; */
-/*  */
-
-
-/* .inlinequantity{
-  width:10px;
-  background:blue;
-} */
-
 
 #addCart1{
   margin-top:1%;
@@ -129,11 +103,11 @@
   background: #c44308;
   color: white;
   font-size:12px;
-  margin-left:5%;
+  margin-left:2%;
   text-align: center;
   
 }
-#addCart:hover {
+#addCart1:hover {
   background: white;
   color:#a73500;
   border: 1px solid  #c44308;
@@ -142,4 +116,35 @@
 #ls{
   
   background:	#F5F5F5;
+}
+.star-ratings{
+  
+  margin-left:6%;
+  margin-bottom: 2%;
+} 
+
+.product_info{
+  margin-left:6%;
+  color:black;
+  font-size: 15px;
+  line-height: 25px;
+  font-family: 'New Tegomin', serif;
+ 
+}
+
+/* .product_info-info{
+ color:black;
+ margin-left:6%;
+} */
+
+#h4{
+  text-align: left;
+  font-size: 25px;
+  margin-bottom: 4%;
+  font-family: 'New Tegomin', serif;
+}
+
+#prod{
+  margin-left:3%;
+  font-family: 'New Tegomin', serif;
 }

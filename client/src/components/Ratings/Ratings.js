@@ -35,6 +35,9 @@ function Ratings(props) {
         <StarRating
             rating = {average}
             numberofStars = {5}
+            starDimension="15px"
+            starRatedColor="#c44308"
+           
             />
     );
 
