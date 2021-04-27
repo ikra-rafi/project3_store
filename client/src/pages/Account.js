@@ -1,14 +1,14 @@
 import React from "react";
 import Container from "../components/Container";
 import AccountInfo from "../components/AccountInfo";
-import OrdersTable from "../components/OrdersTable";
+import OrderHistory from "../components/OrderHistory";
 
 function Account() {
   return (
     <div>
       <Container>
         <AccountInfo />
-        <OrdersTable />
+        <OrderHistory />
       </Container>
 </div>
   );
