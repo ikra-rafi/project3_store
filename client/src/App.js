@@ -20,6 +20,7 @@ import Comments from "./pages/Comments";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
 import AddProducts from "./pages/AddProducts";
+import OrderHistory from "./components/OrderHistory";
 
 function App() {
   return (
@@ -42,8 +43,9 @@ function App() {
 {/*             <Route path="/john" component={john} />
             <Route path="/johnSignup" component={johnSignup} /> */}
             <Route path="/comments" component={Comments} />
-            <Route path="/ThankYou" component={ThankYou} />
-            <Route path="/AddProducts" component={AddProducts} />
+            <Route path="/thankyou" component={ThankYou} />
+            <Route path="/addproducts" component={AddProducts} />
+            <Route path="/orderhistory" component={OrderHistory} />
           </Switch>
           < Footer />
 

@@ -3,11 +3,19 @@ const db = require("../models");
 // Defining methods for the ordersController
 module.exports = {
   findAll: function(req, res) {
-    db.Orders
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
+    console.log("in find all");
+    console.log(req.user);
+    console.log(req.user._id);
+    db.Login
+      .find({_id: req.user._id})
+      .populate("orderIDs")
+      .then(dbModel => {console.log(dbModel); res.json(dbModel)})
       .catch(err => res.status(422).json(err));
+ //   db.Orders
+ //     .find({_id: req.user._id})
+ //     .sort({ date: -1 })
+ //     .then(dbModel => {console.log(dbModel); res.json(dbModel)})
+ //     .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
     var id = req.params.id;
