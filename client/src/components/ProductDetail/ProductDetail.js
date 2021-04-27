@@ -5,7 +5,7 @@ import API from "../../utils/API";
 
 function ProductDetail(props) {
 
-  const [amount, setAmount] = useState();
+  // const [amount, setAmount] = useState();
   const [item, setItem] = useState({});
 
   const handleIncrement= (e) => {
@@ -15,7 +15,6 @@ function ProductDetail(props) {
     const value = parseInt(quantity.value);
 
     quantity.value = value + 1;
-    const val = value + 1;
 
     quantityChange();
   }
@@ -31,8 +30,6 @@ function ProductDetail(props) {
     } else {
       quantity.value = 0;
     }
-
-    const val = value - 1;
 
     quantityChange();
   }
@@ -61,7 +58,7 @@ function ProductDetail(props) {
           prodInfo: {
             size: pkgs.split("-")[0],
             price: pkgs.split("-")[1],
-            quantity: amount
+            quantity: val
           }
         })
       )
@@ -71,8 +68,6 @@ function ProductDetail(props) {
 
           console.log(res.data);
           console.log(item);
-
-          const cartItems = res.data;
 
         })
         )
@@ -99,7 +94,7 @@ function ProductDetail(props) {
       prodInfo: {
         size: pkgs.split("-")[0],
         price: pkgs.split("-")[1],
-        quantity: amount
+        quantity: val
       }
     })
     console.log(item);
@@ -112,7 +107,17 @@ function ProductDetail(props) {
     const quantity = document.getElementById(props.product._id);
 
     const val = parseInt(quantity.value);
-    setAmount(val);
+
+    setItem({
+      name: props.product.name,
+      productID: props.product.productID,
+      prodInfo: {
+        size: pkgs.split("-")[0],
+        price: pkgs.split("-")[1],
+        quantity: val
+      }
+    })
+    console.log(item);
   }
 
   return (
