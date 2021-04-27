@@ -5,45 +5,9 @@ import API from "../../utils/API";
 
 function ProductDetail(props) {
 
-  // const [amount, setAmount] = useState(2);
+  const [amount, setAmount] = useState();
   const [item, setItem] = useState({});
-  useEffect (() => {
-    const btn = document.getElementById("addCartBtn");
 
-    btn.addEventListener('change', function(e){
-      const pkgs = document.getElementById("packaging").value;
-      console.log("select changed");
-
-      const quantity = document.getElementById(props.product._id);
-
-      const value = parseInt(quantity.value);
-
-      setItem({
-        name: props.product.name,
-        productID: props.product.productID,
-        prodInfo: {
-          size: pkgs.split("-")[0],
-          price: pkgs.split("-")[1],
-          quantity: value
-        }
-      })
-
-    })
-  })
-
-  function fireEvent(element,event){
-    if (document.createEventObject){
-    // dispatch for IE
-    var evt = document.createEventObject();
-    return element.fireEvent('on'+event,evt)
-    }
-    else{
-    // dispatch for firefox + others
-    var evt = document.createEvent("HTMLEvents");
-    evt.initEvent(event, true, true ); // event type,bubbling,cancelable
-    return !element.dispatchEvent(evt);
-    }
-  }
   const handleIncrement= (e) => {
     const id = e.target.id.split('-')[1];
     const quantity = document.getElementById(id);
@@ -52,8 +16,8 @@ function ProductDetail(props) {
 
     quantity.value = value + 1;
     const val = value + 1;
-    // setAmount(parseInt(val));
-    // console.log(amount);
+
+    quantityChange();
   }
 
   const handleDecrement= (e) => {
@@ -69,51 +33,54 @@ function ProductDetail(props) {
     }
 
     const val = value - 1;
-    // setAmount(parseInt(val));
-    // console.log(amount);
+
+    quantityChange();
   }
 
   const addToCart = () => {
     const sel = document.getElementById("packaging");
     console.log(sel.value);
-    if(sel.value != "Null"){
-      console.log("add to cart");
-    // console.log(props.product);
-    const pkgs = document.getElementById("packaging").value;
-    // console.log(pkgs.split("-")[0]);
-
-    const quantity = document.getElementById(props.product._id);
-
-    const value = parseInt(quantity.value);
-
-    API.getCart()
-    .then(
-      setItem({
-        name: props.product.name,
-        productID: props.product.productID,
-        prodInfo: {
-          size: pkgs.split("-")[0],
-          price: pkgs.split("-")[1],
-          quantity: value
-        }
-      })
-    )
-    .then(
-      API.saveCart(item)
-      .then(res=> {
-        console.log(res.data);
-        console.log(item);
-
-        const cartItems = res.data;
-
-      })
-      )
-    .catch(err => console.log(err));
-
-    alert("Your item has been added to the shopping cart!")
-    } else {
+    if(sel.value === "Null"){
       alert("Please select a packaging size.")
+    } else {
+      console.log("add to cart");
+      // console.log(props.product);
+      const pkgs = document.getElementById("packaging").value;
+      // console.log(pkgs.split("-")[0]);
+      const quantity = document.getElementById(props.product._id);
+
+      const val = parseInt(quantity.value);
+      console.log(val);
+
+
+      API.getCart()
+      .then(
+        setItem({
+          name: props.product.name,
+          productID: props.product.productID,
+          prodInfo: {
+            size: pkgs.split("-")[0],
+            price: pkgs.split("-")[1],
+            quantity: val
+          }
+        })
+      )
+      .then(
+        API.saveCart(item)
+        .then(res=> {
+
+          console.log(res.data);
+          console.log(item);
+
+          const cartItems = res.data;
+
+        })
+        )
+      .catch(err => console.log(err));
+
+      alert("Your item has been added to the shopping cart!")
     }
+
 
 
   }
@@ -121,11 +88,10 @@ function ProductDetail(props) {
   const selectSize = () => {
     console.log("select size");
     const pkgs = document.getElementById("packaging").value;
-    // console.log(pkgs.split("-")[0]);
 
     const quantity = document.getElementById(props.product._id);
 
-    const value = parseInt(quantity.value);
+    const val = parseInt(quantity.value);
 
     setItem({
       name: props.product.name,
@@ -133,10 +99,20 @@ function ProductDetail(props) {
       prodInfo: {
         size: pkgs.split("-")[0],
         price: pkgs.split("-")[1],
-        quantity: value
+        quantity: val
       }
     })
     console.log(item);
+  }
+
+  const quantityChange = () => {
+    console.log("quantityChange");
+    const pkgs = document.getElementById("packaging").value;
+
+    const quantity = document.getElementById(props.product._id);
+
+    const val = parseInt(quantity.value);
+    setAmount(val);
   }
 
   return (
@@ -162,7 +138,7 @@ function ProductDetail(props) {
 
       <div id = "quantityDiv">
         <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
-        <input type="text" className="inline quantity" id={props.product._id} defaultValue = "1"></input>
+        <input type="text" onChange={quantityChange} className="inline quantity" id={props.product._id} defaultValue = "1"></input>
         <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
         <button id="addCartBtn" onClick={addToCart}>ADD TO CART</button>
       </div>
