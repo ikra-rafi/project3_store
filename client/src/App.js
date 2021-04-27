@@ -20,6 +20,7 @@ import Comments from "./pages/Comments";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
 import AddProducts from "./pages/AddProducts";
+import Review from "./pages/Review";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/comments" component={Comments} />
             <Route path="/ThankYou" component={ThankYou} />
             <Route path="/AddProducts" component={AddProducts} />
+            <Route path="/review/:id" component={Review} />
           </Switch>
           < Footer />
 
