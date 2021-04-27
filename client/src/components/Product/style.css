@@ -120,14 +120,14 @@
 .star-ratings{
   
   margin-left:6%;
-  margin-bottom: 2%;
+  margin-bottom: 4%;
 } 
 
 .product_info{
   margin-left:6%;
   color:black;
   font-size: 15px;
-  line-height: 25px;
+  line-height: 15px;
   font-family: 'New Tegomin', serif;
  
 }
@@ -155,4 +155,8 @@
   margin-bottom:1%;
   font-family: 'New Tegomin', serif;
   margin-left:6%;
+}
+
+#stars{
+  margin-left:-7%;
 }
