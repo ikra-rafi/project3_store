@@ -61,7 +61,7 @@ function ProductDetail(props) {
           prodInfo: {
             size: pkgs.split("-")[0],
             price: pkgs.split("-")[1],
-            quantity: val
+            quantity: amount
           }
         })
       )
@@ -99,7 +99,7 @@ function ProductDetail(props) {
       prodInfo: {
         size: pkgs.split("-")[0],
         price: pkgs.split("-")[1],
-        quantity: val
+        quantity: amount
       }
     })
     console.log(item);
