@@ -8,18 +8,14 @@ function SpiceTable (props) {
     });
 
     return (
-        <table className="table table-curved table-responsive">
-        <tbody >
-
-            <tr>
-              <td className="align-middle text-center"><p>{props.name}</p></td>
-              <td className="align-middle text-center"><p>{props.size}</p></td>
-              <td className="align-middle text-center"><p>{props.quantity}</p></td>
-            </tr>
-
-            </tbody>
-        </table>
-    );
+        <div>
+          <td className="align-middle text-center"><p>{props.name}</p></td>
+          <td>    </td>
+          <td className="align-middle text-center"><p>{props.size}</p></td>
+          <td>    </td>
+          <td className="align-middle text-center"><p>{props.quantity}</p></td>
+        </div>
+   );
 }
 
 export default SpiceTable;

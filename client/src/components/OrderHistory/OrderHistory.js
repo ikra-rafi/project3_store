@@ -2,7 +2,7 @@
 import React , { useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import { useTodoContext} from "../../utils/store";
-import Cart from "../Cart";
+import SpiceTable from "../SpiceTable";
 import {Container} from "../Test/Grid";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
@@ -239,34 +239,55 @@ function OrderHistory() {
       <div>
         <Container fluid>
           <Container>
-          <Cart />
+          
             <div className="container-fluid containerColor marginBottomCont">
               <h1 className="text-center">Order History</h1>
               {orders.length ? (
                 <div>
-                    <table className="table table-curved table-responsive">
-                      <thead>
-                        <tr>
-                          <th className="alignCenter">Order ID</th>
-                          <th className="alignCenter"></th>
-                          <th className="alignCenter"></th>
-                          <th className="alignCenter"></th>
-                          <th className="alignCenter">Order Total</th>
-                        </tr>
-                      </thead>
-                      <tbody >
-                        {orders.map(result => (
-                          <tr key={result._id}>
-                            <td><p>{result._id}</p></td>
-                            <td>     </td>
-                            <td>     </td>
-                            <td>     </td>
-                            <td className="align-middle text-center"><p>{formatter.format(result.orderTotal)}</p></td>
-                          </tr>
-                          
-                        ))}
-                      </tbody>
-                    </table>
+                  {orders.map(result => (
+                    <div key={result._id}>
+                        <table>
+                          <thead>
+                            <tr>
+                              <td>Order ID</td>
+                              <td>        </td>
+                              <td>        </td>
+                              <td>        </td>
+                              <td>Order Total</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>{result._id}</td>
+                              <td>           </td>
+                              <td>         </td>
+                              <td>         </td>
+                              <td>{result.orderTotal}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table className="table table-curved table-responsive">
+                          <thead>
+                            <tr>
+                              <td>Product</td>
+                              <td>Size</td>
+                              <td>Quantity</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {result.spices.map( res=> (
+                            <tr>
+                              <td className="align-middle text-center"><p>{res.name}</p></td>
+                              <td>    </td>
+                              <td className="align-middle text-center"><p>{res.size}</p></td>
+                              <td>    </td>
+                              <td className="align-middle text-center"><p>{res.quantity}</p></td>
+                            </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                    </div>
+                  ))}
                   </div>
                 ) : (
                   <div className="row text-center h-100">
