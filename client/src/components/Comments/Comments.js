@@ -8,9 +8,15 @@ function Comments(props) {
     const [state, dispatch] = useTodoContext();
     console.log(state);
 
+    const writeReview = () => {
+        const id = window.location.href.split("/").pop();
+        console.log(id);
+        window.location=`#/review/${id}`
+    }
+
     return(
         <div>
-            <button>Write Review</button>
+            <button onClick={writeReview}>Write Review</button>
             {props.product.map(res => (
                 console.log(res),
                 <div className="comment" key = {res._id}>
