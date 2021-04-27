@@ -84,17 +84,17 @@ class Contact extends Component{
 			                        <div className="contact_pg_address">
 			                            <h3>Hello there, <br/>let's connect.</h3>
 			                            <div className="single_con_add">
-			                                <a href="#/"><i className="icon-glyph-226"></i></a> 
+			                                <a href="#/"><i className="fa fa-globe"></i></a> 
 			                                <p><span>Company Address :</span></p>
 			                                <p><span>1234 Northern Ave.</span></p>
 			                            </div>
 			                            <div className="single_con_add">
-			                                <a href="#/"><i className="icon-glyph-334"></i></a>
+			                                <a href="#/"><i className="fa fa-envelope"></i></a>
 			                                <p><span>Email Address :</span></p>
 			                                <p><span>spiceaholic@email.com</span></p>
 			                            </div>
 			                            <div className="single_con_add">
-			                                <a href="#/"><i className="icon-glyph-33"></i></a>
+			                                <a href="#/"><i className="fa fa-phone"></i></a>
 			                                <p><span>Contact Us :</span></p>
 			                                <p><span>555-555-5555</span></p>
 			                            </div>
