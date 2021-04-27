@@ -27,7 +27,7 @@ function Review() {
             <input></input>
             <p>Review</p>
             <input></input>
-            <button onclick ={submitReview}>Submit Review</button>
+            <button >Submit Review</button>
         </form>
 
 
