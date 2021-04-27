@@ -20,6 +20,7 @@ import Comments from "./pages/Comments";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
 import AddProducts from "./pages/AddProducts";
+import Review from "./pages/Review";
 import OrderHistory from "./components/OrderHistory";
 import Review from "./pages/"
 
@@ -44,6 +45,7 @@ function App() {
 {/*             <Route path="/john" component={john} />
             <Route path="/johnSignup" component={johnSignup} /> */}
             <Route path="/comments" component={Comments} />
+            <Route path="/review/:id" component={Review} />
             <Route path="/thankyou" component={ThankYou} />
             <Route path="/addproducts" component={AddProducts} />
             <Route path="/orderhistory" component={OrderHistory} />
