@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 //import { useStoreContext } from "../../utils/GlobalState";
 import MobileMenu from "../mobile-menu/MobileMenu";
 import MobileBtn from "../mobile-menu/MobileBtn";
 import { Link } from 'react-router-dom';
+import API from "../../utils/API";
+
 
 function NavMenu() {
 //  const [store] = useStoreContext();
@@ -14,7 +16,59 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   })
 }); 
+const [product, setProduct] = useState({});
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
+// When the component mounts, a call will be made to get load products.
+useEffect(() => {
+  loadProducts();
+}, []);
+
+function loadProducts() {
+  API.getProducts()
+    .then(products => {
+      setProducts(products);
+      setFilteredProducts(products);
+      console.log(products);
+      setProduct(products[0]);
+    })
+    .catch(err => console.log(err));
+}
+
+function handleInputChange(event)  {
+  const search = event.target.value;
+  console.log(search);
+  const filteredResults = products.filter(result =>
+    result.name.toLowerCase().includes(search.toLowerCase())
+  );
+  console.log(filteredResults);
+  setFilteredProducts(filteredResults);
+}
+
+function filterResults(event) {
+  const filter = event.target.value;
+  if (filter === "baking"){
+    const baking = products.filter(result => (result.family.baking === true));
+    setFilteredProducts(baking);
+  } else if (filter === "grilling"){
+    const grilling = products.filter(result => (result.family.grilling === true));
+    setFilteredProducts(grilling);
+  } else if (filter === "seasoning"){
+    const seasoning = products.filter(result => (result.family.seasoning === true));
+    setFilteredProducts(seasoning);
+  } else if (filter === "extract"){
+    const extract = products.filter(result => (result.family.extract === true));
+    setFilteredProducts(extract);
+  } else if (filter === "teas"){
+    const teas = products.filter(result => (result.family.teas === true));
+    setFilteredProducts(teas);
+  } else {
+    setFilteredProducts(products);
+  }
+
+};
+  
 
   const triggerSearch = () => {
     const offcanvasMobileMenu = document.querySelector(".search_icon_inr");
@@ -91,10 +145,11 @@ document.addEventListener("DOMContentLoaded", function(){
                             {/* <a href="#" onClick={() => triggerSearch()} className="cart-toggler search_icon">
                                 <i className="bi bi-search"></i></a> */}
                                 {/* <figure> */}
+                                
                             <a href="#">
                               <img src="./assets/icons/search.png" 
                                  className="cart-toggler search_icon" 
-                                 type="button" width="12px"
+                                 type="button" width="12px" id="searchInput" onKeyUp={handleInputChange}
                                  onClick={() => triggerSearch()}
                               /></a>
           
