@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import Ratings from "../Ratings"
-
-
+import Ratings from "../Ratings";
+import API from "../../utils/API";
 
 function ProductDetail(props) {
 
+  // const [amount, setAmount] = useState();
+  const [item, setItem] = useState({});
 
   const handleIncrement= (e) => {
     const id = e.target.id.split('-')[1];
@@ -14,6 +15,8 @@ function ProductDetail(props) {
     const value = parseInt(quantity.value);
 
     quantity.value = value + 1;
+
+    quantityChange();
   }
 
   const handleDecrement= (e) => {
@@ -28,7 +31,95 @@ function ProductDetail(props) {
       quantity.value = 0;
     }
 
+    quantityChange();
   }
+
+  const addToCart = () => {
+    const sel = document.getElementById("packaging");
+    console.log(sel.value);
+    if(sel.value === "Null"){
+      alert("Please select a packaging size.")
+    } else {
+      console.log("add to cart");
+      // console.log(props.product);
+      const pkgs = document.getElementById("packaging").value;
+      // console.log(pkgs.split("-")[0]);
+      const quantity = document.getElementById(props.product._id);
+
+      const val = parseInt(quantity.value);
+      console.log(val);
+
+
+      API.getCart()
+      .then(
+        setItem({
+          name: props.product.name,
+          productID: props.product.productID,
+          prodInfo: {
+            size: pkgs.split("-")[0],
+            price: pkgs.split("-")[1],
+            quantity: val
+          }
+        })
+      )
+      .then(
+        API.saveCart(item)
+        .then(res=> {
+
+          console.log(res.data);
+          console.log(item);
+
+        })
+        )
+      .catch(err => console.log(err));
+
+      alert("Your item has been added to the shopping cart!")
+    }
+
+
+
+  }
+
+  const selectSize = () => {
+    console.log("select size");
+    const pkgs = document.getElementById("packaging").value;
+
+    const quantity = document.getElementById(props.product._id);
+
+    const val = parseInt(quantity.value);
+
+    setItem({
+      name: props.product.name,
+      productID: props.product.productID,
+      prodInfo: {
+        size: pkgs.split("-")[0],
+        price: pkgs.split("-")[1],
+        quantity: val
+      }
+    })
+    console.log(item);
+  }
+
+  const quantityChange = () => {
+    console.log("quantityChange");
+    const pkgs = document.getElementById("packaging").value;
+
+    const quantity = document.getElementById(props.product._id);
+
+    const val = parseInt(quantity.value);
+
+    setItem({
+      name: props.product.name,
+      productID: props.product.productID,
+      prodInfo: {
+        size: pkgs.split("-")[0],
+        price: pkgs.split("-")[1],
+        quantity: val
+      }
+    })
+    console.log(item);
+  }
+
   return (
    <div className="container py-5">
     <div className="row">
@@ -42,16 +133,21 @@ function ProductDetail(props) {
       <p id="des">{props.product.description}</p>
       <p id="des">{props.product.historyDetails}</p>
       <p id="des">{props.product.healthbenefit}</p>
-      {/* <select name="packaging-choices" id="packaging">
-                    <option value = {props.product.packaging[0].size}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>
-                    <option value = {props.product.packaging[1].size}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
-                  </select> */}
+
+      <select onChange={selectSize} name="packaging-choices" id="packaging">
+      <option  value = "Null">---Select Size---</option>
+      {props.packaging.map ( packaging =>
+         <option value = {`${packaging.size}-${packaging.price}`}>${packaging.price}  {packaging.size}</option>
+      )}
+
+      </select>
+
       <div id = "quantityDiv">
-                    <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
-                    <input type="text" className="inline quantity" id={props.product._id} defaultValue = "1"></input>
-                    <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-                   </div>
-                 <button id="addCart">ADD TO CART</button>
+        <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
+        <input type="text" onChange={quantityChange} className="inline quantity" id={props.product._id} defaultValue = "1"></input>
+        <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
+        <button id="addCartBtn" onClick={addToCart}>ADD TO CART</button>
+      </div>
    </div>
    </div>
 </div>

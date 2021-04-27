@@ -9,7 +9,7 @@ const Breadcrumb = ({ title }) => {
             <div className="row blog-header text-center">
                 <div className="col-sm-12"> 
                     <h3>{title}</h3>
-                    <h4><Link to={process.env.PUBLIC_URL + "/"}> Home </Link> &gt; {title} </h4>
+                    <h4><Link to="/"> Home </Link> &gt; {title} </h4>
                 </div>
             </div>
         </div>  

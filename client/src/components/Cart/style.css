@@ -1,0 +1,14 @@
+#deleteItem {
+    margin-top:1%;
+    width: 150px;
+    height: 40px;
+    font-family: 'New Tegomin', serif;
+    background: #c44308;
+    color: white;
+    
+}
+#deleteItem:hover {
+    background: white;
+    color:#a73500;
+    border: 1px solid  #c44308;
+  }
