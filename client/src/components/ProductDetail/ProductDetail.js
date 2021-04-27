@@ -6,6 +6,7 @@ import Ratings from "../Ratings"
 
 function ProductDetail(props) {
 
+  console.log(props.packaging);
   const [amount, setAmount] = useState(2);
 
   const handleIncrement= (e) => {
@@ -53,16 +54,20 @@ function ProductDetail(props) {
       <p id="des">{props.product.description}</p>
       <p id="des">{props.product.historyDetails}</p>
       <p id="des">{props.product.healthbenefit}</p>
-      {/* <select name="packaging-choices" id="packaging">
-                    <option value = {props.product.packaging[0].size}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>
-                    <option value = {props.product.packaging[1].size}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
-                  </select> */}
+
+      <select name="packaging-choices" id="packaging">
+      {props.packaging.map ( packaging =>
+         <option value = {packaging.size}>${packaging.price}  {packaging.size}</option>
+      )}
+
+      </select>
+
       <div id = "quantityDiv">
-                    <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
-                    <input type="text" className="inline quantity" id={props.product._id} defaultValue = "1"></input>
-                    <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-                    <button id="addCart" onClick={addToCart}>ADD TO CART</button>
-                  </div>
+        <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
+        <input type="text" className="inline quantity" id={props.product._id} defaultValue = "1"></input>
+        <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
+        <button id="addCart" onClick={addToCart}>ADD TO CART</button>
+      </div>
    </div>
    </div>
 </div>

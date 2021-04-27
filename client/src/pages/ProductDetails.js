@@ -16,7 +16,8 @@ class ProductDetails extends Component {
       products:[],
       ratings:[],
       comments: [],
-      productID: ""
+      productID: "",
+      packaging: [{}]
     }
 }
 
@@ -27,6 +28,7 @@ class ProductDetails extends Component {
       this.setState({products: products});
       this.setProduct();
       console.log(this.state.product);
+      this.setState({packaging: this.state.product.packaging});
       API.getComments()
       .then(res => {
         console.log(res.data);
@@ -52,7 +54,8 @@ class ProductDetails extends Component {
     return (
       <div>
           <ProductDetail product = {this.state.product}
-                         ratings = {this.state.ratings}/>
+                         ratings = {this.state.ratings}
+                         packaging = {this.state.packaging}/>
           <Comments product = {this.state.comments}/>
       </div>
     );
