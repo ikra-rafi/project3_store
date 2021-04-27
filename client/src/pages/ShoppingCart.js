@@ -19,64 +19,6 @@ function ShoppingCart() {
     maximumFractionDigits: 2,
   });
 
-  var picURLInput;
-
-  function showWidget() {
-
-    // API.getEnvVars()
-    // .then(res => {
-    //   console.log(res.data.cloudName);
-    //   console.log(res.data.uploadPreset);
-    // })
-    // .catch(err => console.log(err));
-console.log(process.env.REACT_APP_CLOUD_NAME);
-console.log(process.env.REACT_APP_UPLOAD_PRESET);
-  
-    window.cloudinary.openUploadWidget({
-      cloudName: process.env.REACT_APP_CLOUD_NAME,
-      uploadPreset: process.env.REACT_APP_UPLOAD_PRESET,
-      sources: [
-        "local"
-      ],
-      googleApiKey: "<image_search_google_api_key>",
-      showAdvancedOptions: true,
-      cropping: true,
-      multiple: false,
-      defaultSource: "local",
-      styles: {
-        palette: {
-          window: "#F5F5F5",
-          sourceBg: "#438945",
-          windowBorder: "#F7F4E9",
-          tabIcon: "#438945",
-          inactiveTabIcon: "#E8D5BB",
-          menuIcons: "#B59B4D",
-          link: "#F7F4E9",
-          action: "#F7F4E9",
-          inProgress: "#99cccc",
-          complete: "#78b3b4",
-          error: "#F5F5F5",
-          textDark: "#1B1918",
-          textLight: "#695A5A"
-        },
-        fonts: {
-          default: null,
-          "'Kalam', cursive": {
-            url: "https://fonts.googleapis.com/css?family=Kalam",
-            active: true
-          }
-        }
-      }
-    },
-    (error, result) => {
-      if (!error) {
-        if (result.event === "success") {
-          picURLInput = result.info.url;
-        };
-      };
-    })
-  }
-
   var applyDiscount;
  
   useEffect(() => {
@@ -239,7 +181,7 @@ console.log(process.env.REACT_APP_UPLOAD_PRESET);
   }
 
   function handleRemoveClick (e) {
-
+console.log(e.target.id);
     API.deleteCartItem(e.target.id)
       .then(res => {
         console.log(res.data);
@@ -298,7 +240,7 @@ console.log(process.env.REACT_APP_UPLOAD_PRESET);
                                   <tr key={result._id}>
                                     <td className="ptitle">
                                       <div className="row" style={{display: 'inline-block'}}>
-                                        <button id={result._id} id="deleteItem"  onClick={handleRemoveClick}><i className="fa fa-trash"></i></button>
+                                        <button id={result._id} className="fa fa-trash-o" onClick={handleRemoveClick}></button>
                                         {result.name}
                                       </div>
                                       {/* row inline block end */}
@@ -388,11 +330,6 @@ console.log(process.env.REACT_APP_UPLOAD_PRESET);
                                 </div>
                                 </div>
                                 </div>
-                             
-                            
-                            <div id="photo-form-container">
-                              <button onClick={showWidget}>Upload Photo</button>
-                            </div>
                           </div>
                           
                         ) : (
