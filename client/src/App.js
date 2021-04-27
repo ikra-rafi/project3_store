@@ -22,7 +22,6 @@ import ThankYou from "./pages/ThankYou";
 import AddProducts from "./pages/AddProducts";
 import Review from "./pages/Review";
 import OrderHistory from "./components/OrderHistory";
-import Review from "./pages/"
 
 function App() {
   return (

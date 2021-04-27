@@ -6,10 +6,13 @@ function Review() {
 
     const [rating, setRating] = useState();
 
+
+    // Handles rating updates for star rating component
     function changeRating(newRating) {
         console.log(newRating);
         setRating(newRating);
     }
+
 
     return(
 
@@ -24,7 +27,7 @@ function Review() {
             <input></input>
             <p>Review</p>
             <input></input>
-            <button>Submit Review</button>
+            <button onclick ={submitReview}>Submit Review</button>
         </form>
 
 
