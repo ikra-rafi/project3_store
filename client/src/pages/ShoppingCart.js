@@ -2,7 +2,6 @@ import React , { Fragment, useEffect, useState} from "react";
 import { useTodoContext} from "../utils/store";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
-import Cart from "../components/Cart";
 import {Container} from "../components/Grid";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -250,7 +249,6 @@ console.log(e.target.id);
     <div className="shop_cart">
       <Container fluid>
         <Container>
-          <Cart />
           <div className="container">
                   <div className="shop_cart_title">
                     <h2>Shopping Cart</h2>

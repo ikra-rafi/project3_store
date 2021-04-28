@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Cart from "../components/Cart";
 import CartData from "../components/Test/CartData"
 import {Container} from "../components/Grid";
 import API from "../utils/API";
@@ -217,7 +216,6 @@ function Checkout() {
 
       <Container fluid>
         <Container >
-        <Cart />
   
     <section className="checkout_section justify-content-center">
       <div className="container full-width">
