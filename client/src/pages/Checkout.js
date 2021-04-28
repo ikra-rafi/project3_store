@@ -220,7 +220,7 @@ function Checkout() {
                       <div  className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <form id={1} className="searchForm justify-content-center m-2" key={1}>
                       
-                      <div class="row justify-content-center">
+                      <div className="row justify-content-center">
                       <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
                           <input name="shipCompanyName" ref={shipCompanyName} id="shipCompanyName" className="form-control form-control-lg" placeholder="Ship Company Name" />
@@ -318,9 +318,9 @@ function Checkout() {
 
                     
                     <div className="payment_mth">
-                    <form id="payment" className="clearfix">
-                    <label className="checkbox payment-method inline"  htmlFor="billingAddr">
-                    <input  type="checkbox" id="billingAddr" onClick={handleCheck} name="billing" value="same address"/> 
+                    <form id="payment" className="clearfix" style={{display: "inline-block"}}>
+                    <label className="form-check-label"  htmlFor="billingAddr">
+                    <input className="form-check-input" type="checkbox" id="billingAddr" onClick={handleCheck} name="billing" value="same address"/> 
                     Billing address same as Shipping address
                     </label>
                     </form>
@@ -437,9 +437,10 @@ function Checkout() {
 
                     <div className="shop_cart">
                     <div className="container">
-                        <div className="shop_cart_title">     
-                            <h2>Cart</h2> 
+                        <div className="discount-coupon">     
+                           <h4>Cart Totals</h4>
                         </div> 
+                        <div className="row">
                         <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                        <div className="table-responsive text-center">
                       {state.cartItems.map(result => (
@@ -451,9 +452,14 @@ function Checkout() {
                           />
                         </div>
                       ))}
-                  
-                       
-                       <table className="table table-bordered">                      
+                      </div></div></div>
+                  <div className="shop_cart_bottom">
+                    <div className="container">
+                        <div className="row">
+                  <div className="col-lg-4 col-sm-12">
+                  <div className="grand-total-area">
+                  <h4>Cart Total</h4>                      
+                       {/* <table className="table table-bordered">                      
                        <thead>
                         <tr className="ptitle">
                           <th className="alignCenter">Product</th>
@@ -469,58 +475,59 @@ function Checkout() {
                         <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td >SubTotal:</td>
-                        <td>${formatter.format(state.subTotal)}</td>
-                      </tr>
+                        <td></td> */}
+                        <p className="sub-total">SubTotal:
+                        <span className="amt">${formatter.format(state.subTotal)}</span></p>
+                      {/* </tr> */}
 
                       {state.discount ? (
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td>Discount ({state.discountAmt}%)</td>
-                          <td>${formatter.format(state.discountAmt/100 * state.subTotal)}</td>
-                        </tr>                        
+                        // <tr>
+                        //   <td></td>
+                        //   <td></td>
+                        //   <td></td>
+                          <p className="discount">Discount ({state.discountAmt}%)
+                          <span className="amt">${formatter.format(state.discountAmt/100 * state.subTotal)}</span></p>
+                        // </tr>                        
                       ) : (
-                        <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>No discount applied</td>
-                        <td></td>
-                      </tr>
+                        // <tr>
+                        // <td></td>
+                        // <td></td>
+                        // <td></td>
+                        <p className="discount">No discount applied
+                        <span className="amt"></span></p>
+                      //   <td></td>
+                      // </tr>
                       )}
-                     <tr>
+                     {/* <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td >Sales Tax ({state.salesTax}%)</td>
-                        <td>${formatter.format(state.salesTaxAmt)}</td>
-                      </tr>
+                        <td></td> */}
+                        <p className="amt">Sales Tax ({state.salesTax}%)
+                        <span className="amt">${formatter.format(state.salesTaxAmt)}</span></p>
+                      {/* </tr>
                       <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td >Shipping Fee (Flat Rate):</td>
-                        <td>${state.shipFee}</td>
-                      </tr>
+                        <td></td> */}
+                        <p className="delivery">Shipping Fee (Flat Rate):
+                        <span className="amt">${state.shipFee}</span></p>
+                      {/* </tr>
                       <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td >Order Total:</td>
-                        <td>${formatter.format(state.orderTotal)}</td>
-                      </tr>
+                        <td></td> */}
+                        <p className="grand-total">Order Total:
+                        <span className="amt">${formatter.format(state.orderTotal)}</span></p>
+                      {/* </tr>
                         </tbody>
-                        </table>
+                        </table> */}
                                 </div>
                             </div>
                         </div>
                 </div>
                   </div>
                   </div>
-                  </div></div>
+                  </div></div></div></div></div>
                   
                 ) : (
                  <div className="row text-center h-100">
