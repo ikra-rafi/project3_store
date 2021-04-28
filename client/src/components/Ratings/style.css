@@ -16,3 +16,8 @@
 .StarRating{
     margin-left:4%;
 }
+
+.reviews {
+  color: #2B343B;
+  display:inline;
+}
