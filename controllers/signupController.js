@@ -11,6 +11,7 @@ module.exports = {
     console.log(req.body[0]);
     console.log(req.body[0].securityQuestion);
     var securityAnswer = req.body[0].securityAnswer;
+    var admin = req.body[0].admin;
     var firstName = req.body[0].firstName;
     var lastName = req.body[0].lastName;
     Login.findOne({ email: req.body[0].email}, (err, user) => {
@@ -27,6 +28,7 @@ module.exports = {
           password: password,
           securityQuestion: securityQuestion,
           securityAnswer: securityAnswer,
+          admin: admin,
           firstName: firstName,
           lastName: lastName
         })

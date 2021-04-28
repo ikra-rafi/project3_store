@@ -56,30 +56,30 @@ function loadProducts() {
     setTeaProducts(teas);
   }
 
-  function handleLogout() {
-    API.Logout('/logout')
-      .then(response => {
-        console.log('Get user response: ')
-        console.log(response.data)
-        if (response.data.user) {
-          console.log('Get User: There is a user saved in the server session: ')
+  // function handleLogout() {
+  //   API.Logout('/logout')
+  //     .then(response => {
+  //       console.log('Get user response: ')
+  //       console.log(response.data)
+  //       if (response.data.user) {
+  //         console.log('Get User: There is a user saved in the server session: ')
 
-          dispatch({
-            type: "loggedIn",
-            loggedIn: true,
-            email: response.data.user.email
-        })
-      } else {
-        console.log('Get user: no user');
-        dispatch({
-          type: "loggedIn",
-          loggedIn: false,
-          email: null
-        })
+  //         dispatch({
+  //           type: "loggedIn",
+  //           loggedIn: true,
+  //           email: response.data.user.email
+  //       })
+  //     } else {
+  //       console.log('Get user: no user');
+  //       dispatch({
+  //         type: "loggedIn",
+  //         loggedIn: false,
+  //         email: null
+  //       })
 
-      }
-    })
-  }
+  //     }
+  //   })
+  // }
 
   const loggedIn = state.loggedIn;
   console.log('navbar render, props: ')
