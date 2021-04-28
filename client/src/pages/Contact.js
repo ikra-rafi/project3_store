@@ -13,7 +13,7 @@ class Contact extends Component{
               <title>spice-A-holic | Contact Us</title>
               <meta
                 name="description"
-                content="Organic Food React JS Template."
+                content="Organic spices."
               />
             </MetaTags>
 

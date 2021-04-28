@@ -328,7 +328,7 @@ console.log(e.target.id);
                                               <form action="#">
                                                   <input className="coupon" type="text" />
                                               </form>
-                                              <Link to="/cart" className="app-coupon">Apply Coupon</Link>
+                                              <Link to="/cart" className="app-coupon">Apply</Link>
                                           </div>
                                       </div>
                                 <div className="col-lg-4 col-sm-12">

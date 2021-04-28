@@ -114,7 +114,7 @@ function filterResults(event) {
                                 <li className="active">
                                 {/* <Link to="/">Home </Link> */}
                                 </li>
-                                <li className="has-sub"><a href="#/">Products</a>
+                                <li className="has-sub"><Link to="/products">Products</Link>
                                     <ul>
                                         <li><a href="baking">Baking</a>
                                         </li>
@@ -161,16 +161,12 @@ function filterResults(event) {
                 <div className="header_cart">
                     <ul>
                         <li className="header_search">
-                            {/* <a href="#" onClick={() => triggerSearch()} className="cart-toggler search_icon">
-                                <i className="bi bi-search"></i></a> */}
-                                {/* <figure> */}
-                                
-                            <a href="#">
-                              <img src="./assets/icons/search.png" 
-                                 className="cart-toggler search_icon" 
+                        <Link to="/products" 
+                        className="cart-toggler search_icon" 
                                  type="button" width="12px" id="searchInput" onKeyUp={handleInputChange}
                                  onClick={() => triggerSearch()}
-                              /></a>
+                                 ><i className="fa fa-search"></i></Link>
+                            
           
                             <div className="search_icon_inr">
                                 <form action="#" method="POST">

@@ -1,15 +1,14 @@
 #comBtn{
     margin-top:1%;
     width: 550px;
-    height: 45px;
+    height: 45px; 
     font-family: 'Karla', sans-serif; 
     background: #c44308;
     color: white;
-    font-size:18px;
-    margin-left:17%;
-    /* text-align: center; */
-    margin-bottom: 10px;
-}
+    font-size:18px; 
+     margin-left:30%; 
+    
+ } 
 
 
   #comBtn:hover {
@@ -17,3 +16,15 @@
     color:#a73500;
     border: 1px solid  #c44308;
   }
+
+
+
+  @media only screen and (min-width: 280px){
+    #comBtn{
+    font-size: 17px !important;
+    width: 400px !important;
+    height: 45px !important;
+    margin-left: 55px !important;
+    margin-bottom: 20px;
+    }
+  } 

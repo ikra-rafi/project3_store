@@ -15,7 +15,8 @@ function Comments(props) {
     }
 
     return(
-        <div>
+        <div className="container">
+            <div className="project_btn text-center">
             <button id="comBtn"onClick={writeReview}>Write Review</button>
             {props.product.map(res => (
                 console.log(res),
@@ -23,9 +24,11 @@ function Comments(props) {
                     <h3>{res.title}</h3>
                     <p>{res.userComment}</p>
 
-                </div>
+                </div> 
+              
+                
             ))}
-
+</div>
         </div>
     );
 

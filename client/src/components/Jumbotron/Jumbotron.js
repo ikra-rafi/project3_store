@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import {Link} from 'react-router-dom'; 
 import Swiper from 'react-id-swiper';
 
+
 class Jumbotron extends Component {
 render(){
 
@@ -37,10 +38,12 @@ const properties = {
             prevEl: '.st-swiper-button-prev'
         },
         renderPrevButton: () => (
-            <div className="st-swiper-button-prev st-swiper-button-nav d-none d-xl-block"><i className="icon-glyph-205" /></div>
+            <div className="st-swiper-button-prev st-swiper-button-nav d-none d-xl-block">
+              <img src="assets/icons/previous.png" className="bi bi-arrow-left-circle-fill" /></div>
           ),
           renderNextButton: () => (
-            <div className="st-swiper-button-next st-swiper-button-nav d-none d-xl-block"><i className="icon-glyph-204" /></div>
+            <div className="st-swiper-button-next st-swiper-button-nav d-none d-xl-block">
+              <i className="bi bi-arrow-right-circle-fill" /></div>
           ),
         autoplay: {
             delay: 5000,

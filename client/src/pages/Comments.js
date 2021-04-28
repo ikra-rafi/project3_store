@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import API from "../utils/API";
 import { useHistory} from "react-router-dom";
 import {useTodoContext} from "../utils/store";
+import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
+import MetaTags from "react-meta-tags";
 
 function Comments() {
   const {
@@ -67,6 +69,30 @@ function Comments() {
   }
   
   return (
+
+    <Fragment>
+    <MetaTags>
+      <title>spice-A-holic | Comments</title>
+      <meta
+        name="Spice-A-Holic comments"
+        content="Leave a comment."
+      />
+    </MetaTags>
+
+    <div className="checkout-page">
+        {/*====================  breadcrumb area ====================*/}
+
+        <Breadcrumb title="Comments" />
+        
+        {/*====================  End of breadcrumb area  ====================*/} 
+
+
+        {/*====================  Start of Checkout  Section    ====================*/}
+    
+    <section>
+    <div className="container">
+    <div className="row justify-content-center">
+    <div className="col-md-5 col-lg-4">
     <form  onSubmit={handleSubmit(onSubmit)} >
       <h1>Enter your User Comment</h1>
       {/* <h2 id="h2">We will send you an email to reset your password.</h2> */}
@@ -91,6 +117,12 @@ function Comments() {
       <br></br>
 
     </form>
+    </div>
+    </div>
+    </div>
+    </section>
+    </div>
+  </Fragment>
   );
 }
 
