@@ -77,7 +77,8 @@ class ProductDetails extends Component {
           <ProductDetail product = {this.state.product}
                          ratings = {this.state.ratings}
                          packaging = {this.state.packaging}/>
-          <Comments product = {this.state.comments}/>
+          <Comments product = {this.state.comments}
+                    name = {this.state.product.name}/>
       </div>
       </div>
     </Fragment>  
