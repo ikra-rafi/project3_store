@@ -6982,7 +6982,39 @@ right: 0px !important;
 
 }
 
+#form1{
+  padding-left: 70px;
+  padding-top: 5%;
+  padding-bottom: 2%;
+  text-align: center;
+  align-items: center;
 
+}
+
+#inputRev{
+  padding-left: 20px;
+}
+
+
+#revBtn{
+  margin-left: 20px;
+  
+}
+#revBtn:hover {
+   width: 150px;
+  /* height: 57px; */ 
+  background: white;
+  color:#a73500;
+  border: 1px solid  #c44308;
+  /* padding-left: 20px;
+  margin-left: 20px; */
+}
+
+#rev{
+color:white;
+background-color:#a73500 ;
+border: 1px solid #a73500;
+}
 
 
 

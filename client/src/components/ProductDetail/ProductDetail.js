@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import Ratings from "../Ratings";
 import API from "../../utils/API";
+// import Comments from "../Comments";
+import { Link } from "react-router-dom";
+
+
 
 function ProductDetail(props) {
 
@@ -121,6 +125,7 @@ function ProductDetail(props) {
   }
 
   return (
+ 
    <div className="container py-5">
     <div className="row">
     <div className="col-lg-6 col-xm-12">
@@ -149,9 +154,18 @@ function ProductDetail(props) {
         
       </div>
       <button id="addCartBtn" onClick={addToCart}>ADD TO CART</button>
+      {/* <Link className="pro-checkout"
+                            to="/checkout" >
+                              Checkout
+                            </Link> */}
+      {/* <Comments comments={props.writeReview}/> */}
    </div>
+
+
+ 
    </div>
 </div>
+
   );
 }
 

@@ -16,7 +16,7 @@ function Comments(props) {
 
     return(
         <div>
-            <button onClick={writeReview}>Write Review</button>
+            <button id="comBtn"onClick={writeReview}>Write Review</button>
             {props.product.map(res => (
                 console.log(res),
                 <div className="comment" key = {res._id}>
