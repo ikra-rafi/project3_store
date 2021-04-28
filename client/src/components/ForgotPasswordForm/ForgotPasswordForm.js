@@ -18,6 +18,7 @@ function ForgotPasswordForm() {
     password: "",
   
   };
+
   var storeLogin = [{
     email: "",
     password: "",
@@ -26,28 +27,37 @@ function ForgotPasswordForm() {
     firstName: "",
     lastName: "",
   }]
+
+  // set up state variables
   const [showMe, setShowMe] = useState(false);
   const [email, setEmail] = useState();
   const [answer, setAnswer] = useState({question: "", userAnswer: "", answer: "", _id: null, password: "", firstName: "", lastName: ""});
 
+  // function to get security question/answer for user account
   function getSecurityInfo() {
     var loginObj = {
       email: email
     }
+    // api call to retrieve the security question/answer for user account based upon email
     API.getAcctQuestionAnswer(loginObj)
       .then(res => {
+        // check if successful retrieval
         if(res.status ===200) { 
           console.log(res.data);
+          // set state to values returned
           setAnswer({...answer, securityQuestion: res.data.securityQuestion, securityAnswer: res.data.securityAnswer, firstName: res.data.firstName, lastName: res.data.lastName, _id: res.data._id })
+          // set security Question field to value returned about user account
           setValue("securityQuestion", res.data.securityQuestion);
         }
       })
       .catch(err => console.log(err));
     }
 
+  // function to handle the submit button
   const onSubmit = (data) => {
 
     console.log("data.email = " + data.email);
+    // save off the security answer
     storeLogin[0] = answer;
     console.log(storeLogin)
     var passwordUpdate = {
@@ -55,16 +65,20 @@ function ForgotPasswordForm() {
     }
     console.log(storeLogin)
     console.log("data.password = " + data.password);
+    // api call to reset the password based upon new password and user email
       API.resetPassword(email, passwordUpdate)
       .then(res => {
+        // check is reset password was successful
         if(res.status === 200) {
           console.log("success");
         }
       })
       .catch(err => console.log(err));
+      // display alert upon successful reset that user needs to now login
       alert("Password reset successful.  Please log in.")
   };
 
+  // function to scroll page to top after clicking Login button underneath reset password
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -72,23 +86,30 @@ function ForgotPasswordForm() {
     });
   }
 
+  // function to save email field changes as they happen
   const handleChange=e=>{
     setEmail(e.target.value);
   }
 
+  // function to save security answer field changes as they happen 
   const handleAnswerChange=e=>{
     setAnswer({...answer, answer: e.target.value});
   }
 
+  // function to save new password field changes as they happen
   const handlePasswordChange=e=>{
     setAnswer({...answer, password: e.target.value});
   }
 
+  // function to check whether user entered correct security question answer
   function checkSecurityAnswer() {
+    // check if user answered question correctly
     if(answer.answer === answer.securityAnswer) {
+      // set state to display the password field
       setShowMe(true);
     }
     else {
+      // alert user their answer was incorrect
       alert("Security Answer is incorrect.");
     }
   }

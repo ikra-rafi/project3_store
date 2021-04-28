@@ -1,11 +1,11 @@
 import React, { useEffect, useState} from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {Container} from "../components/Grid";
 import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
-import { Link } from "react-router-dom";
 
 function AddProducts() {
+  // setup references to fields on page
   let name = React.createRef();
   let description = React.createRef();
   let packagingSize1 = React.createRef();
@@ -47,12 +47,6 @@ function AddProducts() {
       if(!state.admin) {
         history.push("/");
       }
-      // if(state.loggedIn) {
-      //   applyDiscount = true;
-      // }
-      // else {
-      //   applyDiscount = false;
-      // }
     }, [])
 
 
@@ -61,6 +55,7 @@ function AddProducts() {
   const [family, setFamily] = useState(familyCheckbox);
   const [region, setRegion] = useState(regionCheckbox);
 
+  // these functions handle setting the correct boolean value of checkboxes to state
   function handleBakingCheck(e) {
       setFamily({...family, baking: e.target.checked});
       console.log(family);
@@ -121,8 +116,10 @@ function AddProducts() {
       console.log(region);
   }
 
+  // function to handle submit button
   function handleSubmitBtnClick(e) {
     e.preventDefault();
+    // object to capture product info before saving to database
     const ProductInfo = 
     {
       name: name.current.value,
@@ -160,9 +157,10 @@ function AddProducts() {
     }
 
     console.log(ProductInfo);
-
+    // api call to save new product to db
     API.saveProducts(ProductInfo)
       .then(res => {
+        // check if successful save
         if(res.status === 200) {
           console.log("success on product save");
         }
@@ -170,6 +168,7 @@ function AddProducts() {
       .catch(err => console.log(err));
   }
 
+  // function to upload spice photo to Cloudinary using their widget
   function showWidget() {
   
     window.cloudinary.openUploadWidget({
@@ -211,6 +210,7 @@ function AddProducts() {
     (error, result) => {
       if (!error) {
         if (result.event === "success") {
+          // save the returned URL link for uploaded photo to store in db
           picURLInput = result.info.url;
         };
       };

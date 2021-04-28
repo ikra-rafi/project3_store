@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useForm } from "react-hook-form";
 import API from "../utils/API";
+import { useHistory} from "react-router-dom";
 import {useTodoContext} from "../utils/store";
 
 function Comments() {
@@ -10,6 +11,7 @@ function Comments() {
  //   formState: { errors }
   } = useForm();
 
+  let history=useHistory()
   useEffect(() => {
     if(state.loggedIn) {
       setLoginInfo({...loginInfo, email: state.email})
@@ -50,6 +52,7 @@ function Comments() {
     .then(res => {
       if(res.status === 200) {
         console.log("success on save");
+         history.push("/");
       }
     })
     .catch(err => console.log(err));

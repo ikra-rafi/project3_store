@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/API";
 import ProductContext from "../utils/productContext";
-//import ContactUsForm from "../components/ContactUsForm.js";
 import ProductsContainer from "../components/ProductsContainer";
 import { useTodoContext} from "../utils/store";
 import { Link } from 'react-router-dom';
 import MetaTags from "react-meta-tags";
 import Jumbotron from '../components/Jumbotron';
 
-
-
-
 function Home() {
 
+  // declarations of state variables
   const [product, setProduct] = useState({});
   const [products, setProducts] = useState([]);
   const [bakingProducts, setBakingProducts] = useState([]);
@@ -21,16 +18,18 @@ function Home() {
   const [extractProducts, setExtractProducts] = useState([]);
   const [teaProducts, setTeaProducts] = useState([]);
   const [state, dispatch] = useTodoContext();
-//  const [logout, setLogout] = useState();
 
-// When the component mounts, a call will be made to get random users.
+// When the component mounts, a call will be made to retrieve products.
 useEffect(() => {
   loadProducts();
 }, []);
 
+// function to get products from db
 function loadProducts() {
+  // api call to retrieve items from products table
   API.getProducts()
     .then(products => {
+      // set state
       setProducts(products);
       console.log(products);
       setProduct(products[0]);
@@ -39,7 +38,9 @@ function loadProducts() {
     .catch(err => console.log(err));
   }
 
+  // function to filter results on home page (products)
   function filterResults(products) {
+    // checking each product against product family and saving to state
     const baking = products.filter(result => (result.family.baking === true));
     setBakingProducts(baking);
 
@@ -56,31 +57,7 @@ function loadProducts() {
     setTeaProducts(teas);
   }
 
-  // function handleLogout() {
-  //   API.Logout('/logout')
-  //     .then(response => {
-  //       console.log('Get user response: ')
-  //       console.log(response.data)
-  //       if (response.data.user) {
-  //         console.log('Get User: There is a user saved in the server session: ')
-
-  //         dispatch({
-  //           type: "loggedIn",
-  //           loggedIn: true,
-  //           email: response.data.user.email
-  //       })
-  //     } else {
-  //       console.log('Get user: no user');
-  //       dispatch({
-  //         type: "loggedIn",
-  //         loggedIn: false,
-  //         email: null
-  //       })
-
-  //     }
-  //   })
-  // }
-
+  // getting state about whether user logged in or not
   const loggedIn = state.loggedIn;
   console.log('navbar render, props: ')
   console.log("loggedIn = " + loggedIn);
@@ -96,36 +73,6 @@ function loadProducts() {
       <Jumbotron />
 
     <ProductContext.Provider value={{product, products}}>
-{/* MERN */}
-    {/* <div>
-      <header className="navbar App-header" id="nav-container">
-          <div className="col-4" >
-              {loggedIn ? (
-                  <section className="navbar-section">
-                      <Link to="#" className="btn btn-link text-secondary" onClick={handleLogout}>
-                      <span className="text-secondary">logout</span></Link>
-
-                  </section>
-              ) : (
-                      <section className="navbar-section">
-                          <Link to="/" className="btn btn-link text-secondary">
-                              <span className="text-secondary">home</span>
-                              </Link>
-                          <Link to="/login" className="btn btn-link text-secondary">
-                          <span className="text-secondary">login</span></Link>
-                          <Link to="/signup" className="btn btn-link">
-                          <span className="text-secondary">sign up</span></Link>
-                      </section>
-                  )}
-          </div>
-          <div className="col-4 col-mr-auto">
-          <div id="top-filler"></div> */}
-              {/* <img alt="logo" /> */}
-              {/* <h1>MERN Passport</h1>
-          </div>
-      </header>
-    </div> */}
-{/* Mern */}
 
       <div>
       <section className="product-section">
@@ -137,7 +84,6 @@ function loadProducts() {
           
       </div>
   </section>
-
 
         <h1 className="base-header" style={{color:'black'}}>Baking</h1>
         <ProductsContainer

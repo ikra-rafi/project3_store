@@ -20,17 +20,19 @@ function SignUpForm() {
   }
 
   const [signup, setSignup] = useState(temp);
-//  const [state, dispatch] = useTodoContext();
 
+  // function to save the signup name to state
   function handleChange(event) {
     setSignup({
       ...signup, [event.target.name]: event.target.value
     })
   }
 
+  // function to handle the submit button
   const onSubmit = (data) => {
 
     console.log('sign-up email: ' + signup.email)
+    // object to store the new user info from fields before saving to db
     const storeLogin = [{
       email: data.email,
       password: data.password,
@@ -43,17 +45,21 @@ function SignUpForm() {
     }]
   
     console.log(storeLogin)
+    // api call to save the new user info
     API.saveLogin(storeLogin)
       .then(res => {
         console.log("signup");
         console.log(res.data);
+        // check if successful save
         if(res.status === 200) {
-          setSignup({
-            redirectTo: "/"
-          })
+          // redirect to home page upon successful save of new user
+//          setSignup({
+//            redirectTo: "/"
+//          })
         }
       })
       .catch(err => console.log(err));
+      // clear all the signup fields
       setValue("email", "");
       setValue("firstName", "");
       setValue("lastName", "");
@@ -61,9 +67,12 @@ function SignUpForm() {
       setValue("answer", "");
       setValue("password", "");
       setValue("confirmPassword", "");
+      // display alert informing user their signup was successful
       alert("Account created, please login to continue.")
   };
-  const initialValues = {
+
+    // object for initial values of fields on page
+    const initialValues = {
     firstName:"",
     lastName:"",
     password: "",
@@ -84,7 +93,6 @@ function SignUpForm() {
           placeholder="Email"
           type="email"
           onChange={handleChange}
-//          value={signup.email}
           {...register("email")}
         />
         <label htmlFor="firstName">First Name</label>
@@ -93,7 +101,6 @@ function SignUpForm() {
           placeholder="First Name"
           type="firstName"
           onChange={handleChange}
-//          value={firstName}
           {...register("firstName")}
         />
         <label htmlFor="LastName">Last Name</label>
@@ -101,7 +108,6 @@ function SignUpForm() {
           defaultValue={initialValues.lastName}
           placeholder="Last Name"
           type="lastName"
-//          value={lastName}
           onChange={handleChange}
           {...register("lastName")}
         />
@@ -111,7 +117,6 @@ function SignUpForm() {
           defaultValue={initialValues.securityQuestion}
           placeholder="Security Question"
           type="securityQuestion"
-//          value={securityQuestion}
           onChange={handleChange}
           {...register("securityQuestion")}
         />
@@ -121,7 +126,6 @@ function SignUpForm() {
           defaultValue={initialValues.answer}
           placeholder="Answer"
           type="answer"
-//          value={answer}
           onChange={handleChange}
           {...register("answer")}
         />
@@ -131,7 +135,6 @@ function SignUpForm() {
           defaultValue={initialValues.password}
           placeholder="Password"
           type="password"
-//          value={password}
           onChange={handleChange}
           {...register("password", {
             validate: (value) => value.length >= 6

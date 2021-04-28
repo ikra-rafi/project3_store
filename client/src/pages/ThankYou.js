@@ -1,5 +1,6 @@
 import React from "react";
 
+// displays thank you page after placing order
 function ThankYou() {
   return (
     <div>

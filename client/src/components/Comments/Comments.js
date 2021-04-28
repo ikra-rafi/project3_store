@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import API from "../../utils/API";
+import React from 'react';
 import {useTodoContext} from "../../utils/store";
 import "./style.css";
 
@@ -8,6 +7,7 @@ function Comments(props) {
     const [state, dispatch] = useTodoContext();
     console.log(state);
 
+    // function to write a review of product
     const writeReview = () => {
         const id = window.location.href.split("/").pop();
         console.log(id);
