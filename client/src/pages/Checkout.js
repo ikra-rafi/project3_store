@@ -211,44 +211,39 @@ function Checkout() {
                     <div id="content" className="col-md-8 order-md-1">
                     <div className="contactform" method="post" className="shopform">
                     <div className="custom-title">
-                     <h3>Billing and Shipping details</h3>
+                     <h3>Shipping details</h3>
                     </div>
                       <br/>
                     <form id={1} className="searchForm justify-content-center m-2" key={1}>
-                      {/* <div className="row"> */}
+                      
                       <div class="row">
-                      <div className="mb-3">
+                
                           <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
                           <input name="shipCompanyName" ref={shipCompanyName} id="shipCompanyName" className="form-control form-control-lg" placeholder="Ship Company Name" />
-                      </div>
-
-                      <div className="col-lg-6 col-sm-12">
+     
                           <label className="label" htmlFor="exampleInputEmail1">First Name</label>
                           <input name="shipFirstName" ref={shipFirstName} id="shipFirstName" className="form-control form-control-lg" placeholder="Ship First Name" />
-                      </div>
-                      <div className="col-lg-6 col-sm-12">    
+                          
+                          <div className="mb-3">
                           <label className="label" htmlFor="exampleInputEmail1">Last Name</label>
                           <input name="shipLastName" ref={shipLastName} id="shipLastName" className="form-control form-control-lg" placeholder="Ship Last Name" />
+                          </div>
+
+                          <div className="mb-3">
+                          <label className="label" htmlFor="exampleInputEmail1">Address</label>
+                          <input type="text"name="shipStreet" ref={shipStreet} id="shipStreet" className="form-control form-control-lg" placeholder="Shipping Street" />
+                          </div>
+
+                          <div className="mb-3">
+                          <label className="label" htmlFor="exampleInputEmail1">Address #2</label>
+                          <input  type="text" name="shipAddress2" ref={shipAddress2} id="shipAddress2" className="form-control form-control-lg" placeholder="Shipping Address #2" />
+                          </div> 
                       </div>
 
-                      <div className="col-lg-6 col-sm-12">
-                          <label className="label" htmlFor="exampleInputEmail1">Street</label>
-                          <input name="shipStreet" ref={shipStreet} id="shipStreet" className="form-control form-control-lg" placeholder="Shipping Street" />
-                      </div>
-                      <div className="col-lg-6 col-sm-12">
-                          <label className="label" htmlFor="exampleInputEmail1">Street #2</label>
-                          <input name="shipAddress2" ref={shipAddress2} id="shipAddress2" className="form-control form-control-lg" placeholder="Shipping Address #2" />
-                      </div>
-                      </div>
-
-                      <div className="row">
-                      <div className="col-md-5 mb-3">
                           <label className="label" htmlFor="exampleInputEmail1">City</label>
                           <input name="shipCity" ref={shipCity} id="shipCity" className="form-control form-control-lg" placeholder="Shipping City" />
-                      </div>   
 
-                      <div class="col-md-4 mb-3"> 
-                          <label for="input8-ecommerce-03" className="label" htmlFor="exampleInputEmail1">State</label>
+                          <label className="label" htmlFor="exampleInputEmail1">State</label>
                       
                             <div className="select">
                               <select class="custom-select d-block w-100" ref={shipState} id="shipState" defaultValue="" required="">
@@ -306,35 +301,40 @@ function Checkout() {
                                 <option value="WY">WY</option>
                               </select>
                             </div>
-                        </div>
 
-                    <div className="col-md-3 mb-3">
-                          <label for="input9-ecommerce-03" className="label" htmlFor="exampleInputEmail1">Zip</label>
+                    <div className="mb-3">
+                          <label className="label" htmlFor="exampleInputEmail1">Zip</label>
                           <input name="shipZip" ref={shipZip} id="shipZip" className="form-control form-control-lg" type="text" placeholder="Shipping Zip Code" maxLength="5"
                             size="5" required/>
                     </div>
-                  </div>
 
                     <div className="mb-3">
                           <label className="label" htmlFor="exampleInputEmail1">Email</label>                      
                           <input type="email" ref={email} id="email" name="email" className="form-control form-control-lg" placeholder="email" />
                     </div>
+                    <div className="mb-3">
                       <label className="label" htmlFor="exampleInputEmail1">Phone</label>
                       <input type="tel" ref={phone} id="phone" name="phone" className="form-control form-control-lg" placeholder="555-555-5555"
                           maxLength="12" size="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
                       <label className="label" htmlFor="exampleInputEmail1">Notes</label>                      
                       <input name="notes" ref={notes} id="notes" className="form-control form-control-lg" placeholder="notes" />
-                      {/* </div> */}
+                      </div>
                     </form>
 
-
+                    <div className="row">
                     <div style={{display: "inline-block"}}>
                     <label className="label" htmlFor="billingAddr">Billing address same as Shipping address</label>
                     <input type="checkbox" id="billingAddr" onClick={handleCheck} name="billing" value="same address"/>
                     </div>
+                    </div>
                     <br />
                     {!checkbox ? (
-                      <div>
+                      
+                    <div id="content" className="col-md-8 order-md-1">
+                    <div className="custom-title">
+                    <br /><h3>Billing details</h3>
+                    </div>
+                      <br/>
                         <form>
                           <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
                           <input name="ccBillCompanyName" ref={billCompanyName} id="billCompanyName" className="form-control form-control-lg" placeholder="Billing Company Name" />
@@ -412,6 +412,10 @@ function Checkout() {
                     )  : (null )
                   }
                     <br />
+                    <div className="custom-title">
+                    <br /><h3>Payment Information</h3>
+                    </div>
+                      <br/>
                     <form>
                     <label className="label" htmlFor="exampleInputEmail1">Name</label>
                       <input name="ccName" ref={ccName} id="ccNameclassName=" className="form-control form-control-lg" placeholder="Name on Credit Card" />

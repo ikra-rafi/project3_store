@@ -5225,14 +5225,14 @@ right: 0px !important;
     .checkout_section .payment_mth {
        padding-top: 40px;
    }
-    .checkout_section #payment label {
+    /* .checkout_section #payment label {
        border: 2px solid #EDE6E4;
        font-weight: normal;
        font-size: 16px;
        text-transform: capitalize;
        padding: 25px 40px !important;
        color: #363535;
-   }
+   } */
     .checkout_section .checkbox {
        margin-bottom: 20px;
        position: relative;
@@ -5284,7 +5284,7 @@ right: 0px !important;
       opacity: .5;
   }
   .checkout_section label {
-      margin-bottom: 0px;
+      margin-bottom: 10px;
       display: block;
   }
   
