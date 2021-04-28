@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StarRating from 'react-star-ratings';
+import '../App.css';
 
 
 function Review() {
@@ -16,18 +17,27 @@ function Review() {
 
     return(
 
-        <form>
-            <p>Rating</p>
+        <form id="form1">
+            {/* <p>Rating</p> */}
             <StarRating
                 rating = {rating}
                 numberofStars = {5}
                 changeRating = {changeRating}
+                // starDimension="30px"
             />
-            <p>Review Title</p>
-            <input></input>
-            <p>Review</p>
-            <input></input>
-            <button >Submit Review</button>
+            <div id="inputRev"> 
+            <p></p>
+            <input  placeholder="Review Title"></input>
+            
+            <p></p>
+            <input  placeholder="Review " ></input>
+            </div>
+
+            <br></br>
+
+            <div id="revBtn">
+            <button id="rev">Submit Review</button>
+            </div>   
         </form>
 
 
