@@ -1,9 +1,7 @@
-//import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import Header from "./components/Header";
 import NavMenu from "./components/NavMenu";
-// import Jumbotron from "./components/Jumbotron";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
@@ -14,8 +12,6 @@ import Footer from "./components/Footer";
 import AllProducts from "./pages/AllProducts";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Checkout from "./pages/Checkout";
-//import john from "./pages/login-form";
-//import johnSignup from "./pages/sign-up";
 import Comments from "./pages/Comments";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
@@ -29,7 +25,6 @@ function App() {
       <div id="app-content">
           <Header />
           <NavMenu />
-          {/* <Jumbotron /> */}
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/home" component={Home} />
@@ -41,8 +36,6 @@ function App() {
             <Route path="/cart" component={ShoppingCart} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/products" component={AllProducts} />
-{/*             <Route path="/john" component={john} />
-            <Route path="/johnSignup" component={johnSignup} /> */}
             <Route path="/comments" component={Comments} />
             <Route path="/review/:id" component={Review} />
             <Route path="/thankyou" component={ThankYou} />

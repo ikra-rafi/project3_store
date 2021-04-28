@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useForm } from "react-hook-form";
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 // import ForgotPasswordForm from "../ForgotPasswordForm";
 import API from "../../utils/API";
 import { useTodoContext } from "../../utils/store";
@@ -18,6 +18,8 @@ function LoginForm() {
       password: "",
       email: ""
     };
+
+    let history=useHistory();
 
     const temp = {
       password: "",
@@ -64,6 +66,7 @@ function LoginForm() {
         }
       })
       .catch(err => console.log(err));
+    history.push("/");
   };
 
   return (

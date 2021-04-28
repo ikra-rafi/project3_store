@@ -10,6 +10,7 @@ function SignUpForm() {
 
     register,
     handleSubmit,
+    setValue,
     formState: { errors }
   } = useForm();
 
@@ -53,8 +54,14 @@ function SignUpForm() {
         }
       })
       .catch(err => console.log(err));
-
-
+      setValue("email", "");
+      setValue("firstName", "");
+      setValue("lastName", "");
+      setValue("securityQuestion", "");
+      setValue("answer", "");
+      setValue("password", "");
+      setValue("confirmPassword", "");
+      alert("Account created, please login to continue.")
   };
   const initialValues = {
     firstName:"",

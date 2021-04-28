@@ -3,7 +3,7 @@ import { useTodoContext} from "../utils/store";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
 import Cart from "../components/Cart";
-import {Container} from "../components/Test/Grid";
+import {Container} from "../components/Grid";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 
@@ -37,6 +37,11 @@ function ShoppingCart() {
     .then(res=> {
       console.log(res.data);
       setCart(res.data);
+      cartNumItems = res.data.length;
+      dispatch({
+        type: "numCartItems",
+        numItems: cartNumItems
+      })
       var cartProducts = [];
       res.data.forEach(element => {
         cartProducts.push(element);
@@ -179,6 +184,8 @@ function ShoppingCart() {
       console.log(res.data);
     })
   }
+
+  var cartNumItems;
 
   function handleRemoveClick (e) {
 console.log(e.target.id);
