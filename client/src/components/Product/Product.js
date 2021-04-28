@@ -174,9 +174,15 @@ function Product(props) {
               <div className="product_info">
                   <h4 id="h4"className="product-name">
                    {props.product.name}
+                   
                   </h4>
+                  <div id="stars">
+                  <Ratings ratings= {props.product.ratings}/>
+                  </div>
                   <div className="row">
+                  {/* <Ratings ratings= {props.product.ratings}/> */}
                     <div className="col-6">
+                    
                       <p className="product_price">${props.product.packaging[0].price}</p>
                       <p id="prod"className="product_info">{props.product.packaging[0].size}</p>
                     </div>
