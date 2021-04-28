@@ -6,6 +6,7 @@ import API from "../../utils/API";
 import Breadcrumb from "../Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
 
+// variable to hold account info for display
 var acctInfo={
   firstName: "",
   lastName: "",
@@ -17,6 +18,7 @@ var acctInfo={
   phone: ""
 };
 
+// function to display account info and order history
 function OrderHistory() {
   
     const [orders, setOrders] = useState([]);
@@ -31,40 +33,47 @@ function OrderHistory() {
    
     useEffect(() => {
       console.log("orderHistory effect");
+      // check if user logged before attempting to get orders
       if(state.loggedIn) {
+        // call get login to retrieve user info
         getLogin();
+        // call get orders to retrieve that specific user's orders
         getOrders();
       }
+      // user not logged in
       else {
+        // redirect to home page since there would be no order history to retrieve
         history.push('/');
       }
     }, [])
-  
+
+    // function to get login info
     function getLogin() {
       var loginObj = {
         password: "",
         email: state.email
       }
+      // api call to get logged in user's account info
       API.getOrdersAcct(loginObj)
         .then(res => {
         })
         .catch(err => console.log(err));
     }
 
+    // function to get a user's orders
     function getOrders() {
 
+      // api call to get order info
       API.getOrders(state.email)
         .then(res => {
-          console.log(res.data[0]);
-          console.log(res.data[0].orderIDs)
-          console.log(res.data[0].orderIDs[0].creditCard);
           var orderProducts =[];
+          // loop over each product for an order
           res.data[0].orderIDs.forEach(element => {
+            // save each product to an array
             orderProducts.push(element);
             console.log(orderProducts);
-//            acctInfo = orderProducts[0].creditCard.billingAddress.firstName;
-  //          console.log(john);
           })
+          // save account info found in first billing address section
           acctInfo.firstName=orderProducts[0].creditCard.billingAddress.firstName;
           acctInfo.lastName=orderProducts[0].creditCard.billingAddress.lastName;
           acctInfo.street = orderProducts[0].creditCard.billingAddress.street;
@@ -73,15 +82,10 @@ function OrderHistory() {
           acctInfo.zip = orderProducts[0].creditCard.billingAddress.zip;
           acctInfo.email = orderProducts[0].email;
           acctInfo.phone = orderProducts[0].phone;
-//          console.log(orderProducts[0].creditCard.billingAddress.firstName)
-//          john = orderProducts[0].creditCard.billingAddress.firstName;
-//          console.log(john);
+          // set state for the orders
           setOrders(orderProducts);
-//          setOrders(orderProducts);
         })
         .catch(err => console.log(err));
-//      console.log(orders);
-
     }
   
     return (
