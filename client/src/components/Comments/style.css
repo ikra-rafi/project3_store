@@ -1,14 +1,16 @@
 #comBtn{
     margin-top:1%;
     width: 550px;
-    height: 45px;
+    height: 45px; 
     font-family: 'Karla', sans-serif; 
     background: #c44308;
     color: white;
-    font-size:18px;
-    margin-left:17%;
+    font-size:18px; 
+     margin-left:30%; 
     /* text-align: center; */
     margin-bottom: 10px;
+    /* position: fixed; */
+    
 }
 
 
@@ -16,4 +18,85 @@
     background: white;
     color:#a73500;
     border: 1px solid  #c44308;
+  }
+
+
+  /* @media (max-width: 320px) {
+    #comBtn{
+      width: 4rem;
+      margin-left:9%;
+      
+      /* max-resolutionleft 3px;%; */
+    /* }
+  }  */
+
+  /* @media (max-width: 320px) {
+    #comBtn{
+      width: 4rem;
+      margin-left:9%;
+      
+      /* max-resolutionleft 3px;%; */
+    /* }
+  } */ 
+
+  /* @media only screen and (min-width: 991px) {
+    #comBtn{
+    font-size: 17px !important;
+    width: 150px !important;
+    height: 45px !important;
+    margin-left: 100px !important;
+    }
+  } */
+  /* @media (max-width: 1024px){
+    #comBtn{
+    font-size: 20px !important;
+    width: 450px !important;
+    height: 45px !important;
+    margin-left: 90px;
+    }
+  }  */
+
+  @media only screen and (min-width: 320px){
+    #comBtn{
+    font-size: 17px !important;
+    width: 155px !important;
+    height: 45px !important;
+    margin-left: 60px ;
+    }
+  }
+
+   /* @media only screen and (min-width: 1024px){
+    #comBtn{
+    font-size: 20px !important;
+    width: 550px !important;
+    height: 45px !important;
+    margin-left: 160px !important ;
+    }
+  }  */
+
+  /* @media only screen and (max-width: 1024px){
+    #comBtn{
+    font-size: 20px !important;
+    width: 550px !important;
+    height: 45px !important;
+    margin-left: 78px !important;
+    }
+  }  */
+
+  @media only screen and (max-width: 768px){
+    #comBtn{
+    font-size: 25px !important;
+    width: 550px !important;
+    height: 45px !important;
+    margin-left: 50px !important;
+    }
+  }
+
+  @media only screen and (min-width: 280px){
+    #comBtn{
+    font-size: 17px !important;
+    width: 155px !important;
+    height: 45px !important;
+    margin-left: 25px !important;
+    }
   }
