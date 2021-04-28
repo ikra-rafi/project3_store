@@ -249,7 +249,7 @@ console.log(e.target.id);
                                     <td className="align-middle text-center"><p>{result.prodInfo.size}</p></td>
                                     <td className="align-middle text-center">
                                       <div className="row" style={{display: 'inline-block'}}>
-                                        <button onClick={handleDecBtnClick} id={result._id} ></button>
+                                        <button onClick={handleDecBtnClick} id={result._id} className="fa fa-minus buttons"></button>
                                         {result.prodInfo.quantity}
                                         <button id={result._id}  className="fa fa-plus buttons" onClick={handleIncBtnClick}></button>
                                       </div>

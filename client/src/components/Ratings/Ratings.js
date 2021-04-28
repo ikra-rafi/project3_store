@@ -32,13 +32,25 @@ function Ratings(props) {
     }
 
     return(
-        <StarRating
-            rating = {average}
-            numberofStars = {5}
-            starDimension="15px"
-            starRatedColor="#c44308"
-           
+      <div>
+        <div className = "row">
+          <div className = "col-7">
+            <StarRating
+              rating = {average}
+              numberofStars = {5}
+              starDimension="15px"
+              starRatedColor="#c44308"
+
             />
+          </div>
+          <div className="col-5">
+            <p>{`${props.ratings.length} Reviews`}</p>
+          </div>
+        </div>
+
+
+      </div>
+
     );
 
 }
