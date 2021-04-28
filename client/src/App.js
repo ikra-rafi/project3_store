@@ -35,7 +35,7 @@ function App() {
             <Route path="/checkout" component={Checkout} />
             <Route path="/products" component={AllProducts} />
             {/* <Route path="/comments" component={Comments} /> */}
-            <Route path="/review/:id" component={Review} />
+            <Route path="/review/:name/:id" component={Review} />
             <Route path="/thankyou" component={ThankYou} />
             <Route path="/addproducts" component={AddProducts} />
             <Route path="/orderhistory" component={OrderHistory} />

@@ -26,7 +26,7 @@ const productSeed = [
         baking: true,
         grilling: false,
         seasoning: false,
-        extract: true,
+        extracts: true,
         teas: false
     },
     region: {
@@ -59,7 +59,7 @@ const productSeed = [
         baking: true,
         grilling: false,
         seasoning: false,
-        extract: false,
+        extracts: false,
         teas: false
     },
     region: {
@@ -92,7 +92,7 @@ const productSeed = [
         baking: false,
         grilling: true,
         seasoning: true,
-        extract: false,
+        extracts: false,
         teas: false
     },
     region: {
@@ -125,7 +125,7 @@ const productSeed = [
         baking: false,
         grilling: false,
         seasoning: false,
-        extract: false,
+        extracts: false,
         teas: false
     },
     region: {

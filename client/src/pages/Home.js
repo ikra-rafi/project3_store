@@ -42,19 +42,19 @@ function loadProducts() {
   function filterResults(products) {
     // checking each product against product family and saving to state
     const baking = products.filter(result => (result.family.baking === true));
-    setBakingProducts(baking);
+    setBakingProducts(baking.slice(0,3));
 
     const grilling = products.filter(result => (result.family.grilling === true));
-    setGrillingProducts(grilling);
+    setGrillingProducts(grilling.slice(0,3));
 
     const seasoning = products.filter(result => (result.family.seasoning === true));
-    setSeasoningProducts(seasoning);
+    setSeasoningProducts(seasoning.slice(0,3));
 
-    const extract = products.filter(result => (result.family.extract === true));
-    setExtractProducts(extract);
+    const extract = products.filter(result => (result.family.extracts === true));
+    setExtractProducts(extract.slice(0,3));
 
     const teas = products.filter(result => (result.family.teas === true));
-    setTeaProducts(teas);
+    setTeaProducts(teas.slice(0,3));
   }
 
   // getting state about whether user logged in or not
@@ -78,10 +78,10 @@ function loadProducts() {
       <section className="product-section">
       <div className="container">
           <div className="base-header">
-              <small> Our Featured Items</small>  
-              <h3>Organic products</h3> 
+              <small> Our Featured Items</small>
+              <h3>Organic products</h3>
           </div>
-          
+
       </div>
   </section>
 
@@ -123,7 +123,7 @@ function loadProducts() {
       </div>
 
     </ProductContext.Provider>
-    
+
 </>
   )
 

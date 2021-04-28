@@ -91,8 +91,14 @@ function AdminTable() {
       setSortedProducts(results);
       setProductSort("ascending");
 
+    }
   }
+
+  function updateProduct (e) {
+    e.preventDefault();
+
   }
+
   return (
    <div>
      <table id="table"className="table table-hover">
@@ -100,11 +106,12 @@ function AdminTable() {
           <tr>
             <th></th>
             <th id="prdBtn"><button id="btn"onClick={sortTableByProdID}>Product ID</button></th>
-          
+
             <th id="prdNm"><button id="btn"onClick={sortTableByName}>Product Name</button></th>
-            <th>Description</th>
-            <th>Size</th>
-            <th>Quantity</th>
+            <th><button id="btn">Description</button></th>
+            <th><button id="btn">Size</button></th>
+            <th><button id="btn">Quantity</button></th>
+            {/* <th></th> */}
           </tr>
         </thead>
         <tbody>
@@ -121,6 +128,10 @@ function AdminTable() {
                 <td><p id="tp"> {result.description}</p></td>
                 <td><p id="pp">  {res.size}</p></td>
                 <td><input id="tdIn"defaultValue={res.quantity}  /></td>
+                {/* <td>
+                  <button onclick="updateProduct">Update</button>
+                </td> */}
+
               </tr>
             ))
           ))}
