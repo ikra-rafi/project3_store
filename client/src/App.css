@@ -1032,9 +1032,7 @@
     background: #f0f0f0 url("/assets/images/slider2.jpg") no-repeat scroll right center;
   }
   
-  /* .slide_bg_3 {
-    background: #f0f0f0 url("/assets/images/slider3.jpg") no-repeat scroll right center;
-  } */
+
   
   .single_slider {
     background-color: #dddd;
@@ -5511,8 +5509,7 @@ right: 0px !important;
        padding: 10px;
        width: 100%;
    }
-   a.app-coupon,
-   a.get-quote {
+   a.app-coupon {     
        background: #2b343b;
        color: #fff;
        display: block;
@@ -5525,6 +5522,10 @@ right: 0px !important;
        text-transform: capitalize;
        width: 36%;
    }
+
+   a.app-coupon:hover {     
+    color: #fff;
+}
  
    p.title-country,
    p.title-state,

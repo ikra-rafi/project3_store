@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import Cart from "../components/Cart";
 import CartData from "../components/Test/CartData"
@@ -6,6 +6,8 @@ import {Container} from "../components/Test/Grid";
 import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
 import { Link } from "react-router-dom";
+import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
+import MetaTags from "react-meta-tags";
 
 function Checkout() {
   let shipCompanyName = React.createRef();
@@ -174,87 +176,147 @@ function Checkout() {
   }
 
   return (
-    <div>
+    <Fragment>
+    <MetaTags>
+      <title>spice-A-holic | Check Out</title>
+      <meta
+        name="Spice-A-Holic Checkout"
+        content="Proceed to place your order."
+      />
+    </MetaTags>
+
+
+    <div className="checkout-page">
+        {/*====================  breadcrumb area ====================*/}
+
+        <Breadcrumb title="Check Out" />
+        
+        {/*====================  End of breadcrumb area  ====================*/} 
+
+
+        {/*====================  Start of Checkout  Section    ====================*/}    
+    <section className="checkout_section">
+      <div className="container">
       <Container fluid>
         <Container >
         <Cart />
+              <div className="row">
+
               <div className="container-fluid containerColor marginBottomCont">
                <h1 className="text-center">Checkout Page</h1> 
                <h1 className="text-center">Cart Total = ${formatter.format(state.orderTotal)}</h1>
                {state.cartItems.length ? (
                   <div>
-                    <form id={1} className="searchForm justify-content-center m-2" key={1}>
-                      <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
-                      <input name="shipCompanyName" ref={shipCompanyName} id="shipCompanyName" className="form-control form-control-lg" placeholder="Ship Company Name" />
-                      <label className="label" htmlFor="exampleInputEmail1">First Name</label>
-                      <input name="shipFirstName" ref={shipFirstName} id="shipFirstName" className="form-control form-control-lg" placeholder="Ship First Name" />
-                      <label className="label" htmlFor="exampleInputEmail1">Last Name</label>
-                      <input name="shipLastName" ref={shipLastName} id="shipLastName" className="form-control form-control-lg" placeholder="Ship Last Name" />
-                      <label className="label" htmlFor="exampleInputEmail1">Street</label>
-                      <input name="shipStreet" ref={shipStreet} id="shipStreet" className="form-control form-control-lg" placeholder="Shipping Street" />
-                      <label className="label" htmlFor="exampleInputEmail1">Street #2</label>
-                      <input name="shipAddress2" ref={shipAddress2} id="shipAddress2" className="form-control form-control-lg" placeholder="Shipping Address #2" />
-                      <label className="label" htmlFor="exampleInputEmail1">City</label>
-                      <input name="shipCity" ref={shipCity} id="shipCity" className="form-control form-control-lg" placeholder="Shipping City" />
-                      <label className="label" htmlFor="exampleInputEmail1">State</label>
-                      <div className="select"><select ref={shipState} id="shipState" defaultValue="" required="">
-                        <option value="" disabled="">Choose...</option>
-                        <option value="AK">AK</option>
-                        <option value="AL">AL</option>
-                        <option value="AR">AR</option>
-                        <option value="AZ">AZ</option>
-                        <option value="CA">CA</option>
-                        <option value="CO">CO</option>
-                        <option value="CT">CT</option>
-                        <option value="DC">DC</option>
-                        <option value="DE">DE</option>
-                        <option value="FL">FL</option>
-                        <option value="GA">GA</option>
-                        <option value="HI">HI</option>
-                        <option value="IA">IA</option>
-                        <option value="ID">ID</option>
-                        <option value="IL">IL</option>
-                        <option value="IN">IN</option>
-                        <option value="KS">KS</option>
-                        <option value="KY">KY</option>
-                        <option value="LA">LA</option>
-                        <option value="MA">MA</option>
-                        <option value="MD">MD</option>
-                        <option value="ME">ME</option>
-                        <option value="MI">MI</option>
-                        <option value="MN">MN</option>
-                        <option value="MO">MO</option>
-                        <option value="MS">MS</option>
-                        <option value="MT">MT</option>
-                        <option value="NC">NC</option>
-                        <option value="ND">ND</option>
-                        <option value="NE">NE</option>
-                        <option value="NH">NH</option>
-                        <option value="NJ">NJ</option>
-                        <option value="NM">NM</option>
-                        <option value="NV">NV</option>
-                        <option value="NY">NY</option>
-                        <option value="OH">OH</option>
-                        <option value="OK">OK</option>
-                        <option value="OR">OR</option>
-                        <option value="PA">PA</option>
-                        <option value="RI">RI</option>
-                        <option value="SC">SC</option>
-                        <option value="SD">SD</option>
-                        <option value="TN">TN</option>
-                        <option value="TX">TX</option>
-                        <option value="UT">UT</option>
-                        <option value="VA">VA</option>
-                        <option value="VT">VT</option>
-                        <option value="WA">WA</option>
-                        <option value="WI">WI</option>
-                        <option value="WV">WV</option>
-                        <option value="WY">WY</option>
-                      </select>
+                    <div className="row">
+                    <div id="content" className="col-md-8 order-md-1">
+                    <div name="contactform" method="post" className="shopform">
+                    <div className="custom-title">
+                     <h3>Billing and Shipping details</h3>
                     </div>
-                      <label className="label" htmlFor="exampleInputEmail1">Zip</label>
-                      <input name="shipZip" ref={shipZip} id="shipZip" className="form-control form-control-lg" placeholder="Shipping Zip Code" maxLength="5"
+                      <br/>
+                    <form id={1} className="searchForm justify-content-center m-2" key={1}>
+                      <div className="row">
+                      <div class="row">
+                      <div className="mb-3">
+                          <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
+                          <input name="shipCompanyName" ref={shipCompanyName} id="shipCompanyName" className="form-control form-control-lg" placeholder="Ship Company Name" />
+                      </div>
+
+                      <div className="col-md-6 mb-3">
+                          <label className="label" htmlFor="exampleInputEmail1">First Name</label>
+                          <input name="shipFirstName" ref={shipFirstName} id="shipFirstName" className="form-control form-control-lg" placeholder="Ship First Name" />
+                      </div>
+                      <div class="col-md-6 mb-3">    
+                          <label className="label" htmlFor="exampleInputEmail1">Last Name</label>
+                          <input name="shipLastName" ref={shipLastName} id="shipLastName" className="form-control form-control-lg" placeholder="Ship Last Name" />
+                      </div>
+
+                      <div class="mb-3">
+                          <label className="label" htmlFor="exampleInputEmail1">Street</label>
+                          <input name="shipStreet" ref={shipStreet} id="shipStreet" className="form-control form-control-lg" placeholder="Shipping Street" />
+                      </div>
+                      <div class="mb-3">
+                          <label className="label" htmlFor="exampleInputEmail1">Street #2</label>
+                          <input name="shipAddress2" ref={shipAddress2} id="shipAddress2" className="form-control form-control-lg" placeholder="Shipping Address #2" />
+                      </div>
+                      </div>
+
+                      <div class="row">
+                      <div class="col-md-5 mb-3">
+                          <label className="label" htmlFor="exampleInputEmail1">City</label>
+                          <input name="shipCity" ref={shipCity} id="shipCity" className="form-control form-control-lg" placeholder="Shipping City" />
+                      </div>   
+
+                      <div class="col-md-4 mb-3"> 
+                          <label for="input8-ecommerce-03" className="label" htmlFor="exampleInputEmail1">State</label>
+                      
+                            <div className="select">
+                              <select class="custom-select d-block w-100" ref={shipState} id="shipState" defaultValue="" required="">
+                                <option value="" disabled="">Choose...</option>
+                                <option value="AK">AK</option>
+                                <option value="AL">AL</option>
+                                <option value="AR">AR</option>
+                                <option value="AZ">AZ</option>
+                                <option value="CA">CA</option>
+                                <option value="CO">CO</option>
+                                <option value="CT">CT</option>
+                                <option value="DC">DC</option>
+                                <option value="DE">DE</option>
+                                <option value="FL">FL</option>
+                                <option value="GA">GA</option>
+                                <option value="HI">HI</option>
+                                <option value="IA">IA</option>
+                                <option value="ID">ID</option>
+                                <option value="IL">IL</option>
+                                <option value="IN">IN</option>
+                                <option value="KS">KS</option>
+                                <option value="KY">KY</option>
+                                <option value="LA">LA</option>
+                                <option value="MA">MA</option>
+                                <option value="MD">MD</option>
+                                <option value="ME">ME</option>
+                                <option value="MI">MI</option>
+                                <option value="MN">MN</option>
+                                <option value="MO">MO</option>
+                                <option value="MS">MS</option>
+                                <option value="MT">MT</option>
+                                <option value="NC">NC</option>
+                                <option value="ND">ND</option>
+                                <option value="NE">NE</option>
+                                <option value="NH">NH</option>
+                                <option value="NJ">NJ</option>
+                                <option value="NM">NM</option>
+                                <option value="NV">NV</option>
+                                <option value="NY">NY</option>
+                                <option value="OH">OH</option>
+                                <option value="OK">OK</option>
+                                <option value="OR">OR</option>
+                                <option value="PA">PA</option>
+                                <option value="RI">RI</option>
+                                <option value="SC">SC</option>
+                                <option value="SD">SD</option>
+                                <option value="TN">TN</option>
+                                <option value="TX">TX</option>
+                                <option value="UT">UT</option>
+                                <option value="VA">VA</option>
+                                <option value="VT">VT</option>
+                                <option value="WA">WA</option>
+                                <option value="WI">WI</option>
+                                <option value="WV">WV</option>
+                                <option value="WY">WY</option>
+                              </select>
+                            </div>
+                        </div>
+
+                    <div class="col-md-3 mb-3">
+                          <label for="input9-ecommerce-03" className="label" htmlFor="exampleInputEmail1">Zip</label>
+                          <input name="shipZip" ref={shipZip} id="shipZip" className="form-control form-control-lg" placeholder="Shipping Zip Code" maxLength="5"
                             size="5" required/>
+                    </div>
+                    
+                    </div>
+
+
                       <label className="label" htmlFor="exampleInputEmail1">Email</label>                      
                       <input type="email" ref={email} id="email" name="email" className="form-control form-control-lg" placeholder="email" />
                       <label className="label" htmlFor="exampleInputEmail1">Phone</label>
@@ -262,7 +324,10 @@ function Checkout() {
                           maxLength="12" size="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
                       <label className="label" htmlFor="exampleInputEmail1">Notes</label>                      
                       <input name="notes" ref={notes} id="notes" className="form-control form-control-lg" placeholder="notes" />
+                      </div>
                     </form>
+
+
                     <div style={{display: "inline-block"}}>
                     <label className="label" htmlFor="billingAddr">Billing address same as Shipping address</label>
                     <input type="checkbox" id="billingAddr" onClick={handleCheck} name="billing" value="same address"/>
@@ -427,6 +492,9 @@ function Checkout() {
                         </tbody>
                       </table>
                   </div>
+                  </div>
+                  </div>
+                  </div>
                 ) : (
                  <div className="row text-center h-100">
                    <div className="col-md-12 text-center my-auto">
@@ -438,9 +506,16 @@ function Checkout() {
 {/*              <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" > */}
              <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
 {/*          </Link> */}
+          </div>
+
         </Container>
       </Container>
+      </div>
+
+      </section>
     </div>
+    
+    </Fragment>
   );
 }
 
