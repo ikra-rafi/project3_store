@@ -20,7 +20,8 @@ const TodoContext = createContext();
             loggedIn: state.loggedIn,
             email: state.email,
             products: state.products = action.products,
-            admin: state.admin
+            admin: state.admin,
+            numItems: state.numItems
           }
         )
       case "cartTotal":
@@ -38,7 +39,8 @@ const TodoContext = createContext();
             loggedIn: state.loggedIn,
             email: state.email,
             products: state.products = action.products,
-            admin: state.admin
+            admin: state.admin,
+            numItems: state.numItems
           }
         )
       case "salesTaxAmt":
@@ -56,7 +58,8 @@ const TodoContext = createContext();
             loggedIn: state.loggedIn,
             email: state.email,
             products: state.products,
-            admin: state.admin
+            admin: state.admin,
+            numItems: state.numItems
           }
         )
       case "orderTotal":
@@ -74,7 +77,8 @@ const TodoContext = createContext();
             loggedIn: state.loggedIn,
             email: state.email,
             products: state.products,
-            admin: state.admin
+            admin: state.admin,
+            numItems: state.numItems
           }
         )
     case "loggedIn":
@@ -92,9 +96,29 @@ const TodoContext = createContext();
           loggedIn: action.loggedIn,
           email: action.email,
           products: state.products,
-          admin: action.admin
+          admin: action.admin,
+          numItems: state.numItems
         }
       )
+    case "numCartItems":
+    return (
+      {
+        orderTotal: state.orderTotal,
+        salesTax: state.salesTax,
+        salesTaxAmt: state.salesTaxAmt,
+        shipFee: state.shipFee,
+        subTotal: state.subTotal,
+        cartItems: state.cartItems,
+        discount: state.discount,
+        discountAmt: state.discountAmt,
+        discountTotal: state.discountTotal,
+        loggedIn: state.loggedIn,
+        email: state.email,
+        products: state.products,
+        admin: state.admin,
+        numItems: action.numItems
+      }
+    )
     default:
       return state;
     }
@@ -114,7 +138,8 @@ const TodoContext = createContext();
         loggedIn: false,
         email: "",
         admin: "",
-        products: []
+        products: [],
+        numItems: 0,
       });
 
     return <Provider value={[state, dispatch]} {...props} />;
