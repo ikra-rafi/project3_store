@@ -15,12 +15,12 @@ function ShoppingCart() {
   const [state, dispatch] = useTodoContext();
 
   const formatter = new Intl.NumberFormat('en-US', {
-    minimumFractionDigits: 2,      
+    minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
 
   var applyDiscount;
- 
+
   useEffect(() => {
     console.log("cart Effect");
     getCart();
@@ -78,7 +78,7 @@ function ShoppingCart() {
           type: "salesTaxAmt",
           discountTotal: parseFloat(parseFloat(total) * parseFloat(state.discountAmt)/100),
           salesTaxAmt: formatter.format(salesTaxCalc)
-        })   
+        })
       }
       else {
         salesTaxCalc = (parseFloat(total)) * parseFloat(state.salesTax)/100;
@@ -87,7 +87,7 @@ function ShoppingCart() {
           type: "salesTaxAmt",
           discountTotal: 0,
           salesTaxAmt: formatter.format(salesTaxCalc)
-        })   
+        })
       }
     })
     .catch(err => console.log(err))
@@ -128,7 +128,7 @@ function ShoppingCart() {
         type: "salesTaxAmt",
         discountTotal: parseFloat(parseFloat(total) * parseFloat(state.discountAmt)/100),
         salesTaxAmt: formatter.format(salesTaxCalc)
-      })   
+      })
     }
     else {
       salesTaxCalc = (parseFloat(total)) * parseFloat(state.salesTax)/100;
@@ -136,7 +136,7 @@ function ShoppingCart() {
         type: "salesTaxAmt",
         discountTotal: 0,
         salesTaxAmt: formatter.format(salesTaxCalc)
-      })   
+      })
     }
   }
 
@@ -155,7 +155,7 @@ function ShoppingCart() {
         break;
       }
     }
-    var newQuantity = cart[index].prodInfo.quantity - 1; 
+    var newQuantity = cart[index].prodInfo.quantity - 1;
     if(newQuantity <= 0) {
       newQuantity = 0;
     }
@@ -169,7 +169,7 @@ function ShoppingCart() {
   }
 
   function handleIncBtnClick(e) {
-    var index; 
+    var index;
     for (var i=0; i<cart.length; i++) {
       if ( cart[i]._id === e.target.id ) {
         index = i;
@@ -210,8 +210,8 @@ console.log(e.target.id);
                 {/*====================  breadcrumb area ====================*/}
 
                 <Breadcrumb title="Shopping Cart" />
-                
-                {/*====================  End of breadcrumb area  ====================*/} 
+
+                {/*====================  End of breadcrumb area  ====================*/}
 
 
                 {/*====================  Cart area ====================*/}
@@ -220,8 +220,8 @@ console.log(e.target.id);
         <Container>
           <Cart />
           <div className="container">
-                  <div className="shop_cart_title"> 
-                    <h2>Shopping Cart</h2> 
+                  <div className="shop_cart_title">
+                    <h2>Shopping Cart</h2>
                   </div>
 
                     <div className="container-fluid containerColor marginBottomCont">
@@ -256,18 +256,18 @@ console.log(e.target.id);
                                     <td className="align-middle text-center"><p>{result.prodInfo.size}</p></td>
                                     <td className="align-middle text-center">
                                       <div className="row" style={{display: 'inline-block'}}>
-                                        <button onClick={handleDecBtnClick} id={result._id} className="fa fa-minus"></button>
+                                        <button onClick={handleDecBtnClick} id={result._id}className="fa fa-minus"></button>
                                         {result.prodInfo.quantity}
                                         <button id={result._id}  className="fa fa-plus buttons" onClick={handleIncBtnClick}></button>
                                       </div>
                                       {/* row inline block end */}
-                                      
+
                                     </td>
                                     <td className="align-middle text-center"><p>{result.prodInfo.price}</p></td>
                                     <td className="align-middle text-center"><p>${formatter.format(result.prodInfo.price * result.prodInfo.quantity)}</p></td>
                                   </tr>
                                 ))}
-                                        
+
 
                               </tbody>
                             </table>
@@ -284,11 +284,11 @@ console.log(e.target.id);
                                           <div className="discount-coupon">
                                               <h4>Wish List</h4>
                                               <p>Not ready to purchase? Save for later!</p>
-                                              
+
                                               <Link to="/cart" className="app-coupon">Save</Link>
                                           </div>
                                       </div>
-                                                                            
+
                                       <div className="col-lg-4 col-sm-12">
                                           <div className="discount-coupon">
                                               <h4>Discount Code</h4>
@@ -302,31 +302,31 @@ console.log(e.target.id);
                                 <div className="col-lg-4 col-sm-12">
                                 <div className="grand-total-area">
                                 <h4>Cart SubTotal</h4>
-                                
-                                  <p className="sub-total">SubTotal: 
+
+                                  <p className="sub-total">SubTotal:
                                   <span className="amt">${formatter.format(state.subTotal)}</span></p>
-                                  
-                                
+
+
                                 {state.discount ? (
-                                
-                                    <p className="discount">Discount ({state.discountAmt}%) 
+
+                                    <p className="discount">Discount ({state.discountAmt}%)
                                     <span className="amt">${formatter.format(state.discountAmt/100 * state.subTotal)}</span></p>
-                                    
+
                                 ) : (
-                                
-                                  <p className="discount">No discount applied 
+
+                                  <p className="discount">No discount applied
                                   <span className="amt"></span></p>
-                                  
+
                                 )}
-                             
-                                  <p className="amt">Sales Tax ({state.salesTax}%) 
+
+                                  <p className="amt">Sales Tax ({state.salesTax}%)
                                   <span className="amt">${state.salesTaxAmt}</span></p>
-                                  
-                               
-                                  <p className="delivery">Shipping Fee (Flat Rate): 
+
+
+                                  <p className="delivery">Shipping Fee (Flat Rate):
                                   <span className="amt">${state.shipFee}</span></p>
-                                  
-                                  
+
+
                                 <Link className="pro-checkout"
                             // "mr-auto brand btn myButton buttonMargin font-weight-bold"
                             to="/checkout" >
@@ -338,7 +338,7 @@ console.log(e.target.id);
                                 </div>
                                 </div>
                           </div>
-                          
+
                         ) : (
                           <div className="row text-center h-100">
                             <div className="col-md-12 text-center my-auto">
@@ -346,7 +346,7 @@ console.log(e.target.id);
                               <br></br>
                             </div>
                           </div>
-                          
+
                         )}
                     </div>
                     </div>
@@ -355,7 +355,7 @@ console.log(e.target.id);
   {/* shop_cart */}
   </div>
   {/* cart page*/}
-  </div> 
+  </div>
   </Fragment>
 
   );

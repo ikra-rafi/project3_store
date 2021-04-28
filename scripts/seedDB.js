@@ -8,8 +8,8 @@ mongoose.connect(
 );
 
 const productSeed = [
-  { name: "vanilla",
-    description: "vanilla, yum!",
+  { name: "Vanilla",
+    description: "Vanilla, yum!",
     packaging: [
         { size: "4oz bottle",
           price: "5.99",
@@ -41,8 +41,8 @@ const productSeed = [
     productID: "Van0001",
     ratings: [{ stars: 2}, {stars: 2}, {stars: 3}, {stars: 5}]
   },
-  { name: "cinnamon",
-    description: "sweet taste ground bark for baking",
+  { name: "Cinnamon",
+    description: "Sweet taste ground bark for baking",
     packaging: [
         { size: "4oz bottle",
           price: "5.99",
@@ -74,8 +74,8 @@ const productSeed = [
     productID: "Cinn0001",
     ratings: [{ stars: 4}, {stars: 5}, {stars: 3}, {stars: 4}]
   },
-  { name: "paprika",
-    description: "sweet red pepper dried and ground",
+  { name: "Paprika",
+    description: "Sweet red pepper dried and ground",
     packaging: [
         { size: "4oz bottle",
           price: "3.99",
@@ -107,8 +107,8 @@ const productSeed = [
     productID: "Paprika0025",
     ratings: [{ stars: 2}, {stars: 2}, {stars: 5}, {stars: 3}]
   },
-  { name: "chili powder",
-    description: "the core of Tex-Mex cooking.",
+  { name: "Chili powder",
+    description: "The core of Tex-Mex cooking.",
     packaging: [
         { size: "4oz bottle",
           price: "3.99",

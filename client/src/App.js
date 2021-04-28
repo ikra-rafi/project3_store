@@ -16,6 +16,7 @@ import Comments from "./pages/Comments";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
 import AddProducts from "./pages/AddProducts";
+import Review from "./pages/Review";
 import OrderHistory from "./components/OrderHistory";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/checkout" component={Checkout} />
             <Route path="/products" component={AllProducts} />
             <Route path="/comments" component={Comments} />
+            <Route path="/review/:id" component={Review} />
             <Route path="/thankyou" component={ThankYou} />
             <Route path="/addproducts" component={AddProducts} />
             <Route path="/orderhistory" component={OrderHistory} />

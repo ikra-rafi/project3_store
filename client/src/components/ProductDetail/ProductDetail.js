@@ -127,13 +127,14 @@ function ProductDetail(props) {
      <img className="product-image" alt={props.product.name} src={props.product.picLink} />
     </div>
     <div className="col-lg-6 col-xm-12">
-     <Ratings ratings= {props.ratings}/>
+   
      <h1 id="h1" style={{color:'black'}}>{props.product.name}</h1>
+     <Ratings ratings= {props.ratings}/>
       <p id="des">{props.product.description}</p>
       <p id="des">{props.product.historyDetails}</p>
       <p id="des">{props.product.healthbenefit}</p>
 
-      <select onChange={selectSize} name="packaging-choices" id="packaging">
+      <select onChange={selectSize} className="packaging-choices" id="packaging">
       <option  value = "Null">---Select Size---</option>
       {props.packaging.map ( packaging =>
          <option value = {`${packaging.size}-${packaging.price}`}>${packaging.price}  {packaging.size}</option>
@@ -145,8 +146,9 @@ function ProductDetail(props) {
         <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
         <input type="text" onChange={quantityChange} className="inline quantity" id={props.product._id} defaultValue = "1"></input>
         <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-        <button id="addCartBtn" onClick={addToCart}>ADD TO CART</button>
+        
       </div>
+      <button id="addCartBtn" onClick={addToCart}>ADD TO CART</button>
    </div>
    </div>
 </div>
