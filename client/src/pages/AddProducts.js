@@ -238,7 +238,10 @@ function AddProducts() {
 
 
         {/*====================  Start of Checkout  Section    ====================*/}  
-    <div>
+     <section>
+    <div className="container">
+    <div className="row justify-content-center">
+    <div className="col-md-5 col-lg-4">
       <Container fluid>
         <Container >
               <div className="container-fluid containerColor marginBottomCont">
@@ -335,6 +338,10 @@ function AddProducts() {
       </Container>
       </div>
       </div>
+      </div>
+      </section>
+        </div>
+
       </Fragment>
 
     
