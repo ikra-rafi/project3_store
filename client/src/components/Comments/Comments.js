@@ -9,9 +9,11 @@ function Comments(props) {
     console.log(state);
 
     const writeReview = () => {
+        console.log(props);
+        const name = props.name;
         const id = window.location.href.split("/").pop();
         console.log(id);
-        window.location=`#/review/${id}`
+        window.location=`#/review/${name}/${id}`
     }
 
     return(
