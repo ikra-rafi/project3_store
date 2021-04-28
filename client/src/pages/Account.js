@@ -5,12 +5,14 @@ import OrderHistory from "../components/OrderHistory";
 
 function Account() {
   return (
+  
     <div>
       <Container>
         <AccountInfo />
         <OrderHistory />
       </Container>
 </div>
+
   );
 }
 

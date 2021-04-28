@@ -1,8 +1,10 @@
-import React , { useEffect, useState} from "react";
+import React, { Fragment, useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import { useTodoContext} from "../../utils/store";
 import {Container} from "../Grid";
 import API from "../../utils/API";
+import Breadcrumb from "../Breadcrumbs/Breadcrumbs";
+import MetaTags from "react-meta-tags";
 
 var acctInfo={
   firstName: "",
@@ -83,12 +85,32 @@ function OrderHistory() {
     }
   
     return (
+      <Fragment>
+      <MetaTags>
+        <title>spice-A-holic | Review</title>
+        <meta
+          name="Spice-A-Holic Review"
+          content="Write your review."
+        />
+      </MetaTags>
+  
       <div>
+          {/*====================  breadcrumb area ====================*/}
+  
+          <Breadcrumb title="Account Info" />
+          
+          {/*====================  End of breadcrumb area  ====================*/} 
+  
+  
+          {/*====================  Start of Checkout  Section    ====================*/}        
+<section className="py-5">
+      <div className="container">
         <Container fluid>
           <Container>
-          
-            <div className="container-fluid containerColor marginBottomCont">
-              <h1 className="text-center">Account Info</h1>
+          <div class="row">
+          <div class="col-md-5">
+            {/* <div className="container-fluid containerColor marginBottomCont"> */}
+              <h1 class="mb-4">Account Info</h1>
               <table>
                 <tr>{acctInfo.firstName + " " + acctInfo.lastName}</tr>
                   <tr>{acctInfo.street}</tr>
@@ -96,7 +118,9 @@ function OrderHistory() {
                   <tr>{acctInfo.email}</tr>
                   <tr>{acctInfo.phone}</tr>
               </table>
-              <h1 className="text-center">Order History</h1>
+             </div> 
+             <div class="col-md-5 mt-5 mt-md-0">
+              <h1 class="mb-4">Order History</h1>
               {orders.length ? (
                 <div>
                   {orders.map(result => (
@@ -147,14 +171,19 @@ function OrderHistory() {
                 ) : (
                   <div className="row text-center h-100">
                     <div className="col-md-12 text-center my-auto">
-                      <h3><strong>No Order History for this Shopper.</strong></h3>
+                      <h3 class="mb-4"><strong>No Order History for this Shopper.</strong></h3>
                     </div>
                   </div>
                 )}
             </div>
+            </div>
           </Container>
         </Container>
       </div>
+      </section>
+
+      </div>
+      </Fragment>
     );
 
 }
