@@ -1,9 +1,11 @@
-import React, { useEffect, useState} from "react";
+import React, { Fragment, useEffect, useState} from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import {Container} from "../components/Grid";
 import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
 import { Link } from "react-router-dom";
+import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
+import MetaTags from "react-meta-tags";
 
 function AddProducts() {
   let name = React.createRef();
@@ -218,6 +220,24 @@ function AddProducts() {
   }
 
   return (
+    <Fragment>
+    <MetaTags>
+      <title>spice-A-holic | Add Product</title>
+      <meta
+        name="Spice-A-Holic admin"
+        content="admin."
+      />
+    </MetaTags>
+
+    <div className="checkout-page">
+        {/*====================  breadcrumb area ====================*/}
+
+        <Breadcrumb title="Add Product" />
+        
+        {/*====================  End of breadcrumb area  ====================*/} 
+
+
+        {/*====================  Start of Checkout  Section    ====================*/}  
     <div>
       <Container fluid>
         <Container >
@@ -313,7 +333,11 @@ function AddProducts() {
              <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Add Product</strong></button>
         </Container>
       </Container>
-    </div>
+      </div>
+      </div>
+      </Fragment>
+
+    
   );
 }
 

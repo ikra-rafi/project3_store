@@ -55,6 +55,7 @@
     margin: 0;
     padding: 0;
     position: relative;
+    overflow-x: hidden
   }
 
   img {
@@ -1032,9 +1033,7 @@
     background: #f0f0f0 url("/assets/images/slider2.jpg") no-repeat scroll right center;
   }
 
-  /* .slide_bg_3 {
-    background: #f0f0f0 url("/assets/images/slider3.jpg") no-repeat scroll right center;
-  } */
+
 
   .single_slider {
     background-color: #dddd;
@@ -5236,7 +5235,7 @@ right: 0px !important;
        color: #363535;
    }
     .checkout_section .checkbox {
-       margin-bottom: 20px;
+       margin-bottom: 10px;
        position: relative;
        -webkit-user-select: none;
        -moz-user-select: none;
@@ -5252,7 +5251,20 @@ right: 0px !important;
        margin-right: 15px;
        position: relative;
        color: #333;
-   }
+
+      }
+      .form-check-input {
+        display: block ;
+        box-sizing: border-box;
+        /* width: 100% ; */
+        border-radius: 4px ;
+        border: 1px solid #9dca00;
+        padding: 10px 15px;
+        font-size: 14px;
+        /* z-index: -2; */
+      }
+
+
     .checkout_section .custom2 {
        display: block;
        font-size: 12px;
@@ -5286,7 +5298,7 @@ right: 0px !important;
       opacity: .5;
   }
   .checkout_section label {
-      margin-bottom: 0px;
+      margin-bottom: 15px;
       display: block;
   }
 
@@ -5511,8 +5523,7 @@ right: 0px !important;
        padding: 10px;
        width: 100%;
    }
-   a.app-coupon,
-   a.get-quote {
+   a.app-coupon {
        background: #2b343b;
        color: #fff;
        display: block;
@@ -5525,6 +5536,10 @@ right: 0px !important;
        text-transform: capitalize;
        width: 36%;
    }
+
+   a.app-coupon:hover {
+    color: #fff;
+}
 
    p.title-country,
    p.title-state,
@@ -6981,39 +6996,7 @@ right: 0px !important;
 
 }
 
-#form1{
-  padding-left: 70px;
-  padding-top: 5%;
-  padding-bottom: 2%;
-  text-align: center;
-  align-items: center;
 
-}
-
-#inputRev{
-  padding-left: 20px;
-}
-
-
-#revBtn{
-  margin-left: 20px;
-
-}
-#revBtn:hover {
-   width: 150px;
-  /* height: 57px; */
-  background: white;
-  color:#a73500;
-  border: 1px solid  #c44308;
-  /* padding-left: 20px;
-  margin-left: 20px; */
-}
-
-#rev{
-color:white;
-background-color:#a73500 ;
-border: 1px solid #a73500;
-}
 
 #review {
   height: 200px;

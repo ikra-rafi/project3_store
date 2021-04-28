@@ -76,10 +76,10 @@ function SignUpForm() {
 
   return (
   
-      <form  onSubmit={handleSubmit(onSubmit)} >
+      <form id="signup" onSubmit={handleSubmit(onSubmit)} >
          <h1>Sign Up</h1>
         <label htmlFor="email">Email</label>
-        <input
+        <input className="signup-input"
           defaultValue={initialValues.email}
           placeholder="Email"
           type="email"
@@ -88,7 +88,7 @@ function SignUpForm() {
           {...register("email")}
         />
         <label htmlFor="firstName">First Name</label>
-        <input
+        <input 
           defaultValue={initialValues.firstName}
           placeholder="First Name"
           type="firstName"
@@ -97,7 +97,7 @@ function SignUpForm() {
           {...register("firstName")}
         />
         <label htmlFor="LastName">Last Name</label>
-        <input
+        <input className="signup-input"
           defaultValue={initialValues.lastName}
           placeholder="Last Name"
           type="lastName"
@@ -107,7 +107,7 @@ function SignUpForm() {
         />
 
         <label htmlFor="securityQuestion">Security Question</label>
-        <input
+        <input 
           defaultValue={initialValues.securityQuestion}
           placeholder="Security Question"
           type="securityQuestion"
@@ -117,7 +117,7 @@ function SignUpForm() {
         />
 
         <label htmlFor="answer">Answer</label>
-        <input
+        <input 
           defaultValue={initialValues.answer}
           placeholder="Answer"
           type="answer"
@@ -127,7 +127,7 @@ function SignUpForm() {
         />
   
         <label htmlFor="password">Password</label>
-        <input
+        <input 
           defaultValue={initialValues.password}
           placeholder="Password"
           type="password"
@@ -140,7 +140,7 @@ function SignUpForm() {
         {errors.password&& <p>Your Password is less than 6 characters</p>}
         
         <label htmlFor="confrimPassword">Confirm your Password</label>
-        <input
+        <input 
           defaultValue={initialValues.confirmPassword}
           placeholder="Confirm your Password"
           type="password"
@@ -150,7 +150,7 @@ function SignUpForm() {
           })}
         />
         {errors.confirmPassword&& <p>Your Password Doesn't Match!</p>}  
-        <input type="submit" />
+        <input className="signup-input" type="submit" />
       </form>
     );
   }

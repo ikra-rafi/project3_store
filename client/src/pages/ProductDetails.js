@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 //import Container from "../components/Container";
 import ProductDetail from "../components/ProductDetail";
 import Comments from "../components/Comments";
 import API from '../utils/API';
+import MetaTags from "react-meta-tags";
+import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 
 class ProductDetails extends Component {
 
@@ -52,6 +54,25 @@ class ProductDetails extends Component {
 
   render () {
     return (
+      <Fragment>
+      <MetaTags>
+        <title>spice-A-holic | Product Details</title>
+        <meta
+          name="description"
+          content="Organic spices."
+        />
+      </MetaTags>
+
+     <div className="contact-page">
+
+       {/*====================  breadcrumb area ====================*/}
+
+       <Breadcrumb title="Product Details" />
+  
+       {/*====================  End of breadcrumb area  ================*/}
+
+
+        {/*====================  Contact Form  area  ====================*/}       
       <div>
           <ProductDetail product = {this.state.product}
                          ratings = {this.state.ratings}
@@ -59,6 +80,8 @@ class ProductDetails extends Component {
           <Comments product = {this.state.comments}
                     name = {this.state.product.name}/>
       </div>
+      </div>
+    </Fragment>  
     );
   }
 

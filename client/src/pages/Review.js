@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import StarRating from 'react-star-ratings';
 import {useTodoContext} from "../utils/store";
 import API from "../utils/API";
 import { Redirect, useHistory } from "react-router-dom";
 import '../App.css';
+import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
+import MetaTags from "react-meta-tags";
 
 var productName;
 var prodID;
-// var newComment = {};
 
 function Review() {
 
@@ -122,9 +123,31 @@ function Review() {
 
     return(
         <div>
+        <Fragment>
+        <MetaTags>
+          <title>spice-A-holic | Review</title>
+          <meta
+            name="Spice-A-Holic Review"
+            content="Write your review."
+          />
+        </MetaTags>
 
-            <form id="form1">
-            <h1>{productName}</h1>
+        <div>
+            {/*====================  breadcrumb area ====================*/}
+
+            <Breadcrumb title="Review" />
+
+            {/*====================  End of breadcrumb area  ====================*/}
+
+
+            {/*====================  Start of Checkout  Section    ====================*/}
+    <section>
+    <div className="container">
+    <div className="row justify-content-center">
+    <div className="col-md-5 col-lg-4">
+        <form id="form1">
+        <h1>{productName}</h1>
+            {/* <p>Rating</p> */}
             <StarRating
                 rating = {rating}
                 numberofStars = {5}
@@ -140,14 +163,18 @@ function Review() {
             </div>
 
             <br></br>
-
-            <div id="revBtn">
-            <button onClick={submitReview} id="rev" className="hideSelf">Submit Review</button>
-            </div>
+            <div className="container">
+            <div className="project_btn text-center" id="revBtn">
+            <button onClick={submitReview} className="more-link hideSelf"  id="rev">Submit Review</button>
+            </div>   </div>
         </form>
-
         </div>
-
+        </div>
+        </div>
+        </section>
+        </div>
+        </Fragment>
+        </div>
     );
 
 }
