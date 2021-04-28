@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import ProductContext from "../../utils/productContext";
 import Product from "../Product"
+
 import "./style.css";
 
 function ProductsContainer(props) {
@@ -14,6 +15,7 @@ function ProductsContainer(props) {
       <div className="container product-wrapper">
         {props.products.map(product => (
           <div key={product._id}>
+             
             <Product product = {product}
                      page = {props.page} />
           </div>
