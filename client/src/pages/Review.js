@@ -30,7 +30,7 @@ function Review() {
             <input  placeholder="Review Title"></input>
             
             <p></p>
-            <input className="input-rev" placeholder="Review Title" style={{backgroundcolor: "red"}}></input>
+            <input  placeholder="Review " ></input>
             </div>
 
             <br></br>
