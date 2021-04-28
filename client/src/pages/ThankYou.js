@@ -18,9 +18,17 @@ function ThankYou() {
        {/*====================  breadcrumb area ====================*/}
 
        <Breadcrumb title="Product Details" />
-    <div>
-      <h1>Thank you for placing your order!!!!</h1>
+    <section>
+    <div className="container">
+    <div className="row justify-content-center">
+    <div className="col-md-5 col-lg-4">
+        <div className="blog_quote">
+          <h1>Thank you for placing your order!!!!</h1>
+        </div>
     </div>
+    </div>
+    </div>
+    </section>
     </div>
     </Fragment>
   );

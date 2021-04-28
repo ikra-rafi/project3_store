@@ -92,7 +92,7 @@ function filterResults(event) {
           <label style={{color:'black'}}>Search Products: </label><input id="searchInput" onKeyUp={handleInputChange} ></input>
       </form>
 
-      <select name="filter" id="filterDropdown" onChange= {filterResults}>
+      <select class="custom-select d-block w-100" name="filter" id="filterDropdown" onChange= {filterResults}>
         <option value = "">Select a family...</option>
         <option value = "baking">Baking</option>
         <option value = "grilling">Grilling</option>
@@ -100,10 +100,10 @@ function filterResults(event) {
         <option value = "extract">Extract</option>
         <option value = "teas">Teas</option>
       </select>
-      <div>
+      <div></div></div></div>
         <ProductsContainer products = {filteredProducts}/>
       </div>
-      </div></div></div>
+      
     </ProductContext.Provider>
 </>
 </div>
