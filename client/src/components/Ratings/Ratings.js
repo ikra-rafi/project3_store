@@ -33,8 +33,8 @@ function Ratings(props) {
 
     return(
       <div>
-        <div className = "row">
-          <div className = "col-7">
+        {/* <div className = "row">
+          <div className = "col-7"> */}
             <StarRating
               rating = {average}
               numberofStars = {5}
@@ -42,11 +42,11 @@ function Ratings(props) {
               starRatedColor="#c44308"
 
             />
-          </div>
-          <div className="col-5">
-            <p>{`${props.ratings.length} Reviews`}</p>
-          </div>
-        </div>
+          {/* </div> */}
+          {/* <div className="col-5"> */}
+            <p className = "reviews">{`${props.ratings.length} Reviews`}</p>
+          {/* </div> */}
+        {/* </div> */}
 
 
       </div>

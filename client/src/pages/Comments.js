@@ -62,7 +62,7 @@ function Comments() {
   const handleProductID=e=> {
     setProductID(e.target.value);
   }
-  
+
   return (
     <form  onSubmit={handleSubmit(onSubmit)} >
       <h1>Enter your User Comment</h1>

@@ -13,7 +13,7 @@ function Comments(props) {
         const name = props.name;
         const id = window.location.href.split("/").pop();
         console.log(id);
-        window.location=`#/review/${name}`
+        window.location=`#/review/${name}/${id}`
     }
 
     return(
