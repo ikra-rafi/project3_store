@@ -8,10 +8,12 @@ function CartData (props) {
     });
 
     return (
-        <div>
-        <table className="table table-curved table-responsive">
+      <div className="row">
+      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+        <div className="table-responsive text-center">
+        <table className="table table-bordered">
         <thead>
-          <tr>
+          <tr className="shop_cart_tr">
             <th className="alignCenter">Product</th>
             <th className="alignCenter">Package Size</th>
             <th className="alignCenter">Quantity</th>
@@ -30,6 +32,7 @@ function CartData (props) {
 
             </tbody>
         </table>
+    </div>
     </div>
     );
 }

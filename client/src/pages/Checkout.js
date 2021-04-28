@@ -185,7 +185,6 @@ function Checkout() {
       />
     </MetaTags>
 
-
     <div className="checkout-page">
         {/*====================  breadcrumb area ====================*/}
 
@@ -194,55 +193,56 @@ function Checkout() {
         {/*====================  End of breadcrumb area  ====================*/} 
 
 
-        {/*====================  Start of Checkout  Section    ====================*/}    
-    <section className="checkout_section">
-      <div className="container">
+        {/*====================  Start of Checkout  Section    ====================*/}  
+
       <Container fluid>
         <Container >
         <Cart />
-              <div className="row">
+  
+    <section className="checkout_section justify-content-center">
+      <div className="container full-width">
+      <div className="row">
+   
 
               <div className="container-fluid containerColor marginBottomCont">
                <h1 className="text-center">Checkout Page</h1> 
                <h1 className="text-center">Cart Total = ${formatter.format(state.orderTotal)}</h1>
+               
                {state.cartItems.length ? (
                   <div>
-                    <div className="row">
-                    <div id="content" className="col-md-8 order-md-1">
+                    
+                    <div id="content">
                     <div className="contactform" method="post" className="shopform">
                     <div className="custom-title">
                      <h3>Shipping details</h3>
                     </div>
                       <br/>
+                      <div  className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <form id={1} className="searchForm justify-content-center m-2" key={1}>
                       
-                      <div class="row">
-                
+                      <div class="row justify-content-center">
+                      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
                           <input name="shipCompanyName" ref={shipCompanyName} id="shipCompanyName" className="form-control form-control-lg" placeholder="Ship Company Name" />
      
                           <label className="label" htmlFor="exampleInputEmail1">First Name</label>
                           <input name="shipFirstName" ref={shipFirstName} id="shipFirstName" className="form-control form-control-lg" placeholder="Ship First Name" />
                           
-                          <div className="mb-3">
+                          
                           <label className="label" htmlFor="exampleInputEmail1">Last Name</label>
                           <input name="shipLastName" ref={shipLastName} id="shipLastName" className="form-control form-control-lg" placeholder="Ship Last Name" />
-                          </div>
 
-                          <div className="mb-3">
                           <label className="label" htmlFor="exampleInputEmail1">Address</label>
                           <input type="text"name="shipStreet" ref={shipStreet} id="shipStreet" className="form-control form-control-lg" placeholder="Shipping Street" />
-                          </div>
 
-                          <div className="mb-3">
                           <label className="label" htmlFor="exampleInputEmail1">Address #2</label>
                           <input  type="text" name="shipAddress2" ref={shipAddress2} id="shipAddress2" className="form-control form-control-lg" placeholder="Shipping Address #2" />
-                          </div> 
-                      </div>
+                          
+                      
 
                           <label className="label" htmlFor="exampleInputEmail1">City</label>
                           <input name="shipCity" ref={shipCity} id="shipCity" className="form-control form-control-lg" placeholder="Shipping City" />
-
+                          
                           <label className="label" htmlFor="exampleInputEmail1">State</label>
                       
                             <div className="select">
@@ -301,41 +301,44 @@ function Checkout() {
                                 <option value="WY">WY</option>
                               </select>
                             </div>
-
-                    <div className="mb-3">
+                            
                           <label className="label" htmlFor="exampleInputEmail1">Zip</label>
                           <input name="shipZip" ref={shipZip} id="shipZip" className="form-control form-control-lg" type="text" placeholder="Shipping Zip Code" maxLength="5"
                             size="5" required/>
-                    </div>
 
-                    <div className="mb-3">
                           <label className="label" htmlFor="exampleInputEmail1">Email</label>                      
                           <input type="email" ref={email} id="email" name="email" className="form-control form-control-lg" placeholder="email" />
-                    </div>
-                    <div className="mb-3">
                       <label className="label" htmlFor="exampleInputEmail1">Phone</label>
                       <input type="tel" ref={phone} id="phone" name="phone" className="form-control form-control-lg" placeholder="555-555-5555"
                           maxLength="12" size="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
                       <label className="label" htmlFor="exampleInputEmail1">Notes</label>                      
                       <input name="notes" ref={notes} id="notes" className="form-control form-control-lg" placeholder="notes" />
-                      </div>
-                    </form>
+                      </div></div> 
+                      </form>
 
-                    <div className="row">
-                    <div style={{display: "inline-block"}}>
-                    <label className="label" htmlFor="billingAddr">Billing address same as Shipping address</label>
-                    <input type="checkbox" id="billingAddr" onClick={handleCheck} name="billing" value="same address"/>
+                    
+                    <div className="payment_mth">
+                    <form id="payment" className="clearfix">
+                    <label className="checkbox payment-method inline"  htmlFor="billingAddr">
+                    <input  type="checkbox" id="billingAddr" onClick={handleCheck} name="billing" value="same address"/> 
+                    Billing address same as Shipping address
+                    </label>
+                    </form>
                     </div>
-                    </div>
+
+                
+
                     <br />
                     {!checkbox ? (
                       
-                    <div id="content" className="col-md-8 order-md-1">
+                    <div id="content">
                     <div className="custom-title">
                     <br /><h3>Billing details</h3>
                     </div>
                       <br/>
-                        <form>
+                        <form >
+                        <div className="row">
+                    <div className="mb-3">
                           <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
                           <input name="ccBillCompanyName" ref={billCompanyName} id="billCompanyName" className="form-control form-control-lg" placeholder="Billing Company Name" />
                           <label className="label" htmlFor="exampleInputEmail1">First Name</label>
@@ -349,7 +352,7 @@ function Checkout() {
                           <label className="label" htmlFor="exampleInputEmail1">City</label>
                           <input name="ccBillCity" ref={billCity} id="billCity" className="form-control form-control-lg" placeholder="Billing City" />
                           <label className="label" htmlFor="exampleInputEmail1">State</label>
-                          <div className="select"><select ref={billState} id="billState" defaultValue="" required="">
+                          <div className="select" ><select class="custom-select d-block w-100" ref={billState} id="billState" defaultValue="" required="">
                             <option value=""  disabled="">Choose...</option>
                             <option value="AK">AK</option>
                             <option value="AL">AL</option>
@@ -407,11 +410,14 @@ function Checkout() {
                         <label className="label" htmlFor="exampleInputEmail1">Zip</label>
                         <input name="ccBillZip" ref={billZip} id="billZip" className="form-control form-control-lg" placeholder="Billing Zip Code" maxLength="5"
                           size="5" required/>
+                                              </div>
+                    </div>
                       </form>
                     </div>
                     )  : (null )
                   }
                     <br />
+                    
                     <div className="custom-title">
                     <br /><h3>Payment Information</h3>
                     </div>
@@ -428,6 +434,14 @@ function Checkout() {
                       <label className="label" htmlFor="exampleInputEmail1">Expiration Date</label>
                       <input name="ccExpirationDate" ref={ccExpDate} id="ccExpDate" className="form-control form-control-lg" placeholder="CC Expiration Date" />
                     </form>
+
+                    <div className="shop_cart">
+                    <div className="container">
+                        <div className="shop_cart_title">     
+                            <h2>Cart</h2> 
+                        </div> 
+                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                       <div className="table-responsive text-center">
                       {state.cartItems.map(result => (
                         <div key={result._id}>
                           <CartData
@@ -437,9 +451,11 @@ function Checkout() {
                           />
                         </div>
                       ))}
-                      <table>
-                      <thead>
-                        <tr>
+                  
+                       
+                       <table className="table table-bordered">                      
+                       <thead>
+                        <tr className="ptitle">
                           <th className="alignCenter">Product</th>
                           <th className="alignCenter">Package Size</th>
                           <th className="alignCenter">Quantity</th>
@@ -447,14 +463,17 @@ function Checkout() {
                           <th className="alignCenter">Item Total</th>
                         </tr>
                       </thead>
+
                       <tbody>
+                        
                         <tr>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>SubTotal:</td>
+                        <td >SubTotal:</td>
                         <td>${formatter.format(state.subTotal)}</td>
                       </tr>
+
                       {state.discount ? (
                         <tr>
                           <td></td>
@@ -476,29 +495,33 @@ function Checkout() {
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>Sales Tax ({state.salesTax}%)</td>
+                        <td >Sales Tax ({state.salesTax}%)</td>
                         <td>${formatter.format(state.salesTaxAmt)}</td>
                       </tr>
                       <tr>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>Shipping Fee (Flat Rate):</td>
+                        <td >Shipping Fee (Flat Rate):</td>
                         <td>${state.shipFee}</td>
                       </tr>
                       <tr>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>Order Total:</td>
+                        <td >Order Total:</td>
                         <td>${formatter.format(state.orderTotal)}</td>
                       </tr>
                         </tbody>
-                      </table>
+                        </table>
+                                </div>
+                            </div>
+                        </div>
+                </div>
                   </div>
                   </div>
-                  </div>
-                  </div>
+                  </div></div>
+                  
                 ) : (
                  <div className="row text-center h-100">
                    <div className="col-md-12 text-center my-auto">
@@ -511,14 +534,16 @@ function Checkout() {
              <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
 {/*          </Link> */}
           </div>
+          </div>
+
+</section>
+            
 
         </Container>
       </Container>
+ 
       </div>
 
-      </section>
-    </div>
-    
     </Fragment>
   );
 }
