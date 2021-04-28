@@ -30,8 +30,7 @@
     overflow: hidden;
     text-align: center;
     display: flex; 
-    /* align-items: left; vertical */
-   /* justify-content: center;horizontal */
+    
 
     
      }  
@@ -150,7 +149,7 @@
 }
 
 .packaging-choices{
-  width:100px;
+  width:130px;
   font-size:13px;
   margin-bottom:1%;
   font-family: 'New Tegomin', serif;

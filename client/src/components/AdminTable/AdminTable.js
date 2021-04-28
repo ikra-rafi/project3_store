@@ -95,12 +95,13 @@ function AdminTable() {
   }
   return (
    <div>
-     <table className="table table-hover table-striped">
-        <thead>
+     <table id="table"className="table table-hover">
+        <thead id="th">
           <tr>
             <th></th>
-            <th><button onClick={sortTableByProdID}>Product ID</button></th>
-            <th><button onClick={sortTableByName}>Product Name</button></th>
+            <th id="prdBtn"><button id="btn"onClick={sortTableByProdID}>Product ID</button></th>
+          
+            <th id="prdNm"><button id="btn"onClick={sortTableByName}>Product Name</button></th>
             <th>Description</th>
             <th>Size</th>
             <th>Quantity</th>
@@ -115,11 +116,11 @@ function AdminTable() {
                 <td>
                 <Link className="nav-link" to={{pathname: `/products/${result._id}`}} ><img className="thumbnail-image" alt={result.name} src={result.picLink} /></Link>
                 </td>
-                <td><p> {result.productID}</p></td>
-                <td><p> {result.name}</p></td>
-                <td><p> {result.description}</p></td>
-                <td><p> {res.size}</p></td>
-                <td><input defaultValue={res.quantity}  /></td>
+                <td><p id="tdp"> {result.productID}</p></td>
+                <td><p id="tdp"> {result.name}</p></td>
+                <td><p id="tp"> {result.description}</p></td>
+                <td><p id="pp">  {res.size}</p></td>
+                <td><input id="tdIn"defaultValue={res.quantity}  /></td>
               </tr>
             ))
           ))}
