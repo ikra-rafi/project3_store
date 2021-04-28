@@ -1,0 +1,19 @@
+#comBtn{
+    margin-top:1%;
+    width: 550px;
+    height: 45px;
+    font-family: 'Karla', sans-serif; 
+    background: #c44308;
+    color: white;
+    font-size:18px;
+    margin-left:17%;
+    /* text-align: center; */
+    margin-bottom: 10px;
+}
+
+
+  #comBtn:hover {
+    background: white;
+    color:#a73500;
+    border: 1px solid  #c44308;
+  }

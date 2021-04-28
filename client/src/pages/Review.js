@@ -3,6 +3,7 @@ import StarRating from 'react-star-ratings';
 import {useTodoContext} from "../utils/store";
 import API from "../utils/API";
 import { Redirect, useHistory } from "react-router-dom";
+import '../App.css';
 
 var productName;
 var prodID;
@@ -113,20 +114,31 @@ function Review() {
     return(
         <div>
             <h1>{productName}</h1>
-            <form>
-                <p>Rating</p>
-                <StarRating
-                    rating = {rating}
-                    numberofStars = {5}
-                    changeRating = {changeRating}
-                />
-                <p>Review Title</p>
-                <input id = "reviewTitle"></input>
-                <p>Review</p>
-                <input id = "review"></input>
-                <button onClick={submitReview}>Submit Review</button>
-            </form>
+            <form id="form1">
+            {/* <p>Rating</p> */}
+            <StarRating
+                rating = {rating}
+                numberofStars = {5}
+                changeRating = {changeRating}
+                // starDimension="30px"
+            />
+            <div id="inputRev">
+            <p></p>
+            <input  placeholder="Review Title"></input>
+
+            <p></p>
+            <input  placeholder="Review " ></input>
+            </div>
+
+            <br></br>
+
+            <div id="revBtn">
+            <button onClick={submitReview} id="rev">Submit Review</button>
+            </div>
+        </form>
+
         </div>
+
     );
 
 }

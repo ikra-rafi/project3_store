@@ -1,9 +1,38 @@
- 
+import { useTodoContext} from "../../utils/store";
 import React from 'react';
 import { Link } from "react-router-dom";
 import "./style.css";
+import API from "../../utils/API";
 
-const Header = () => {
+function Header() {
+
+    const [state, dispatch] = useTodoContext();
+
+    function handleLogout() {
+        API.Logout('/logout')
+          .then(response => {
+            console.log('Get user response: ')
+            console.log(response.data)
+            if (response.data.user) {
+              console.log('Get User: There is a user saved in the server session: ')
+    
+              dispatch({
+                type: "loggedIn",
+                loggedIn: true,
+                email: response.data.user.email
+            })
+          } else {
+            console.log('Get user: no user');
+            dispatch({
+              type: "loggedIn",
+              loggedIn: false,
+              email: null
+            })
+    
+          }
+        })
+      }
+
 	return (
  
     <div className="header_topbar">
@@ -32,15 +61,26 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <Link className="more-link" to="/login" >
+                {state.loggedIn ? (
+                    <div>
+                        <Link className="more-link" to="/" onClick={handleLogout}>
+                            Logout
+                        </Link>
+                        <Link className="more-link" to="/orderHistory" >
+                            Order History
+                        </Link>
+                    </div>
+                ) : (
+                    <Link className="more-link" to="/login" >
                     Login
-                </Link>                
+                </Link> 
+                )}
+             
             </div>
  
     </div> 
  
 	)
 }
-
 
 export default Header;

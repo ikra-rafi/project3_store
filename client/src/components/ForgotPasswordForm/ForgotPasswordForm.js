@@ -62,6 +62,7 @@ function ForgotPasswordForm() {
         }
       })
       .catch(err => console.log(err));
+      alert("Password reset successful.  Please log in.")
   };
 
   const scrollToTop = () => {

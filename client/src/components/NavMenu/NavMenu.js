@@ -4,6 +4,7 @@ import MobileMenu from "../mobile-menu/MobileMenu";
 import MobileBtn from "../mobile-menu/MobileBtn";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
+import { useTodoContext } from "../../utils/store";
 
 
 function NavMenu() {
@@ -19,10 +20,15 @@ document.addEventListener("DOMContentLoaded", function(){
 const [product, setProduct] = useState({});
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [items, setItems] = useState({});
+  const [state, dispatch] = useTodoContext();
+
+//var numItems;
 
 // When the component mounts, a call will be made to get load products.
 useEffect(() => {
   loadProducts();
+  getCart();
 }, []);
 
 function loadProducts() {
@@ -34,6 +40,26 @@ function loadProducts() {
       setProduct(products[0]);
     })
     .catch(err => console.log(err));
+}
+
+function getCart() {
+  API.getCart()
+  .then(res=> {
+    console.log(res.data);
+//    setCart(res.data);
+//    numItems = res.data.length;
+//    console.log(numItems);
+//    setItems({items: numItems});
+    dispatch({
+      type: "numCartItems",
+      numItems: res.data.length
+    })
+//    var cartProducts = [];
+//    res.data.forEach(element => {
+//      cartProducts.push(element);
+//      total = total + (element.prodInfo.price * element.prodInfo.quantity);
+//    });
+  })
 }
 
 function handleInputChange(event)  {
@@ -83,9 +109,9 @@ function filterResults(event) {
     <div className="navigation">
         <div className="container"> 
                 <div className="logo">
-                    <a href= "/"> 
+                    <Link to="/" >
                     	<img src="/assets/logo/spice-a-holic_logo-horizontal.png" alt="spiceaholic" width="225"/>
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="meun_wrp">
@@ -165,7 +191,7 @@ function filterResults(event) {
                             </div> 
                           </li>
                         <li className="header_cart_icon">
-                            <Link to="/cart"><i className="fa fa-shopping-cart"></i><span className="number_cart">0</span></Link>
+                            <Link to="/cart"><i className="fa fa-shopping-cart"></i><span className="number_cart">{state.numItems}</span></Link>
                         </li>
                     </ul>
                 </div>
