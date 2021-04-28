@@ -83,7 +83,14 @@
  #description{
   font-size:15px;
   margin-left:6%;
+  margin-right:6%;
   color:black;
+  overflow:hidden;
+  text-overflow: ellipsis !important;
+  display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+
  }
 
  #packaging{

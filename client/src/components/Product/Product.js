@@ -168,13 +168,13 @@ function Product(props) {
      <div className="row">
           <div className="col-4">
             <div className="card" id="ls">
-              <div className="img-container embed-responsive embed-responsive-4by3"id="cont" >
-                <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image card-img-top embed-responsive-item"  alt={props.product.name} src={props.product.picLink} /></Link>
+              <div className="img-container"id="cont" >
+                <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image "  alt={props.product.name} src={props.product.picLink} /></Link>
               </div>
               <div className="product_info">
                   <h4 id="h4"className="product-name">
                    {props.product.name}
-                   
+
                   </h4>
                   <div id="stars">
                   <Ratings ratings= {props.product.ratings}/>
@@ -182,7 +182,7 @@ function Product(props) {
                   <div className="row">
                   {/* <Ratings ratings= {props.product.ratings}/> */}
                     <div className="col-6">
-                    
+
                       <p className="product_price">${props.product.packaging[0].price}</p>
                       <p id="prod"className="product_info">{props.product.packaging[0].size}</p>
                     </div>
@@ -201,15 +201,17 @@ function Product(props) {
       <div className="row">
           <div className="col-4">
             <div className="card" id="ls">
-              <div className="img-container embed-responsive embed-responsive-4by3" id="image">
-              <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image embed-responsive-item card-img-top" alt={props.product.name} src={props.product.picLink} /></Link>
+              <div className="img-container" id="image">
+              <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image" alt={props.product.name} src={props.product.picLink} /></Link>
               </div>
               <div className="content">
                   <h3 className="product-name" id="h5">
                    {props.product.name}
                   </h3>
                   <Ratings ratings= {props.product.ratings}/>
+                  {/* <div> */}
                   <p id="description">{props.product.description}</p>
+                  {/* </div> */}
                   <select onChange={selectSize} className="packaging-choices" id={`packaging-${props.product._id}`} >
                   <option  value = "Null">---Select Size---</option>
                     <option value = {`${props.product.packaging[0].size}-${props.product.packaging[0].price}`}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>

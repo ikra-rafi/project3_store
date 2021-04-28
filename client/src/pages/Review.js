@@ -75,7 +75,8 @@ function Review() {
 
     }
 
-    function submitReview() {
+    function submitReview(e) {
+        e.preventDefault();
         console.log("submitReview");
 
         API.updateProduct(id , {$push: {"ratings": {"stars": rating} }} )
@@ -88,13 +89,14 @@ function Review() {
             userComment: document.getElementById("review").value,
             productID: prodID
             }
-            console.log(newComment);
+            alert("Thank you! Your review has been submitted");
 
             API.saveComments(loginInfo._id, newComment)
             .then (res => {
                 if(res.status===200) {
                     console.log("Saved Comment");
-                    // history.push(`/products/${id}`);
+                    history.push(`/products/${id}`);
+                    // document.location=`#/products/${id}`
                   }
             })
         })
@@ -109,13 +111,20 @@ function Review() {
         setId(window.location.href.split("/").pop());
         getProduct();
         console.log(id);
+        showButton();
+    }
+
+    function showButton() {
+        if(document.getElementById("reviewTitle").value.length > 0 && document.getElementById("review").value > 0 && rating != 0) {
+            document.getElementById("rev").removeAttribute("class", "hideSelf");
+        }
     }
 
     return(
         <div>
-            <h1>{productName}</h1>
+
             <form id="form1">
-            {/* <p>Rating</p> */}
+            <h1>{productName}</h1>
             <StarRating
                 rating = {rating}
                 numberofStars = {5}
@@ -124,16 +133,16 @@ function Review() {
             />
             <div id="inputRev">
             <p></p>
-            <input  placeholder="Review Title"></input>
+            <input id="reviewTitle" placeholder="Review Title" onChange={showButton}></input>
 
             <p></p>
-            <input  placeholder="Review " ></input>
+            <textArea id ="review" onChange={showButton} placeholder="Review " ></textArea>
             </div>
 
             <br></br>
 
             <div id="revBtn">
-            <button onClick={submitReview} id="rev">Submit Review</button>
+            <button onClick={submitReview} id="rev" className="hideSelf">Submit Review</button>
             </div>
         </form>
 
