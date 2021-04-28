@@ -76,10 +76,10 @@ function SignUpForm() {
 
   return (
   
-      <form  onSubmit={handleSubmit(onSubmit)} >
+      <form id="signup" onSubmit={handleSubmit(onSubmit)} >
          <h1>Sign Up</h1>
         <label htmlFor="email">Email</label>
-        <input
+        <input className="signup-input"
           defaultValue={initialValues.email}
           placeholder="Email"
           type="email"
@@ -150,7 +150,7 @@ function SignUpForm() {
           })}
         />
         {errors.confirmPassword&& <p>Your Password Doesn't Match!</p>}  
-        <input type="submit" />
+        <input className="signup-input" type="submit" />
       </form>
     );
   }
