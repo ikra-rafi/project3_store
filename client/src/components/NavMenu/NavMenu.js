@@ -109,9 +109,9 @@ function filterResults(event) {
     <div className="navigation">
         <div className="container"> 
                 <div className="logo">
-                    <a href= "/"> 
+                    <Link to="/" >
                     	<img src="/assets/logo/spice-a-holic_logo-horizontal.png" alt="spiceaholic" width="225"/>
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="meun_wrp">
