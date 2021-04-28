@@ -55,6 +55,7 @@
     margin: 0;
     padding: 0;
     position: relative;
+    overflow-x: hidden
   }
   
   img {
@@ -5252,18 +5253,17 @@ right: 0px !important;
        color: #333;
     
       }
-      
-      form #payment {
-      
-         display: block ;
-         box-sizing: border-box ;
-         width: 100% ;
-         border-radius: 4px ;
-         border: 1px solid rgb(12, 3, 3);
-         padding: 10px 15px;
-         margin-bottom: 10px;
-         font-size: 14px;
-       }
+      .form-check-input {
+        display: block ;
+        box-sizing: border-box;
+        /* width: 100% ; */
+        border-radius: 4px ;
+        border: 1px solid #9dca00;
+        padding: 10px 15px;
+        font-size: 14px;
+        /* z-index: -2; */
+      }
+    
       
     .checkout_section .custom2 {
        display: block;

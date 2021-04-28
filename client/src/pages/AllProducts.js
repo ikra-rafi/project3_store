@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import API from "../utils/API";
 import ProductContext from "../utils/productContext";
 import ProductsContainer from "../components/ProductsContainer";
+import MetaTags from "react-meta-tags";
+import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 
 function AllProducts() {
 
@@ -59,6 +61,20 @@ function filterResults(event) {
 }
 
   return (
+    <Fragment>
+      <MetaTags>
+        <title>spice-A-holic | All Products</title>
+        <meta
+          name="description"
+          content="Organic spices."
+        />
+      </MetaTags>
+
+     <div className="contact-page">
+
+       {/*====================  breadcrumb area ====================*/}
+
+       <Breadcrumb title="Product Details" />
     <><section className="product-section">
       <div className="container">
           <div className="base-header">
@@ -69,10 +85,14 @@ function filterResults(event) {
       </div>
   </section>
     <ProductContext.Provider value={{product, products}}>
+    <div className="container">
+    <div className="row justify-content-center">
+      <div className="col-md-5 col-lg-4">      
       <form>
           <label style={{color:'black'}}>Search Products: </label><input id="searchInput" onKeyUp={handleInputChange} ></input>
       </form>
-      <select name="filter" id="filterDropdown" onChange= {filterResults}>
+
+      <select class="custom-select d-block w-100" name="filter" id="filterDropdown" onChange= {filterResults}>
         <option value = "">Select a family...</option>
         <option value = "baking">Baking</option>
         <option value = "grilling">Grilling</option>
@@ -80,12 +100,14 @@ function filterResults(event) {
         <option value = "extract">Extract</option>
         <option value = "teas">Teas</option>
       </select>
-      <div>
+      <div></div></div></div>
         <ProductsContainer products = {filteredProducts}/>
       </div>
-
+      
     </ProductContext.Provider>
 </>
+</div>
+</Fragment>
   );
 }
 
