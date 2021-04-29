@@ -134,38 +134,38 @@ function OrderHistory() {
                                 <thead>
                                   <tr>
                                     <td className="ptitle">Order ID</td>
+                                    {/* <td>        </td>
                                     <td>        </td>
-                                    <td>        </td>
-                                    <td>        </td>
+                                    <td>        </td> */}
                                     <td className="ptitle">Order Total</td>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
                                     <td>{result._id}</td>
-                                    <td>           </td>
+                                    {/* <td>           </td>
                                     <td>         </td>
-                                    <td>         </td>
+                                    <td>         </td> */}
                                     <td>{result.orderTotal}</td>
                                   </tr>
                                 </tbody>
                               </table >
-                              <table className="table-responsive text-left">
+                              <table className="table table-bordered">
                                 <thead>
-                                  <tr>
-                                    <td className="ptitle">Product</td>
-                                    <td className="ptitle">Size</td>
-                                    <td className="ptitle">Quantity</td>
+                                  <tr className="shop_cart_tr">
+                                    <td className="text-center">Product</td>
+                                    <td className="text-center">Size</td>
+                                    <td className="text-center">Quantity</td>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   {result.spices.map( res=> (
                                   <tr>
-                                    <td className="align-middle text-left"><p>{res.name}</p></td>
-                                    <td>    </td>
-                                    <td className="align-middle text-left"><p>{res.size}</p></td>
-                                    <td>    </td>
-                                    <td className="align-middle text-left"><p>{res.quantity}</p></td>
+                                    <td className="align-middle text-center"><p>{res.name}</p></td>
+                                    {/* <td>    </td> */}
+                                    <td className="align-middle text-center"><p>{res.size}</p></td>
+                                    {/* <td>    </td> */}
+                                    <td className="align-middle text-center"><p>{res.quantity}</p></td>
                                   </tr>
                                   ))}
                                 </tbody>
