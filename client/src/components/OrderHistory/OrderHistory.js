@@ -37,7 +37,7 @@ function OrderHistory() {
         // call get login to retrieve user info
         getLogin();
         // call get orders to retrieve that specific user's orders
-        getOrders();
+//        getOrders();
       }
       // user not logged in
       else {
@@ -52,9 +52,11 @@ function OrderHistory() {
         password: "",
         email: state.email
       }
+      console.log(loginObj)
       // api call to get logged in user's account info
       API.getOrdersAcct(loginObj)
         .then(res => {
+          getOrders();
         })
         .catch(err => console.log(err));
     }
@@ -65,6 +67,7 @@ function OrderHistory() {
       // api call to get order info
       API.getOrders(state.email)
         .then(res => {
+          console.log(res.data);
           var orderProducts =[];
           // loop over each product for an order
           res.data[0].orderIDs.forEach(element => {
@@ -132,38 +135,38 @@ function OrderHistory() {
                                 <thead>
                                   <tr>
                                     <td className="ptitle">Order ID</td>
+                                    {/* <td>        </td>
                                     <td>        </td>
-                                    <td>        </td>
-                                    <td>        </td>
+                                    <td>        </td> */}
                                     <td className="ptitle">Order Total</td>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
                                     <td>{result._id}</td>
-                                    <td>           </td>
+                                    {/* <td>           </td>
                                     <td>         </td>
-                                    <td>         </td>
+                                    <td>         </td> */}
                                     <td>{result.orderTotal}</td>
                                   </tr>
                                 </tbody>
                               </table >
-                              <table className="table-responsive text-left">
+                              <table className="table table-bordered">
                                 <thead>
-                                  <tr>
-                                    <td className="ptitle">Product</td>
-                                    <td className="ptitle">Size</td>
-                                    <td className="ptitle">Quantity</td>
+                                  <tr className="shop_cart_tr">
+                                    <td className="text-center">Product</td>
+                                    <td className="text-center">Size</td>
+                                    <td className="text-center">Quantity</td>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   {result.spices.map( res=> (
                                   <tr>
-                                    <td className="align-middle text-left"><p>{res.name}</p></td>
-                                    <td>    </td>
-                                    <td className="align-middle text-left"><p>{res.size}</p></td>
-                                    <td>    </td>
-                                    <td className="align-middle text-left"><p>{res.quantity}</p></td>
+                                    <td className="align-middle text-center"><p>{res.name}</p></td>
+                                    {/* <td>    </td> */}
+                                    <td className="align-middle text-center"><p>{res.size}</p></td>
+                                    {/* <td>    </td> */}
+                                    <td className="align-middle text-center"><p>{res.quantity}</p></td>
                                   </tr>
                                   ))}
                                 </tbody>
