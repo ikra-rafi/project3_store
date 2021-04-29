@@ -9,6 +9,7 @@ function ProductDetail(props) {
   const [item, setItem] = useState({});
   const [state, dispatch] = useTodoContext();
 
+  // Handles the increment buttons by adding one to the quantity
   const handleIncrement= (e) => {
     const id = e.target.id.split('-')[1];
     const quantity = document.getElementById(id);
@@ -20,6 +21,7 @@ function ProductDetail(props) {
     quantityChange();
   }
 
+  // Handles the decrement buttons by subtracting one from the quantity
   const handleDecrement= (e) => {
     const id = e.target.id.split('-')[1];
     const quantity = document.getElementById(id);
@@ -35,6 +37,7 @@ function ProductDetail(props) {
     quantityChange();
   }
 
+  /* Handles Add To Cart buttons. Gets the cart and then saves the item */
   const addToCart = () => {
     const sel = document.getElementById("packaging");
     if(sel.value === "Null"){
@@ -73,6 +76,7 @@ function ProductDetail(props) {
     }
   }
 
+  // Handles select size drop downs. And sets the item state when changed
   const selectSize = () => {
     const pkgs = document.getElementById("packaging").value;
 
@@ -91,6 +95,7 @@ function ProductDetail(props) {
     })
   }
 
+  // Handles the quantity inputs and sets the state item when changed
   const quantityChange = () => {
     const pkgs = document.getElementById("packaging").value;
 
@@ -109,6 +114,7 @@ function ProductDetail(props) {
     })
   }
 
+  // Returns all product detail information for the particular product.
   return (
 
    <div className="container py-5">

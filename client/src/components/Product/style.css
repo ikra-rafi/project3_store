@@ -16,14 +16,13 @@
   height: 450px;
   margin: 1rem;
   position: relative;
-  width: 325px;
+  width: 320px;
   box-shadow: 0 3px 3px black, 0 3px 3px black;
   text-align: left;
   background:gray;
   padding: 5px;
 
 }
-
 
 .card > .img-container {
 
@@ -49,8 +48,6 @@ justify-content: center;
     /* margin:4px;
     /* height:7px; */
     /* font-size:20px; */
-
-
 }
 
 .quantity {

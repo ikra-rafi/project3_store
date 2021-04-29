@@ -11,12 +11,15 @@ function AllProducts() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-// When the component mounts, a call will be made to get load products.
+// The useEffect() scrolls to the top of the page on render.
+// It then makes a call will be made to load products.
 useEffect(() => {
   window.scrollTo(0, 0);
   loadProducts();
 }, []);
 
+/* getProducts() makes an API call to get the Products from the store and sets them in a products array.
+The products are then stored in the products state and prepped for filtering*/
 function loadProducts() {
   API.getProducts()
     .then(products => {
@@ -27,6 +30,7 @@ function loadProducts() {
     .catch(err => console.log(err));
 }
 
+// This function handles the onchange event for the search box. The results are filtered based on user input
 function handleInputChange(event)  {
   const search = event.target.value;
   const filteredResults = products.filter(result =>
@@ -35,6 +39,7 @@ function handleInputChange(event)  {
   setFilteredProducts(filteredResults);
 }
 
+// This function filters the product results based on the Family drop down
 function filterResults(event) {
   const filter = event.target.value;
   if (filter === "baking"){
@@ -58,6 +63,7 @@ function filterResults(event) {
 
 }
 
+// This function filters the results based on the region drop down
 function filterResults2(event) {
   const filter = event.target.value;
   if (filter === "india"){
@@ -84,7 +90,8 @@ function filterResults2(event) {
   }
 
 }
-
+/* Returns breadcrumbs, search/filters and the Products Container component.  The filtered product results are passed to the Products
+Container as props */
   return (
     <Fragment>
       <MetaTags>
