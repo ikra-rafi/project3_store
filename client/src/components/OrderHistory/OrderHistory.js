@@ -37,7 +37,7 @@ function OrderHistory() {
         // call get login to retrieve user info
         getLogin();
         // call get orders to retrieve that specific user's orders
-        getOrders();
+//        getOrders();
       }
       // user not logged in
       else {
@@ -56,6 +56,7 @@ function OrderHistory() {
       // api call to get logged in user's account info
       API.getOrdersAcct(loginObj)
         .then(res => {
+          getOrders();
         })
         .catch(err => console.log(err));
     }
