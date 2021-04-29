@@ -61,6 +61,33 @@ function filterResults(event) {
 
 }
 
+function filterResults2(event) {
+  const filter = event.target.value;
+  if (filter === "india"){
+    const india = products.filter(result => (result.region.india === true));
+    setFilteredProducts(india);
+  } else if (filter === "asia"){
+    const asia = products.filter(result => (result.region.asia === true));
+    setFilteredProducts(asia);
+  } else if (filter === "carribean"){
+    const caribbean = products.filter(result => (result.region.caribbean === true));
+    setFilteredProducts(caribbean);
+  } else if (filter === "middleEast"){
+    const middleEast = products.filter(result => (result.region.middleEast === true));
+    setFilteredProducts(middleEast);
+  } else if (filter === "african"){
+    const african = products.filter(result => (result.region.african === true));
+    setFilteredProducts(african);
+  } else if (filter === "latinAmerica"){
+    const latinAmerica = products.filter(result => (result.region.latinAmerica === true));
+    setFilteredProducts(latinAmerica);
+  } else if (filter === "europe"){
+    const europe = products.filter(result => (result.region.europe === true));
+    setFilteredProducts(europe);
+  }
+
+}
+
   return (
     <Fragment>
       <MetaTags>
@@ -100,6 +127,16 @@ function filterResults(event) {
         <option value = "seasoning">Seasoning</option>
         <option value = "extracts">Extract</option>
         <option value = "teas">Teas</option>
+      </select>
+
+      <select class="custom-select d-block w-100" name="filter2" id="filterDropdown2" onChange= {filterResults2}>
+        <option value = "">Select a region...</option>
+        <option value = "india">India</option>
+        <option value = "asia">Asia</option>
+        <option value = "carribean">Caribbean</option>
+        <option value = "middleEast">Middle East</option>
+        <option value = "african">African</option>
+        <option value = "latinAmerica">Europe</option>
       </select>
       <div></div></div></div>
         <ProductsContainer products = {filteredProducts}/>

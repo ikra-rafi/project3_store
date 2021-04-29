@@ -6996,8 +6996,6 @@ right: 0px !important;
 
 }
 
-
-
 #review {
   height: 200px;
   display: block;
@@ -7008,7 +7006,6 @@ right: 0px !important;
   padding: 10px 15px;
 }
 
-
 .hideSelf {
   display:none
 }
@@ -7016,4 +7013,3 @@ right: 0px !important;
 .showSelf{
   display: block
 }
-

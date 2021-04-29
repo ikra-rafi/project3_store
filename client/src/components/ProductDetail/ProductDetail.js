@@ -155,7 +155,6 @@ function ProductDetail(props) {
         <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
         <input type="text" onChange={quantityChange} className="inline quantity" id={props.product._id} defaultValue = "1"></input>
         <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-
       </div>
       <button id="addCartBtn" onClick={addToCart}>ADD TO CART</button>
       {/* <Link className="pro-checkout"
