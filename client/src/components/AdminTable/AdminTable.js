@@ -94,10 +94,10 @@ function AdminTable() {
     }
   }
 
-  function updateProduct (e) {
-    e.preventDefault();
+  // function updateProduct (e) {
+  //   e.preventDefault();
 
-  }
+  // }
 
   return (
     <section>
@@ -109,7 +109,7 @@ function AdminTable() {
             <th id="prdBtn"><button id="btn"onClick={sortTableByProdID}>Product ID</button></th>
 
             <th id="prdNm"><button id="btn"onClick={sortTableByName}>Product Name</button></th>
-            <th><button id="btn">Description</button></th>
+            {/* <th><button id="btn">Description</button></th> */}
             <th><button id="btn">Size</button></th>
             <th><button id="btn">Quantity</button></th>
             {/* <th></th> */}
@@ -126,7 +126,7 @@ function AdminTable() {
                 </td>
                 <td><p id="tdp"> {result.productID}</p></td>
                 <td><p id="tdp"> {result.name}</p></td>
-                <td><p id="tp"> {result.description}</p></td>
+                {/* <td><p id="tp" style={{width:"125px"}}> {result.description}</p></td> */}
                 <td><p id="pp">  {res.size}</p></td>
                 <td><input id="tdIn"defaultValue={res.quantity}  /></td>
                 {/* <td>

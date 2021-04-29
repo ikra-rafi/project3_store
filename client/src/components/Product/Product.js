@@ -3,10 +3,12 @@ import Ratings from "../Ratings";
 import { Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
+import { useTodoContext } from "../../utils/store";
 
 function Product(props) {
   console.log(props);
   const [item, setItem] = useState({});
+  const [state, dispatch] = useTodoContext();
 
   useEffect(() => {
     setState()
@@ -37,7 +39,7 @@ function Product(props) {
     console.log("add to cart");
 
       API.getCart()
-      .then(
+      .then( res => {
         setItem({
           name: props.product.name,
           productID: props.product.productID,
@@ -46,8 +48,12 @@ function Product(props) {
             price: props.product.packaging[0].price,
             quantity: 1
           }
+        });
+        dispatch({
+          type: "numCartItems",
+          numItems: res.data.length
         })
-      )
+      })
       .then(
         API.saveCart(item)
         .then(res=> {
@@ -91,17 +97,21 @@ function Product(props) {
     const val = parseInt(quantity.value);
 
       API.getCart()
-      .then(
+      .then( res => {
         setItem({
           name: props.product.name,
           productID: props.product.productID,
           prodInfo: {
-            size: pkgs.split("-")[0],
-            price: pkgs.split("-")[1],
-            quantity: val
+            size: props.product.packaging[0].size,
+            price: props.product.packaging[0].price,
+            quantity: 1
           }
+        });
+        dispatch({
+          type: "numCartItems",
+          numItems: res.data.length
         })
-      )
+      })
       .then(
         API.saveCart(item)
         .then(res=> {
@@ -113,13 +123,8 @@ function Product(props) {
         )
       .catch(err => console.log(err));
 
-      alert("Your item has been added to the shopping cart!")
-
-
+      alert("Your item has been added to the shopping cart!");
     }
-
-
-
   }
 
   const selectSize = () => {
