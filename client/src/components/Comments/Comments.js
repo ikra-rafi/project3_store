@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useTodoContext} from "../../utils/store";
 import "./style.css";
+import $ from "jquery";
 
 function Comments(props) {
     console.log(props);
     const [state, dispatch] = useTodoContext();
     console.log(state);
 
-    // function to write a review of product
+    useEffect(() => {
+
+        if(!state.loggedIn) {
+            $("#comBtn").addClass("hideSelf");
+        }
+    }, []);
+
     const writeReview = () => {
         console.log(props);
         const name = props.name;
@@ -26,9 +33,9 @@ function Comments(props) {
                     <h3>{res.title}</h3>
                     <p>{res.userComment}</p>
 
-                </div> 
-              
-                
+                </div>
+
+
             ))}
 </div>
         </div>
