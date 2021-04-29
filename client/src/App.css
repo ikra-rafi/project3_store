@@ -7013,3 +7013,9 @@ right: 0px !important;
 .showSelf{
   display: block
 }
+
+#prdName{
+  font-family: 'Karla', sans-serif;
+  margin-left:40px;
+}
+

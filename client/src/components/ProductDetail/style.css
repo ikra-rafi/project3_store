@@ -48,7 +48,7 @@ p{
 .packaging-choices-btn{
   width:200px;
   font-size:20px;
-  margin-bottom:1%;
+  /* margin-bottom:1%; */
   font-family: 'New Tegomin', serif;
   margin-left:6%;
 }
