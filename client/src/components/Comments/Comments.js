@@ -1,9 +1,11 @@
 import React, {useEffect} from 'react';
+import {useTodoContext} from "../../utils/store";
 import "./style.css";
 import $ from "jquery";
 
 function Comments(props) {
 
+    const [state, dispatch] = useTodoContext();
     useEffect(() => {
 
         if(!state.loggedIn) {
@@ -14,6 +16,7 @@ function Comments(props) {
     const writeReview = () => {
         const name = props.name;
         const id = window.location.href.split("/").pop();
+        console.log(id);
         window.location=`#/review/${name}/${id}`
     }
 

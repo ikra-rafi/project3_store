@@ -471,23 +471,6 @@ function Checkout() {
                   <div className="col-lg-4 col-sm-12">
                   <div className="grand-total-area">
                   <h4>Cart Total</h4>           
-                       {/* <table className="table table-bordered">                      
-                       <thead>
-                        <tr className="ptitle">
-                          <th className="alignCenter">Product</th>
-                          <th className="alignCenter">Package Size</th>
-                          <th className="alignCenter">Quantity</th>
-                          <th className="alignCenter">Price</th>
-                          <th className="alignCenter">Item Total</th>
-                        </tr>
-                      </thead>
-
-                      <tbody>
-                        
-                        <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td> */}
                         <p className="sub-total">SubTotal:
                         <span className="amt">${formatter.format(state.subTotal)}</span></p>
                       {state.discount ? (
@@ -521,10 +504,7 @@ function Checkout() {
                  </section>
                )}
              </div>
-{/*              <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" > */}
              <button type="submit" className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
-             {/* <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button> */}
-{/*          </Link> */}
           </div>
           </div>
 
