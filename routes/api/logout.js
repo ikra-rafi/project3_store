@@ -1,6 +1,4 @@
 const router = require("express").Router();
-console.log("in logoutrouter");
-
 
 router.post('/', (req, res) => {
     console.log("in logout route");

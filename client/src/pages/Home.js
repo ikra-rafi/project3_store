@@ -31,7 +31,6 @@ function loadProducts() {
     .then(products => {
       // set state
       setProducts(products);
-      console.log(products);
       setProduct(products[0]);
       filterResults(products);
     })
@@ -59,8 +58,6 @@ function loadProducts() {
 
   // getting state about whether user logged in or not
   const loggedIn = state.loggedIn;
-  console.log('navbar render, props: ')
-  console.log("loggedIn = " + loggedIn);
 
   return (
     <><MetaTags>

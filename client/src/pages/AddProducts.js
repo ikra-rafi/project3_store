@@ -45,7 +45,6 @@ function AddProducts() {
     }
     
     useEffect(() => {
-      console.log("add products");
       if(!state.admin) {
         history.push("/");
       }
@@ -60,62 +59,50 @@ function AddProducts() {
   // these functions handle setting the correct boolean value of checkboxes to state
   function handleBakingCheck(e) {
       setFamily({...family, baking: e.target.checked});
-      console.log(family);
   }
 
   function handleGrillingCheck(e) { 
       setFamily({...family, grilling: e.target.checked});
-      console.log(family);
   }
 
   function handleSeasoningCheck(e) {
     setFamily({...family, seasoning: e.target.checked});
-      console.log(family);
   }
 
   function handleExtractsCheck(e) {
     setFamily({...family, extract: e.target.checked});
-      console.log(family);
   }
 
   function handleTeaCheck(e) {
     setFamily({...family, tea: e.target.checked});
-      console.log(family);
   }
 
   function handleIndia(e) {
       setRegion({...region, india: e.target.checked})
-      console.log(region);
   }
 
   function handleAsia(e) {
       setRegion({...region, asia: e.target.checked});
-      console.log(region);
   }
 
   function handleCarribean(e) {
       setRegion({...region, carribean: e.target.checked});
-      console.log(region);
   }
 
   function handleAfrica(e) {
       setRegion({...region, africa: e.target.checked});
-      console.log(region);
   }
 
   function handleMiddleEast(e) {
       setRegion({...region, middleEast: e.target.checked});
-      console.log(region);
   }
 
   function handleLatinAmerica(e) {
       setRegion({...region, latinAmerica: e.target.checked});
-      console.log(region);
   }
 
   function handleEurope(e) {
       setRegion({...region, europe: e.target.checked});
-      console.log(region);
   }
 
   // function to handle submit button
@@ -164,7 +151,6 @@ function AddProducts() {
       .then(res => {
         // check if successful save
         if(res.status === 200) {
-          console.log("success on product save");
         }
       }) 
       .catch(err => console.log(err));
@@ -345,8 +331,6 @@ function AddProducts() {
         </div>
 
       </Fragment>
-
-    
   );
 }
 

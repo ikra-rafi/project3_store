@@ -32,7 +32,6 @@ function OrderHistory() {
     });
    
     useEffect(() => {
-      console.log("orderHistory effect");
       // check if user logged before attempting to get orders
       if(state.loggedIn) {
         // call get login to retrieve user info
@@ -71,7 +70,6 @@ function OrderHistory() {
           res.data[0].orderIDs.forEach(element => {
             // save each product to an array
             orderProducts.push(element);
-            console.log(orderProducts);
           })
           // save account info found in first billing address section
           acctInfo.firstName=orderProducts[0].creditCard.billingAddress.firstName;
@@ -112,7 +110,6 @@ function OrderHistory() {
         <Container fluid>
           <Container>
           <div class="row">
-          {/* <div class="col-md-5"> */}
                   <div className="container-fluid containerColor marginBottomCont">
                     <h1 class="mb-4">Account Info</h1>
                     <table>
@@ -123,7 +120,6 @@ function OrderHistory() {
                         <tr>{acctInfo.phone}</tr>
                     </table>
                   </div> 
-             {/* <div class="col-md-5 mt-5 mt-md-0"> */}
              <br></br>
              <section className="ml-md-0">
               <h4 class="mb-4">Order History</h4>
@@ -193,7 +189,6 @@ function OrderHistory() {
 
       </Fragment>
     );
-
 }
 
 export default OrderHistory;

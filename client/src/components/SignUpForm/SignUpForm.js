@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import API from "../../utils/API";
-//import {useTodoContext} from "../../utils/store";
 import "./style.css";
 
 function SignUpForm() {
@@ -31,7 +30,6 @@ function SignUpForm() {
   // function to handle the submit button
   const onSubmit = (data) => {
 
-    console.log('sign-up email: ' + signup.email)
     // object to store the new user info from fields before saving to db
     const storeLogin = [{
       email: data.email,
@@ -48,27 +46,22 @@ function SignUpForm() {
     // api call to save the new user info
     API.saveLogin(storeLogin)
       .then(res => {
-        console.log("signup");
-        console.log(res.data);
         // check if successful save
         if(res.status === 200) {
-          // redirect to home page upon successful save of new user
-//          setSignup({
-//            redirectTo: "/"
-//          })
+          // clear all the signup fields
+          setValue("email", "");
+          setValue("firstName", "");
+          setValue("lastName", "");
+          setValue("securityQuestion", "");
+          setValue("answer", "");
+          setValue("password", "");
+          setValue("confirmPassword", "");
+          // display alert informing user their signup was successful
+          alert("Account created, please login to continue.")
         }
       })
       .catch(err => console.log(err));
-      // clear all the signup fields
-      setValue("email", "");
-      setValue("firstName", "");
-      setValue("lastName", "");
-      setValue("securityQuestion", "");
-      setValue("answer", "");
-      setValue("password", "");
-      setValue("confirmPassword", "");
-      // display alert informing user their signup was successful
-      alert("Account created, please login to continue.")
+
   };
 
     // object for initial values of fields on page

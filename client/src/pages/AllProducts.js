@@ -23,7 +23,6 @@ function loadProducts() {
     .then(products => {
       setProducts(products);
       setFilteredProducts(products);
-      console.log(products);
       setProduct(products[0]);
     })
     .catch(err => console.log(err));
@@ -31,11 +30,9 @@ function loadProducts() {
 
 function handleInputChange(event)  {
   const search = event.target.value;
-  console.log(search);
   const filteredResults = products.filter(result =>
     result.name.toLowerCase().includes(search.toLowerCase())
   );
-  console.log(filteredResults);
   setFilteredProducts(filteredResults);
 }
 

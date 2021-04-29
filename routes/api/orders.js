@@ -5,6 +5,7 @@ const ordersController = require("../../controllers/ordersController");
 router.route("/")
   .get(ordersController.findAll)
 
+// Matches with "/api/orders/acct"
 router
   .route("/acct")
   .post(ordersController.findOne);
@@ -13,8 +14,8 @@ router
 router
   .route("/:id")
   .delete(ordersController.remove)
- // .post(ordersController.create);
 
+// Matches with /api/orders/:id/:acct
 router
   .route("/:id/:acct")
   .post(ordersController.create);

@@ -27,16 +27,12 @@ class ProductDetails extends Component {
     window.scrollTo(0, 0);
     API.getProducts()
     .then(products => {
-      console.log(products);
       this.setState({products: products});
       this.setProduct();
-      console.log(this.state.product);
       this.setState({packaging: this.state.product.packaging});
       API.getComments()
       .then(res => {
-        console.log(res.data);
         const results = res.data.filter(result => result.productID === this.state.product.productID)
-        console.log(results);
         this.setState({comments:results});
       })
     })

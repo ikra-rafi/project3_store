@@ -8,8 +8,6 @@ module.exports = {
     var email = req.body[0].email;
     var password = req.body[0].password;
     var securityQuestion = req.body[0].securityQuestion;
-    console.log(req.body[0]);
-    console.log(req.body[0].securityQuestion);
     var securityAnswer = req.body[0].securityAnswer;
     var admin = req.body[0].admin;
     var firstName = req.body[0].firstName;

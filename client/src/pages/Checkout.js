@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import CartData from "../components/Test/CartData"
+import CartData from "../components/CartData"
 import {Container} from "../components/Grid";
 import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
@@ -75,7 +75,6 @@ function Checkout() {
         if(state.loggedIn) {
             // set state information with logged in user email and _id
             setLoginInfo({...loginInfo, email: state.email, _id: res.data._id})
-            console.log(res.data)
           // user not logged in
         } else if (!state.loggedIn)
         {
@@ -151,21 +150,16 @@ function Checkout() {
       .then(res => {
         // check if order save was successful
         if(res.status === 200) {
-          console.log("success on order save");
           // api call to delete all items out of shopping cart table now that order was placed
           API.deleteCart()
             .then(result => {
               // check if delete cart was successful
               if(res.status===200) {
-                console.log("deleted cart");
                 // redirect to the thank you page
                 history.push("/ThankYou");
               }
             })
         }
-        console.log("in save orders");
-        console.log(res.data);
-        console.log(res.data._id);
       }) 
       .catch(err => console.log(err));
   }
@@ -477,68 +471,21 @@ function Checkout() {
                   <div className="col-lg-4 col-sm-12">
                   <div className="grand-total-area">
                   <h4>Cart Total</h4>           
-                       {/* <table className="table table-bordered">                      
-                       <thead>
-                        <tr className="ptitle">
-                          <th className="alignCenter">Product</th>
-                          <th className="alignCenter">Package Size</th>
-                          <th className="alignCenter">Quantity</th>
-                          <th className="alignCenter">Price</th>
-                          <th className="alignCenter">Item Total</th>
-                        </tr>
-                      </thead>
-
-                      <tbody>
-                        
-                        <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td> */}
                         <p className="sub-total">SubTotal:
                         <span className="amt">${formatter.format(state.subTotal)}</span></p>
-                      {/* </tr> */}
-
                       {state.discount ? (
-                        // <tr>
-                        //   <td></td>
-                        //   <td></td>
-                        //   <td></td>
                           <p className="discount">Discount ({state.discountAmt}%)
-                          <span className="amt">${formatter.format(state.discountAmt/100 * state.subTotal)}</span></p>
-                        // </tr>                        
+                          <span className="amt">${formatter.format(state.discountAmt/100 * state.subTotal)}</span></p>                     
                       ) : (
-                        // <tr>
-                        // <td></td>
-                        // <td></td>
-                        // <td></td>
                         <p className="discount">No discount applied
                         <span className="amt"></span></p>
-                      //   <td></td>
-                      // </tr>
                       )}
-                     {/* <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td> */}
                         <p className="amt">Sales Tax ({state.salesTax}%)
                         <span className="amt">${formatter.format(state.salesTaxAmt)}</span></p>
-                      {/* </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td> */}
                         <p className="delivery">Shipping Fee (Flat Rate):
                         <span className="amt">${state.shipFee}</span></p>
-                      {/* </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td> */}
                         <p className="grand-total">Order Total:
                         <span className="amt">${formatter.format(state.orderTotal)}</span></p>
-                      {/* </tr>
-                        </tbody>
-                        </table> */}
                                 </div>
                             </div>
                         </div>
@@ -557,10 +504,7 @@ function Checkout() {
                  </section>
                )}
              </div>
-{/*              <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" > */}
              <button type="submit" className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
-             {/* <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button> */}
-{/*          </Link> */}
           </div>
           </div>
 
