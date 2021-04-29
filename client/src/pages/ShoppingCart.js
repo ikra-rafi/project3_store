@@ -21,6 +21,7 @@ function ShoppingCart() {
 
   useEffect(() => {
     // upon page load get items from shopping cart table
+    window.scrollTo(0,0);
     getCart();
   }, [])
 

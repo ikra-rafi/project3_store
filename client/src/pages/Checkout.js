@@ -53,6 +53,7 @@ function Checkout() {
   }
 
   useEffect(() => {
+    window.scrollTo(0,0);
     // check if user logged in
     if(state.loggedIn) {
       // get login information
