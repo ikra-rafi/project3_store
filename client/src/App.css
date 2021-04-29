@@ -164,37 +164,38 @@
     list-style-type: none;
   }
 
-  /* === Hyperlink === */
+ /* === Hyperlink === */
 
-  .btn.btn-fill {
-    background: #fff;
-  }
+ .btn.btn-fill {
+  background: rgb(196, 67, 8);
+}
 
-  .btn.btn-fill {
-    color: #9dca00;
-  }
+.btn.btn-fill {
+  color: #000;
+}
 
-  .btn {
-    border-width: 1px;
-    border-style: solid;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    -ms-border-radius: 0px;
-    -o-border-radius: 0px;
-    border-radius: 0px;
-    cursor: pointer;
-    padding: 10px 22px;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
-    -webkit-transition: all 0.4s ease-out 0s;
-    -moz-transition: all 0.4s ease-out 0s;
-    -ms-transition: all 0.4s ease-out 0s;
-    -o-transition: all 0.4s ease-out 0s;
-    transition: all 0.4s ease-out 0s;
-    color: #000;
-  }
+.btn {
+  border-width: 1px;
+  border-style: solid;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 22px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  -webkit-transition: all 0.4s ease-out 0s;
+  -moz-transition: all 0.4s ease-out 0s;
+  -ms-transition: all 0.4s ease-out 0s;
+  -o-transition: all 0.4s ease-out 0s;
+  transition: all 0.4s ease-out 0s;
+  color: rgb(0, 0, 0);
+}
+
 
   section {
     background: #FFF;
@@ -3752,3 +3753,4 @@ right: 0px !important;
   font-family: 'Karla', sans-serif;
   margin-left:40px;
 }
+
