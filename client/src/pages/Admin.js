@@ -1,7 +1,7 @@
 import React , { Fragment, useEffect, useState} from "react";
 import { useTodoContext} from "../utils/store";
 import API from "../utils/API";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import AdminTable from "../components/AdminTable";
 import MetaTags from "react-meta-tags";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
@@ -11,8 +11,6 @@ function Admin() {
   const [product, setProducts]= useState([]);
   const [state, dispatch] = useTodoContext();
   let history = useHistory();
-
-  // console.log(state);
 
   useEffect(() => {
     console.log("product Effect");
@@ -34,13 +32,11 @@ function Admin() {
         products.push(element);
 
       });
-      console.log(products);
 
       dispatch({
         type: "products",
         products: products
       });
-
     })
     .catch(err => console.log(err))
   }

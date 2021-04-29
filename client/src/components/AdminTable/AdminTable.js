@@ -94,11 +94,6 @@ function AdminTable() {
     }
   }
 
-  // function updateProduct (e) {
-  //   e.preventDefault();
-
-  // }
-
   return (
     <section>
    <div>
@@ -109,10 +104,10 @@ function AdminTable() {
             <th id="prdBtn"><button id="btn"onClick={sortTableByProdID}>Product ID</button></th>
 
             <th id="prdNm"><button id="btn"onClick={sortTableByName}>Product Name</button></th>
-            {/* <th><button id="btn">Description</button></th> */}
+            <th><button id="btn">Price</button></th>
             <th><button id="btn">Size</button></th>
             <th><button id="btn">Quantity</button></th>
-            {/* <th></th> */}
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -126,12 +121,13 @@ function AdminTable() {
                 </td>
                 <td><p id="tdp"> {result.productID}</p></td>
                 <td><p id="tdp"> {result.name}</p></td>
-                {/* <td><p id="tp" style={{width:"125px"}}> {result.description}</p></td> */}
-                <td><p id="pp">  {res.size}</p></td>
-                <td><input id="tdIn"defaultValue={res.quantity}  /></td>
-                {/* <td>
-                  <button onclick="updateProduct">Update</button>
-                </td> */}
+                <td><p id="tp" val={res.price}>{res.price}</p></td>
+                <td><p id="pp"val={res.size}>{res.size}</p></td>
+                <td><input id="tdIn"
+                defaultValue={res.quantity}  /></td>
+                <td>
+                  <a href="#" id= "updateButton" >Update</a>
+                </td>
 
               </tr>
             ))

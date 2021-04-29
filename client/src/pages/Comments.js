@@ -37,7 +37,6 @@ function Comments() {
       .then(res => {
 
          setLoginInfo({...loginInfo, email: state.email, _id: res.data._id })
-        console.log(res.data)
       })
       .catch(err => console.log(err));
   }
@@ -51,7 +50,6 @@ function Comments() {
     API.saveComments(loginInfo._id, commentObj)
     .then(res => {
       if(res.status === 200) {
-        console.log("success on save");
       }
     })
     .catch(err => console.log(err));

@@ -6,7 +6,6 @@ import API from "../../utils/API";
 import { useTodoContext } from "../../utils/store";
 
 function Product(props) {
-  console.log(props);
   const [item, setItem] = useState({});
   const [state, dispatch] = useTodoContext();
 
@@ -36,8 +35,6 @@ function Product(props) {
 
   const addToCart = () => {
 
-    console.log("add to cart");
-
       API.getCart()
       .then( res => {
         setItem({
@@ -57,10 +54,6 @@ function Product(props) {
       .then(
         API.saveCart(item)
         .then(res=> {
-
-          console.log(res.data);
-          console.log(item);
-
         })
         )
       .catch(err => console.log(err));
@@ -83,14 +76,12 @@ function Product(props) {
 
   const addToCartProducts = () => {
 
-    console.log("add to cart");
     const sel = document.getElementById("packaging-" + props.product._id);
-    console.log(sel.value);
     if(sel.value === "Null"){
       alert("Please select a packaging size.")
     } else {
 
-      const pkgs = document.getElementById("packaging-" + props.product._id).value;
+    const pkgs = document.getElementById("packaging-" + props.product._id).value;
 
     const quantity = document.getElementById(props.product._id);
 
@@ -116,9 +107,6 @@ function Product(props) {
         API.saveCart(item)
         .then(res=> {
 
-          console.log(res.data);
-          console.log(item);
-
         })
         )
       .catch(err => console.log(err));
@@ -128,11 +116,8 @@ function Product(props) {
   }
 
   const selectSize = () => {
-    console.log("select size");
     const pkgs = document.getElementById("packaging-" + props.product._id).value;
-
     const quantity = document.getElementById(props.product._id);
-
     const val = parseInt(quantity.value);
 
     setItem({
@@ -144,15 +129,11 @@ function Product(props) {
         quantity: val
       }
     })
-    console.log(item);
   }
 
   const quantityChange = () => {
-    console.log("quantityChange");
     const pkgs = document.getElementById("packaging-" + props.product._id).value;
-
     const quantity = document.getElementById(props.product._id);
-
     const val = parseInt(quantity.value);
 
     setItem({
@@ -164,7 +145,6 @@ function Product(props) {
         quantity: val
       }
     })
-    console.log(item);
   }
 
   if (props.page === "home"){
@@ -187,7 +167,6 @@ function Product(props) {
                   <Ratings ratings= {props.product.ratings}/>
                   </div>
                   <div className="row">
-                  {/* <Ratings ratings= {props.product.ratings}/> */}
                     <div className="col-6">
 
                       <p className="product_price">${props.product.packaging[0].price}</p>
@@ -207,7 +186,7 @@ function Product(props) {
     return (
       <div className="row">
           <div className="col-4">
-            <div className="card" id="ls">
+            <div className="product-card" id="ls">
               <div className="img-container" id="image">
               <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} >
               <img className="product-image "  alt={props.product.name} src={props.product.picLink} />
@@ -218,31 +197,34 @@ function Product(props) {
                    {props.product.name}
                   </h3>
                   <Ratings ratings= {props.product.ratings}/>
-                  {/* <div> */}
                   <p id="description">{props.product.description}</p>
-                  {/* </div> */}
-                  <select onChange={selectSize} className="packaging-choices" id={`packaging-${props.product._id}`} >
-                  <option  value = "Null">---Select Size---</option>
-                    <option value = {`${props.product.packaging[0].size}-${props.product.packaging[0].price}`}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>
-                    <option value = {`${props.product.packaging[1].size}-${props.product.packaging[1].price}`}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
-                  </select>
-                  <div className="d-flex flex-row justify-content-between px-3 pb-4">
-                  <div className="input-group mb-3" id = "quantityDiv">
-                    <button className = "inline " id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
-                    <input type="text" className="inline quantity btn" id={props.product._id} defaultValue = "1"></input>
-                    <button className = "inline " id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-                    <button id="addCart" onClick = {addToCartProducts}><i className="fa fa-shopping-cart" ></i></button>
-                  </div>
-                  </div>
+
+                    <div className="row">
+                      <div className ="col-7">
+                      <select onChange={selectSize} className="packaging-choices" id={`packaging-${props.product._id}`} >
+                          <option  value = "Null">---Select Size---</option>
+                          <option value = {`${props.product.packaging[0].size}-${props.product.packaging[0].price}`}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>
+                          <option value = {`${props.product.packaging[1].size}-${props.product.packaging[1].price}`}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
+                        </select>
+                        <div id = "quantityDiv">
+                          <button className = "inline " id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
+                          <input type="text" className="inline quantity btn" id={props.product._id} defaultValue = "1"></input>
+                          <button className = "inline " id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
+
+                        </div>
+                      </div>
+                      <div className="col-5">
+                        <button id="addCart" onClick = {addToCartProducts}><i className="fa fa-shopping-cart" ></i></button>
+                      </div>
+                    </div>
+
+
+
               </div>
             </div>
           </div>
       </div>
 
     );}
-
-
-
-
 }
 export default Product;

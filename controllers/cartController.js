@@ -18,11 +18,10 @@ module.exports = {
   update: function(req, res) {
     db.ShoppingCart
       .findOneAndUpdate({ _id: req.params.id }, req.body, {new: true})
-      .then(dbModel => {res.json(dbModel); console.log(dbModel)})
+      .then(dbModel => {res.json(dbModel);})
       .catch(err => res.status(422).json(err));
   },
   removeItem: function(req, res) {
-    console.log("controller id = " + req.params.id);
     db.ShoppingCart
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
@@ -35,7 +34,6 @@ module.exports = {
       );
   },
   remove: function(req, res) {
-    console.log("remove all cart items")
     db.ShoppingCart
       .remove()
       .then(dbModel => {

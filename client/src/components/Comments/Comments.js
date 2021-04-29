@@ -4,10 +4,8 @@ import "./style.css";
 import $ from "jquery";
 
 function Comments(props) {
-    console.log(props);
-    const [state, dispatch] = useTodoContext();
-    console.log(state);
 
+    const [state, dispatch] = useTodoContext();
     useEffect(() => {
 
         if(!state.loggedIn) {
@@ -16,7 +14,6 @@ function Comments(props) {
     }, []);
 
     const writeReview = () => {
-        console.log(props);
         const name = props.name;
         const id = window.location.href.split("/").pop();
         console.log(id);
@@ -27,6 +24,7 @@ function Comments(props) {
         <div className="container">
             <div className="project_btn text-center">
             <button id="comBtn"onClick={writeReview}>Write Review</button>
+            <div><h2 style={{fontWeight:'bold'}}>Reviews</h2></div>
             {props.product.map(res => (
                 console.log(res),
                 <div className="comment" key = {res._id}>

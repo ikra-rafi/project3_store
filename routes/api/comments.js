@@ -4,8 +4,8 @@ const commentsController = require("../../controllers/commentsController");
 // Matches with "/api/comments"
 router.route("/")
   .get(commentsController.findAll)
-  // .post(commentsController.create);
 
+// Matches with "/api/comments/acct"
 router.route("/acct")
   .post(commentsController.findOne)
 

@@ -39,7 +39,7 @@ class Contact extends Component{
  
                             <div className="col-sm-12 map-container">
                               {/* contact map */}
-                              <ContactMap latitude="19.313299" longitude="-81.254601" />
+                              <ContactMap latitude="38.91762" longitude="-77.02316" />
                             </div>
 				                    <div className="col-md-8 col-sm-12 inner-contact">
 				                        <div className="contact-form">
