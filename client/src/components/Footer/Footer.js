@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
 import "./style.css";
 
@@ -15,10 +14,6 @@ const Footer = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  // const scrollToTop = () => {
-  //   animateScroll.scrollToTop();
-  // };
 
   const handleScroll = () => {
     setScroll(window.scrollY);

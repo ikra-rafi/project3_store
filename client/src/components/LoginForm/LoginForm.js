@@ -1,17 +1,15 @@
 import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import { Redirect, useHistory } from 'react-router-dom';
-// import ForgotPasswordForm from "../ForgotPasswordForm";
 import API from "../../utils/API";
 import { useTodoContext } from "../../utils/store";
 import "./style.css";
 
-
+// function to display the login form
 function LoginForm() {
    const {
     register,
     handleSubmit,
-//setValue,
     formState: { errors }  } = useForm();
 
     const initialValues = {
@@ -29,34 +27,33 @@ function LoginForm() {
 
     const [loginData, setLoginData] = useState(temp);
     const [state, dispatch] = useTodoContext();
-//    const [johnData, setJohnData] = useState(temp);
   
+    // function to handle a change event
     function handleChange(event) {
-//      console.log("change = " + event.target.value);
+      // set state with current email field value
       setLoginData({
         ...loginData, email: event.target.value
       })
-//      setLoginData({
-//        ...loginData, [event.target.name]: event.target.value
-//      })
     }
 
+  // function to handle submit button
   const onSubmit = (data) => {
 
+    // set state to hold email
     setLoginData({
       ...loginData, email: data.email,
     })
 
-    var john = {
+    var loginObj = {
       password: data.password,
       email: data.email
     }
-    console.log(john);
-    API.getLogin(john)
+    // api call to retrieve login
+    API.getLogin(loginObj)
       .then(res => {
+        // check if get login was successful
         if(res.status ===200) {
-          console.log("data.admin = " + res.data.admin);
-//          setJohnData({...johnData, email: res.data.email});
+          // save the login admin status and email to the store
           dispatch({
             type: "loggedIn",
             loggedIn: true,
@@ -66,6 +63,7 @@ function LoginForm() {
         }
       })
       .catch(err => console.log(err));
+    // upon log in - rediret to the home page
     history.push("/");
   };
 
@@ -80,17 +78,14 @@ function LoginForm() {
       <label htmlFor="email">Email</label>
       <input className="input-login"
         defaultValue={initialValues.email}
-//        value={loginData.email}
         placeholder="Email"
         type="email"
-//        value={loginData.email}
         onChange={handleChange}
         {...register("email")}
       />
 
       <label className="label-login" htmlFor="password">Password</label>
       <input className="input-login"
-//        value={loginData.password}
         defaultValue={initialValues.password}
         placeholder="Password"
         type="password"
