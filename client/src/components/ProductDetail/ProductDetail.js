@@ -84,8 +84,6 @@ function ProductDetail(props) {
       alert("Your item has been added to the shopping cart!")
     }
 
-
-
   }
 
   const selectSize = () => {
@@ -142,7 +140,7 @@ function ProductDetail(props) {
       <p id="des">{props.product.description}</p>
       <p id="des">{props.product.historyDetails}</p>
       <p id="des">{props.product.healthbenefit}</p>
-
+  
       <select onChange={selectSize} className="packaging-choices" id="packaging">
       <option  value = "Null">---Select Size---</option>
       {props.packaging.map ( packaging =>

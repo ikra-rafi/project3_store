@@ -13,8 +13,7 @@ function AllProducts() {
 
 // When the component mounts, a call will be made to get load products.
 useEffect(() => {
-  // window.scrollTo(0, 0);
-  document.body.scrollTop = 0;
+  window.scrollTo(0, 0);
   loadProducts();
 }, []);
 
@@ -117,11 +116,12 @@ function filterResults2(event) {
     <div className="container">
     <div className="row justify-content-center">
       <div className="col-md-5 col-lg-4">
-      <form>
-          <label style={{color:'black'}}>Search Products: </label><input id="searchInput" onKeyUp={handleInputChange} ></input>
-      </form>
+      <form id="filters">
 
-      <select class="custom-select d-block w-100" name="filter" id="filterDropdown" onChange= {filterResults}>
+          <label style={{color:'black'}}>Search Products: </label><input id="searchInput" style={{margin:'2px'}} onKeyUp={handleInputChange} ></input>
+
+
+      <select class="custom-select d-block w-100" name="filter" id="filterDropdown" style={{margin:'2px'}} onChange= {filterResults}>
         <option value = "">Select a family...</option>
         <option value = "baking">Baking</option>
         <option value = "grilling">Grilling</option>
@@ -130,7 +130,7 @@ function filterResults2(event) {
         <option value = "teas">Teas</option>
       </select>
 
-      <select class="custom-select d-block w-100" name="filter2" id="filterDropdown2" onChange= {filterResults2}>
+      <select class="custom-select d-block w-100" name="filter2" id="filterDropdown2" style={{margin:'2px'}} onChange= {filterResults2}>
         <option value = "">Select a region...</option>
         <option value = "india">India</option>
         <option value = "asia">Asia</option>
@@ -139,7 +139,10 @@ function filterResults2(event) {
         <option value = "african">African</option>
         <option value = "latinAmerica">Europe</option>
       </select>
-      <div></div></div></div>
+
+      </form>
+      <div></div></div>
+      </div>
         <ProductsContainer products = {filteredProducts}/>
       </div>
 
