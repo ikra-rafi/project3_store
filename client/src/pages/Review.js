@@ -160,7 +160,7 @@ function Review() {
             <div className="container">
             <div className="project_btn text-center" id="revBtn">
             <button onClick={submitReview} className="more-link"  id="rev">Submit Review</button>
-            </div>   
+            </div>
             </div>
             </form>
     </div>

@@ -11,12 +11,15 @@ function AllProducts() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-// When the component mounts, a call will be made to get load products.
+// The useEffect() scrolls to the top of the page on render.
+// It then makes a call will be made to load products.
 useEffect(() => {
   window.scrollTo(0, 0);
   loadProducts();
 }, []);
 
+/* getProducts() makes an API call to get the Products from the store and sets them in a products array.
+The products are then stored in the products state and prepped for filtering*/
 function loadProducts() {
   API.getProducts()
     .then(products => {
