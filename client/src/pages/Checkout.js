@@ -530,15 +530,17 @@ function Checkout() {
                   </div></div></div></div></div>
                   
                 ) : (
+                 <section>
                  <div className="row text-center h-100">
                    <div className="col-md-12 text-center my-auto">
                      <h3><strong>No CheckOut Information</strong></h3>
                    </div>
                  </div>
+                 </section>
                )}
              </div>
 {/*              <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" > */}
-             <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
+             <button className="more-link" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
 {/*          </Link> */}
           </div>
           </div>

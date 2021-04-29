@@ -141,7 +141,7 @@ function Review() {
 
 
             {/*====================  Start of Checkout  Section    ====================*/}
-    <section>
+            <section>
     <div className="container">
     <div className="row justify-content-center">
     <div className="col-md-5 col-lg-4">
@@ -166,13 +166,14 @@ function Review() {
             <div className="container">
             <div className="project_btn text-center" id="revBtn">
             <button onClick={submitReview} className="more-link hideSelf"  id="rev">Submit Review</button>
-            </div>   </div>
-        </form>
-        </div>
-        </div>
-        </div>
-        </section>
-        </div>
+            </div>   
+            </div>
+            </form>
+    </div>
+    </div>
+    </div>
+    </section>
+    </div>
         </Fragment>
         </div>
     );
