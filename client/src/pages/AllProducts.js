@@ -14,6 +14,7 @@ function AllProducts() {
 // When the component mounts, a call will be made to get load products.
 useEffect(() => {
   window.scrollTo(0, 0);
+  document.body.scrollTop = 0;
   loadProducts();
 }, []);
 
