@@ -11,8 +11,7 @@ This project demonstrates a full front end and back end application utilizing Re
 New technologies incorporated into this project that the team had not used before include:   google maps react, emailjs, react star ratings, swiper, react meta tags and react hook form.
 
 ## Table of Contents
-* [Project Diagram](#Project-Diagram)
-* [Entity Relationship Diagram](#ERD)
+* [Data Flow Diagram](#Data-Flow-Diagram)
 * [Screenshots](#Screenshots)
 * [Installation](#Installation)
 * [Usage](#Usage)
@@ -21,8 +20,8 @@ New technologies incorporated into this project that the team had not used befor
 * [Repository](#Repository)
 * [Deployment](#Deployment)
 
-## Project-Diagram
-![Project Diagram](./public/assets/project_diagram.PNG)
+## Data Flow Diagram
+![Project Diagram](./client/public/assets/screenshots/DataFlowDiagram.png)
 
 ## Screenshots
 * [Home Page](#Home-Page)
