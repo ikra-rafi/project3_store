@@ -174,7 +174,9 @@ function Product(props) {
           <div className="col-4">
             <div className="card" id="ls">
               <div className="img-container"id="cont" >
-                <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image "  alt={props.product.name} src={props.product.picLink} /></Link>
+                <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} >
+                  <img className="product-image "  alt={props.product.name} src={props.product.picLink} />
+                  </Link>
               </div>
               <div className="product_info">
                   <h4 id="h4"className="product-name">
@@ -207,7 +209,9 @@ function Product(props) {
           <div className="col-4">
             <div className="card" id="ls">
               <div className="img-container" id="image">
-              <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image" alt={props.product.name} src={props.product.picLink} /></Link>
+              <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} >
+              <img className="product-image "  alt={props.product.name} src={props.product.picLink} />
+                </Link>
               </div>
               <div className="content">
                   <h3 className="product-name" id="h5">
