@@ -218,10 +218,10 @@ function Product(props) {
                     <option value = {`${props.product.packaging[1].size}-${props.product.packaging[1].price}`}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
                   </select>
                   <div id = "quantityDiv">
-                    <button className = "inline btn" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
+                    <button className = "inline " id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
                     <input type="text" className="inline quantity btn" id={props.product._id} defaultValue = "1"></input>
-                    <button className = "inline btn" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-                    <button id="addCart" onClick = {addToCartProducts}>Add to Cart</button>
+                    <button className = "inline " id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
+                    <button id="addCart" onClick = {addToCartProducts}><i className="fa fa-shopping-cart" ></i></button>
                   </div>
               </div>
             </div>

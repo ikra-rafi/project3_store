@@ -146,7 +146,7 @@ function Review() {
     <div className="row justify-content-center">
     <div className="col-md-5 col-lg-4">
         <form id="form1">
-        <h1>{productName}</h1>
+        <h1 id="prdName">{productName}</h1>
             {/* <p>Rating</p> */}
             <StarRating
                 rating = {rating}

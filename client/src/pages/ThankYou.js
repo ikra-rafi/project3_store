@@ -1,8 +1,12 @@
+
+// import React from "react";
+import '../App.css';
+
 import React , { Fragment} from "react";
 import MetaTags from "react-meta-tags";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 
-// displays thank you page after placing order
+
 function ThankYou() {
   return (
     <Fragment>
