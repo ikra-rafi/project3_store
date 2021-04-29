@@ -21,6 +21,7 @@ function Home() {
 
 // When the component mounts, a call will be made to retrieve products.
 useEffect(() => {
+  window.scrollTo(0, 0);
   loadProducts();
 }, []);
 
@@ -97,7 +98,7 @@ function loadProducts() {
           products = {seasoningProducts}
           family = "seasoning"
           page = "home"/>
-        <h1 className="base-header" style={{color:'black'}}>Extract</h1>
+        <h1 className="base-header" style={{color:'black'}}>Extracts</h1>
         <ProductsContainer
           products = {extractProducts}
           family = "extract"

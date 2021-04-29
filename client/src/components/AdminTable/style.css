@@ -81,7 +81,7 @@
   }
 
   #tp{
-    margin-top: 8%;
+    margin-top: 20%;
     color: #c44308;
     font-family: 'New Tegomin', serif;
   }
@@ -96,4 +96,10 @@
     width:100px;
     text-align: center;
     color: #c44308;
+  }
+
+  #updateButton {
+    color: #c44308;
+    font-family: 'New Tegomin', serif;
+    font-weight:bold;
   }

@@ -24,6 +24,7 @@ function Comments(props) {
         <div className="container">
             <div className="project_btn text-center">
             <button id="comBtn"onClick={writeReview}>Write Review</button>
+            <div><h2 style={{fontWeight:'bold'}}>Reviews</h2></div>
             {props.product.map(res => (
                 console.log(res),
                 <div className="comment" key = {res._id}>
