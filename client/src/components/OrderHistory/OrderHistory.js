@@ -52,6 +52,7 @@ function OrderHistory() {
         password: "",
         email: state.email
       }
+      console.log(loginObj)
       // api call to get logged in user's account info
       API.getOrdersAcct(loginObj)
         .then(res => {
@@ -65,6 +66,7 @@ function OrderHistory() {
       // api call to get order info
       API.getOrders(state.email)
         .then(res => {
+          console.log(res.data);
           var orderProducts =[];
           // loop over each product for an order
           res.data[0].orderIDs.forEach(element => {

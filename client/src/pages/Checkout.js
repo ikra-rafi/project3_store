@@ -471,6 +471,23 @@ function Checkout() {
                   <div className="col-lg-4 col-sm-12">
                   <div className="grand-total-area">
                   <h4>Cart Total</h4>           
+                       {/* <table className="table table-bordered">                      
+                       <thead>
+                        <tr className="ptitle">
+                          <th className="alignCenter">Product</th>
+                          <th className="alignCenter">Package Size</th>
+                          <th className="alignCenter">Quantity</th>
+                          <th className="alignCenter">Price</th>
+                          <th className="alignCenter">Item Total</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        
+                        <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td> */}
                         <p className="sub-total">SubTotal:
                         <span className="amt">${formatter.format(state.subTotal)}</span></p>
                       {state.discount ? (
