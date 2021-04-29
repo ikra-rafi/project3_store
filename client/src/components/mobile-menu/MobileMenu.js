@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import API from "../../utils/API";
+import { useTodoContext} from "../../utils/store";
 
 const MobileMenu = () => {
   useEffect(() => {
@@ -40,6 +42,36 @@ const MobileMenu = () => {
     );
     offcanvasMobileMenu.classList.remove("active");
   };
+  const [state, dispatch] = useTodoContext();
+  // function to log out a user
+  function handleLogout() {
+      // api call to logout
+      API.Logout('/logout')
+        .then(response => {
+          console.log('Get user response: ')
+          console.log(response.data)
+          // check if there is a user saved
+          if (response.data.user) {
+            console.log('Get User: There is a user saved in the server session: ')
+            // save the log in status and email to the store
+            dispatch({
+              type: "loggedIn",
+              loggedIn: true,
+              email: response.data.user.email
+          })
+          //user not logged in
+        } else {
+          console.log('Get user: no user');
+          // update the store to reflect no logged in user and no email
+          dispatch({
+            type: "loggedIn",
+            loggedIn: false,
+            email: null
+          })
+  
+        }
+      })
+    }
 
   return (
     <div className="offcanvasMobileMenu" id="offcanvas-mobile-menu">
@@ -83,10 +115,24 @@ const MobileMenu = () => {
                 </ul>
               </li>
 
-              <li>
-                <Link to="/recipes">Recipes</Link>
-              </li>
-
+                                  <li className="menuItemHasChildren">
+                                    <Link to="/regions">Regions</Link>
+                                  
+                                  <ul className="subMenu">
+                                        <li><a href="india">India</a>
+                                        </li>
+                                        <li><a href="asia">Asia</a>
+                                        </li>
+                                        <li><a href="caribbean">Caribbean</a>
+                                        </li>
+                                        <li><a href="middleast">Middle East</a>
+                                        </li>
+                                        <li><a href="african">African</a>
+                                        </li>
+                                        <li><a href="europe">Europe</a>
+                                        </li>
+                                    </ul>  
+                                    </li >
             </ul>
           </nav>
 
@@ -98,7 +144,20 @@ const MobileMenu = () => {
               </button>
             </form>
           </div>
-
+          {state.loggedIn ? (
+                    <div>
+                        <Link className="more-link" to="/" onClick={handleLogout}>
+                            Logout
+                        </Link>
+                        <Link className="more-link" to="/orderHistory" >
+                            Order History
+                        </Link>
+                    </div>
+                ) : (
+                    <Link className="more-link" to="/login" >
+                    Login
+                </Link> 
+                )}
           {/* Contact Info  */} 
 
           <div className="header_top_right list-unstyled">

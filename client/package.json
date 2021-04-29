@@ -13,8 +13,8 @@
     "react-meta-tags": "^1.0.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.3",
-    "swiper": "^6.5.8",
-    "react-star-ratings": "^2.3.0"
+    "react-star-ratings": "^2.3.0",
+    "swiper": "^6.5.8"
   },
   "scripts": {
     "start": "react-scripts start",
