@@ -128,21 +128,22 @@
   margin-left:6%;
 }
 
-#addCart{
+button #addCart{
   margin-top:1%;
   width: 150px;
   height: 40px;
   font-family: 'New Tegomin', serif;
-  background: #c44308;
+  background: #c44308 !important;
+  background-color: #c44308 !important;
   color: white;
   font-size:12px;
   margin-left:1px;
   text-align: center;
 
 }
-#addCart:hover {
+button #addCart:hover {
   background: white;
-  color:#a73500;
+  background-color:#a73500 !important;
   border: 1px solid  #c44308;
 }
 

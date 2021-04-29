@@ -17,7 +17,7 @@ render(){
         {
             img:'slider2.jpg',
             smallTitle:"Michelin-star chefs to home cooks",
-            title:"a .",
+            title:"Explore your taste buds.",
     description:"The next generation of Spice-A-Holic merchants is elevating the delivery of spices with purposefully designed jars and refill packs, ease of online ordering for personal purchases and gifts, and expanded access to world-class recipes and professional guidance.",
         },
     ];
