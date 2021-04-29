@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react';
 import API from "../../utils/API";
 import {useTodoContext} from "../../utils/store";
 import "./style.css";
+import $ from "jquery";
 
 function Comments(props) {
     console.log(props);
     const [state, dispatch] = useTodoContext();
     console.log(state);
+
+    useEffect(() => {
+
+        if(!state.loggedIn) {
+            $("#comBtn").addClass("hideSelf");
+        }
+    }, []);
 
     const writeReview = () => {
         console.log(props);
@@ -26,9 +34,9 @@ function Comments(props) {
                     <h3>{res.title}</h3>
                     <p>{res.userComment}</p>
 
-                </div> 
-              
-                
+                </div>
+
+
             ))}
 </div>
         </div>

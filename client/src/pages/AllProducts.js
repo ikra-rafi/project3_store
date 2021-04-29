@@ -13,6 +13,7 @@ function AllProducts() {
 
 // When the component mounts, a call will be made to get load products.
 useEffect(() => {
+  window.scrollTo(0, 0);
   loadProducts();
 }, []);
 
@@ -78,16 +79,16 @@ function filterResults(event) {
     <><section className="product-section">
       <div className="container">
           <div className="base-header">
-              <small> Our Featured Items</small>  
-              <h3>Organic products</h3> 
+              <small> Our Featured Items</small>
+              <h3>Organic products</h3>
           </div>
-          
+
       </div>
   </section>
     <ProductContext.Provider value={{product, products}}>
     <div className="container">
     <div className="row justify-content-center">
-      <div className="col-md-5 col-lg-4">      
+      <div className="col-md-5 col-lg-4">
       <form>
           <label style={{color:'black'}}>Search Products: </label><input id="searchInput" onKeyUp={handleInputChange} ></input>
       </form>
@@ -97,13 +98,13 @@ function filterResults(event) {
         <option value = "baking">Baking</option>
         <option value = "grilling">Grilling</option>
         <option value = "seasoning">Seasoning</option>
-        <option value = "extract">Extract</option>
+        <option value = "extracts">Extract</option>
         <option value = "teas">Teas</option>
       </select>
       <div></div></div></div>
         <ProductsContainer products = {filteredProducts}/>
       </div>
-      
+
     </ProductContext.Provider>
 </>
 </div>

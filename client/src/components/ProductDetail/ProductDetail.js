@@ -4,13 +4,13 @@ import Ratings from "../Ratings";
 import API from "../../utils/API";
 // import Comments from "../Comments";
 import { Link } from "react-router-dom";
-
-
+import { useTodoContext } from "../../utils/store";
 
 function ProductDetail(props) {
 
   // const [amount, setAmount] = useState();
   const [item, setItem] = useState({});
+  const [state, dispatch] = useTodoContext();
 
   const handleIncrement= (e) => {
     const id = e.target.id.split('-')[1];
@@ -55,7 +55,7 @@ function ProductDetail(props) {
 
 
       API.getCart()
-      .then(
+      .then( res => {
         setItem({
           name: props.product.name,
           productID: props.product.productID,
@@ -65,7 +65,11 @@ function ProductDetail(props) {
             quantity: val
           }
         })
-      )
+        dispatch({
+          type: "numCartItems",
+          numItems: res.data.length
+        })
+      })
       .then(
         API.saveCart(item)
         .then(res=> {
@@ -125,14 +129,14 @@ function ProductDetail(props) {
   }
 
   return (
- 
+
    <div className="container py-5">
     <div className="row">
     <div className="col-lg-6 col-xm-12">
      <img className="product-image" alt={props.product.name} src={props.product.picLink} />
     </div>
     <div className="col-lg-6 col-xm-12">
-   
+
      <h1 id="h1" style={{color:'black'}}>{props.product.name}</h1>
      <Ratings ratings= {props.ratings}/>
       <p id="des">{props.product.description}</p>
@@ -151,7 +155,7 @@ function ProductDetail(props) {
         <button className = "inline" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
         <input type="text" onChange={quantityChange} className="inline quantity" id={props.product._id} defaultValue = "1"></input>
         <button className = "inline" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-        
+
       </div>
       <button id="addCartBtn" onClick={addToCart}>ADD TO CART</button>
       {/* <Link className="pro-checkout"
@@ -162,7 +166,7 @@ function ProductDetail(props) {
    </div>
 
 
- 
+
    </div>
 </div>
 

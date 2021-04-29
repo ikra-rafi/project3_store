@@ -7,6 +7,7 @@ import '../App.css';
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
 
+
 var productName;
 var prodID;
 
@@ -16,21 +17,22 @@ function Review() {
     let history = useHistory();
     const [products, setProducts] = useState([]);
     const [product, setProduct] = useState({});
-    const [rating, setRating] = useState();
+    const [rating, setRating] = useState(0);
     const [id, setId] = useState("");
     const [loginInfo, setLoginInfo] = useState({_id: null, email: ""});
 
     // When the component mounts, a call will be made to get load products.
     useEffect(() => {
+        window.scrollTo(0, 0);
         getName();
-        // if(state.loggedIn) {
+        if(state.loggedIn) {
         setLoginInfo({...loginInfo, email: state.email})
         var email = state.email;
         getLogin(email);
         loadProducts();
-        // } else {
-        //     alert("need to be logged in to post comment");
-        //   }
+        } else {
+            alert("need to be logged in to post comment");
+          }
     }, []);
 
     function getName() {
@@ -79,8 +81,13 @@ function Review() {
     function submitReview(e) {
         e.preventDefault();
         console.log("submitReview");
-
-        API.updateProduct(id , {$push: {"ratings": {"stars": rating} }} )
+        console.log(document.getElementById("reviewTitle"));
+        console.log(document.getElementById("#review"));
+        console.log(rating);
+        if(!document.getElementById("reviewTitle").value || !document.getElementById("review").value || (rating == 0)) {
+            alert("Please complete all fields to submit review.");
+        } else {
+            API.updateProduct(id , {$push: {"ratings": {"stars": rating} }} )
         .then(res=> {
             console.log(res.data.productID);
             console.log("Saved rating");
@@ -102,6 +109,7 @@ function Review() {
             })
         })
         .catch(err => console.log(err));
+        }
 
     }
 
@@ -112,13 +120,6 @@ function Review() {
         setId(window.location.href.split("/").pop());
         getProduct();
         console.log(id);
-        showButton();
-    }
-
-    function showButton() {
-        if(document.getElementById("reviewTitle").value.length > 0 && document.getElementById("review").value > 0 && rating != 0) {
-            document.getElementById("rev").removeAttribute("class", "hideSelf");
-        }
     }
 
     return(
@@ -156,16 +157,16 @@ function Review() {
             />
             <div id="inputRev">
             <p></p>
-            <input id="reviewTitle" placeholder="Review Title" onChange={showButton}></input>
+            <input id="reviewTitle" placeholder="Review Title"></input>
 
             <p></p>
-            <textArea id ="review" onChange={showButton} placeholder="Review " ></textArea>
+            <textarea id ="review" placeholder="Review" ></textarea>
             </div>
 
             <br></br>
             <div className="container">
             <div className="project_btn text-center" id="revBtn">
-            <button onClick={submitReview} className="more-link hideSelf"  id="rev">Submit Review</button>
+            <button onClick={submitReview} className="more-link"  id="rev">Submit Review</button>
             </div>   </div>
         </form>
         </div>

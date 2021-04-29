@@ -15,6 +15,7 @@ function Admin() {
 
   useEffect(() => {
     console.log("product Effect");
+    window.scrollTo(0, 0);
     getProducts();
     // if(state.loggedIn) {
     //   // applyDiscount = true;
@@ -203,7 +204,7 @@ function Admin() {
      {/*====================  End of breadcrumb area  ================*/}
 
 
-      {/*====================  Contact Form  area  ====================*/}    
+      {/*====================  Contact Form  area  ====================*/}
 
         <AdminTable />
     </div>
