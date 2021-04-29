@@ -5,10 +5,14 @@
 }
 
 .thumbnail-image {
-    width: 70px;
-     height:70px;
-    border-radius: 50%;
+  width: 70px;
+   height:70px;
+   border-radius: 50%;
+   -moz-border-radius: 50%;
+   -webkit-border-radius: 50%;
+   -o-border-radius: 50%;
 }
+
 #table{
     width: 80%;
     margin-left: 10%;
