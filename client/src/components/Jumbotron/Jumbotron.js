@@ -18,7 +18,7 @@ render(){
             img:'slider2.jpg',
             smallTitle:"Michelin-star chefs to home cooks",
             title:"A huge variety fruits & vegetables.",
-    description:"The next generation of Spice House merchants is elevating the delivery of spices with purposefully designed jars and refill packs, ease of online ordering for personal purchases and gifts, and expanded access to world-class recipes and professional guidance.",
+    description:"The next generation of merchants is elevating the delivery of spices with purposefully designed jars and refill packs, ease of online ordering for personal purchases and gifts, and expanded access to world-class recipes and professional guidance.",
         },
     ];
 

@@ -6,10 +6,6 @@ const bcrypt = require("bcryptjs");
 module.exports = {
 
   findOne: function(req, res) {
-    console.log(req.body);
-    console.log(req.user);
-    console.log(req.data);
-    console.log(req.params);
     db.Login
       .findOne({email: req.params.email})
       .then(dbModel => { console.log("findOne"), res.json(dbModel)})
@@ -17,47 +13,37 @@ module.exports = {
   },
 
   create: function(req, res) {
-    console.log("in create");
     var email = req.body[0].email;
     var password = req.body[0].password;
     var securityQuestion = req.body[0].securityQuestion;
-    console.log(req.body[0]);
-    console.log(req.body[0].securityQuestion);
     var securityAnswer = req.body[0].securityAnswer;
     var firstName = req.body[0].firstName;
     var lastName = req.body[0].lastName;
     var myID = req.body[0]._id;
 
-        const newUser = new Login({
-          email: email,
-          password: password,
-          securityQuestion: securityQuestion,
-          securityAnswer: securityAnswer,
-          firstName: firstName,
-          lastName: lastName,
-          _id: myID
-        })
-        console.log("newUser = " + newUser)
-        newUser.save((err, savedUser) => {
-          if(err) return res.json(err)
-          res.json(savedUser);
-        })
-
+    const newUser = new Login({
+      email: email,
+      password: password,
+      securityQuestion: securityQuestion,
+      securityAnswer: securityAnswer,
+      firstName: firstName,
+      lastName: lastName,
+      _id: myID
+    })
+    newUser.save((err, savedUser) => {
+      if(err) return res.json(err)
+        res.json(savedUser);
+    })
   },
 
   update: function(req, res) {
-
-    console.log(req.params.email);
     var passwordChange = req.body.password;
     db.Login
       .findOne({email: req.params.email})
-      .then(dbModel => { console.log("findOne"), 
-        console.log(dbModel);
-        console.log(dbModel._id);
+      .then(dbModel => { console.log("findOne");
         var newPassword = bcrypt.hashSync(passwordChange, 10);
         db.Login.findOneAndUpdate({_id: dbModel._id}, {password: newPassword}, {new: true})
           .then(result => {
-              console.log(result);
               res.json(result);
           })
           .catch(err => console.log(err));

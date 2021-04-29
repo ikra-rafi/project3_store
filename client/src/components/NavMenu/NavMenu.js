@@ -36,7 +36,6 @@ function loadProducts() {
       // set product and filtered product state
       setProducts(products);
       setFilteredProducts(products);
-      console.log(products);
       setProduct(products[0]);
     })
     .catch(err => console.log(err));
@@ -47,7 +46,6 @@ function getCart() {
   // api call to retrieve items in shopping cart
   API.getCart()
   .then(res=> {
-    console.log(res.data);
     // save how many cart items to the store for updating the cart total number in navbar from the store
     dispatch({
       type: "numCartItems",
@@ -59,11 +57,9 @@ function getCart() {
 // function to handle input changing
 function handleInputChange(event)  {
   const search = event.target.value;
-  console.log(search);
   const filteredResults = products.filter(result =>
     result.name.toLowerCase().includes(search.toLowerCase())
   );
-  console.log(filteredResults);
   setFilteredProducts(filteredResults);
 }
 
@@ -115,16 +111,16 @@ function filterResults(event) {
                                 {/* <Link to="/">Home </Link> */}
                                 </li>
                                 <li className="has-sub"><Link to="/products">Products</Link>
-                                    <ul>
-                                        <li><a href="baking">Baking</a>
+                                    <ul className="subMenu">
+                                        <li><Link to="/baking">Baking</Link>
                                         </li>
-                                        <li><a href="grilling">Grilling</a>
+                                        <li><Link to="/grilling">Grilling</Link>
                                         </li>
-                                        <li><a href="seasoning">Seasoning</a>
+                                        <li><Link to="/seasoning">Seasoning</Link>
                                         </li>
-                                        <li><a href="extract">Extract</a>
+                                        <li><Link to="/extract">Extract</Link>
                                         </li>
-                                        <li><a href="teas">Teas</a>
+                                        <li><Link to="/teas">Teas</Link>
                                         </li>
 
                                     </ul>
@@ -173,7 +169,7 @@ function filterResults(event) {
                                     <div className="form-group">
                                         <input placeholder="Search" type="text" /> 
                                         <button className="btn-search" type="submit">
-                                        <img src="assets/icons/search" className="bi bi-search" />
+                                        <img src="assets/icons/search.png" className="bi bi-search" />
                                         </button>
                                     </div>
                                 </form>

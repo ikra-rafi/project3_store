@@ -43,7 +43,6 @@ function ForgotPasswordForm() {
       .then(res => {
         // check if successful retrieval
         if(res.status ===200) { 
-          console.log(res.data);
           // set state to values returned
           setAnswer({...answer, securityQuestion: res.data.securityQuestion, securityAnswer: res.data.securityAnswer, firstName: res.data.firstName, lastName: res.data.lastName, _id: res.data._id })
           // set security Question field to value returned about user account
@@ -56,21 +55,16 @@ function ForgotPasswordForm() {
   // function to handle the submit button
   const onSubmit = (data) => {
 
-    console.log("data.email = " + data.email);
     // save off the security answer
     storeLogin[0] = answer;
-    console.log(storeLogin)
     var passwordUpdate = {
       password: data.password
     }
-    console.log(storeLogin)
-    console.log("data.password = " + data.password);
     // api call to reset the password based upon new password and user email
       API.resetPassword(email, passwordUpdate)
       .then(res => {
         // check is reset password was successful
         if(res.status === 200) {
-          console.log("success");
         }
       })
       .catch(err => console.log(err));

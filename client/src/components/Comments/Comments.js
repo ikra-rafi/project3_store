@@ -1,15 +1,10 @@
 import React from 'react';
-import {useTodoContext} from "../../utils/store";
 import "./style.css";
 
 function Comments(props) {
-    console.log(props);
-    const [state, dispatch] = useTodoContext();
-    console.log(state);
 
     // function to write a review of product
     const writeReview = () => {
-        console.log(props);
         const name = props.name;
         const id = window.location.href.split("/").pop();
         console.log(id);

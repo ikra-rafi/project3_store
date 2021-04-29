@@ -19,20 +19,13 @@ export default {
 
   // Deletes the book with the given id
   deleteProduct: function(id) {
-    console.log("API id = " + id);
     return axios.delete("/api/products/" + id);
   },
 
   // Saves the products to database
   saveProducts: function(storeProducts) {
-    console.log("storeProducts = " + storeProducts)
     return axios.post("/api/products", storeProducts);
   },
-
-  // // Update a product in the database
-  // updateProduct: function(id) {
-  //   return axios.post("/api/products/" + id);
-  // },
 
   // Update a product in the database
   updateProduct: function(id, data) {
@@ -46,15 +39,11 @@ export default {
   },
 
    getCommentAcct: function(loginData) {
-     console.log("in login acct");
-     console.log("loginData = " + loginData.email, loginData._id)
      return axios.post("/api/comments/acct", loginData);
    },
 
   // Saves the comments to database
   saveComments: function(id, storeComments) {
-    console.log("api id = " + id);
-    console.log("storeComments = " + storeComments)
     return axios.post("/api/comments/" + id, storeComments);
   },
 
@@ -66,8 +55,6 @@ export default {
 
   // Get account info of logged in user
   getOrdersAcct: function(loginData) {
-    console.log("in login acct");
-    console.log("loginData = " + loginData.email, loginData._id)
     return axios.post("/api/orders/acct", loginData);
   },
 
@@ -75,11 +62,6 @@ export default {
   saveOrders: function(id, acct, storeOrders) {
   return axios.post("/api/orders/" + id + "/acct" + acct, storeOrders);
  },
-
-  // Updates an order
-//  updateOrders: function(orderData) {
-//    return axios.post("api/orders", orderData);
-//  },
 
   //==============CART ROUTES====================
   // Gets all contents in cart from database
@@ -99,13 +81,11 @@ export default {
 
   // Delete an item from shopping cart in database
   deleteCartItem: function(id) {
-    console.log("API id = " + id);
     return axios.delete("/api/cart/" + id);
   },
 
   // Delete all items in shopping cart
   deleteCart: function() {
-    console.log("in deleteCart");
     return axios.delete("/api/cart");
   },
 
@@ -115,28 +95,15 @@ export default {
     return axios.get("/api/recipes");
   },
 
-  // Saves recipes to database
-  // saveRecipes: function(storeRecipes) {
-  //   return axios.post("/api/recipes", storeRecipes);
-  // },
-
   //==============LOGIN ROUTES===================
 
   // Gets a specific login based on id
   getLogin: function(loginData) {
-    console.log("ingetlogin");
-    console.log("/api/login/" + loginData.email, loginData.password);
     return axios.post("/api/login", loginData);
   },
 
-  // getLoginAcct: function(loginData) {
-  //   console.log("in login acct");
-  //   return axios.post("/api/login/acct", loginData);
-  // },
-
   // Saves login to database
   saveLogin: function(storeLogin) {
-    console.log("saveLogin = " + storeLogin.securityQuestion)
     return axios.post("/api/signup", storeLogin);
   },
 
@@ -147,33 +114,21 @@ export default {
 
   // Logout the user
   Logout: function() {
-    console.log("inapi logout route");
     return axios.post("/api/logout");
   },
 
   //=================RESET PASSWORD ROUTES=================
   getAcctQuestionAnswer: function(loginData) {
-    console.log("in reset pwd");
-    console.log("/api/resetpwd/" + loginData.email);
     return axios.post("/api/resetpwd/" + loginData.email);
   },
 
   resetPassword: function(email, password) {
-    console.log("in reset pwd");
-    console.log("email = " + email + "  password = " + password);
     return axios.put("/api/resetpwd/" + email, password);
   },
 
   saveUpdate: function(id, storeLogin) {
-    console.log("save reset password");
-    console.log("update pwd = " + storeLogin);
     return axios.put("/api/resetpwd/" + id, storeLogin);
   },
-
-//  saveUpdate: function(storeLogin) {
-//    console.log("save reset password");
-//    return axios.post("/api/recipes", storeLogin);
-//  }
 
 // //=================GET ENV VARS==================
 // getEnvVars: function() {

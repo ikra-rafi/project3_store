@@ -29,7 +29,6 @@ function ShoppingCart() {
     // make API route call
     API.getCart()
     .then(res=> {
-      console.log(res.data);
       // store cart items in state
       setCart(res.data);
       cartNumItems = res.data.length;
@@ -88,7 +87,6 @@ function ShoppingCart() {
       else {
         // calculate sales tax without the discount applied
         salesTaxCalc = (parseFloat(total)) * parseFloat(state.salesTax)/100;
-        console.log("sales tax = " + salesTaxCalc);
         // save the sales tax to store and also reflect a discount of 0
         dispatch({
           type: "salesTaxAmt",
@@ -209,7 +207,6 @@ function ShoppingCart() {
     //save the updated quantity of product to db
     API.updateCart(cart[index]._id, cart[index])
     .then(res=> {
-      console.log(res.data);
     })
   }
 
@@ -217,11 +214,9 @@ function ShoppingCart() {
 
   // function that handles removing an item from cart
   function handleRemoveClick (e) {
-console.log(e.target.id);
     // api call to remove item from shopping cart table
     API.deleteCartItem(e.target.id)
       .then(res => {
-        console.log(res.data);
         // call getCart to retrieve current shopping cart items
         getCart();
       })

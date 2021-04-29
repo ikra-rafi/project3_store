@@ -10,7 +10,6 @@ const signupRoutes = require("./signup");
 const resetPwdRoutes = require("./resetpwd");
 const envVarsRoutes = require("./envVars");
 
-console.log("inindex");
 // Product routes
 
 router.use("/products", productRoutes);

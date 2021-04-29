@@ -2,14 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import Ratings from "../Ratings";
 import API from "../../utils/API";
-// import Comments from "../Comments";
-import { Link } from "react-router-dom";
-
-
 
 function ProductDetail(props) {
 
-  // const [amount, setAmount] = useState();
   const [item, setItem] = useState({});
 
   const handleIncrement= (e) => {
@@ -40,19 +35,13 @@ function ProductDetail(props) {
 
   const addToCart = () => {
     const sel = document.getElementById("packaging");
-    console.log(sel.value);
     if(sel.value === "Null"){
       alert("Please select a packaging size.")
     } else {
-      console.log("add to cart");
-      // console.log(props.product);
       const pkgs = document.getElementById("packaging").value;
-      // console.log(pkgs.split("-")[0]);
       const quantity = document.getElementById(props.product._id);
 
       const val = parseInt(quantity.value);
-      console.log(val);
-
 
       API.getCart()
       .then(
@@ -70,22 +59,15 @@ function ProductDetail(props) {
         API.saveCart(item)
         .then(res=> {
 
-          console.log(res.data);
-          console.log(item);
-
         })
         )
       .catch(err => console.log(err));
 
       alert("Your item has been added to the shopping cart!")
     }
-
-
-
   }
 
   const selectSize = () => {
-    console.log("select size");
     const pkgs = document.getElementById("packaging").value;
 
     const quantity = document.getElementById(props.product._id);
@@ -101,11 +83,9 @@ function ProductDetail(props) {
         quantity: val
       }
     })
-    console.log(item);
   }
 
   const quantityChange = () => {
-    console.log("quantityChange");
     const pkgs = document.getElementById("packaging").value;
 
     const quantity = document.getElementById(props.product._id);
@@ -121,7 +101,6 @@ function ProductDetail(props) {
         quantity: val
       }
     })
-    console.log(item);
   }
 
   return (
@@ -154,15 +133,7 @@ function ProductDetail(props) {
         
       </div>
       <button id="addCartBtn" onClick={addToCart}>ADD TO CART</button>
-      {/* <Link className="pro-checkout"
-                            to="/checkout" >
-                              Checkout
-                            </Link> */}
-      {/* <Comments comments={props.writeReview}/> */}
    </div>
-
-
- 
    </div>
 </div>
 
