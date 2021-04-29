@@ -239,18 +239,19 @@ function AddProducts() {
 
         {/*====================  Start of Checkout  Section    ====================*/}  
      <section>
-    <div className="container">
-    <div className="row justify-content-center">
-    <div className="col-md-5 col-lg-4">
+  
       <Container fluid>
         <Container >
+        <div className="container">
+    <div className="row justify-content-center">
+    <div className="col-sm-6 col-md-5 col-lg-6">
               <div className="container-fluid containerColor marginBottomCont">
                <h1 className="text-center">Add Products Page</h1> 
                   <div>
-                    <form id={1} className="searchForm justify-content-center m-2" key={1}>
+                    <form id={1}  key={1}>
                       <label className="label" htmlFor="name">Name of Product</label>
                       <input name="name" ref={name} id="name" className="form-control form-control-lg" placeholder="Product Name" />
-                      <label className="label" htmlFor="description">Description</label>
+                      <label className="label" htmlFor="exampleInputEmail1" >Description</label>
                       <input name="description" ref={description} id="description" className="form-control form-control-lg" placeholder="Description" />
                       <label className="label" htmlFor="historyDetails">History Details</label>
                       <input name="historyDetails" ref={historyDetails} id="historyDetails" className="form-control form-control-lg" placeholder="History Details" />
@@ -270,54 +271,54 @@ function AddProducts() {
                       <input name="healthBenefit" ref={healthBenefit} id="healthBenefit" className="form-control form-control-lg" placeholder="Health Benefit Link" />
                       <br />
                       <h3>Family</h3>
-                      <div style={{display: "inline-block"}}>
+                      <div  id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="familyBaking">Baking</label>
                             <input type="checkbox" id="familyBaking" ref={familyBaking} onChange={handleBakingCheck} name="familyBaking" value="Baking"/>
                         </div>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="familyGrilling">Grilling</label>
                             <input type="checkbox" id="familyGrilling" ref={familyGrilling} onChange={handleGrillingCheck} name="familyGrilling" value="Grilling"/>
                         </div>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="familySeasoning">Seasoning</label>
                             <input type="checkbox" id="familySeasoning" ref={familySeasoning} onClick={handleSeasoningCheck} name="familySeasoning" value="Seasoning"/>
                         </div>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="familyExtracts">Extracts</label>
                             <input type="checkbox" id="familyExtracts" onClick={handleExtractsCheck} name="familyExtracts" value="Extract"/>
                         </div>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="familyTeas">Tea</label>
                             <input type="checkbox" id="familyTeas" onClick={handleTeaCheck} name="familyTeas" value="Tea"/>
                         </div>
                         <br />
                         <br />
                         <h3>Region</h3>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="regionIndia">Region India</label>
                             <input type="checkbox" id="regionIndia" onClick={handleIndia} name="regionIndia" value="India"/>
                         </div>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="regionAsia">Region Asia</label>
                             <input type="checkbox" id="regionAsia" onClick={handleAsia} name="regionAsia" value="Asia"/>
                         </div>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="regionCarribean">Region Carribean</label>
                             <input type="checkbox" id="regionCarribean" onClick={handleCarribean} name="regionCarribean" value="Carribean"/>
                         </div>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="regionAfrican">Africa</label>
                             <input type="checkbox" id="regionAfrican" onClick={handleAfrica} name="regionAfrican" value="Africa"/>
                         </div>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="regionMiddleEast">Middle East</label>
                             <input type="checkbox" id="regionMiddleEast" onClick={handleMiddleEast} name="regionMiddleEast" value="Middle East"/>
                         </div>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                             <label className="label" htmlFor="regionLatinAmerica">Latin America</label>
                             <input type="checkbox" id="regionLatinAmerica" onClick={handleLatinAmerica} name="regionLatinAmerica" value="Latin America"/>
                         </div>
-                        <div style={{display: "inline-block"}}>
+                        <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px" }}>
                             <label className="label" htmlFor="regionEurope">Europe</label>
                             <input type="checkbox" id="regionEurope" onClick={handleEurope} name="regionEurope" value="Europe"/>
                         </div>
@@ -328,17 +329,18 @@ function AddProducts() {
                   </div>
                   <label className="label" htmlFor="picLink">Picture Link</label>
                   <div id="photo-form-container">
-                        <button onClick={showWidget}>Upload Photo</button>
+                        <button className="more-link" onClick={showWidget}>Upload Product Photo</button>
                       </div>
                 </div>
                 <br />
                 <br />
-             <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Add Product</strong></button>
+             <button type="submit" className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Add Product</strong></button>
+             </div>
+      </div>
+      </div>
         </Container>
       </Container>
-      </div>
-      </div>
-      </div>
+    
       </section>
         </div>
 

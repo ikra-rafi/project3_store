@@ -90,14 +90,25 @@
 
 
 
- #description{
+ #description,
+ #name,
+ #historyDetails,
+ #packagingSize1,
+ #packagingPrice1,
+ #packagingQuantity1,
+ #packagingSize2,
+ #packagingPrice2,
+ #packagingQuantity2,
+ #healthBenefit,
+ #productID  {
   font-size:15px;
-  margin-left:6%;
-  margin-right:6%;
+  /* margin-left:6%;
+  margin-right:6%; */
   color:black;
   overflow:hidden;
   text-overflow: ellipsis !important;
   display: -webkit-box;
+
    -webkit-line-clamp: 2; /* number of lines to show */
    -webkit-box-orient: vertical;
 
