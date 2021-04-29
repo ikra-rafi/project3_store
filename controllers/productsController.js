@@ -22,7 +22,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    console.log("controller id = " + req.params.id);
     db.Products
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())

@@ -27,13 +27,13 @@ New technologies incorporated into this project that the team had not used befor
 ## Screenshots
 * [Home Page](#Home-Page)
 * [Login](#Login)
-* [Registration](#Registration)
-* [User Landing](#User-Landing)
-* [Display Pets](#Display-Pets)
-* [Display Pet Info](#Display-Pet-Info)
-* [Donate Pet](#Donate-Pet)
-* [General Donations](#General-Donations)
-* [Update User Registration](#Update-User-Registration)
+* [Product Details](#Product-Details)
+* [Shopping Cart](#Shopping-Cart)
+* [Checkout](#Checkout)
+* [Add Products](#Add-Products)
+* [Order History](#Order-History)
+* [Admin](#Admin)
+* [Contact Us](#Contact-Us)
 
 #### Home Page
 The following is a screenshot of the Spice-A-holic application home page.
@@ -47,13 +47,6 @@ The following is a screenshot of the login/signup page.
 
 <p align="center">
   <img src="./public/assets/SpiceAHolicLogin.png" alt="Spice-A-Holic application login screen">
-</p>
-
-#### Registration
-The following is a screenshot of the registration page.
-
-<p align="center">
-  <img src="./public/assets/SpiceAHolic.png" alt="Spice-A-Holic application registration screen">
 </p>
 
 #### Product Details
@@ -96,6 +89,13 @@ The following is a screenshot of the admin page.
 
 <p align="center">
   <img src="./public/assets/SpiceAHolicAdmin.png" alt="Spice-A-Holic application admin screen">
+</p>
+
+#### Contact Us
+The following is a screenshot of the Contact Us page.
+
+<p align="center">
+  <img src="./public/assets/SpiceAHolicContactUs.png" alt="Spice-A-Holic application contact us screen">
 </p>
 
 ## Installation

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import StarRating from 'react-star-ratings';
 import {useTodoContext} from "../utils/store";
 import API from "../utils/API";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import '../App.css';
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
@@ -54,7 +54,6 @@ function Review() {
           .then(res => {
 
              setLoginInfo({...loginInfo, email: state.email, _id: res.data._id })
-            console.log(res.data)
           })
           .catch(err => console.log(err));
       }
@@ -64,7 +63,6 @@ function Review() {
         .then(products => {
             setId(window.location.href.split("/").pop());
             setProducts(products);
-
             getProduct();
         })
         .catch(err => console.log(err));
@@ -89,8 +87,6 @@ function Review() {
         } else {
             API.updateProduct(id , {$push: {"ratings": {"stars": rating} }} )
         .then(res=> {
-            console.log(res.data.productID);
-            console.log("Saved rating");
 
          const newComment = {
             title: document.getElementById("reviewTitle").value,
@@ -102,9 +98,7 @@ function Review() {
             API.saveComments(loginInfo._id, newComment)
             .then (res => {
                 if(res.status===200) {
-                    console.log("Saved Comment");
                     history.push(`/products/${id}`);
-                    // document.location=`#/products/${id}`
                   }
             })
         })
@@ -115,7 +109,6 @@ function Review() {
 
     // Handles rating updates for star rating component
     function changeRating(newRating) {
-        console.log(newRating);
         setRating(newRating);
         setId(window.location.href.split("/").pop());
         getProduct();

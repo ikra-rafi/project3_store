@@ -4,10 +4,8 @@ import "./style.css";
 import $ from "jquery";
 
 function Comments(props) {
-    console.log(props);
-    const [state, dispatch] = useTodoContext();
-    console.log(state);
 
+    const [state, dispatch] = useTodoContext();
     useEffect(() => {
 
         if(!state.loggedIn) {
@@ -16,7 +14,6 @@ function Comments(props) {
     }, []);
 
     const writeReview = () => {
-        console.log(props);
         const name = props.name;
         const id = window.location.href.split("/").pop();
         console.log(id);

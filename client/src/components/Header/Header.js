@@ -12,8 +12,6 @@ function Header() {
         // api call to logout
         API.Logout('/logout')
           .then(response => {
-            console.log('Get user response: ')
-            console.log(response.data)
             // check if there is a user saved
             if (response.data.user) {
               console.log('Get User: There is a user saved in the server session: ')
@@ -25,7 +23,6 @@ function Header() {
             })
             //user not logged in
           } else {
-            console.log('Get user: no user');
             // update the store to reflect no logged in user and no email
             dispatch({
               type: "loggedIn",

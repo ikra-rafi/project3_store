@@ -1,4 +1,3 @@
-//const { Login } = require("../models");
 const db = require("../models");
 
 // Defining methods for the LoginController
@@ -39,7 +38,6 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-
   remove: function(req, res) {
     console.log("controller id = " + req.params.id);
     db.Login

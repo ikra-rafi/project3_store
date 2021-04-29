@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const passport = require("../../passport");
-console.log("in loginrouter");
 
 // Matches with "/api/login"
 
@@ -20,26 +19,6 @@ console.log("in loginrouter");
         res.send(userInfo);
     }
 )
-
-// router.post(
-//   '/acct',
-//   function(req, res, next) {
-//     console.log(req.body)
-//     next()
-//   },
-//   (req, res) => {
-//     console.log('log acct info', req.user);
-//     var userInfo = {
-//       email: req.user.email,
-//       securityQuestion: req.user.securityQuestion,
-//       securityAnswer: req.user.securityAnswer,
-//       firstName: firstName,
-//       lastName: lastName,
-//     }
-//     res.send(userInfo);
-//   }
-
-// )
 
   router.get('/', (req, res, next) => {
     console.log(req.user);

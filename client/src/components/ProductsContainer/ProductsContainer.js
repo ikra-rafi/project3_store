@@ -1,12 +1,9 @@
-import React, { useContext, useState } from "react";
-import ProductContext from "../../utils/productContext";
+import React from "react";
 import Product from "../Product";
 
 import "./style.css";
 
 function ProductsContainer(props) {
-  console.log(props);
-
 
   return (
 
