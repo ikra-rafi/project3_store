@@ -22,7 +22,10 @@ class ProductDetails extends Component {
       packaging: [{}]
     }
 }
-
+// When mounted, the window scrolls to the top of the page on render.
+// It then makes a call will be made to get products and calls the setProduct function to get the correct product
+// It then sets the packaging state
+// It then makes a call to get the comments associated with the product
   componentDidMount() {
     window.scrollTo(0, 0);
     API.getProducts()
@@ -39,6 +42,8 @@ class ProductDetails extends Component {
     .catch(err => console.log(err));
   }
 
+// setProduct searches for the product based on the id that is passed in as a URL parameter.
+// It then sets the additional states associated with the product
   setProduct = () => {
     const index = this.state.products.findIndex(product => product._id === this.state.id);
 
@@ -49,6 +54,7 @@ class ProductDetails extends Component {
 
   }
 
+  // Returns breadcrumbs, ProductDetail and Comments components.  The product states are passed in as props
   render () {
     return (
       <Fragment>

@@ -6,6 +6,7 @@ function Ratings(props) {
 
     const [average, setAverage] = useState(0);
 
+    // When rendered, getAverage() is called when the component has been rendered fully
     useEffect(() => {
         let isMounted = true;
         if ( props.ratings.length> 0 ) {
@@ -16,6 +17,7 @@ function Ratings(props) {
         }
       });
 
+    // getAverage calculates the average ratings. It sets the value in state
     function getAverage(results){
         var avg = 0;
 
@@ -28,6 +30,7 @@ function Ratings(props) {
         setAverage(average);
     }
 
+    // Returns the StarRating component with the average being passed in as the value
     return(
       <div>
             <StarRating

@@ -60,6 +60,8 @@ function loadProducts() {
   // getting state about whether user logged in or not
   const loggedIn = state.loggedIn;
 
+  /* Returns breadcrumbs, search/filters and several ProductContainer components.  Each one is passed a filtered view of the
+  products*/
   return (
     <><MetaTags>
         <title>spice-A-holic | Home</title>
@@ -117,11 +119,9 @@ function loadProducts() {
         </div>
         <br className="footer-spacing"></br>
         </div>
-        {/* <ContactUsForm /> */}
       </div>
 
     </ProductContext.Provider>
-
 </>
   )
 

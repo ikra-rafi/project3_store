@@ -30,6 +30,7 @@ function loadProducts() {
     .catch(err => console.log(err));
 }
 
+// This function handles the onchange event for the search box. The results are filtered based on user input
 function handleInputChange(event)  {
   const search = event.target.value;
   const filteredResults = products.filter(result =>
@@ -38,6 +39,7 @@ function handleInputChange(event)  {
   setFilteredProducts(filteredResults);
 }
 
+// This function filters the product results based on the Family drop down
 function filterResults(event) {
   const filter = event.target.value;
   if (filter === "baking"){
@@ -61,6 +63,7 @@ function filterResults(event) {
 
 }
 
+// This function filters the results based on the region drop down
 function filterResults2(event) {
   const filter = event.target.value;
   if (filter === "india"){
@@ -87,7 +90,8 @@ function filterResults2(event) {
   }
 
 }
-
+/* Returns breadcrumbs, search/filters and the Products Container component.  The filtered product results are passed to the Products
+Container as props */
   return (
     <Fragment>
       <MetaTags>

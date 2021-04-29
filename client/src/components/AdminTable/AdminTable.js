@@ -11,6 +11,7 @@ function AdminTable() {
   const [nameSort, setNameSort] = useState("ascending");
   const [productSort, setProductSort] = useState("ascending");
 
+  // useEffect sets the sortedProducts state variable to the products from the store
   useEffect(() => {
     let isMounted = true;
     if ( state.products.length > 0 ) {
@@ -21,6 +22,7 @@ function AdminTable() {
     }
   });
 
+  // Handles the sort for the name field
   function sortTableByName() {
 
     const sortedResults = [sortedProducts];
@@ -57,6 +59,7 @@ function AdminTable() {
     }
   }
 
+  // Handles the sort for the product ID field
   function sortTableByProdID() {
 
     const sortedResults = [sortedProducts];
@@ -94,6 +97,7 @@ function AdminTable() {
     }
   }
 
+  // Returns a table with all the associated Admin fields
   return (
     <section>
    <div>

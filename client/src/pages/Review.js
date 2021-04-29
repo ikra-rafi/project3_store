@@ -21,7 +21,9 @@ function Review() {
     const [id, setId] = useState("");
     const [loginInfo, setLoginInfo] = useState({_id: null, email: ""});
 
-    // When the component mounts, a call will be made to get load products.
+    /* The useEffect() scrolls to the top of the page on render.
+        It then checks if the user is logged in.  If not, an alert is displayed.
+        If logged in, it makes a call to load products. */
     useEffect(() => {
         window.scrollTo(0, 0);
         getName();
@@ -35,6 +37,7 @@ function Review() {
           }
     }, []);
 
+    // Function gets the name of the product from the URL parameter. %20's are replaced with spaces
     function getName() {
         productName = window.location.href.split("/").reverse()[1];
         const search = productName.search("%");
@@ -45,6 +48,7 @@ function Review() {
         }
     }
 
+    // Function gets the login information of the user logged in from state
     function getLogin(){
         var loginObj = {
           password: "",
@@ -58,6 +62,9 @@ function Review() {
           .catch(err => console.log(err));
       }
 
+    /* Function makes an API call to load the products and sets the state variable to the response.  It then calls getProduct().
+      Id is taken from the url parameter and stored in state variable
+    */
     function loadProducts() {
         API.getProducts()
         .then(products => {
@@ -68,6 +75,7 @@ function Review() {
         .catch(err => console.log(err));
     }
 
+    // Function filters the products state variable and sets the product in state based on the id saved in state
     function getProduct() {
         const item = products.filter(result =>
             result._id === id);
@@ -76,12 +84,11 @@ function Review() {
 
     }
 
+    /* Function checks that are values are populated before submitting the rating to the appropriate product collection.  It
+    then creates a new comment with the product ID and stores to the database */
     function submitReview(e) {
         e.preventDefault();
-        console.log("submitReview");
-        console.log(document.getElementById("reviewTitle"));
-        console.log(document.getElementById("#review"));
-        console.log(rating);
+
         if(!document.getElementById("reviewTitle").value || !document.getElementById("review").value || (rating == 0)) {
             alert("Please complete all fields to submit review.");
         } else {
@@ -115,6 +122,7 @@ function Review() {
         console.log(id);
     }
 
+    /* Returns breadcrumbs, a StarRating component and the Review fields. */
     return(
         <div>
         <Fragment>
@@ -141,12 +149,12 @@ function Review() {
     <div className="col-md-5 col-lg-4">
         <form id="form1">
         <h1 id="prdName">{productName}</h1>
-            {/* <p>Rating</p> */}
+
             <StarRating
                 rating = {rating}
                 numberofStars = {5}
                 changeRating = {changeRating}
-                // starDimension="30px"
+
             />
             <div id="inputRev">
             <p></p>

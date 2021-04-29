@@ -5,6 +5,7 @@ import "./style.css";
 import API from "../../utils/API";
 import { useTodoContext } from "../../utils/store";
 
+// Product cards that are displayed on Home and All Products pages
 function Product(props) {
   const [item, setItem] = useState({});
   const [state, dispatch] = useTodoContext();
@@ -13,6 +14,7 @@ function Product(props) {
     setState()
   }, []);
 
+  // Handles the increment buttons by adding one to the quantity
   const handleIncrement= (e) => {
     const id = e.target.id.split('-')[1];
     const quantity = document.getElementById(id);
@@ -21,6 +23,7 @@ function Product(props) {
     quantityChange();
   }
 
+  // Handles the decrement buttons by subtracting one from the quantity
   const handleDecrement= (e) => {
     const id = e.target.id.split('-')[1];
     const quantity = document.getElementById(id);
@@ -33,6 +36,7 @@ function Product(props) {
     quantityChange();
   }
 
+   /* Handles Add To Cart buttons on Home page. Gets the cart and then saves the item */
   const addToCart = () => {
 
       API.getCart()
@@ -62,6 +66,7 @@ function Product(props) {
 
   }
 
+  // Sets item state
   const setState = () => {
     setItem({
       name: props.product.name,
@@ -74,6 +79,7 @@ function Product(props) {
     })
   }
 
+  /* Handles Add To Cart buttons on All Products page. Gets the cart and then saves the item */
   const addToCartProducts = () => {
 
     const sel = document.getElementById("packaging-" + props.product._id);
@@ -115,6 +121,7 @@ function Product(props) {
     }
   }
 
+  // Handles select size drop downs. And sets the item state when changed
   const selectSize = () => {
     const pkgs = document.getElementById("packaging-" + props.product._id).value;
     const quantity = document.getElementById(props.product._id);
@@ -131,6 +138,7 @@ function Product(props) {
     })
   }
 
+  // Handles the quantity inputs and sets the state item when changed
   const quantityChange = () => {
     const pkgs = document.getElementById("packaging-" + props.product._id).value;
     const quantity = document.getElementById(props.product._id);
@@ -147,6 +155,9 @@ function Product(props) {
     })
   }
 
+  /* Product cards render for either the home or All products pages based on home prop that is passed in.
+  The All Products cards are slightly taller and have more information.
+  */
   if (props.page === "home"){
     return (
 

@@ -1,3 +1,7 @@
+/*************************
+ * Test page *
+ ************************/
+
 import React, { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import API from "../utils/API";
@@ -78,12 +82,12 @@ function Comments() {
         {/*====================  breadcrumb area ====================*/}
 
         <Breadcrumb title="Comments" />
-        
-        {/*====================  End of breadcrumb area  ====================*/} 
+
+        {/*====================  End of breadcrumb area  ====================*/}
 
 
         {/*====================  Start of Checkout  Section    ====================*/}
-    
+
     <section>
     <div className="container">
     <div className="row justify-content-center">

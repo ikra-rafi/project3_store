@@ -6,13 +6,15 @@ import $ from "jquery";
 function Comments(props) {
 
     const [state, dispatch] = useTodoContext();
-    useEffect(() => {
 
+    // If user is not logged in, hide Write Review button
+    useEffect(() => {
         if(!state.loggedIn) {
             $("#comBtn").addClass("hideSelf");
         }
     }, []);
 
+    // Sets id of the product based on URL parameter and opens Review page for that item
     const writeReview = () => {
         const name = props.name;
         const id = window.location.href.split("/").pop();
@@ -20,6 +22,7 @@ function Comments(props) {
         window.location=`#/review/${name}/${id}`
     }
 
+    // Returns a Write Review button and list of Reviews associated with the product
     return(
         <div className="container">
             <div className="project_btn text-center">

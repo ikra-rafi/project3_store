@@ -3,6 +3,7 @@ import Product from "../Product";
 
 import "./style.css";
 
+// Container to house product cards. Props are passed to a Product Component for each product result
 function ProductsContainer(props) {
 
   return (
