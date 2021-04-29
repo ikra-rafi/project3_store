@@ -123,6 +123,7 @@ class Contact extends Component{
          
     }
 
+    // function to handle the email field
     handleChangeEmail(e){
         this.setState({email:  e.target.value});
         var EmailReg =  /(\w+)\s(\w+)/;
@@ -134,6 +135,7 @@ class Contact extends Component{
           this.setState({email_err: 'Enter Valid Email'});
       }
 
+      // function to handle the name field
       handleChangeName(e){
         this.setState({name:  e.target.value});
           if(e.target.value === '') 
@@ -141,6 +143,8 @@ class Contact extends Component{
           else 
             this.setState({name_err: ''});
       }
+
+      // function to handle the subject field
       handleChangeSubject(e){
         this.setState({subject:  e.target.value});
           if(e.target.value === '') 
@@ -148,6 +152,8 @@ class Contact extends Component{
           else 
             this.setState({subject_err: ''});
       }
+
+      // function to handle message field
       handleChangeMessage(e){
         this.setState({message:  e.target.value});
           if(e.target.message === '') 
@@ -156,6 +162,7 @@ class Contact extends Component{
             this.setState({message_err: ''});
       }
 
+      // function to handle the submit button
       handleSubmit1()
       {
           if(this.state.name === '') 

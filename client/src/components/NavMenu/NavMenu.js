@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-//import { useStoreContext } from "../../utils/GlobalState";
 import MobileMenu from "../mobile-menu/MobileMenu";
 import MobileBtn from "../mobile-menu/MobileBtn";
 import { Link } from 'react-router-dom';
 import API from "../../utils/API";
 import { useTodoContext } from "../../utils/store";
 
-
 function NavMenu() {
-//  const [store] = useStoreContext();
+
 document.addEventListener("DOMContentLoaded", function(){
   /////// Prevent closing from click inside dropdown
   document.querySelectorAll('.dropdown-menu').forEach(function(element){
@@ -16,14 +14,13 @@ document.addEventListener("DOMContentLoaded", function(){
       e.stopPropagation();
     });
   })
-}); 
-const [product, setProduct] = useState({});
+});
+  // set up state variables
+  const [product, setProduct] = useState({});
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [items, setItems] = useState({});
   const [state, dispatch] = useTodoContext();
-
-//var numItems;
 
 // When the component mounts, a call will be made to get load products.
 useEffect(() => {
@@ -31,9 +28,12 @@ useEffect(() => {
   getCart();
 }, []);
 
+// function to load products to the page
 function loadProducts() {
+  // api call to get the products
   API.getProducts()
     .then(products => {
+      // set product and filtered product state
       setProducts(products);
       setFilteredProducts(products);
       console.log(products);
@@ -42,26 +42,21 @@ function loadProducts() {
     .catch(err => console.log(err));
 }
 
+// function to get cart items
 function getCart() {
+  // api call to retrieve items in shopping cart
   API.getCart()
   .then(res=> {
     console.log(res.data);
-//    setCart(res.data);
-//    numItems = res.data.length;
-//    console.log(numItems);
-//    setItems({items: numItems});
+    // save how many cart items to the store for updating the cart total number in navbar from the store
     dispatch({
       type: "numCartItems",
       numItems: res.data.length
     })
-//    var cartProducts = [];
-//    res.data.forEach(element => {
-//      cartProducts.push(element);
-//      total = total + (element.prodInfo.price * element.prodInfo.quantity);
-//    });
   })
 }
 
+// function to handle input changing
 function handleInputChange(event)  {
   const search = event.target.value;
   console.log(search);
@@ -72,6 +67,7 @@ function handleInputChange(event)  {
   setFilteredProducts(filteredResults);
 }
 
+// function to filter the results 
 function filterResults(event) {
   const filter = event.target.value;
   if (filter === "baking"){
@@ -92,15 +88,12 @@ function filterResults(event) {
   } else {
     setFilteredProducts(products);
   }
-
 };
   
-
   const triggerSearch = () => {
     const offcanvasMobileMenu = document.querySelector(".search_icon_inr");
     offcanvasMobileMenu.classList.toggle("active");
   };
-
 
   return (
  
@@ -197,12 +190,8 @@ function filterResults(event) {
         {/* container */} 
     </div>
     {/* End: header navigation */}
-
- 
 </div>
  
-
-
   );
 }
 

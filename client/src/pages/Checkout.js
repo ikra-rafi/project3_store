@@ -1,15 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Redirect, useHistory } from "react-router-dom";
-import Cart from "../components/Cart";
+import { useHistory } from "react-router-dom";
 import CartData from "../components/Test/CartData"
 import {Container} from "../components/Grid";
 import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
-import { Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
 
 function Checkout() {
+  // set up references to fields on page
   let shipCompanyName = React.createRef();
   let shipFirstName = React.createRef();
   let shipLastName = React.createRef();
@@ -35,54 +34,62 @@ function Checkout() {
   let phone = React.createRef();
   let notes = React.createRef();
 
+  // setting up state variables
   const [state, dispatch] = useTodoContext();
- // const [cart, setCart] = useState();
- let history = useHistory();
+  let history = useHistory();
   const [checkbox, setCheckbox] = useState();
   const [changePage, setChangePage] = useState({redirectTo: null});
   const [loginInfo, setLoginInfo] = useState({_id: 0, email: ""}); 
 
+  // formats float variables to specified digits for decimal places
   const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,      
     maximumFractionDigits: 2,
   });
 
-//var billingCheck=false;
+  // function to set state for checkbox being checked or not
   function handleCheck(e) {
- //   billingCheck = e.target.checked;
     setCheckbox(e.target.checked);
   }
 
   useEffect(() => {
+    // check if user logged in
     if(state.loggedIn) {
+      // get login information
       getLogin();
     }
-    console.log("cart Effect");
+    // retrieve cart contents
     getCart();
-    console.log("checkout");
-
   }, [])
 
+  // function to retrieve id of the logged in user
   function getLogin(){
     var loginObj = {
       password: "",
       email: state.email
     }
+    // api call to find the user information
     API.getOrdersAcct(loginObj)
       .then(res => {
+        // check if user logged in
         if(state.loggedIn) {
+            // set state information with logged in user email and _id
             setLoginInfo({...loginInfo, email: state.email, _id: res.data._id})
             console.log(res.data)
+          // user not logged in
         } else if (!state.loggedIn)
         {
+            // set state info to reflect no user _id
             setLoginInfo({...loginInfo, email: "", _id: 0})
         }
       })
       .catch(err => console.log(err));
   }
 
+  // function to handle the submit button
   function handleSubmitBtnClick(e) {
     e.preventDefault();
+    // object to hold all the page fields before writing the order info
     const orderInfo = 
     {
       orderNum: "BL0001",
@@ -122,6 +129,7 @@ function Checkout() {
       orderTotal: state.orderTotal
     }
 
+    // loop over the cart items to store products to object
     for(let i=0; i<state.cartItems.length; i++) {
       const tempspices = 
       {
@@ -134,18 +142,23 @@ function Checkout() {
       tempspices.size = state.cartItems[i].prodInfo.size;
       tempspices.quantity = state.cartItems[i].prodInfo.quantity;
       tempspices.price = state.cartItems[i].prodInfo.price;
-
+      // set each spice's info into the array of spices for the order
       orderInfo.spices[i] = tempspices;
     }
 
+    // api call to save the order information
     API.saveOrders(loginInfo._id, state.loggedIn, orderInfo)
       .then(res => {
+        // check if order save was successful
         if(res.status === 200) {
           console.log("success on order save");
+          // api call to delete all items out of shopping cart table now that order was placed
           API.deleteCart()
             .then(result => {
+              // check if delete cart was successful
               if(res.status===200) {
                 console.log("deleted cart");
+                // redirect to the thank you page
                 history.push("/ThankYou");
               }
             })
@@ -157,18 +170,24 @@ function Checkout() {
       .catch(err => console.log(err));
   }
 
+  // function to retrieve all the cart items to display on page
   function getCart() {
     var salesTaxCalc;
     var newSubTotal;
+    // check if user logged in
     if(state.loggedIn) {
-       salesTaxCalc = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)) * parseFloat(state.salesTax)/100);
-       newSubTotal = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)));
+      // calculate new salestax and subtotal based upon user being logged in
+      salesTaxCalc = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)) * parseFloat(state.salesTax)/100);
+      newSubTotal = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)));
     }
+    // user not logged in
     else {
+      // calculate sales tax and new subtotal with discount applied for being logged in
       salesTaxCalc = (parseFloat(state.subTotal)) * parseFloat(state.salesTax)/100;
       newSubTotal = (parseFloat(state.subTotal));
     }
 
+    // save new orderTotal to the store
     dispatch({
       type: "orderTotal",
       orderTotal: ((newSubTotal + parseFloat(salesTaxCalc) + parseInt(state.shipFee))),
@@ -197,7 +216,6 @@ function Checkout() {
 
       <Container fluid>
         <Container >
-        <Cart />
   
     <section className="checkout_section justify-content-center">
       <div className="container full-width">
@@ -541,6 +559,7 @@ function Checkout() {
              </div>
 {/*              <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" > */}
              <button className="more-link" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
+             {/* <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button> */}
 {/*          </Link> */}
           </div>
           </div>
