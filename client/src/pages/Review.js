@@ -146,7 +146,7 @@ function Review() {
     <div className="row justify-content-center">
     <div className="col-md-5 col-lg-4">
         <form id="form1">
-        <h1>{productName}</h1>
+        <h1 id="prdName">{productName}</h1>
             {/* <p>Rating</p> */}
             <StarRating
                 rating = {rating}
@@ -165,7 +165,7 @@ function Review() {
             <br></br>
             <div className="container">
             <div className="project_btn text-center" id="revBtn">
-            <button onClick={submitReview} className="more-link hideSelf"  id="rev">Submit Review</button>
+            <button onClick={submitReview} className="more-link"  id="rev">Submit Review</button>
             </div>   </div>
         </form>
         </div>

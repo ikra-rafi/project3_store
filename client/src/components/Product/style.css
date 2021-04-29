@@ -2,7 +2,7 @@
     border-radius: 1px;
     height: 400px;
     margin: 1rem;
-    position: relative;
+    position: absolute;
     width: 300px;
     /* color:pink; */
     box-shadow: 0 3px 3px #383838, 0 3px 3px #383838;
@@ -16,7 +16,7 @@
     border-radius: 2px;
     height: 400px;
     margin: 1rem;
-    position: relative;
+    position: absolute;
     width: 325px;
     box-shadow: 0 3px 3px black, 0 3px 3px black;
     text-align: left;
@@ -42,11 +42,21 @@
 
   .inline {
       display: inline;
+      /* width:4px; */
+      /* padding-left:1px;
+      padding-top:1px;
+      text-align: center; */
+      /* height:2px; */
+      /* margin:4px;
+      /* height:7px; */
+      /* font-size:20px; */ 
+      
 
   }
 
   .quantity {
     width: 50px;
+    /* margin-left: */
   }
 
 
@@ -103,13 +113,13 @@
 
 #addCart{
   margin-top:1%;
-  width: 100px;
+  width: 150px;
   height: 40px;
   font-family: 'New Tegomin', serif;
   background: #c44308;
   color: white;
   font-size:12px;
-  margin-left:2%;
+  margin-left:1px;
   text-align: center;
 
 }
@@ -122,6 +132,7 @@
 #ls{
 
   background:	#F5F5F5;
+  line-height: 19px;
 }
 .star-ratings{
 
@@ -156,13 +167,21 @@
 }
 
 .packaging-choices{
-  width:130px;
+  width:150px;
   font-size:13px;
   margin-bottom:1%;
   font-family: 'New Tegomin', serif;
-  margin-left:6%;
+  margin-left:5%;
 }
 
 #stars{
   margin-left:-7%;
 }
+#quantityDiv{
+  margin-left:30px;
+}
+
+/* #incrementBtn-{
+  margin-top:-3px;
+  margin-bottom:-2px;
+} */
