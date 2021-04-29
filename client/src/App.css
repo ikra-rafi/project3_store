@@ -171,7 +171,7 @@
   }
 
   .btn.btn-fill {
-    color: #000;
+    color: #9dca00;
   }
 
   .btn {
@@ -193,7 +193,7 @@
     -ms-transition: all 0.4s ease-out 0s;
     -o-transition: all 0.4s ease-out 0s;
     transition: all 0.4s ease-out 0s;
-    color: #fff;
+    color: #000;
   }
 
   section {
