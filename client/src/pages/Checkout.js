@@ -458,10 +458,8 @@ function Checkout() {
                         <div className="discount-coupon">     
                            <h4>Cart Totals</h4>
                         </div> 
-                        <div className="row">
-                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                       <div className="table-responsive text-center">
-                       <table className="table table-bordered">
+                        <div className="row" style={{width: "100%", overflowX: "hidden"}}>
+ 
                       {state.cartItems.map(result => (
                         <div key={result._id}>
                           <CartData
@@ -471,9 +469,7 @@ function Checkout() {
                           />
                         </div>
                       ))}
-                      </table>
-                      </div>
-                      </div>
+      
                       </div>
                   <div className="shop_cart_bottom">
                     <div className="container">
@@ -481,7 +477,6 @@ function Checkout() {
                   <div className="col-lg-4 col-sm-12">
                   <div className="grand-total-area">
                   <h4>Cart Total</h4>           
-                  <table className="table table-bordered">            
                        {/* <table className="table table-bordered">                      
                        <thead>
                         <tr className="ptitle">
@@ -544,7 +539,6 @@ function Checkout() {
                       {/* </tr>
                         </tbody>
                         </table> */}
-                        </table>
                                 </div>
                             </div>
                         </div>
