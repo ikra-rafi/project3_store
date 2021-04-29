@@ -13,7 +13,7 @@
 
   .product-card {
     border-radius: 2px;
-    height: 430px;
+    height: 450px;
     margin: 1rem;
     position: relative;
     width: 325px;
@@ -63,14 +63,18 @@
 
  }
  .product-image{
-   /* width:100%; */
-   max-width: 100% ;
-   height: 200px;
+   width:100%;
+   height: 100%
    /* vertical-align: center;  */
    /* display: flex; */
       /* position:relative;
       margin: auto;
       display: block; */
+ }
+
+ .cardImage {
+  max-width: 100% ;
+  height: 200px;
  }
 
  #image{
@@ -202,3 +206,9 @@
   margin-top:-3px;
   margin-bottom:-2px;
 } */
+
+.productQuantity {
+  padding:0;
+  width: 25px;
+  text-align:center
+}
