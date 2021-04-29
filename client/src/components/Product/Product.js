@@ -207,9 +207,9 @@ function Product(props) {
                           <option value = {`${props.product.packaging[1].size}-${props.product.packaging[1].price}`}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
                         </select>
                         <div id = "quantityDiv">
-                          <button className="fa fa-minus inline btn" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} ></button>
-                          <input type="text" className="inline quantity productQuantity" id={props.product._id} defaultValue = "1"></input>
-                          <button className="fa fa-plus buttons inline btn" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}></button>
+                          <button className="fa fa-minus inline btn no-margin" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} ></button>
+                          <input type="text" className="inline quantity productQuantity no-margin" id={props.product._id} defaultValue = "1"></input>
+                          <button className="fa fa-plus buttons inline btn no-margin" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}></button>
 
                         </div>
                       </div>
