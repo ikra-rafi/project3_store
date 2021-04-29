@@ -163,7 +163,7 @@ function filterResults(event) {
                         <li className="header_search">
                         <Link to="/products" 
                         className="cart-toggler search_icon" 
-                                 type="button" width="12px" id="searchInput" onKeyUp={handleInputChange}
+                                 type="button" id="searchInput" onKeyUp={handleInputChange}
                                  onClick={() => triggerSearch()}
                                  ><i className="fa fa-search"></i></Link>
                             
@@ -173,7 +173,7 @@ function filterResults(event) {
                                     <div className="form-group">
                                         <input placeholder="Search" type="text" /> 
                                         <button className="btn-search" type="submit">
-                                        <img src="assets/icons/search" className="bi bi-search" />
+                                        <img src="assets/icons/search.png" className="bi bi-search" />
                                         </button>
                                     </div>
                                 </form>

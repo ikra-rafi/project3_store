@@ -121,7 +121,7 @@ function filterResults2(event) {
           <label style={{color:'black'}}>Search Products: </label><input id="searchInput" onKeyUp={handleInputChange} ></input>
       </form>
 
-      <select class="custom-select d-block w-100" name="filter" id="filterDropdown" onChange= {filterResults}>
+      <select className="custom-select d-block w-100" name="filter" id="filterDropdown" onChange= {filterResults}>
         <option value = "">Select a family...</option>
         <option value = "baking">Baking</option>
         <option value = "grilling">Grilling</option>

@@ -180,7 +180,7 @@ function ForgotPasswordForm() {
       }
       {errors.password&& <p>Your Password is less than 6 characters</p>} 
 
-      <input type="submit" />
+      <input type="submit" value="Reset Password"/>
       <br></br>
       <label  id="luna"  onClick={scrollToTop}>LOGIN</label>
     </form>

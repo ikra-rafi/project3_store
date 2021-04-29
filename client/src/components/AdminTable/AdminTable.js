@@ -100,6 +100,7 @@ function AdminTable() {
   // }
 
   return (
+    <section>
    <div>
      <table id="table"className="table table-hover">
         <thead id="th">
@@ -138,6 +139,7 @@ function AdminTable() {
         </tbody>
       </table>
    </div>
+   </section>
   );
 }
 

@@ -95,7 +95,7 @@ function LoginForm() {
         })}
       />
       {errors.password&& <p>Your Password is less than 6 characters</p>}
-      <input className="input-login" type="submit" />
+      <input className="input-login" value="Login" type="submit" />
   
     </form >
 
