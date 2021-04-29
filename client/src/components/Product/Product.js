@@ -189,7 +189,7 @@ function Product(props) {
             <div className="product-card" id="ls">
               <div className="img-container" id="image">
               <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} >
-              <img className="product-image "  alt={props.product.name} src={props.product.picLink} />
+              <img className="product-image cardImage"  alt={props.product.name} src={props.product.picLink} />
                 </Link>
               </div>
               <div className="content">
@@ -207,9 +207,9 @@ function Product(props) {
                           <option value = {`${props.product.packaging[1].size}-${props.product.packaging[1].price}`}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
                         </select>
                         <div id = "quantityDiv">
-                          <button className = "inline " id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
-                          <input type="text" className="inline quantity btn" id={props.product._id} defaultValue = "1"></input>
-                          <button className = "inline " id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
+                          <button className="fa fa-minus inline btn" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} ></button>
+                          <input type="text" className="inline quantity productQuantity" id={props.product._id} defaultValue = "1"></input>
+                          <button className="fa fa-plus buttons inline btn" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}></button>
 
                         </div>
                       </div>
