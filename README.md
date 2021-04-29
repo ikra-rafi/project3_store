@@ -40,70 +40,70 @@ New technologies incorporated into this project that the team had not used befor
 The following is a screenshot of the Spice-A-holic application home page.
 
 <p align="center">
-  <img src="./public/assets/screenshots/SpiceAHolicHomePage.png" alt="Spice-A-Holic application home screen">
+  <img src="./client/public/assets/screenshots/SpiceAHolicHomePage.png" alt="Spice-A-Holic application home screen">
 </p>
 
 #### Login
 The following is a screenshot of the Login page.
 
 <p align="center">
-  <img src="./public/assets/screenshots/SpiceAHolicLogin.png" alt="Spice-A-Holic application login screen">
+  <img src="./client/public/assets/screenshots/SpiceAHolicLogin.png" alt="Spice-A-Holic application login screen">
 </p>
 
 #### Product Details
 The following is a screenshot of the Product Details page for a spice.
 
 <p align="center">
-  <img src="./public/assets/screenshots/SpiceAHolicProductDetails.png" alt="Spice-A-Holic application product detail screen">
+  <img src="./client/public/assets/screenshots/SpiceAHolicProductDetails.png" alt="Spice-A-Holic application product detail screen">
 </p>
 
 #### Shopping Cart
 The following is a screenshot of the Shopping Cart page.
 
 <p align="center">
-  <img src="./public/assets/screenshots/SpiceAHolicShoppingCart.png" alt="Spice-A-Holic application shopping cart screen">
+  <img src="./client/public/assets/screenshots/SpiceAHolicShoppingCart.png" alt="Spice-A-Holic application shopping cart screen">
 </p>
 
 #### Checkout
 The following is a screenshot of the Checkout page.
 
 <p align="center">
-  <img src="./public/assets/screenshots/SpiceAHolicCheckout.png" alt="Spice-A-Holic application checkout screen">
+  <img src="./client/public/assets/screenshots/SpiceAHolicCheckout.png" alt="Spice-A-Holic application checkout screen">
 </p>
 
 #### Add Products
 The following is a screenshot of the Add Product page.
 
 <p align="center">
-  <img src="./public/assets/screenshots/SpiceAHolicAddProducts.png" alt="Spice-A-Holic application add product screen">
+  <img src="./client/public/assets/screenshots/SpiceAHolicAddProducts.png" alt="Spice-A-Holic application add product screen">
 </p>
 
 #### Order History
 The following is a screenshot of the Order History page.
 
 <p align="center">
-  <img src="./public/assets/screenshots/SpiceAHolicOrderHistory.png" alt="Spice-A-Holic application order history screen">
+  <img src="./client/public/assets/screenshots/SpiceAHolicOrderHistory.png" alt="Spice-A-Holic application order history screen">
 </p>
 
 #### Admin
 The following is a screenshot of the Admin page.
 
 <p align="center">
-  <img src="./public/assets/screenshots/SpiceAHolicAdmin.png" alt="Spice-A-Holic application admin screen">
+  <img src="./client/public/assets/screenshots/SpiceAHolicAdmin.png" alt="Spice-A-Holic application admin screen">
 </p>
 
 #### Contact Us
 The following is a screenshot of the Contact Us page.
 
 <p align="center">
-  <img src="./public/assets/screenshots/SpiceAHolicContactUs.png" alt="Spice-A-Holic application contact us screen">
+  <img src="./client/public/assets/screenshots/SpiceAHolicContactUs.png" alt="Spice-A-Holic application contact us screen">
 </p>
 
 #### Write Review
 The following is a screenshot of the Write Review page.
 
 <p align="center">
-  <img src="./public/assets/screenshots/SpiceAHolicWriteReview.png" alt="Spice-A-Holic application write review screen">
+  <img src="./client/public/assets/screenshots/SpiceAHolicWriteReview.png" alt="Spice-A-Holic application write review screen">
 </p>
 
 ## Installation
