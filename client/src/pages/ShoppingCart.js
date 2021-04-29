@@ -272,7 +272,7 @@ function ShoppingCart() {
                                   <tr key={result._id}>
                                     <td className="ptitle">
                                       <div className="row" style={{display: 'inline-block'}}>
-                                        <button id={result._id} className="fa fa-trash-o" onClick={handleRemoveClick}></button>
+                                        <button id={result._id} className="fa fa-trash-o inline btn" onClick={handleRemoveClick}></button>
                                         {result.name}
                                       </div>
                                       {/* row inline block end */}
@@ -280,10 +280,10 @@ function ShoppingCart() {
                                     </td>
                                     <td className="align-middle text-center"><p>{result.prodInfo.size}</p></td>
                                     <td className="align-middle text-center">
-                                      <div className="row" style={{display: 'inline-block'}}>
-                                        <button onClick={handleDecBtnClick} id={result._id}className="fa fa-minus"></button>
-                                        {result.prodInfo.quantity}
-                                        <button id={result._id}  className="fa fa-plus buttons" onClick={handleIncBtnClick}></button>
+                                      <div className="inline btn">
+                                        <button onClick={handleDecBtnClick} id={result._id} className="fa fa-minus inline btn"></button>
+                                         <span>{result.prodInfo.quantity}</span> 
+                                        <button id={result._id}  className="fa fa-plus buttons inline btn" onClick={handleIncBtnClick}></button>
                                       </div>
                                       {/* row inline block end */}
 

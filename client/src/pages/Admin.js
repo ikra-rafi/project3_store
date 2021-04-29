@@ -1,6 +1,7 @@
 import React , { Fragment, useEffect, useState} from "react";
 import { useTodoContext} from "../utils/store";
 import API from "../utils/API";
+import { useHistory } from "react-router-dom";
 import AdminTable from "../components/AdminTable";
 import MetaTags from "react-meta-tags";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
@@ -9,9 +10,17 @@ function Admin() {
 
   const [product, setProducts]= useState([]);
   const [state, dispatch] = useTodoContext();
+  let history = useHistory();
 
   useEffect(() => {
-    getProducts();
+    console.log("product Effect");
+    window.scrollTo(0, 0);
+    if(!state.admin) {
+      history.push("/");
+    } else{
+      getProducts();
+    }
+
   }, [])
 
   function getProducts() {
@@ -23,7 +32,6 @@ function Admin() {
         products.push(element);
 
       });
-      console.log(products);
 
       dispatch({
         type: "products",
@@ -52,7 +60,7 @@ function Admin() {
      {/*====================  End of breadcrumb area  ================*/}
 
 
-      {/*====================  Contact Form  area  ====================*/}    
+      {/*====================  Contact Form  area  ====================*/}
 
         <AdminTable />
     </div>

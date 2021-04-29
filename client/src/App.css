@@ -6996,8 +6996,6 @@ right: 0px !important;
 
 }
 
-
-
 #review {
   height: 200px;
   display: block;
@@ -7008,12 +7006,16 @@ right: 0px !important;
   padding: 10px 15px;
 }
 
-
 .hideSelf {
   display:none
 }
 
 .showSelf{
   display: block
+}
+
+#prdName{
+  font-family: 'Karla', sans-serif;
+  margin-left:40px;
 }
 

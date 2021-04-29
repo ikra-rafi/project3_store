@@ -24,6 +24,7 @@ class ProductDetails extends Component {
 }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     API.getProducts()
     .then(products => {
       this.setState({products: products});
@@ -64,11 +65,11 @@ class ProductDetails extends Component {
        {/*====================  breadcrumb area ====================*/}
 
        <Breadcrumb title="Product Details" />
-  
+
        {/*====================  End of breadcrumb area  ================*/}
 
 
-        {/*====================  Contact Form  area  ====================*/}       
+        {/*====================  Contact Form  area  ====================*/}
       <div>
           <ProductDetail product = {this.state.product}
                          ratings = {this.state.ratings}
@@ -77,7 +78,7 @@ class ProductDetails extends Component {
                     name = {this.state.product.name}/>
       </div>
       </div>
-    </Fragment>  
+    </Fragment>
     );
   }
 

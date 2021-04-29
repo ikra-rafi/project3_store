@@ -11,14 +11,14 @@ render(){
         {
             img:'slider1.jpg',
             smallTitle: 'premium quality, freshness, and variety',
-            title:"A huge variety Teas & Spices.",
+            title:"A huge variety of Teas & Spices.",
     description:"Our products range from essential and rare spice varietals to proprietary rubs and blends.",
         },
         {
             img:'slider2.jpg',
             smallTitle:"Michelin-star chefs to home cooks",
-            title:"A huge variety fruits & vegetables.",
-    description:"The next generation of merchants is elevating the delivery of spices with purposefully designed jars and refill packs, ease of online ordering for personal purchases and gifts, and expanded access to world-class recipes and professional guidance.",
+            title:"a .",
+    description:"The next generation of Spice-A-Holic merchants is elevating the delivery of spices with purposefully designed jars and refill packs, ease of online ordering for personal purchases and gifts, and expanded access to world-class recipes and professional guidance.",
         },
     ];
 

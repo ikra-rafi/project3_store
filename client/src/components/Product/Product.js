@@ -3,9 +3,11 @@ import Ratings from "../Ratings";
 import { Link } from "react-router-dom";
 import "./style.css";
 import API from "../../utils/API";
+import { useTodoContext } from "../../utils/store";
 
 function Product(props) {
   const [item, setItem] = useState({});
+  const [state, dispatch] = useTodoContext();
 
   useEffect(() => {
     setState()
@@ -34,7 +36,7 @@ function Product(props) {
   const addToCart = () => {
 
       API.getCart()
-      .then(
+      .then( res => {
         setItem({
           name: props.product.name,
           productID: props.product.productID,
@@ -43,8 +45,12 @@ function Product(props) {
             price: props.product.packaging[0].price,
             quantity: 1
           }
+        });
+        dispatch({
+          type: "numCartItems",
+          numItems: res.data.length
         })
-      )
+      })
       .then(
         API.saveCart(item)
         .then(res=> {
@@ -82,17 +88,21 @@ function Product(props) {
     const val = parseInt(quantity.value);
 
       API.getCart()
-      .then(
+      .then( res => {
         setItem({
           name: props.product.name,
           productID: props.product.productID,
           prodInfo: {
-            size: pkgs.split("-")[0],
-            price: pkgs.split("-")[1],
-            quantity: val
+            size: props.product.packaging[0].size,
+            price: props.product.packaging[0].price,
+            quantity: 1
           }
+        });
+        dispatch({
+          type: "numCartItems",
+          numItems: res.data.length
         })
-      )
+      })
       .then(
         API.saveCart(item)
         .then(res=> {
@@ -101,7 +111,7 @@ function Product(props) {
         )
       .catch(err => console.log(err));
 
-      alert("Your item has been added to the shopping cart!")
+      alert("Your item has been added to the shopping cart!");
     }
   }
 
@@ -144,7 +154,9 @@ function Product(props) {
           <div className="col-4">
             <div className="card" id="ls">
               <div className="img-container"id="cont" >
-                <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image "  alt={props.product.name} src={props.product.picLink} /></Link>
+                <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} >
+                  <img className="product-image "  alt={props.product.name} src={props.product.picLink} />
+                  </Link>
               </div>
               <div className="product_info">
                   <h4 id="h4"className="product-name">
@@ -176,7 +188,9 @@ function Product(props) {
           <div className="col-4">
             <div className="card" id="ls">
               <div className="img-container" id="image">
-              <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} ><img className="product-image" alt={props.product.name} src={props.product.picLink} /></Link>
+              <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} >
+              <img className="product-image "  alt={props.product.name} src={props.product.picLink} />
+                </Link>
               </div>
               <div className="content">
                   <h3 className="product-name" id="h5">
@@ -190,10 +204,10 @@ function Product(props) {
                     <option value = {`${props.product.packaging[1].size}-${props.product.packaging[1].price}`}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
                   </select>
                   <div id = "quantityDiv">
-                    <button className = "inline btn" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
+                    <button className = "inline " id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
                     <input type="text" className="inline quantity btn" id={props.product._id} defaultValue = "1"></input>
-                    <button className = "inline btn" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-                    <button id="addCart" onClick = {addToCartProducts}>Add to Cart</button>
+                    <button className = "inline " id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
+                    <button id="addCart" onClick = {addToCartProducts}><i className="fa fa-shopping-cart" ></i></button>
                   </div>
               </div>
             </div>

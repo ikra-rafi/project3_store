@@ -146,7 +146,7 @@ function SignUpForm() {
           })}
         />
         {errors.confirmPassword&& <p>Your Password Doesn't Match!</p>}  
-        <input className="signup-input" type="submit" />
+        <input className="signup-input" value="Sign Up" type="submit" />
       </form>
     );
   }

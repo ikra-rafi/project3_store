@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "./style.css";
+import $ from "jquery";
 
 function Comments(props) {
 
-    // function to write a review of product
+    useEffect(() => {
+
+        if(!state.loggedIn) {
+            $("#comBtn").addClass("hideSelf");
+        }
+    }, []);
+
     const writeReview = () => {
         const name = props.name;
         const id = window.location.href.split("/").pop();
-        console.log(id);
         window.location=`#/review/${name}/${id}`
     }
 
@@ -21,9 +27,9 @@ function Comments(props) {
                     <h3>{res.title}</h3>
                     <p>{res.userComment}</p>
 
-                </div> 
-              
-                
+                </div>
+
+
             ))}
 </div>
         </div>

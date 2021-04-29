@@ -7,6 +7,7 @@ import '../App.css';
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
 
+
 var productName;
 var prodID;
 
@@ -16,21 +17,22 @@ function Review() {
     let history = useHistory();
     const [products, setProducts] = useState([]);
     const [product, setProduct] = useState({});
-    const [rating, setRating] = useState();
+    const [rating, setRating] = useState(0);
     const [id, setId] = useState("");
     const [loginInfo, setLoginInfo] = useState({_id: null, email: ""});
 
     // When the component mounts, a call will be made to get load products.
     useEffect(() => {
+        window.scrollTo(0, 0);
         getName();
-        // if(state.loggedIn) {
+        if(state.loggedIn) {
         setLoginInfo({...loginInfo, email: state.email})
         var email = state.email;
         getLogin(email);
         loadProducts();
-        // } else {
-        //     alert("need to be logged in to post comment");
-        //   }
+        } else {
+            alert("need to be logged in to post comment");
+          }
     }, []);
 
     function getName() {
@@ -77,8 +79,13 @@ function Review() {
     function submitReview(e) {
         e.preventDefault();
         console.log("submitReview");
-
-        API.updateProduct(id , {$push: {"ratings": {"stars": rating} }} )
+        console.log(document.getElementById("reviewTitle"));
+        console.log(document.getElementById("#review"));
+        console.log(rating);
+        if(!document.getElementById("reviewTitle").value || !document.getElementById("review").value || (rating == 0)) {
+            alert("Please complete all fields to submit review.");
+        } else {
+            API.updateProduct(id , {$push: {"ratings": {"stars": rating} }} )
         .then(res=> {
 
          const newComment = {
@@ -96,6 +103,7 @@ function Review() {
             })
         })
         .catch(err => console.log(err));
+        }
 
     }
 
@@ -104,13 +112,7 @@ function Review() {
         setRating(newRating);
         setId(window.location.href.split("/").pop());
         getProduct();
-        showButton();
-    }
-
-    function showButton() {
-        if(document.getElementById("reviewTitle").value.length > 0 && document.getElementById("review").value > 0 && rating != 0) {
-            document.getElementById("rev").removeAttribute("class", "hideSelf");
-        }
+        console.log(id);
     }
 
     return(
@@ -133,12 +135,12 @@ function Review() {
 
 
             {/*====================  Start of Checkout  Section    ====================*/}
-    <section>
+            <section>
     <div className="container">
     <div className="row justify-content-center">
     <div className="col-md-5 col-lg-4">
         <form id="form1">
-        <h1>{productName}</h1>
+        <h1 id="prdName">{productName}</h1>
             {/* <p>Rating</p> */}
             <StarRating
                 rating = {rating}
@@ -148,23 +150,24 @@ function Review() {
             />
             <div id="inputRev">
             <p></p>
-            <input id="reviewTitle" placeholder="Review Title" onChange={showButton}></input>
+            <input id="reviewTitle" placeholder="Review Title"></input>
 
             <p></p>
-            <textArea id ="review" onChange={showButton} placeholder="Review " ></textArea>
+            <textarea id ="review" placeholder="Review" ></textarea>
             </div>
 
             <br></br>
             <div className="container">
             <div className="project_btn text-center" id="revBtn">
-            <button onClick={submitReview} className="more-link hideSelf"  id="rev">Submit Review</button>
-            </div>   </div>
-        </form>
-        </div>
-        </div>
-        </div>
-        </section>
-        </div>
+            <button onClick={submitReview} className="more-link"  id="rev">Submit Review</button>
+            </div>   
+            </div>
+            </form>
+    </div>
+    </div>
+    </div>
+    </section>
+    </div>
         </Fragment>
         </div>
     );
