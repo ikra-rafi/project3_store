@@ -428,7 +428,7 @@ function Checkout() {
                         <label className="label" htmlFor="exampleInputEmail1">Zip</label>
                         <input name="ccBillZip" ref={billZip} id="billZip" className="form-control form-control-lg" placeholder="Billing Zip Code" maxLength="5"
                           size="5" required/>
-                                              </div>
+                    </div>
                     </div>
                       </form>
                     </div>
@@ -461,6 +461,7 @@ function Checkout() {
                         <div className="row">
                         <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                        <div className="table-responsive text-center">
+                       <table className="table table-bordered">
                       {state.cartItems.map(result => (
                         <div key={result._id}>
                           <CartData
@@ -470,13 +471,17 @@ function Checkout() {
                           />
                         </div>
                       ))}
-                      </div></div></div>
+                      </table>
+                      </div>
+                      </div>
+                      </div>
                   <div className="shop_cart_bottom">
                     <div className="container">
                         <div className="row">
                   <div className="col-lg-4 col-sm-12">
                   <div className="grand-total-area">
-                  <h4>Cart Total</h4>                      
+                  <h4>Cart Total</h4>           
+                  <table className="table table-bordered">            
                        {/* <table className="table table-bordered">                      
                        <thead>
                         <tr className="ptitle">
@@ -539,6 +544,7 @@ function Checkout() {
                       {/* </tr>
                         </tbody>
                         </table> */}
+                        </table>
                                 </div>
                             </div>
                         </div>
@@ -548,14 +554,18 @@ function Checkout() {
                   </div></div></div></div></div>
                   
                 ) : (
+                 <section>
                  <div className="row text-center h-100">
                    <div className="col-md-12 text-center my-auto">
                      <h3><strong>No CheckOut Information</strong></h3>
                    </div>
                  </div>
+                 </section>
                )}
              </div>
-             <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
+{/*              <Link className="mr-auto brand btn myButton buttonMargin font-weight-bold" to="/ThankYou" > */}
+             <button type="submit" className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
+             {/* <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button> */}
 {/*          </Link> */}
           </div>
           </div>
