@@ -186,7 +186,7 @@ function Product(props) {
     return (
       <div className="row">
           <div className="col-4">
-            <div className="card" id="ls">
+            <div className="product-card" id="ls">
               <div className="img-container" id="image">
               <Link className="nav-link" to={{pathname: `/products/${props.product._id}`, props: {props}}} >
               <img className="product-image "  alt={props.product.name} src={props.product.picLink} />
@@ -198,17 +198,28 @@ function Product(props) {
                   </h3>
                   <Ratings ratings= {props.product.ratings}/>
                   <p id="description">{props.product.description}</p>
-                  <select onChange={selectSize} className="packaging-choices" id={`packaging-${props.product._id}`} >
-                  <option  value = "Null">---Select Size---</option>
-                    <option value = {`${props.product.packaging[0].size}-${props.product.packaging[0].price}`}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>
-                    <option value = {`${props.product.packaging[1].size}-${props.product.packaging[1].price}`}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
-                  </select>
-                  <div id = "quantityDiv">
-                    <button className = "inline " id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
-                    <input type="text" className="inline quantity btn" id={props.product._id} defaultValue = "1"></input>
-                    <button className = "inline " id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
-                    <button id="addCart" onClick = {addToCartProducts}><i className="fa fa-shopping-cart" ></i></button>
-                  </div>
+
+                    <div className="row">
+                      <div className ="col-7">
+                      <select onChange={selectSize} className="packaging-choices" id={`packaging-${props.product._id}`} >
+                          <option  value = "Null">---Select Size---</option>
+                          <option value = {`${props.product.packaging[0].size}-${props.product.packaging[0].price}`}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>
+                          <option value = {`${props.product.packaging[1].size}-${props.product.packaging[1].price}`}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
+                        </select>
+                        <div id = "quantityDiv">
+                          <button className = "inline " id={"decrementBtn-" + props.product._id} onClick={handleDecrement} >-</button>
+                          <input type="text" className="inline quantity btn" id={props.product._id} defaultValue = "1"></input>
+                          <button className = "inline " id={"incrementBtn-" + props.product._id} onClick={handleIncrement}>+</button>
+
+                        </div>
+                      </div>
+                      <div className="col-5">
+                        <button id="addCart" onClick = {addToCartProducts}><i className="fa fa-shopping-cart" ></i></button>
+                      </div>
+                    </div>
+
+
+
               </div>
             </div>
           </div>
