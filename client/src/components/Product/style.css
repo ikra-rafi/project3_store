@@ -2,7 +2,7 @@
     border-radius: 1px;
     height: 400px;
     margin: 1rem;
-    position: absolute;
+    position: relative;
     width: 300px;
     /* color:pink; */
     box-shadow: 0 3px 3px #383838, 0 3px 3px #383838;
@@ -16,7 +16,7 @@
     border-radius: 2px;
     height: 400px;
     margin: 1rem;
-    position: absolute;
+    position: relative;
     width: 325px;
     box-shadow: 0 3px 3px black, 0 3px 3px black;
     text-align: left;
