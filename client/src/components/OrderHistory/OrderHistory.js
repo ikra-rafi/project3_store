@@ -147,7 +147,7 @@ function OrderHistory() {
                                     {/* <td>           </td>
                                     <td>         </td>
                                     <td>         </td> */}
-                                    <td>{result.orderTotal}</td>
+                                    <td>${formatter.format(result.orderTotal)}</td>
                                   </tr>
                                 </tbody>
                               </table >
