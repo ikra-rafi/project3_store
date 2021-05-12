@@ -118,10 +118,13 @@ export default {
   },
 
   //=================RESET PASSWORD ROUTES=================
+
+  // Get the security question answer based upon email
   getAcctQuestionAnswer: function(loginData) {
     return axios.post("/api/resetpwd/" + loginData.email);
   },
 
+  // Reset user password based upon given email
   resetPassword: function(email, password) {
     return axios.put("/api/resetpwd/" + email, password);
   },
@@ -135,5 +138,21 @@ export default {
 //   console.log("in api getenvvars");
 //   return axios.get("/api/envVars");
 // }
+
+  //==================SALES TAX ROUTES=====================
+
+  // Gets sales tax rate based upon state
+  getSalesTaxRate: function(stateID) {
+    console.log("state ID = " + stateID);
+    return axios.post("/api/salestax/" + stateID);
+  },
+
+  // Updates sales tax rate for a given state
+  updateSalesTaxRate: function(taxData) {
+    console.log("tax data state ID = " + taxData.stateID);
+    console.log("tax data tax rate = " + taxData.salestax);
+    var state = taxData.stateID;
+    return axios.put("/api/salestax/" + state, taxData);
+  }
 
 };

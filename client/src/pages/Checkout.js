@@ -41,6 +41,7 @@ function Checkout() {
   const [changePage, setChangePage] = useState({redirectTo: null});
   const [loginInfo, setLoginInfo] = useState({_id: 0, email: ""}); 
 
+  var mySalesRate =0;
   // formats float variables to specified digits for decimal places
   const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,      
@@ -165,20 +166,57 @@ function Checkout() {
       .catch(err => console.log(err));
   }
 
+  // function to handle a change of the shipping state field
+  function handleStateChange(e) {
+    e.preventDefault();
+
+    var changedState = shipState.current.value;
+
+    // get new sales tax rate based upon the chosen state
+    API.getSalesTaxRate(changedState)
+      .then(res => {
+        if(res.status===200) {
+          // save new sales tax rate to the store
+          dispatch({
+            type: "salesTaxRate",
+            salesTax: res.data.salesTax
+          })
+          mySalesRate = res.data.salesTax;
+          getCart();
+        }
+      })
+      .catch(err => console.log(err));
+
+      
+  }
+  var salesTaxCalc =0;
   // function to retrieve all the cart items to display on page
   function getCart() {
-    var salesTaxCalc;
+
     var newSubTotal;
+
     // check if user logged in
     if(state.loggedIn) {
       // calculate new salestax and subtotal based upon user being logged in
-      salesTaxCalc = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)) * parseFloat(state.salesTax)/100);
+      salesTaxCalc = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)) * parseFloat(mySalesRate)/100);
+      // save updated sales tax and discount total to the store
+      dispatch({
+        type: "salesTaxAmt",
+        discountTotal: parseFloat(parseFloat(state.subTotal) * parseFloat(state.discountAmt)/100),
+        salesTaxAmt: formatter.format(salesTaxCalc)
+      })
       newSubTotal = ((parseFloat(state.subTotal) - parseFloat(state.discountTotal)));
     }
     // user not logged in
     else {
       // calculate sales tax and new subtotal with discount applied for being logged in
-      salesTaxCalc = (parseFloat(state.subTotal)) * parseFloat(state.salesTax)/100;
+      salesTaxCalc = (parseFloat(state.subTotal)) * parseFloat(mySalesRate)/100;
+      // save the updated salestax amount to the store and also set discounttotal to 0
+      dispatch({
+        type: "salesTaxAmt",
+        discountTotal: 0,
+        salesTaxAmt: formatter.format(salesTaxCalc)
+      })
       newSubTotal = (parseFloat(state.subTotal));
     }
 
@@ -250,7 +288,7 @@ function Checkout() {
                                   <label className="label" htmlFor="exampleInputEmail1">State</label>
                       
                                   <div className="select">
-                                    <select class="custom-select d-block w-100" ref={shipState} id="shipState" defaultValue="" required="">
+                                    <select className="custom-select d-block w-100" ref={shipState} id="shipState" defaultValue="" onChange={handleStateChange} required="">
                                       <option value="" disabled="">Choose...</option>
                                       <option value="AK">AK</option>
                                       <option value="AL">AL</option>
@@ -361,7 +399,7 @@ function Checkout() {
 
                                       <label className="label" htmlFor="exampleInputEmail1">State</label>
                                       <div className="select" >
-                                        <select class="custom-select d-block w-100" ref={billState} id="billState" defaultValue="" required="">
+                                        <select className="custom-select d-block w-100" ref={billState} id="billState" defaultValue="" required="">
                                           <option value=""  disabled="">Choose...</option>
                                           <option value="AK">AK</option>
                                           <option value="AL">AL</option>

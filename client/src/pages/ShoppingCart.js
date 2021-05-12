@@ -352,10 +352,6 @@ function ShoppingCart() {
 
                                 )}
 
-                                  <p className="amt">Sales Tax ({state.salesTax}%)
-                                  <span className="amt">${state.salesTaxAmt}</span></p>
-
-
                                   <p className="delivery">Shipping Fee (Flat Rate):
                                   <span className="amt">${state.shipFee}</span></p>
 
