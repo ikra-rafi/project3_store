@@ -56,7 +56,8 @@ const ordersSchema = new Schema(
         }
       ],
       notes: { type: String },
-      orderTotal: { type: Number }
+      orderTotal: { type: Number },
+      date: { type: Date }
     }
   ]
 );

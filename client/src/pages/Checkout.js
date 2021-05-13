@@ -127,7 +127,8 @@ function Checkout() {
       },
       spices: [],
       notes: notes.current.value,
-      orderTotal: state.orderTotal
+      orderTotal: state.orderTotal,
+      date: new Date()
     }
 
     // loop over the cart items to store products to object
@@ -157,6 +158,11 @@ function Checkout() {
             .then(result => {
               // check if delete cart was successful
               if(res.status===200) {
+                // set number of cart items to 0
+                dispatch({
+                  type: "numCartItems",
+                  numItems: 0
+                })
                 // redirect to the thank you page
                 history.push("/ThankYou");
               }
