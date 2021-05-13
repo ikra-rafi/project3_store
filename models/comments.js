@@ -5,7 +5,8 @@ const commentsSchema = new Schema([
   {
     userComment: { type: String },
     productID: { type: String },
-    title: {type: String}
+    title: {type: String},
+    date: {type: Date }
   }
 ]);
 
