@@ -19,7 +19,8 @@ function Admin() {
     window.scrollTo(0, 0);
     if(!state.admin) {
       history.push("/");
-    } else{
+    } else
+    {
       getProducts();
     }
 

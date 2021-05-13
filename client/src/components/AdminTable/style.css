@@ -5,19 +5,12 @@
 }
 
 .thumbnail-image {
-  width: 70px;
-   height:70px;
+  width: 50px;
+   height: 50px;
    border-radius: 50%;
    -moz-border-radius: 50%;
    -webkit-border-radius: 50%;
    -o-border-radius: 50%;
-}
-
-#table{
-    width: 80%;
-    margin-left: 10%;
-    background:	#F5F5F5;
-
 }
 
  #prdBtn{
@@ -53,26 +46,6 @@
     border: 1px solid  #c44308;
   } */
 
-  #th{
-    background: #303030;
-    color:whitesmoke;
-    font-family: 'Karla', sans-serif;
-    padding:10px;
-    font-size: 17px;
-    border: 1px solid  #aedf04;
-    border-top:1px solid  #aedf04;
-
-
-  }
-
-  #btn{
-    background: #303030;
-      color:#F5F5F5;
-      /* border: 1px solid #aedf04; */
-      padding:1px;
-      font-family: 'Karla', sans-serif;
-  }
-
   #tdp{
       margin-top: 20%;
       text-align: center;
@@ -95,6 +68,8 @@
   #tdIn{
     width:100px;
     text-align: center;
+    margin: 0 auto;
+    padding: 2px;
     color: #c44308;
   }
 
@@ -103,3 +78,51 @@
     font-family: 'New Tegomin', serif;
     font-weight:bold;
   }
+
+  #adminTable{
+    width: 80%;
+    margin-left: 10%;
+    background:	#F5F5F5;
+    text-align: center;
+
+}
+
+#adminTable th {
+  text-align: center;
+}
+
+#adminTable td {
+  vertical-align:middle;
+  /* margin: auto 0; */
+  padding: 2px;
+}
+
+#adminTable p {
+  margin: 0;
+}
+
+#th{
+  background: #303030;
+  color:whitesmoke;
+  font-family: 'Karla', sans-serif;
+  padding:10px;
+  font-size: 17px;
+  border: 1px solid  #aedf04;
+  border-top:1px solid  #aedf04;
+
+
+}
+
+.adminBtn{
+  background: #303030;
+    color:#F5F5F5;
+    border: none;
+    padding:1px;
+    margin: 0 auto;
+    font-family: 'Karla', sans-serif;
+}
+
+#picCol {
+  /* width: 100px; */
+  padding: 2px;
+}
