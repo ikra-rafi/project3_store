@@ -9,6 +9,7 @@ const logoutRoutes = require("./logout");
 const signupRoutes = require("./signup");
 const resetPwdRoutes = require("./resetpwd");
 const envVarsRoutes = require("./envVars");
+const salesTaxRoutes = require("./salestax");
 
 // Product routes
 
@@ -22,5 +23,6 @@ router.use("/logout", logoutRoutes);
 router.use("/signup", signupRoutes);
 router.use("/resetpwd", resetPwdRoutes);
 router.use("/envVarsRoutes", envVarsRoutes);
+router.use("/salestax", salesTaxRoutes);
 
 module.exports = router;

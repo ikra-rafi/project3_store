@@ -304,3 +304,217 @@ db.ShoppingCart
     process.exit(1);
   });
 
+  const salesTaxSeed = [
+    {
+      state: "AL",
+      salesTax: 4
+    },
+    {
+      state: "AK",
+      salesTax: 0
+    },
+    {
+      state: "AZ",
+      salesTax: 5.6
+    },
+    {
+      state: "AR",
+      salesTax: 6.5
+    },
+    {
+      state: "CA",
+      salesTax: 7.25
+    },
+    {
+      state: "CO",
+      salesTax: 2.9
+    },
+    {
+      state: "CT",
+      salesTax: 6.35
+    },
+    {
+      state: "DC",
+      salesTax: 6
+    },
+    {
+      state: "DE",
+      salesTax: 0
+    },
+    {
+      state: "FL",
+      salesTax: 6
+    },
+    {
+      state: "GA",
+      salesTax: 4
+    },
+    {
+      state: "HI",
+      salesTax: 4
+    },
+    {
+      state: "ID",
+      salesTax: 6
+    },
+    {
+      state: "IL",
+      salesTax: 6.25
+    },
+    {
+      state: "IN",
+      salesTax: 7
+    },
+    {
+      state: "IA",
+      salesTax: 6
+    },
+    {
+      state: "KS",
+      salesTax: 6.5
+    },
+    {
+      state: "KY",
+      salesTax: 6
+    },
+    {
+      state: "LA",
+      salesTax: 4.45
+    },
+    {
+      state: "ME",
+      salesTax: 5.5
+    },
+    {
+      state: "MA",
+      salesTax: 6.25
+    },
+    {
+      state: "MD",
+      salesTax: 6
+    },
+    {
+      state: "MI",
+      salesTax: 6
+    },
+    {
+      state: "MN",
+      salesTax: 6.875
+    },
+    {
+      state: "MS",
+      salesTax: 7
+    },
+    {
+      state: "MO",
+      salesTax: 4.225
+    },
+    {
+      state: "MT",
+      salesTax: 0
+    },
+    {
+      state: "NC",
+      salesTax: 4.75
+    },
+    {
+      state: "ND",
+      salesTax: 5
+    },
+    {
+      state: "NH",
+      salesTax: 0
+    },
+    {
+      state: "NJ",
+      salesTax: 6.625
+    },
+    {
+      state: "NM",
+      salesTax: 5.125
+    },
+    {
+      state: "NB",
+      salesTax: 5.5
+    },
+    {
+      state: "NV",
+      salesTax: 6.85
+    },
+    {
+      state: "OH",
+      salesTax: 5.75
+    },
+    {
+      state: "OK",
+      salesTax: 4.5
+    },
+    {
+      state: "OR",
+      salesTax: 0
+    },
+    {
+      state: "PA",
+      salesTax: 6
+    },
+    {
+      state: "RI",
+      salesTax: 7
+    },
+    {
+      state: "SC",
+      salesTax: 6
+    },
+    {
+      state: "SD",
+      salesTax: 4.5
+    },
+    {
+      state: "TN",
+      salesTax: 7
+    },
+    {
+      state: "TX",
+      salesTax: 6.25
+    },
+    {
+      state: "UT",
+      salesTax: 6.1
+    },
+    {
+      state: "VA",
+      salesTax: 5.3
+    },
+    {
+      state: "VT",
+      salesTax: 6
+    },
+    {
+      state: "WV",
+      salesTax: 6
+    },
+    {
+      state: "WA",
+      salesTax: 6.5
+    },
+    {
+      state: "WI",
+      salesTax: 5
+    },
+    {
+      state: "WY",
+      salesTax: 4
+    } 
+  ];
+  
+  db.SalesTax
+  .remove({})
+  .then(() => db.SalesTax.collection.insertMany(salesTaxSeed))
+  .then(data => {
+  console.log(data.result.n + " records inserted!");
+  process.exit(0);
+  })
+  .catch(err => {
+  console.error(err);
+  process.exit(1);
+  });

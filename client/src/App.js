@@ -16,6 +16,7 @@ import ThankYou from "./pages/ThankYou";
 import AddProducts from "./pages/AddProducts";
 import Review from "./pages/Review";
 import OrderHistory from "./components/OrderHistory";
+import SalesTax from "./pages/SalesTax";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/thankyou" component={ThankYou} />
             <Route path="/addproducts" component={AddProducts} />
             <Route path="/orderhistory" component={OrderHistory} />
+            <Route path="/salestax" component={SalesTax} />
           </Switch>
           < Footer />
 
@@ -46,4 +48,3 @@ function App() {
 }
 
 export default App;
-
