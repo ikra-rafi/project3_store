@@ -13,11 +13,8 @@ function ProductDetail(props) {
   const handleIncrement= (e) => {
     const id = e.target.id.split('-')[1];
     const quantity = document.getElementById(id);
-
     const value = parseInt(quantity.value);
-
     quantity.value = value + 1;
-
     quantityChange();
   }
 
@@ -25,15 +22,12 @@ function ProductDetail(props) {
   const handleDecrement= (e) => {
     const id = e.target.id.split('-')[1];
     const quantity = document.getElementById(id);
-
     const value = parseInt(quantity.value);
-
     if(value > 0) {
       quantity.value = value - 1;
     } else {
       quantity.value = 0;
     }
-
     quantityChange();
   }
 

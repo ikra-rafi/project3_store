@@ -65,19 +65,18 @@
     font-family: 'New Tegomin', serif;
   }
 
-  #tdIn{
+  .tdIn{
     width:100px;
     text-align: center;
     margin: 0 auto;
     padding: 2px;
-    color: #c44308;
   }
 
-  #updateButton {
+  /* .updateBtn {
     color: #c44308;
     font-family: 'New Tegomin', serif;
     font-weight:bold;
-  }
+  } */
 
   #adminTable{
     width: 80%;

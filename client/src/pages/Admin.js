@@ -8,7 +8,7 @@ import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 
 function Admin() {
 
-  const [products, setProducts]= useState([]);
+  // const [products, setProducts]= useState([]);
   const [state, dispatch] = useTodoContext();
   let history = useHistory();
 
@@ -17,12 +17,12 @@ function Admin() {
   useEffect(() => {
     console.log("product Effect");
     window.scrollTo(0, 0);
-    if(!state.admin) {
-      history.push("/");
-    } else
-    {
+    // if(!state.admin) {
+    //   history.push("/");
+    // } else
+    // {
       getProducts();
-    }
+    // }
 
   }, [])
 
@@ -30,7 +30,7 @@ function Admin() {
   function getProducts() {
     API.getProductsFromStore()
     .then(res=> {
-      setProducts(res.data);
+      // setProducts(res.data);
       var products = [];
       res.data.forEach(element => {
         products.push(element);

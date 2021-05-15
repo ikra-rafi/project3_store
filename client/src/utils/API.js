@@ -28,8 +28,11 @@ export default {
   },
 
   // Update a product in the database
-  updateProduct: function(id, data) {
-    return axios.put("/api/products/" + id, data);
+  // updateProduct: function(id, data) {
+  //   return axios.put("/api/products/" + id, data);
+  // },
+  updateProduct: function(id, size, data) {
+    return axios.put("/api/products/" + id + "/" + size, data);
   },
 
   //=============COMMENT ROUTES ===================

@@ -24,9 +24,7 @@ function AdminTable() {
 
   // Handles the sort for the name field
   function sortTableByName() {
-
     const sortedResults = [sortedProducts];
-
     if ( nameSort === "ascending"){
         const results = sortedResults[0].sort((a, b) => {
             if (a.name < b.name) {
@@ -35,14 +33,11 @@ function AdminTable() {
             if (a.name > b.name) {
                 return 1;
             }
-
             return 0;
         });
         setSortedProducts(results);
         setNameSort("descending");
-
     }
-
     if ( nameSort === "descending"){
         const results = sortedResults[0].sort((a, b) => {
             if (a.name < b.name) {
@@ -53,7 +48,6 @@ function AdminTable() {
             }
             return 0;
         });
-
         setSortedProducts(results);
         setNameSort("ascending")
     }
@@ -61,9 +55,7 @@ function AdminTable() {
 
   // Handles the sort for the product ID field
   function sortTableByProdID() {
-
     const sortedResults = [sortedProducts];
-
     if ( productSort === "ascending"){
         const results = sortedResults[0].sort((a, b) => {
             if (a.productID < b.productID) {
@@ -72,14 +64,11 @@ function AdminTable() {
             if (a.productID > b.productID) {
                 return 1;
             }
-
             return 0;
         });
         setSortedProducts(results);
         setProductSort("descending");
-
     }
-
     if ( productSort === "descending"){
       const results = sortedResults[0].sort((a, b) => {
           if (a.productID < b.productID) {
@@ -88,13 +77,16 @@ function AdminTable() {
           if (a.productID > b.productID) {
               return -1;
           }
-
           return 0;
       });
       setSortedProducts(results);
       setProductSort("ascending");
-
     }
+  }
+
+  function updateQuantity (e){
+    e.preventDefault();
+    console.log(e.target.id);
   }
 
   // Returns a table with all the associated Admin fields
@@ -116,9 +108,7 @@ function AdminTable() {
         </thead>
         <tbody>
           {sortedProducts.map(result=>(
-            console.log(result),
             result.packaging.map(res=>(
-              console.log(res),
               <tr key={result._id + res.size}>
                 <td id="picCol">
                 <Link className=" " to={{pathname: `/products/${result._id}`}} ><img className="thumbnail-image" alt={result.name} src={result.picLink} /></Link>
@@ -127,12 +117,12 @@ function AdminTable() {
                 <td><p > {result.name}</p></td>
                 <td><p val={res.price}>{res.price}</p></td>
                 <td><p val={res.size}>{res.size}</p></td>
-                <td><input id="tdIn"
+                <td><input id={`quantity-${result.productID}-${res.price}`}
+                className="tdIn"
                 defaultValue={res.quantity}  /></td>
                 <td>
-                  <a href="#" id= "updateButton" >Update</a>
+                  <button id={`${result._id}-${res.price}`} className="inline btn fa fa-floppy-o updateBtn" onClick={updateQuantity}></button>
                 </td>
-
               </tr>
             ))
           ))}
