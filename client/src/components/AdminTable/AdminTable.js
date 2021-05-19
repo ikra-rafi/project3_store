@@ -97,6 +97,35 @@ function AdminTable() {
     }
   }
 
+  function updatePackaging(e){
+    e.preventDefault();
+    const btn = e.target.id;
+    const val = btn.split("-");
+    const id = val[1];
+    const sizes = document.querySelectorAll(`[datavalue=size-${id}]`);
+    const packaging = [];
+
+    sizes.forEach(function (item) {
+      const s = item.innerHTML;
+      const p = document.getElementById(`price-${id}-${item.innerHTML}`).value;
+      const q = document.getElementById(`quantity-${id}-${item.innerHTML}`).value;
+
+      console.log(q);
+      const pkg = {
+        size: s,
+        price: p,
+        quantity: q
+      }
+      packaging.push(pkg);
+    })
+
+    API.updateProduct(id, packaging)
+    .then(res => {
+      console.log(res);
+    })
+
+  }
+
   // Returns a table with all the associated Admin fields
   return (
     <section>
@@ -108,29 +137,32 @@ function AdminTable() {
             <th id="prdBtn"><button className="adminBtn" onClick={sortTableByProdID}>Product ID</button></th>
 
             <th id="prdNm"><button className="adminBtn" onClick={sortTableByName}>Product Name</button></th>
-            <th><button className="adminBtn">Price</button></th>
             <th><button className="adminBtn">Size</button></th>
+            <th><button className="adminBtn">Price</button></th>
+
             <th><button className="adminBtn">Quantity</button></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           {sortedProducts.map(result=>(
-            console.log(result),
+            // console.log(result),
             result.packaging.map(res=>(
-              console.log(res),
+              // console.log(res),
               <tr key={result._id + res.size}>
                 <td id="picCol">
                 <Link className=" " to={{pathname: `/products/${result._id}`}} ><img className="thumbnail-image" alt={result.name} src={result.picLink} /></Link>
                 </td>
                 <td><p > {result.productID}</p></td>
                 <td><p > {result.name}</p></td>
-                <td><p val={res.price}>{res.price}</p></td>
-                <td><p val={res.size}>{res.size}</p></td>
-                <td><input id="tdIn"
-                defaultValue={res.quantity}  /></td>
+                <td><p val={res.size} datavalue={`size-${result._id}`}>{res.size}</p></td>
+                <td><input id={`price-${result._id}-${res.size}`} className={`tdIn price-${result._id}`}
+                datavalue={`price-${result._id}`} defaultValue={res.price}/></td>
+                <td><input id={`quantity-${result._id}-${res.size}`}
+                className="tdIn" datavalue={`quantity-${result._id}`}
+                defaultValue={res.quantity}/></td>
                 <td>
-                  <a href="#" id= "updateButton" >Update</a>
+                  <button id={`updateBtn-${result._id}`} className="inline btn fa fa-floppy-o updateBtn" onClick={updatePackaging}></button>
                 </td>
 
               </tr>

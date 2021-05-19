@@ -17,12 +17,12 @@ function Admin() {
   useEffect(() => {
     console.log("product Effect");
     window.scrollTo(0, 0);
-    if(!state.admin) {
-      history.push("/");
-    } else
-    {
+    // if(!state.admin) {
+    //   history.push("/");
+    // } else
+    // {
       getProducts();
-    }
+    // }
 
   }, [])
 
