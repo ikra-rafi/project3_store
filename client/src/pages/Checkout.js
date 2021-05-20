@@ -60,6 +60,11 @@ function Checkout() {
       // get login information
       getLogin();
     }
+    // set sales tax rate to 0% since no shipping address chosen yet
+    dispatch({
+      type: "salesTaxRate",
+      salesTax: 0
+    })
     // retrieve cart contents
     getCart();
   }, [])
@@ -229,7 +234,7 @@ function Checkout() {
     // save new orderTotal to the store
     dispatch({
       type: "orderTotal",
-      orderTotal: ((newSubTotal + parseFloat(salesTaxCalc) + parseInt(state.shipFee))),
+      orderTotal: ((newSubTotal + parseFloat(salesTaxCalc) + parseFloat(state.shipFee))),
     })
   }
 
@@ -540,7 +545,7 @@ function Checkout() {
                                             )}
                                             <p className="amt">Sales Tax ({state.salesTax}%)
                                             <span className="amt">${formatter.format(state.salesTaxAmt)}</span></p>
-                                            <p className="delivery">Shipping Fee (Flat Rate):
+                                            <p className="delivery">Shipping Fee:
                                             <span className="amt">${state.shipFee}</span></p>
                                             <p className="grand-total">Order Total:
                                             <span className="amt">${formatter.format(state.orderTotal)}</span></p>

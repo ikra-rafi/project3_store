@@ -5,5 +5,6 @@ module.exports = {
   ShoppingCart: require("./shoppingcart"),
   Recipes: require("./recipes"),
   Comments: require("./comments"),
-  SalesTax: require("./salestax")
+  SalesTax: require("./salestax"),
+  Shipping: require("./shippingcost")
 };

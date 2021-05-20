@@ -153,6 +153,24 @@ export default {
     console.log("tax data tax rate = " + taxData.salestax);
     var state = taxData.stateID;
     return axios.put("/api/salestax/" + state, taxData);
-  }
+  },
 
+  //===============SHIPPING COSTS ROUTES=====================
+
+  // Get shipping costs and weight brackets
+  getShippingRates: function() {
+    return axios.get("/api/shipping");
+  },
+
+  // Update shipping costs
+  updateShippingCost: function(shipInfo) {
+    console.log("id = " + shipInfo.id)
+    return axios.put("/api/shipping/" + shipInfo.id, shipInfo);
+  },
+
+  // Retrieve shipping cost based upon weight
+  getShipCost: function(maxWeight) {
+    console.log("max weight = " + maxWeight);
+    return axios.post("/api/shipping/" + maxWeight)
+  }
 };
