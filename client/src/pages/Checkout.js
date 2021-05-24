@@ -260,12 +260,13 @@ function Checkout() {
 
       <Container fluid>
         <Container >
-          <section className="checkout_section justify-content-center">
+          <section className="checkout_section">
             <div className="container full-width">
               <div className="row">
                 <div className="container-fluid containerColor marginBottomCont">
                   <h1 className="text-center">Checkout Page</h1> 
                   <h1 className="text-center">Cart Total = ${formatter.format(state.orderTotal)}</h1>
+                  
                   {state.cartItems.length ? (
                     <div>  
                       <div id="content">
@@ -560,6 +561,8 @@ function Checkout() {
                           </div>
                         </div>
                       </div> 
+
+                      
                     ) : (
                       <section>
                         <div className="row text-center h-100">

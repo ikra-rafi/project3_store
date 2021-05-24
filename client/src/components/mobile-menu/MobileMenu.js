@@ -79,8 +79,7 @@ const MobileMenu = () => {
         className="offcanvasMenuClose"
         id="mobile-menu-close-trigger"
         onClick={() => closeMobileMenu()}
-      >
-      <i className="bi bi-search"></i>
+      >X<i className="bi bi-x"></i>
       </button>
 
       <div className="offcanvasWrapper">
@@ -88,9 +87,9 @@ const MobileMenu = () => {
 
           <nav className="offcanvasNavigation" id="offcanvas-navigation">
             <ul>
-              <li>
+              {/* <li>
                 <Link to="/"><img src="/assets/logo/spice-a-holic_logo-mark.png" alt="spiceaholic" width="225"/></Link>
-              </li>
+              </li> */}
 
               <li className="menuItemHasChildren">
                 <Link to={process.env.PUBLIC_URL + "#/"}>Products</Link>
@@ -138,11 +137,11 @@ const MobileMenu = () => {
 
           {/* Search Form */}
           <div className="offcanvasMobileSearchArea">
-            <form action="#">
-              <input type="search" placeholder="Search ..." />
-              <button type="submit"> 
+            <Link to="/products">
+              <input className="fa fa-search" type="search" placeholder="Search ..." />
+              <button id="mobilesearch" type="submit"><i className="fa fa-search"></i>
               </button>
-            </form>
+            </Link>
           </div>
           {state.loggedIn ? (
                     <div>
