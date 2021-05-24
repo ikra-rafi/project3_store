@@ -127,7 +127,7 @@ function OrderHistory() {
              <section className="ml-md-0">
               <h4 class="mb-4">Order History</h4>
               {orders.length ? (
-                <div>
+                <div >
                   {orders.map(result => (
                     
                           <div className="table-responsive text-center" key={result._id}>
