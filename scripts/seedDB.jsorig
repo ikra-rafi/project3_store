@@ -566,3 +566,41 @@ process.exit(0);
 console.error(err);
 process.exit(1);
 });
+
+  const shippingSeed = [
+    { minWeight: 0,
+      maxWeight: 16,
+      shipCost: 3.99
+    },
+    { minWeight: 16.1,
+      maxWeight: 48,
+      shipCost: 5.99
+    },
+    {
+      minWeight: 48.1,
+      maxWeight: 80,
+      shipCost: 8.99
+    },
+    {
+      minWeight: 80.1,
+      maxWeight: 160,
+      shipCost: 13.99
+    },
+    {
+      minWeight: 160.1,
+      maxWeight: 2000,
+      shipCost: 19.99
+    }
+  ]
+
+db.Shipping
+  .remove({})
+  .then(() => db.Shipping.collection.insertMany(shippingSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
