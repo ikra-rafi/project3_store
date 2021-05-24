@@ -79,8 +79,7 @@ const MobileMenu = () => {
         className="offcanvasMenuClose"
         id="mobile-menu-close-trigger"
         onClick={() => closeMobileMenu()}
-      >
-      {/* <i className="bi bi-search"></i> */}
+      >X<i className="bi bi-x"></i>
       </button>
 
       <div className="offcanvasWrapper">
@@ -138,11 +137,11 @@ const MobileMenu = () => {
 
           {/* Search Form */}
           <div className="offcanvasMobileSearchArea">
-            <form action="#">
-              <input type="search" placeholder="Search ..." />
-              <button type="submit"> 
+            <Link to="/products">
+              <input className="fa fa-search" type="search" placeholder="Search ..." />
+              <button id="mobilesearch" type="submit"><i className="fa fa-search"></i>
               </button>
-            </form>
+            </Link>
           </div>
           {state.loggedIn ? (
                     <div>

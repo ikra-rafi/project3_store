@@ -260,18 +260,18 @@ function Checkout() {
 
       <Container fluid>
         <Container >
-          <section className="py-5">
-            <div className="container">
-              {/* <div className="pb-5 text-center">
-                <div className="container-fluid containerColor marginBottomCont"> */}
+          <section className="checkout_section">
+            <div className="container full-width">
+              <div className="row">
+                <div className="container-fluid containerColor marginBottomCont">
                   <h1 className="text-center">Checkout Page</h1> 
                   <h1 className="text-center">Cart Total = ${formatter.format(state.orderTotal)}</h1>
+                  
                   {state.cartItems.length ? (
-                    <div className="row">  
-                      <div className="pb-5 text-center" id="content">
+                    <div>  
+                      <div id="content">
                         <div className="contactform" method="post" className="shopform">
-                          
-                          <div className="d-flex justify-content-between align-items-center mb-3">
+                          <div className="custom-title">
                             <h3>Shipping details</h3>
                           </div>
                           <br/>
@@ -477,7 +477,6 @@ function Checkout() {
                             <br />
                             <div className="custom-title">
                               <br />
-                              
                               <h3>Payment Information</h3>
                             </div>
                             <br/>
@@ -562,6 +561,8 @@ function Checkout() {
                           </div>
                         </div>
                       </div> 
+
+                      
                     ) : (
                       <section>
                         <div className="row text-center h-100">
@@ -576,8 +577,8 @@ function Checkout() {
                  <button type="submit" className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button>
              {/* <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button> */}
 {/*          </Link> */}
-              {/* </div>
-            </div> */}
+              </div>
+            </div>
           </section>
         </Container>
       </Container> 

@@ -182,9 +182,7 @@ function filterResults(event) {
                                 <form action="#" method="POST">
                                     <div className="form-group">
                                         <input placeholder="Search" type="text" /> 
-                                        <button className="btn-search" type="submit">
-                                        <img src="assets/icons/search.png" className="bi bi-search" />
-                                        </button>
+                                      
                                     </div>
                                 </form>
                             </div> 

@@ -59,16 +59,16 @@ const Footer = () => {
                       <h5>Quick Links</h5>
                       <ul>
                           <li>
-                              <Link to="/contact#whoarewe">Who We Are</Link>
+                              <Link to="/contact">Who We Are</Link>
                           </li>
                           <li>
-                              <Link to="/contact#returncancellation">Return & Cancellation</Link>
+                              <Link to="/contact">Return & Cancellation</Link>
                           </li>
                           <li>
-                              <Link to="/contact#privatepolicy">Private Policy</Link>
+                              <Link to="/contact">Private Policy</Link>
                           </li>
                           <li>
-                              <Link to="/contact#deliveryschedule">Delivery Schedule</Link>
+                              <Link to="/contact">Delivery Schedule</Link>
                           </li>
                           <li>
                               <Link to="/contact">Terms and Conditions</Link>
