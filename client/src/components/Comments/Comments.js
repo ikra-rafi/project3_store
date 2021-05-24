@@ -33,6 +33,7 @@ function Comments(props) {
                 <div className="comment" key = {res._id}>
                     <h3>{res.title}</h3>
                     <p>{res.userComment}</p>
+                    <p>{new Date(res.date).toLocaleDateString()}</p>
 
                 </div>
 

@@ -98,7 +98,8 @@ function Review() {
          const newComment = {
             title: document.getElementById("reviewTitle").value,
             userComment: document.getElementById("review").value,
-            productID: prodID
+            productID: prodID,
+            date: new Date()
             }
             alert("Thank you! Your review has been submitted");
 

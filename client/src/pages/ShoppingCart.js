@@ -10,6 +10,7 @@ function ShoppingCart() {
 
   // state variables
   const [cart, setCart]= useState([]);
+  const [shipping, setShipping] = useState();
   const [state, dispatch] = useTodoContext();
   const formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
@@ -18,6 +19,7 @@ function ShoppingCart() {
   // variable declarations
   var total = 0;
   var applyDiscount;
+  var totalWeight = 0;
 
   useEffect(() => {
     // upon page load get items from shopping cart table
@@ -42,9 +44,21 @@ function ShoppingCart() {
       // loop over all cart items returned to push individual items to array and calculate cart total
       res.data.forEach(element => {
         cartProducts.push(element);
+        var weight = parseInt(element.prodInfo.size.slice(0, element.prodInfo.size.indexOf("oz")));
+        totalWeight = totalWeight + (weight * element.prodInfo.quantity);
         total = total + (element.prodInfo.price * element.prodInfo.quantity);
       });
-
+      console.log("totalWeight = " + totalWeight);
+      API.getShipCost(totalWeight)
+        .then(res => {
+          console.log(res.data.shipCost);
+          dispatch({
+            type: "shipCost",
+            shipFee: res.data.shipCost
+          })
+        })
+        .catch(err => console.log(err))
+        console.log("shipFee = " + state.shipFee);
       // check if user logged in to determine if discount is applied to cart items
       if(state.loggedIn) {
         applyDiscount = true;
@@ -103,10 +117,24 @@ function ShoppingCart() {
   function updateCartTotal() {
     var cartProducts = [];
     // figure out new cart total by looping over each product 
+    totalWeight = 0;
     cart.forEach(element => {
       total = total + (element.prodInfo.price * element.prodInfo.quantity);
+      var weight = parseInt(element.prodInfo.size.slice(0, element.prodInfo.size.indexOf("oz")));
+      totalWeight = totalWeight + (weight * element.prodInfo.quantity);
       cartProducts = [...cart];
     })
+    console.log(totalWeight);
+    API.getShipCost(totalWeight)
+    .then(res => {
+      console.log(res.data.shipCost);
+      dispatch({
+        type: "shipCost",
+        shipFee: res.data.shipCost
+      })
+    })
+    .catch(err => console.log(err))
+    console.log("shipFee = " + state.shipFee);
     // check if user logged in
     if(state.loggedIn) {
       applyDiscount = true;
@@ -261,6 +289,7 @@ function ShoppingCart() {
                               <table className="table table-bordered">
                               <thead>
                                 <tr className="shop_cart_tr">
+                                  <th className="text-center"></th>
                                   <th className="text-center">Product</th>
                                   <th className="text-center">Package Size</th>
                                   <th className="text-center">Quantity</th>
@@ -274,6 +303,12 @@ function ShoppingCart() {
                                     <td className="ptitle">
                                       <div className="row" style={{display: 'inline-block'}}>
                                         <button id={result._id} className="fa fa-trash-o inline btn" onClick={handleRemoveClick}></button>
+                                      </div>
+                                      {/* row inline block end */}
+
+                                    </td>
+                                    <td className="ptitle">
+                                      <div className="row" style={{display: 'inline-block'}}>
                                         {result.name}
                                       </div>
                                       {/* row inline block end */}
@@ -289,7 +324,7 @@ function ShoppingCart() {
                                       {/* row inline block end */}
 
                                     </td>
-                                    <td className="align-middle text-center"><p>{result.prodInfo.price}</p></td>
+                                    <td className="align-middle text-center"><p>${result.prodInfo.price}</p></td>
                                     <td className="align-middle text-center"><p>${formatter.format(result.prodInfo.price * result.prodInfo.quantity)}</p></td>
                                   </tr>
                                 ))}
@@ -345,11 +380,7 @@ function ShoppingCart() {
 
                                 )}
 
-                                  <p className="amt">Sales Tax ({state.salesTax}%)
-                                  <span className="amt">${state.salesTaxAmt}</span></p>
-
-
-                                  <p className="delivery">Shipping Fee (Flat Rate):
+                                  <p className="delivery">Shipping Fee:
                                   <span className="amt">${state.shipFee}</span></p>
 
 

@@ -134,20 +134,16 @@ function OrderHistory() {
                               <table className="table table-bordered">
                                 <thead>
                                   <tr>
+                                    <td className="ptitle">Order Date</td>
                                     <td className="ptitle">Order ID</td>
-                                    {/* <td>        </td>
-                                    <td>        </td>
-                                    <td>        </td> */}
                                     <td className="ptitle">Order Total</td>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
+                                    <td>{new Date(result.date).toLocaleDateString("en-US")}</td>
                                     <td>{result._id}</td>
-                                    {/* <td>           </td>
-                                    <td>         </td>
-                                    <td>         </td> */}
-                                    <td>{result.orderTotal}</td>
+                                    <td>${formatter.format(result.orderTotal)}</td>
                                   </tr>
                                 </tbody>
                               </table >
