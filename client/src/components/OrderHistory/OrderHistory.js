@@ -108,11 +108,11 @@ function OrderHistory() {
   
   
           {/*====================  Start of Checkout  Section    ====================*/}        
-<section className="py-5">
-      <div className="container">
+<section className="py-4">
+      <div className="container-fluid">
         <Container fluid>
           <Container>
-          <div class="row">
+          {/* <div className="row"> */}
                   <div className="container-fluid containerColor marginBottomCont">
                     <h1 class="mb-4">Account Info</h1>
                     <table>
@@ -130,13 +130,13 @@ function OrderHistory() {
                 <div >
                   {orders.map(result => (
                     
-                          <div className="table-responsive text-center" key={result._id}>
-                              <table className="table table-bordered">
+                          <div className="table-responsive" key={result._id}>
+                              <table className="table">
                                 <thead>
                                   <tr>
-                                    <td className="ptitle">Order Date</td>
-                                    <td className="ptitle">Order ID</td>
-                                    <td className="ptitle">Order Total</td>
+                                    <th scope="col">Order Date</th>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">Order Total</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -145,24 +145,17 @@ function OrderHistory() {
                                     <td>{result._id}</td>
                                     <td>${formatter.format(result.orderTotal)}</td>
                                   </tr>
-                                </tbody>
-                              </table >
-                              <table className="table table-bordered">
-                                <thead>
-                                  <tr className="shop_cart_tr">
-                                    <td className="text-center">Product</td>
-                                    <td className="text-center">Size</td>
-                                    <td className="text-center">Quantity</td>
+                                  <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Quantity</th>
                                   </tr>
-                                </thead>
-                                <tbody>
+
                                   {result.spices.map( res=> (
                                   <tr>
-                                    <td className="align-middle text-center"><p>{res.name}</p></td>
-                                    {/* <td>    </td> */}
-                                    <td className="align-middle text-center"><p>{res.size}</p></td>
-                                    {/* <td>    </td> */}
-                                    <td className="align-middle text-center"><p>{res.quantity}</p></td>
+                                    <td><p>{res.name}</p></td>
+                                    <td><p>{res.size}</p></td>
+                                    <td><p>{res.quantity}</p></td>
                                   </tr>
                                   ))}
                                 </tbody>
@@ -178,7 +171,7 @@ function OrderHistory() {
                           </div>
                 )}
             </section>
-            </div>
+            {/* </div> */}
           </Container>
         </Container>
       </div>

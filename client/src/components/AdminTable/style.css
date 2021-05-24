@@ -8,6 +8,7 @@
   width: 50px;
    height: 50px;
    border-radius: 50%;
+   object-fit: scale-down;
    -moz-border-radius: 50%;
    -webkit-border-radius: 50%;
    -o-border-radius: 50%;
@@ -15,17 +16,20 @@
 
  #prdBtn{
     background: #303030;
+    object-fit: scale-down;
 
  }
 
 #btn:hover {
     background: #F5F5F5;
     color:	#303030;
+    object-fit: scale-down;
   }
 
 
   #prdNm{
     background: #303030;
+    object-fit: scale-down;
     /* width: 100px;
     height: 20px; */
   }
@@ -80,22 +84,25 @@
       text-align: center;
       font-family: 'New Tegomin', serif;
       color: #c44308;
+      object-fit: scale-down;
   }
 
   #tp{
     margin-top: 20%;
     color: #c44308;
+    object-fit: scale-down;
     font-family: 'New Tegomin', serif;
   }
 
   #pp{
     margin-top: 20%;
     color: #c44308;
+    object-fit: scale-down;
     font-family: 'New Tegomin', serif;
   }
 
   #tdIn{
-    width:100px;
+    width:60px;
     text-align: center;
     margin: 0 auto;
     padding: 2px;
@@ -109,11 +116,15 @@
   }
 
   #adminTable{
-    width: 80%;
+    width: 75%;
+    /* overflow-x: auto;  */
     margin-left: 10%;
     background:	#F5F5F5;
     text-align: center;
 
+}
+@media screen and (max-width:768px) {
+  .tohide { display: none; }
 }
 
 #adminTable th {
@@ -152,6 +163,7 @@
 }
 
 #picCol {
-  /* width: 100px; */
-  padding: 2px;
+  width: 100px;
+  height: 100px;
+  padding: 0.5em;
 }

@@ -40,9 +40,7 @@ const Footer = () => {
                               <li>
                                   <a href="//twitter.com" target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter"></i></a>
                               </li>
-                              <li>
-                                  <a href="//facebook.com" target="_blank" rel="noopener noreferrer"><i className="fa fa-behance"></i></a>
-                              </li>
+
                               <li>
                                   <a href="//instagram.com" target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram"></i></a>
                               </li>
@@ -61,19 +59,19 @@ const Footer = () => {
                       <h5>Quick Links</h5>
                       <ul>
                           <li>
-                              <Link to="/contact">Who We Are</Link>
+                              <Link to="/contact#whoarewe">Who We Are</Link>
                           </li>
                           <li>
-                              <Link to="/about">Return & Cancellation</Link>
+                              <Link to="/contact#returncancellation">Return & Cancellation</Link>
                           </li>
                           <li>
-                              <Link to="/about">FAQ</Link>
+                              <Link to="/contact#privatepolicy">Private Policy</Link>
                           </li>
                           <li>
-                              <Link to="/about">Delivery Schedule</Link>
+                              <Link to="/contact#deliveryschedule">Delivery Schedule</Link>
                           </li>
                           <li>
-                              <Link to="/about">Terms and Conditions</Link>
+                              <Link to="/contact">Terms and Conditions</Link>
                           </li> 
                       </ul>
                   </div>

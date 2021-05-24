@@ -80,7 +80,7 @@ const MobileMenu = () => {
         id="mobile-menu-close-trigger"
         onClick={() => closeMobileMenu()}
       >
-      <i className="bi bi-search"></i>
+      {/* <i className="bi bi-search"></i> */}
       </button>
 
       <div className="offcanvasWrapper">
@@ -88,9 +88,9 @@ const MobileMenu = () => {
 
           <nav className="offcanvasNavigation" id="offcanvas-navigation">
             <ul>
-              <li>
+              {/* <li>
                 <Link to="/"><img src="/assets/logo/spice-a-holic_logo-mark.png" alt="spiceaholic" width="225"/></Link>
-              </li>
+              </li> */}
 
               <li className="menuItemHasChildren">
                 <Link to={process.env.PUBLIC_URL + "#/"}>Products</Link>

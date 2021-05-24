@@ -99,17 +99,18 @@ function AdminTable() {
 
   // Returns a table with all the associated Admin fields
   return (
-    <section>
-   <div>
-     <table id="adminTable" className="table table-hover ">
+  <section className="py-4">
+   <div className="container-fluid">
+     <div className="table-responsive">
+     <table id="adminTable" className="table table-hover">
         <thead id="th">
           <tr>
-            <th></th>
-            <th id="prdBtn"><button className="adminBtn" onClick={sortTableByProdID}>Product ID</button></th>
+            <th className="tohide"></th>
+            <th className="tohide" id="prdBtn"><button className="adminBtn" onClick={sortTableByProdID}>Product ID</button></th>
 
             <th id="prdNm"><button className="adminBtn" onClick={sortTableByName}>Product Name</button></th>
             <th><button className="adminBtn">Price</button></th>
-            <th><button className="adminBtn">Size</button></th>
+            <th className="tohide"><button className="adminBtn">Size</button></th>
             <th><button className="adminBtn">Quantity</button></th>
             <th></th>
           </tr>
@@ -120,13 +121,13 @@ function AdminTable() {
             result.packaging.map(res=>(
               console.log(res),
               <tr key={result._id + res.size}>
-                <td id="picCol">
+                <td className="tohide" id="picCol">
                 <Link className=" " to={{pathname: `/products/${result._id}`}} ><img className="thumbnail-image" alt={result.name} src={result.picLink} /></Link>
                 </td>
-                <td><p > {result.productID}</p></td>
+                <td className="tohide"><p > {result.productID}</p></td>
                 <td><p > {result.name}</p></td>
                 <td><p val={res.price}>{res.price}</p></td>
-                <td><p val={res.size}>{res.size}</p></td>
+                <td className="tohide"><p val={res.size}>{res.size}</p></td>
                 <td><input id="tdIn"
                 defaultValue={res.quantity}  /></td>
                 <td className="align-middle text-center">
@@ -138,6 +139,7 @@ function AdminTable() {
           ))}
         </tbody>
       </table>
+   </div>
    </div>
    </section>
   );
