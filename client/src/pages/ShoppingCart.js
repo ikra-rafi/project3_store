@@ -314,7 +314,7 @@ function ShoppingCart() {
                                       {/* row inline block end */}
 
                                     </td>
-                                    <td className="align-middle text-center"><p>{result.prodInfo.size}</p></td>
+                                    <td className="align-middle text-center">{result.prodInfo.size}</td>
                                     <td className="align-middle text-center">
                                       <div className="inline btn">
                                         <button onClick={handleDecBtnClick} id={result._id} className="fa fa-minus inline btn"></button>
@@ -324,8 +324,8 @@ function ShoppingCart() {
                                       {/* row inline block end */}
 
                                     </td>
-                                    <td className="align-middle text-center"><p>${result.prodInfo.price}</p></td>
-                                    <td className="align-middle text-center"><p>${formatter.format(result.prodInfo.price * result.prodInfo.quantity)}</p></td>
+                                    <td className="align-middle text-center">${result.prodInfo.price}</td>
+                                    <td className="align-middle text-center">${formatter.format(result.prodInfo.price * result.prodInfo.quantity)}</td>
                                   </tr>
                                 ))}
 

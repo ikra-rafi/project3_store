@@ -9,11 +9,11 @@ function CartData (props) {
 
     return (
             <tr key={props.dbID}>
-              <td className="align-middle text-center"><p>{props.name}</p></td>
-              <td className="align-middle text-center"><p>{props.prodInfo.size}</p></td>
-              <td className="align-middle text-center"><p>{props.prodInfo.quantity}</p></td>
-              <td className="align-middle text-center"><p>${formatter.format(props.prodInfo.price)}</p></td>
-              <td className="align-middle text-center"><p>${formatter.format(props.prodInfo.price * props.prodInfo.quantity)}</p></td>
+              <td className="align-middle text-center">{props.name}</td>
+              <td className="align-middle text-center">{props.prodInfo.size}</td>
+              <td className="align-middle text-center">{props.prodInfo.quantity}</td>
+              <td className="align-middle text-center">${formatter.format(props.prodInfo.price)}</td>
+              <td className="align-middle text-center">${formatter.format(props.prodInfo.price * props.prodInfo.quantity)}</td>
             </tr>
     );
 }
