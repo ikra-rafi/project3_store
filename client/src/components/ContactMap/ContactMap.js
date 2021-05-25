@@ -17,9 +17,7 @@ const ContactMap = props => {
     >
       <Marker
         position={{ lat: props.latitude, lng: props.longitude }}
-        icon={{
-          // url: `${process.env.PUBLIC_URL + "/images/icons/map.png"}`
-        }}
+     
         animation={props.google.maps.Animation.BOUNCE}
       />
     </Map>

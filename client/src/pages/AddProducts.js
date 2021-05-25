@@ -228,42 +228,63 @@ function AddProducts() {
   
       <Container fluid>
         <Container >
-        <div className="container text-center">
+        <div className="pb-5 text-center">
         <h1 className="text-center">Add Products Page</h1> 
-    <div className="row justify-content-between">
-    <div className="col-md-5">
+    <div className="row">
+
+
+                  
 
                     <form className="needs-validation" novalidate="" id={1}  key={1}>
+ 
                     <div className="row">
-                    <div className="col-md-6 mb-3">
+                    <div className="mb-3">
                       <label className="label" htmlFor="name"></label>
                       <input name="name" ref={name} id="name" className="form-control form-control-lg" placeholder="Product Name" />
-                      <label className="label" htmlFor="exampleInputEmail1" ></label>
                     </div>
-                    <div className="col-md-6 mb-3">  
+                    <div className="mb-3">  
+                      {/* <label className="label" htmlFor="exampleInputEmail1" >Description</label> */}
                       <input name="description" ref={description} id="description" className="form-control form-control-lg" placeholder="Description" />
-                      <label className="label" htmlFor="historyDetails">History Details</label>
+                    </div>
+                    <div className="mb-3">    
+                      {/* <label className="label" htmlFor="historyDetails">History Details</label> */}
                       <input name="historyDetails" ref={historyDetails} id="historyDetails" className="form-control form-control-lg" placeholder="History Details" />
-                    </div>  
-                      <label className="label" htmlFor="packagingSize1">Package Size 1</label>
+                    </div>
+                    <div className="col-md-6 mb-3">   
+                      {/* <label className="label" htmlFor="packagingSize1">Package Size 1</label> */}
                       <input name="packagingSize1" ref={packagingSize1} id="packagingSize1" className="form-control form-control-lg" placeholder="Package Size 1" />
-                      <label className="label" htmlFor="packagingPrice1">Package Price 1</label>
+                    </div>
+                    <div className="col-md-6 mb-3"> 
+                      {/* <label className="label" htmlFor="packagingPrice1">Package Price 1</label> */}
                       <input name="packgingPrice1" ref={packagingPrice1} id="packagingPrice1" className="form-control form-control-lg" placeholder="Package Price 1" />
-                      <label className="label" htmlFor="packagingQuantity1">Package Quantity 1</label>
+                    </div>
+                    <div className="col-md-6 mb-3">                       
+                      {/* <label className="label" htmlFor="packagingQuantity1">Package Quantity 1</label> */}
                       <input name="packagingQuantity1" ref={packagingQuantity1} id="packagingQuantity1" className="form-control form-control-lg" placeholder="Package Quantity 1" />
-                      <label className="label" htmlFor="packagingSize2">Package Size 2</label>
+                    </div>
+                    <div className="col-md-6 mb-3">                       
+                      {/* <label className="label" htmlFor="packagingSize2">Package Size 2</label> */}
                       <input name="packagingSize2" ref={packagingSize2} id="packagingSize2" className="form-control form-control-lg" placeholder="Package Size 2" />
-                      <label className="label" htmlFor="packagingPrice2">Package Price 2</label>
+                    </div>
+                    <div className="col-md-6 mb-3">                       
+                      {/* <label className="label" htmlFor="packagingPrice2">Package Price 2</label> */}
                       <input name="packgingPrice2" ref={packagingPrice2} id="packagingPrice2" className="form-control form-control-lg" placeholder="Package Price 2" />
-                      <label className="label" htmlFor="packagingQuantity2">Package Quantity 2</label>
+                    </div>
+                    <div className="col-md-6 mb-3">                       
+                      {/* <label className="label" htmlFor="packagingQuantity2">Package Quantity 2</label> */}
                       <input name="packagingQuantity2" ref={packagingQuantity2} id="packagingQuantity2" className="form-control form-control-lg" placeholder="Package Quantity 2" /> 
-                      <label className="label" htmlFor="healthBenefit">Health Benefit Link</label>
+                    </div>
+                    <div className="mb-3">                        
+                      {/* <label className="label" htmlFor="healthBenefit">Health Benefit Link</label> */}
                       <input name="healthBenefit" ref={healthBenefit} id="healthBenefit" className="form-control form-control-lg" placeholder="Health Benefit Link" />
-                      </div>
+                    </div>
+
                       <br />
-                      <div className="form-group">  
+                      <div className="span6">  
+                      <fieldset>
+
                         <h3>Family</h3>
-                        <div  id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
+                          <div id="payment" className="clearfix"  style={{display: "inline-block", margin: "10px 20px"}}>
                               <label className="label" htmlFor="familyBaking">Baking</label>
                               <input type="checkbox" id="familyBaking" ref={familyBaking} onChange={handleBakingCheck} name="familyBaking" value="Baking"/>
                           </div>
@@ -317,17 +338,21 @@ function AddProducts() {
                           <br />
                           <label className="label" htmlFor="productID">Product ID</label>
                           <input name="productID" ref={productID} id="productID=" className="form-control form-control-lg" placeholder="Product ID" />
+                          </fieldset>
+             </div>
+
                       </div>
                     </form>
-
-                  <label className="label" htmlFor="picLink">Picture Link</label>
-                    <div id="photo-form-container">
-                        <button className="more-link" onClick={showWidget}>Upload Product Photo</button>
-                    </div>
-                <br />
-                <br />
-             <button type="submit" className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Add Product</strong></button>
-             </div>
+                    <br />
+                    <br />
+        <div className="mb-3">
+         <label className="label" htmlFor="picLink">Picture Link</label>
+          <div id="photo-form-container">
+            <button className="more-link" onClick={showWidget}>Upload Product Photo</button>
+          </div>
+         <button type="submit" className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Add Product</strong></button>
+        </div>
+                  
       </div>
       </div>
         </Container>
