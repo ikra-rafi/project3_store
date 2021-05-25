@@ -65,7 +65,7 @@ const Footer = () => {
                               <Link to="/contact">Return & Cancellation</Link>
                           </li>
                           <li>
-                              <Link to="/contact">Private Policy</Link>
+                              <Link to="/contact">Privacy Policy</Link>
                           </li>
                           <li>
                               <Link to="/contact">Delivery Schedule</Link>
