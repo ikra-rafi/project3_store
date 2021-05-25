@@ -309,7 +309,7 @@ function ShoppingCart() {
                                     </td>
                                     <td className="ptitle">
                                       <div className="row" style={{display: 'inline-block'}}>
-                                        {result.name}
+                                       {result.name}
                                       </div>
                                       {/* row inline block end */}
 
