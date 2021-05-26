@@ -60,6 +60,11 @@ function Checkout() {
       // get login information
       getLogin();
     }
+    // set sales tax rate to 0% since no shipping address chosen yet
+    dispatch({
+      type: "salesTaxRate",
+      salesTax: 0
+    })
     // retrieve cart contents
     getCart();
   }, [])
@@ -229,7 +234,7 @@ function Checkout() {
     // save new orderTotal to the store
     dispatch({
       type: "orderTotal",
-      orderTotal: ((newSubTotal + parseFloat(salesTaxCalc) + parseInt(state.shipFee))),
+      orderTotal: ((newSubTotal + parseFloat(salesTaxCalc) + parseFloat(state.shipFee))),
     })
   }
 
@@ -252,46 +257,50 @@ function Checkout() {
 
 
         {/*====================  Start of Checkout  Section    ====================*/}  
-
+      <section className="checkout_section">
       <Container fluid>
         <Container >
-          <section className="checkout_section justify-content-center">
-            <div className="container full-width">
-              <div className="row">
-                <div className="container-fluid containerColor marginBottomCont">
-                  <h1 className="text-center">Checkout Page</h1> 
-                  <h1 className="text-center">Cart Total = ${formatter.format(state.orderTotal)}</h1>
+          
+            <div className="pb-5 text-center">
+              <h1 className="text-center">Checkout Page</h1> 
+              <h1 className="text-center">Cart Total = ${formatter.format(state.orderTotal)}</h1>
+                <div className="row">
                   {state.cartItems.length ? (
-                    <div>  
-                      <div id="content">
-                        <div className="contactform" method="post" className="shopform">
-                          <div className="custom-title">
-                            <h3>Shipping details</h3>
-                          </div>
-                          <br/>
-                          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <form id={1} className="searchForm justify-content-center m-2" key={1}>
-                              <div className="row justify-content-center">
-                                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                  <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
-                                  <input name="shipCompanyName" ref={shipCompanyName} id="shipCompanyName" className="form-control form-control-lg" placeholder="Ship Company Name" />
-
-                                  <label className="label" htmlFor="exampleInputEmail1">First Name</label>
-                                  <input name="shipFirstName" ref={shipFirstName} id="shipFirstName" className="form-control form-control-lg" placeholder="Ship First Name" />
-                          
-                                  <label className="label" htmlFor="exampleInputEmail1">Last Name</label>
+                    <div className="pb-5" id="content">
+                      <div method="post">
+                        <div className="custom-title">
+                          <h3 className="d-flex justify-content-between align-items-center mb-3">Shipping details</h3>
+                        </div>
+                      <br/>
+                        <div className="row">
+                          <form id={1} className="searchForm justify-content-center m-2" key={1}>
+                            <div className="row">  
+                              <div className="mb-3">
+                                {/* <label className="label" htmlFor="exampleInputEmail1">Company Name</label> */}
+                                <input name="shipCompanyName" ref={shipCompanyName} id="shipCompanyName" className="form-control form-control-lg" placeholder="Ship Company Name" />
+                              </div>
+                              <div className="col-md-6 mb-3">
+                                {/* <label className="label" htmlFor="exampleInputEmail1">First Name</label> */}
+                                <input name="shipFirstName" ref={shipFirstName} id="shipFirstName" className="form-control form-control-lg" placeholder="Ship First Name" />
+                              </div>
+                              <div className="col-md-6 mb-3">
+                                  {/* <label className="label" htmlFor="exampleInputEmail1">Last Name</label> */}
                                   <input name="shipLastName" ref={shipLastName} id="shipLastName" className="form-control form-control-lg" placeholder="Ship Last Name" />
-
-                                  <label className="label" htmlFor="exampleInputEmail1">Address</label>
-                                  <input type="text"name="shipStreet" ref={shipStreet} id="shipStreet" className="form-control form-control-lg" placeholder="Shipping Street" />
-
-                                  <label className="label" htmlFor="exampleInputEmail1">Address #2</label>
-                                  <input  type="text" name="shipAddress2" ref={shipAddress2} id="shipAddress2" className="form-control form-control-lg" placeholder="Shipping Address #2" />
-
-                                  <label className="label" htmlFor="exampleInputEmail1">City</label>
-                                  <input name="shipCity" ref={shipCity} id="shipCity" className="form-control form-control-lg" placeholder="Shipping City" />
-                          
-                                  <label className="label" htmlFor="exampleInputEmail1">State</label>
+                              </div>
+                              <div className="mb-3">                             
+                                {/* <label className="label" htmlFor="exampleInputEmail1">Address</label> */}
+                                <input type="text"name="shipStreet" ref={shipStreet} id="shipStreet" className="form-control form-control-lg" placeholder="Shipping Street" />
+                              </div> 
+                              <div className="mb-3"> 
+                                {/* <label className="label" htmlFor="exampleInputEmail1">Address #2</label> */}
+                                <input  type="text" name="shipAddress2" ref={shipAddress2} id="shipAddress2" className="form-control form-control-lg" placeholder="Shipping Address #2" />
+                              </div> 
+                              <div class="col-md-5 mb-3">
+                                {/* <label className="label" htmlFor="exampleInputEmail1">City</label> */}
+                                <input name="shipCity" ref={shipCity} id="shipCity" className="form-control form-control-lg" placeholder="Shipping City" />
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                  {/* <label className="label" htmlFor="exampleInputEmail1">State</label> */}
                       
                                   <div className="select">
                                     <select className="custom-select d-block w-100" ref={shipState} id="shipState" defaultValue="" onChange={handleStateChange} required="">
@@ -349,61 +358,75 @@ function Checkout() {
                                       <option value="WY">WY</option>
                                     </select>
                                   </div>
-                            
-                                  <label className="label" htmlFor="exampleInputEmail1">Zip</label>
-                                  <input name="shipZip" ref={shipZip} id="shipZip" className="form-control form-control-lg" type="text" placeholder="Shipping Zip Code" maxLength="5"
+                              </div>
+                              <div class="col-md-3 mb-3">
+                                {/* <label className="label" htmlFor="exampleInputEmail1">Zip</label> */}
+                                <input name="shipZip" ref={shipZip} id="shipZip" className="form-control form-control-lg" type="text" placeholder="Shipping Zip Code" maxLength="5"
                                     size="5" required/>
-
-                                  <label className="label" htmlFor="exampleInputEmail1">Email</label>                      
-                                  <input type="email" ref={email} id="email" name="email" className="form-control form-control-lg" placeholder="email" />
-
-                                  <label className="label" htmlFor="exampleInputEmail1">Phone</label>
-                                  <input type="tel" ref={phone} id="phone" name="phone" className="form-control form-control-lg" placeholder="555-555-5555"
+                              </div>
+                              <div className="col-md-6 mb-3">
+                                {/* <label className="label" htmlFor="exampleInputEmail1">Email</label>                       */}
+                                <input type="email" ref={email} id="email" name="email" className="form-control form-control-lg" placeholder="email" />
+                              </div>
+                              <div className="col-md-6 mb-3">
+                                {/* <label className="label" htmlFor="exampleInputEmail1">Phone</label> */}
+                                <input type="tel" ref={phone} id="phone" name="phone" className="form-control form-control-lg" placeholder="555-555-5555"
                                     maxLength="12" size="12" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
-
-                                  <label className="label" htmlFor="exampleInputEmail1">Notes</label>                      
-                                  <input name="notes" ref={notes} id="notes" className="form-control form-control-lg" placeholder="notes" />
-                                </div>
-                              </div> 
+                              </div>
+                              <div class="mb-3">
+                                {/* <label className="label" htmlFor="exampleInputEmail1">Notes</label>                       */}
+                                <input name="notes" ref={notes} id="notes" className="form-control form-control-lg" placeholder="notes" />
+                              </div>  
+                              </div>  
                             </form>
 
-                            <div className="payment_mth">
+                            
                               <form id="payment" className="clearfix" style={{display: "inline-block"}}>
                                 <label className="form-check-label"  htmlFor="billingAddr">
                                 <input className="form-check-input" type="checkbox" id="billingAddr" onClick={handleCheck} name="billing" value="same address"/> 
                                     Billing address same as Shipping address</label>
                               </form>
-                            </div>
+                            
                             <br />
                             {!checkbox ? (
-                              <div id="content">
+                              <div id="content" className="row">
+                                <div className="py-5">
                                 <div className="custom-title">
                                   <br />
-                                  <h3>Billing details</h3>
+                                  <h3 className="d-flex justify-content-between align-items-center mb-3">Billing details</h3>
+                                </div>
                                 </div>
                                 <br/>
                                 <form >
                                   <div className="row">
                                     <div className="mb-3">
-                                      <label className="label" htmlFor="exampleInputEmail1">Company Name</label>
+                                      {/* <label className="label" htmlFor="exampleInputEmail1">Company Name</label> */}
                                       <input name="ccBillCompanyName" ref={billCompanyName} id="billCompanyName" className="form-control form-control-lg" placeholder="Billing Company Name" />
-
-                                      <label className="label" htmlFor="exampleInputEmail1">First Name</label>
+                                    </div>
+                                    <div className="col-md-6 mb-3">
+                                      {/* <label className="label" htmlFor="exampleInputEmail1">First Name</label> */}
                                       <input name="ccBillFirstName" ref={billFirstName} id="billFirstName" className="form-control form-control-lg" placeholder="Billing First Name" />
-
-                                      <label className="label" htmlFor="exampleInputEmail1">Last Name</label>
+                                    </div>
+                                    <div className="col-md-6 mb-3"> 
+                                      {/* <label className="label" htmlFor="exampleInputEmail1">Last Name</label> */}
                                       <input name="ccBillLastName" ref={billLastName} id="billLastName" className="form-control form-control-lg" placeholder="Billing Last Name" />                      
-
-                                      <label className="label" htmlFor="exampleInputEmail1">Street</label>
+                                    </div> 
+                                    <div className="mb-3">
+                                      {/* <label className="label" htmlFor="exampleInputEmail1">Street</label> */}
                                       <input name="ccBillStreet" ref={billStreet} id="billStreet" className="form-control form-control-lg" placeholder="Billing Street" />
-
-                                      <label className="label" htmlFor="exampleInputEmail1">Address 2</label>
+                                    </div>
+                                    <div className="mb-3">
+                                      {/* <label className="label" htmlFor="exampleInputEmail1">Address 2</label> */}
                                       <input name="ccBillAddress2" ref={billAddress2} id="billAddress2" className="form-control form-control-lg" placeholder="Billing Address 2" />                      
+                                    </div>
+                                    <div class="col-md-5 mb-3">
 
-                                      <label className="label" htmlFor="exampleInputEmail1">City</label>
+                                      {/* <label className="label" htmlFor="exampleInputEmail1">City</label> */}
                                       <input name="ccBillCity" ref={billCity} id="billCity" className="form-control form-control-lg" placeholder="Billing City" />
+                                    </div>  
+                                    <div class="col-md-4 mb-3">
 
-                                      <label className="label" htmlFor="exampleInputEmail1">State</label>
+                                      {/* <label className="label" htmlFor="exampleInputEmail1">State</label> */}
                                       <div className="select" >
                                         <select className="custom-select d-block w-100" ref={billState} id="billState" defaultValue="" required="">
                                           <option value=""  disabled="">Choose...</option>
@@ -460,41 +483,56 @@ function Checkout() {
                                           <option value="WY">WY</option>
                                         </select>
                                       </div>
-                                      <label className="label" htmlFor="exampleInputEmail1">Zip</label>
+                                    </div> 
+                                    <div class="col-md-3 mb-3">
+                                      {/* <label className="label" htmlFor="exampleInputEmail1">Zip</label> */}
                                       <input name="ccBillZip" ref={billZip} id="billZip" className="form-control form-control-lg" placeholder="Billing Zip Code" maxLength="5"
                                         size="5" required/>
                                     </div>
-                                  </div>
+                                    </div> 
                                 </form>
                               </div>
                             )  : (null )}
                             <br />
+                            
+                            <div className="py-5">
                             <div className="custom-title">
                               <br />
-                              <h3>Payment Information</h3>
+                              <h3 className="d-flex justify-content-between align-items-center mb-3">Payment Information</h3>
                             </div>
-                            <br/>
+                            </div>
+
+                                                        
                             <form>
-                              <label className="label" htmlFor="exampleInputEmail1">Name</label>
+                            <div className="row">
+                            <div class="mb-3">
+                              {/* <label className="label" htmlFor="exampleInputEmail1">Name</label> */}
                               <input name="ccName" ref={ccName} id="ccNameclassName=" className="form-control form-control-lg" placeholder="Name on Credit Card" />
-
-                              <label className="label" htmlFor="exampleInputEmail1">Type of Card</label>
+                            </div>
+                            <div class="col-md-6 mb-3">    
+                              {/* <label className="label" htmlFor="exampleInputEmail1">Type of Card</label> */}
                               <input name="ccType" ref={ccType} id="ccType" className="form-control form-control-lg" placeholder="Credit Card Type" />
-
-                              <label className="label" htmlFor="exampleInputEmail1">Card Number</label>
+                              </div>
+                            <div class="col-md-6 mb-3">  
+                              {/* <label className="label" htmlFor="exampleInputEmail1">Card Number</label> */}
                               <input name="ccNumber" ref={ccNumber} id="ccNumber" className="form-control form-control-lg" placeholder="Credit Card Number" />
-
-                              <label className="label" htmlFor="exampleInputEmail1">Security Code</label>
+                              </div>
+                            <div class="col-md-6 mb-3">  
+                              {/* <label className="label" htmlFor="exampleInputEmail1">Security Code</label> */}
                               <input name="ccSecurityCode" ref={ccSecurityCode} id="ccSecurityCode" className="form-control form-control-lg" placeholder="CC Security Code" />
-
-                              <label className="label" htmlFor="exampleInputEmail1">Expiration Date</label>
+                              </div>
+                            <div class="col-md-6 mb-3">  
+                              {/* <label className="label" htmlFor="exampleInputEmail1">Expiration Date</label> */}
                               <input name="ccExpirationDate" ref={ccExpDate} id="ccExpDate" className="form-control form-control-lg" placeholder="CC Expiration Date" />
+                            </div>
+                            </div>
                             </form>
+                            
                             <div className="shop_cart">
                               <div className="container">
                                 <div className="discount-coupon">
-                                  <h4>Cart Totals</h4>
-                                </div> 
+                                  <h4 className="d-flex justify-content-between align-items-center mb-3">Cart Totals</h4>
+                                </div> <br />
                                 <div className="row" style={{width: "100%", overflowX: "hidden"}}>
                                   <div className="row">
                                     <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
@@ -511,7 +549,7 @@ function Checkout() {
                                           </thead>
                                           <tbody > 
                                             {state.cartItems.map(result => (
-                                              <CartData
+                                              <CartData key={result._id}
                                                 name = {result.name}
                                                 productID = {result.productID}
                                                 prodInfo = {result.prodInfo}
@@ -528,7 +566,7 @@ function Checkout() {
                                       <div className="row">
                                         <div className="col-lg-4 col-sm-12">
                                           <div className="grand-total-area">
-                                            <h4>Cart Total</h4>
+                                            <h4 className="d-flex justify-content-between align-items-center mb-3">Cart Total</h4>
                                             <p className="sub-total">SubTotal:
                                             <span className="amt">${formatter.format(state.subTotal)}</span></p>
                                             {state.discount ? (
@@ -540,7 +578,7 @@ function Checkout() {
                                             )}
                                             <p className="amt">Sales Tax ({state.salesTax}%)
                                             <span className="amt">${formatter.format(state.salesTaxAmt)}</span></p>
-                                            <p className="delivery">Shipping Fee (Flat Rate):
+                                            <p className="delivery">Shipping Fee:
                                             <span className="amt">${state.shipFee}</span></p>
                                             <p className="grand-total">Order Total:
                                             <span className="amt">${formatter.format(state.orderTotal)}</span></p>
@@ -554,7 +592,8 @@ function Checkout() {
                             </div>
                           </div>
                         </div>
-                      </div> 
+
+                      
                     ) : (
                       <section>
                         <div className="row text-center h-100">
@@ -570,10 +609,10 @@ function Checkout() {
              {/* <button className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Place Order</strong></button> */}
 {/*          </Link> */}
               </div>
-            </div>
-          </section>
+          
         </Container>
       </Container> 
+      </section>
     </div>
   </Fragment>
   );

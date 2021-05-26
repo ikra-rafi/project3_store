@@ -125,20 +125,20 @@ function AdminTable() {
 
   // Returns a table with all the associated Admin fields
   return (
-    <section>
-
-   <div>
+  <section className="py-4">
+   <div className="container-fluid">
    <div style={{textAlign:'right', margin:0, paddingRight:'15px'}}>
         <Link to="/addproducts" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-plus-circle" aria-hidden="true"> ADD Product</i></Link>
         <Link to="/salestax" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-wrench" aria-hidden="true"> UPDATE SALES TAX</i></Link>
       </div>
-     <table id="adminTable" className="table table-hover ">
+     <div className="table-responsive">
+     <table id="adminTable" className="table table-hover">
         <thead id="th">
           <tr>
-            <th></th>
-            <th id="prdBtn"><button className="adminBtn" onClick={sortTableByProdID}>Product ID</button></th>
+            <th className="tohide"></th>
+            <th className="tohide" id="prdBtn"><button className="adminBtn" onClick={sortTableByProdID}>Product ID</button></th>
 
-            <th id="prdNm"><button className="adminBtn" onClick={sortTableByName}>Product Name</button></th>
+            <th id="prdNm"><button className="adminBtn tohide" onClick={sortTableByName}>Product Name</button></th>
             <th><button className="adminBtn">Size</button></th>
             <th><button className="adminBtn">Price</button></th>
 
@@ -152,10 +152,10 @@ function AdminTable() {
             result.packaging.map(res=>(
               // console.log(res),
               <tr key={result._id + res.size}>
-                <td id="picCol">
+                <td className="tohide" id="picCol">
                 <Link className=" " to={{pathname: `/products/${result._id}`}} ><img className="thumbnail-image" alt={result.name} src={result.picLink} /></Link>
                 </td>
-                <td><p > {result.productID}</p></td>
+                <td className="tohide"><p > {result.productID}</p></td>
                 <td><p > {result.name}</p></td>
                 <td><p val={res.size} datavalue={`size-${result._id}`}>{res.size}</p></td>
                 <td><input id={`price-${result._id}-${res.size}`} className={`tdIn price-${result._id}`}
@@ -172,6 +172,7 @@ function AdminTable() {
           ))}
         </tbody>
       </table>
+   </div>
    </div>
    </section>
   );

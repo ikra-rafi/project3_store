@@ -2,8 +2,12 @@ import React , {Component, Fragment } from 'react';
 import MetaTags from "react-meta-tags";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import ContactMap from "../components/ContactMap/ContactMap";
+import AboutUS from "../components/AboutUS/aboutus";
+import emailjs from "emailjs-com";
 
 class Contact extends Component{
+
+  
     
     render(){
 
@@ -24,6 +28,7 @@ class Contact extends Component{
              <Breadcrumb title="Contact Us" />
         
              {/*====================  End of breadcrumb area  ================*/}
+             <AboutUS />
 
 
               {/*====================  Contact Form  area  ====================*/} 

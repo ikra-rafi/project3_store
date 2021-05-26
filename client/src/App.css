@@ -64,9 +64,7 @@
 
   /* === PARAGRAPH === */
 
-  p {
-    margin: 0 0 10px;
-  }
+
 
   b,
   strong {
@@ -2476,10 +2474,9 @@ right: 0px !important;
 
 
 /* mobile menu */
-.bi-list{
-  color: #ca3c08;
 
-}
+
+
 .mobile-aside-button {
   font-size: 34px;
   width: 30px;
@@ -2487,14 +2484,14 @@ right: 0px !important;
   margin-top: 20px;
   padding: 0;
   cursor: pointer;
-  color: #ca3c08 i !important;
+ 
   border: none;
   background: none;
 }
 .mobile-aside-button svg {
-  width: 100%;
-  height: 100%;
-  margin-top: 15px;
+  width: 50%;
+  height: 50%;
+  margin-top: 5px;
   vertical-align: top;
 }
 .mobile-aside-button:focus {
@@ -2521,19 +2518,19 @@ right: 0px !important;
   border: none;
   background: #e6e6e6;
 }
-.offcanvasMobileSearchArea button {
+.offcanvasMobileSearchArea #mobilesearch {
   position: absolute;
-  top: 50%;
+  top: -30%;
   right: 20px;
   padding: 0;
   transform: translateY(-50%);
-  color: #aaa;
+  color: #ca3c08;
   border: none;
   background: none;
 }
 .offcanvasMobileSearchArea button svg {
-  font-size: 28px;
-  line-height: 40px;
+  font-size: 10px;
+  line-height: 30px;
 }
 /* offcanvas mobile menu */
 .headerMobileNavigation {
@@ -2569,10 +2566,10 @@ right: 0px !important;
 }
 
 .offCanvasContactWidget .headerContactInfoList li a {
-  color: #ca3c08;
+  color: #0022;
 }
 .offCanvasContactWidget .headerContactInfoList li a:hover {
-  color: #ca3c08;
+  color: #ca3c08 ;
 }
 .offCanvasContactWidget .headerContactInfoList li:last-child {
   margin-right: 0;
@@ -2606,9 +2603,9 @@ right: 0px !important;
   height: 58px;
   padding: 0;
   text-align: center;
-  color: #fff;
+  color: #fff ;
   border: none;
-  background: #343538;
+  background: #ca3c08;
 }
 .offcanvasMenuClose:hover, .offcanvasMenuClose:focus {
   color: #fff;
@@ -2855,7 +2852,7 @@ right: 0px !important;
   color: #333;
   font-size: 27px;
   position: relative;
-  top: 22px;
+  /* top: 22px; */
 }
 .header_topbar {
   background: #000000;
