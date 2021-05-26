@@ -1,6 +1,6 @@
 .table-table-hover{
-    width:60%;
-    background-color:  #aedf04;
+  width:60%;
+  background-color:  #aedf04;
 
 }
 
@@ -18,7 +18,7 @@
     background: #303030;
     object-fit: scale-down;
 
- }
+}
 
 #btn:hover {
     background: #F5F5F5;
@@ -30,53 +30,8 @@
   #prdNm{
     background: #303030;
     object-fit: scale-down;
-    /* width: 100px;
-    height: 20px; */
-  }
-    /* margin-top:1%; */
-    /* width: 100px;
-    height: 40px; */
-    /* font-family: 'New Tegomin', serif; */
-    /* background: #c44308; */
-    /* color: white; */
-    /* font-size:12px; */
-    /* margin-left:2%;
-    text-align: center;
-
-  }  */
-  /* #prdNm:hover {
-    background: white;
-    color:#a73500;
-    border: 1px solid  #c44308;
-  } */
-
-  /* #th{
-    background: #303030;
-    text-align: center;
-    color:whitesmoke;
-    font-family: 'Karla', sans-serif;
-    padding:10px;
-    font-size: 17px;
-    border: 1px solid  #aedf04;
-    border-top:1px solid  #aedf04;
-
-
   }
 
-  #btn{
-    background: #303030;
-      color:#F5F5F5;
-      border: 1px solid #aedf04;
-      padding:1px;
-      font-family: 'Karla', sans-serif;
-  }
-  button #btn{
-    background: #303030;
-      color:#F5F5F5;
-      border: 1px solid #aedf04;
-      padding:1px;
-      font-family: 'Karla', sans-serif;
-  } */
 
 
   #tdp{
@@ -101,65 +56,60 @@
     font-family: 'New Tegomin', serif;
   }
 
-  #tdIn{
-    width:60px;
-    text-align: center;
-    margin: 0 auto;
-    padding: 2px;
-    color: #c44308;
-  }
 
-  #updateButton {
-    color: #c44308;
-    font-family: 'New Tegomin', serif;
-    font-weight:bold;
-  }
+   
 
-  #adminTable{
-    width: 75%;
-    /* overflow-x: auto;  */
-    margin-left: 10%;
-    background:	#F5F5F5;
-    text-align: center;
 
+
+
+.tdIn{
+  width:50%;
+  text-align: right;
+  margin: 0 auto;
+  padding: 2px 10px;
 }
 @media screen and (max-width:768px) {
   .tohide { display: none; }
 }
 
-#adminTable th {
+#adminTable{
+  width: 80%;
+  margin-left: 10%;
+  background:	#F5F5F5;
   text-align: center;
+
+}
+
+#adminTable th {
+text-align: center;
 }
 
 #adminTable td {
-  vertical-align:middle;
-  /* margin: auto 0; */
-  padding: 2px;
+vertical-align:middle;
+padding: 2px;
 }
 
 #adminTable p {
-  margin: 0;
+margin: 0;
 }
 
 #th{
-  background: #303030;
-  color:whitesmoke;
-  font-family: 'Karla', sans-serif;
-  padding:10px;
-  font-size: 17px;
-  border: 1px solid  #aedf04;
-  border-top:1px solid  #aedf04;
-
-
+background: #303030;
+color:whitesmoke;
+font-family: 'Karla', sans-serif;
+padding:10px;
+font-size: 17px;
+border: 1px solid  #aedf04;
+border-top:1px solid  #aedf04;
 }
 
 .adminBtn{
-  background: #303030;
-    color:#F5F5F5;
-    border: none;
-    padding:1px;
-    margin: 0 auto;
-    font-family: 'Karla', sans-serif;
+background: #303030;
+  color:#F5F5F5;
+  border: none;
+  padding:1px;
+  margin: 0 auto;
+  font-family: 'Karla', sans-serif;
 }
 
 #picCol {

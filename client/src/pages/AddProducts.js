@@ -5,6 +5,7 @@ import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
+import { Link } from 'react-router-dom';
 
 function AddProducts() {
   // setup references to fields on page
@@ -43,11 +44,12 @@ function AddProducts() {
     latinAmerica: false,
     europe: false
     }
-    
+
     useEffect(() => {
       if(!state.admin) {
         history.push("/");
       }
+      window.scrollTo(0, 0);
     }, [])
 
 
@@ -61,7 +63,7 @@ function AddProducts() {
       setFamily({...family, baking: e.target.checked});
   }
 
-  function handleGrillingCheck(e) { 
+  function handleGrillingCheck(e) {
       setFamily({...family, grilling: e.target.checked});
   }
 
@@ -109,7 +111,7 @@ function AddProducts() {
   function handleSubmitBtnClick(e) {
     e.preventDefault();
     // object to capture product info before saving to database
-    const ProductInfo = 
+    const ProductInfo =
     {
       name: name.current.value,
       description: description.current.value,
@@ -152,13 +154,13 @@ function AddProducts() {
         // check if successful save
         if(res.status === 200) {
         }
-      }) 
+      })
       .catch(err => console.log(err));
   }
 
   // function to upload spice photo to Cloudinary using their widget
   function showWidget() {
-  
+
     window.cloudinary.openUploadWidget({
       cloudName: process.env.REACT_APP_CLOUD_NAME,
       uploadPreset: process.env.REACT_APP_UPLOAD_PRESET,
@@ -219,68 +221,71 @@ function AddProducts() {
         {/*====================  breadcrumb area ====================*/}
 
         <Breadcrumb title="Add Product" />
-        
-        {/*====================  End of breadcrumb area  ====================*/} 
+
+        {/*====================  End of breadcrumb area  ====================*/}
 
 
-        {/*====================  Start of Checkout  Section    ====================*/}  
+        {/*====================  Start of Checkout  Section    ====================*/}
      <section className="py-5">
-  
+     <div style={{textAlign:'right', margin:0, paddingRight:'15px'}}>
+     <Link to="admin" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-cogs" aria-hidden="true"> ADMIN</i></Link>
+        <Link to="/salestax" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-wrench" aria-hidden="true"> UPDATE SALES TAX</i></Link>
+      </div>
       <Container fluid>
         <Container >
         <div className="pb-5 text-center">
-        <h1 className="text-center">Add Products Page</h1> 
+        <h1 className="text-center">Add Products Page</h1>
     <div className="row">
 
 
-                  
+
 
                     <form className="needs-validation" novalidate="" id={1}  key={1}>
- 
+
                     <div className="row">
                     <div className="mb-3">
                       <label className="label" htmlFor="name"></label>
                       <input name="name" ref={name} id="name" className="form-control form-control-lg" placeholder="Product Name" />
                     </div>
-                    <div className="mb-3">  
+                    <div className="mb-3">
                       {/* <label className="label" htmlFor="exampleInputEmail1" >Description</label> */}
                       <input name="description" ref={description} id="description" className="form-control form-control-lg" placeholder="Description" />
                     </div>
-                    <div className="mb-3">    
+                    <div className="mb-3">
                       {/* <label className="label" htmlFor="historyDetails">History Details</label> */}
                       <input name="historyDetails" ref={historyDetails} id="historyDetails" className="form-control form-control-lg" placeholder="History Details" />
                     </div>
-                    <div className="col-md-6 mb-3">   
+                    <div className="col-md-6 mb-3">
                       {/* <label className="label" htmlFor="packagingSize1">Package Size 1</label> */}
                       <input name="packagingSize1" ref={packagingSize1} id="packagingSize1" className="form-control form-control-lg" placeholder="Package Size 1" />
                     </div>
-                    <div className="col-md-6 mb-3"> 
+                    <div className="col-md-6 mb-3">
                       {/* <label className="label" htmlFor="packagingPrice1">Package Price 1</label> */}
                       <input name="packgingPrice1" ref={packagingPrice1} id="packagingPrice1" className="form-control form-control-lg" placeholder="Package Price 1" />
                     </div>
-                    <div className="col-md-6 mb-3">                       
+                    <div className="col-md-6 mb-3">
                       {/* <label className="label" htmlFor="packagingQuantity1">Package Quantity 1</label> */}
                       <input name="packagingQuantity1" ref={packagingQuantity1} id="packagingQuantity1" className="form-control form-control-lg" placeholder="Package Quantity 1" />
                     </div>
-                    <div className="col-md-6 mb-3">                       
+                    <div className="col-md-6 mb-3">
                       {/* <label className="label" htmlFor="packagingSize2">Package Size 2</label> */}
                       <input name="packagingSize2" ref={packagingSize2} id="packagingSize2" className="form-control form-control-lg" placeholder="Package Size 2" />
                     </div>
-                    <div className="col-md-6 mb-3">                       
+                    <div className="col-md-6 mb-3">
                       {/* <label className="label" htmlFor="packagingPrice2">Package Price 2</label> */}
                       <input name="packgingPrice2" ref={packagingPrice2} id="packagingPrice2" className="form-control form-control-lg" placeholder="Package Price 2" />
                     </div>
-                    <div className="col-md-6 mb-3">                       
+                    <div className="col-md-6 mb-3">
                       {/* <label className="label" htmlFor="packagingQuantity2">Package Quantity 2</label> */}
-                      <input name="packagingQuantity2" ref={packagingQuantity2} id="packagingQuantity2" className="form-control form-control-lg" placeholder="Package Quantity 2" /> 
+                      <input name="packagingQuantity2" ref={packagingQuantity2} id="packagingQuantity2" className="form-control form-control-lg" placeholder="Package Quantity 2" />
                     </div>
-                    <div className="mb-3">                        
+                    <div className="mb-3">
                       {/* <label className="label" htmlFor="healthBenefit">Health Benefit Link</label> */}
                       <input name="healthBenefit" ref={healthBenefit} id="healthBenefit" className="form-control form-control-lg" placeholder="Health Benefit Link" />
                     </div>
 
                       <br />
-                      <div className="span6">  
+                      <div className="span6">
                       <fieldset>
 
                         <h3>Family</h3>
@@ -336,7 +341,7 @@ function AddProducts() {
                               <input type="checkbox" id="regionEurope" onClick={handleEurope} name="regionEurope" value="Europe"/>
                           </div>
                           <br />
-                          <div className="mb-3">  
+                          <div className="mb-3">
                               <input name="productID" ref={productID} id="productID=" className="form-control form-control-lg" placeholder="Product ID" />
                           </div>
                           </fieldset>
@@ -353,12 +358,12 @@ function AddProducts() {
           </div>
          <button type="submit" className="btn myButton buttonMargin" style={{ fontSize: "20px"}} onClick={handleSubmitBtnClick}><strong>Add Product</strong></button>
         </div>
-                  
+
       </div>
       </div>
         </Container>
       </Container>
-    
+
       </section>
         </div>
 

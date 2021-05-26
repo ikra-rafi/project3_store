@@ -35,6 +35,7 @@ function App() {
             <Route path="/cart" component={ShoppingCart} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/products" component={AllProducts} />
+            <Route path="/filtered/products/:family" component={AllProducts} />
             <Route path="/review/:name/:id" component={Review} />
             <Route path="/thankyou" component={ThankYou} />
             <Route path="/addproducts" component={AddProducts} />

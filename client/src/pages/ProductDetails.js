@@ -19,7 +19,12 @@ class ProductDetails extends Component {
       ratings:[],
       comments: [],
       productID: "",
-      packaging: [{}]
+      packaging: [{}],
+      fiveStar:0,
+      fourStar:0,
+      threeStar:0,
+      twoStar:0,
+      oneStar:0
     }
 }
 // When mounted, the window scrolls to the top of the page on render.
@@ -45,10 +50,33 @@ class ProductDetails extends Component {
 // setProduct searches for the product based on the id that is passed in as a URL parameter.
 // It then sets the additional states associated with the product
   setProduct = () => {
+    var oneStar = 0;
+    var twoStar = 0;
+    var threeStar = 0;
+    var fourStar = 0;
+    var fiveStar = 0;
+
     const index = this.state.products.findIndex(product => product._id === this.state.id);
 
     this.setState({product: this.state.products[index]});
     this.setState({ratings: this.state.product.ratings});
+
+    for (var i = 0; i < this.state.ratings.length; i++){
+
+      if ( this.state.ratings[i].stars === 5){
+        this.state.fiveStar++;
+      } else if ( this.state.ratings[i].stars === 4){
+        this.state.fourStar++;
+      } else if ( this.state.ratings[i].stars === 3){
+        this.state.threeStar++;
+      } else if ( this.state.ratings[i].stars === 2){
+        this.state.twoStar++;
+      } else if ( this.state.ratings[i].stars === 1){
+        this.state.oneStar++;
+      }
+    }
+    console.log(fiveStar);
+    console.log(this.state.ratings);
     this.setState({commentIDs: this.state.product.commentIDs})
 
 
@@ -81,7 +109,13 @@ class ProductDetails extends Component {
                          ratings = {this.state.ratings}
                          packaging = {this.state.packaging}/>
           <Comments product = {this.state.comments}
-                    name = {this.state.product.name}/>
+                    name = {this.state.product.name}
+                    ratings = {this.state.ratings}
+                    fiveStar = {this.state.fiveStar}
+                    fourStar = {this.state.fourStar}
+                    threeStar = {this.state.threeStar}
+                    twoStar = {this.state.twoStar}
+                    oneStar = {this.state.oneStar}/>
       </div>
       </div>
     </Fragment>

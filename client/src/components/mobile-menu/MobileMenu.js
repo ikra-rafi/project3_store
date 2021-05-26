@@ -68,7 +68,7 @@ const MobileMenu = () => {
             loggedIn: false,
             email: null
           })
-  
+
         }
       })
     }
@@ -94,11 +94,11 @@ const MobileMenu = () => {
               <li className="menuItemHasChildren">
                 <Link to={process.env.PUBLIC_URL + "#/"}>Products</Link>
                 <ul className="subMenu">
-                  <li> <Link to="/baking">Baking</Link> </li>
-                  <li> <Link to="/grilling">Grilling</Link></li>
-                  <li><Link to="/seasonings">Seasoning</Link></li>
-                  <li><Link to="/extracts">Extracts</Link></li>
-                  <li><Link to="/teas">Teas</Link></li>
+                  <li> <Link to="/filtered/products/baking">Baking</Link> </li>
+                  <li> <Link to="/filtered/products/grilling">Grilling</Link></li>
+                  <li><Link to="/filtered/products/seasonings">Seasoning</Link></li>
+                  <li><Link to="/filtered/products/extracts">Extracts</Link></li>
+                  <li><Link to="/filtered/products/teas">Teas</Link></li>
                 </ul>
               </li>
 
@@ -108,15 +108,15 @@ const MobileMenu = () => {
                 <li><a href="https://www.marksdailyapple.com/health-benefits-turmeric/">Turmeric</a>
                                         </li>
                                         <li><a href="https://www.marksdailyapple.com/cumin/">Cumin</a>
-                                        </li> 
+                                        </li>
                                         <li><a href="https://www.marksdailyapple.com/salt-what-is-it-good-for/">Salt</a>
-                                        </li>  
+                                        </li>
                 </ul>
               </li>
 
                                   <li className="menuItemHasChildren">
                                     <Link to="/regions">Regions</Link>
-                                  
+
                                   <ul className="subMenu">
                                         <li><a href="india">India</a>
                                         </li>
@@ -130,7 +130,7 @@ const MobileMenu = () => {
                                         </li>
                                         <li><a href="europe">Europe</a>
                                         </li>
-                                    </ul>  
+                                    </ul>
                                     </li >
             </ul>
           </nav>
@@ -155,9 +155,9 @@ const MobileMenu = () => {
                 ) : (
                     <Link className="more-link" to="/login" >
                     Login
-                </Link> 
+                </Link>
                 )}
-          {/* Contact Info  */} 
+          {/* Contact Info  */}
 
           <div className="header_top_right list-unstyled">
             <ul>
@@ -175,7 +175,7 @@ const MobileMenu = () => {
 
           {/* Social Icon*/}
           <div className="header_top_left">
-            <ul className="header_socil list-inline">   
+            <ul className="header_socil list-inline">
                 <li>
                     <Link to="#/" className="fa fa-facebook"></Link>
                 </li>

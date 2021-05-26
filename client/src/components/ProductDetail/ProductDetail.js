@@ -133,7 +133,7 @@ function ProductDetail(props) {
       <select onChange={selectSize} className="packaging-choices" id="packaging">
       <option  value = "Null">---Select Size---</option>
       {props.packaging.map ( packaging =>
-         <option value = {`${packaging.size}-${packaging.price}`}>${packaging.price}  {packaging.size}</option>
+         <option key={`${packaging.size}-${packaging.price}`} value = {`${packaging.size}-${packaging.price}`}>${packaging.price}  {packaging.size}</option>
       )}
 
       </select>
