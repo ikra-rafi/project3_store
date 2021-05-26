@@ -270,7 +270,7 @@ function Checkout() {
                   {state.cartItems.length ? (
                     <div>  
                       <div id="content">
-                        <div className="contactform" method="post" className="shopform">
+                        <div method="post" className="shopform">
                           <div className="custom-title">
                             <h3>Shipping details</h3>
                           </div>
@@ -517,7 +517,7 @@ function Checkout() {
                                           </thead>
                                           <tbody > 
                                             {state.cartItems.map(result => (
-                                              <CartData
+                                              <CartData key={result._id}
                                                 name = {result.name}
                                                 productID = {result.productID}
                                                 prodInfo = {result.prodInfo}
