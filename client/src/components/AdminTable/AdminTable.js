@@ -18,7 +18,6 @@ function AdminTable() {
       if(isMounted) {
         setSortedProducts(state.products);
       }
-
     }
   });
 
@@ -109,8 +108,6 @@ function AdminTable() {
       const s = item.innerHTML;
       const p = document.getElementById(`price-${id}-${item.innerHTML}`).value;
       const q = document.getElementById(`quantity-${id}-${item.innerHTML}`).value;
-
-      console.log(q);
       const pkg = {
         size: s,
         price: p,
@@ -122,14 +119,19 @@ function AdminTable() {
     API.updateProduct(id, packaging)
     .then(res => {
       console.log(res);
+      alert("Your update has been saved!");
     })
-
   }
 
   // Returns a table with all the associated Admin fields
   return (
     <section>
+
    <div>
+   <div style={{textAlign:'right', margin:0, paddingRight:'15px'}}>
+        <Link to="/addproducts" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-plus-circle" aria-hidden="true"> ADD Product</i></Link>
+        <Link to="/salestax" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-wrench" aria-hidden="true"> UPDATE SALES TAX</i></Link>
+      </div>
      <table id="adminTable" className="table table-hover ">
         <thead id="th">
           <tr>

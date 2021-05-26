@@ -5,6 +5,7 @@ import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
+import { Link } from 'react-router-dom';
 
 function SalesTax() {
   // setup references to fields on page
@@ -13,18 +14,19 @@ function SalesTax() {
 
   const [state, dispatch] = useTodoContext();
   let history = useHistory();
-    
+
     useEffect(() => {
       if(!state.admin) {
         history.push("/");
       }
+      window.scrollTo(0, 0);
     }, [])
 
   // function to handle submit button
   function handleSubmitBtnClick(e) {
     e.preventDefault();
     // object to capture product info before saving to database
-    const taxInfo = 
+    const taxInfo =
     {
       stateID: stateID.current.value,
       salestax: salesTaxRate.current.value
@@ -37,7 +39,7 @@ function SalesTax() {
         // check if successful save
         if(res.status === 200) {
         }
-      }) 
+      })
       .catch(err => console.log(err));
   }
 
@@ -55,20 +57,23 @@ function SalesTax() {
         {/*====================  breadcrumb area ====================*/}
 
         <Breadcrumb title="Update Sales Tax Rate" />
-        
-        {/*====================  End of breadcrumb area  ====================*/} 
+
+        {/*====================  End of breadcrumb area  ====================*/}
 
 
-        {/*====================  Start of Update Sales Tax Rate  Section    ====================*/}  
+        {/*====================  Start of Update Sales Tax Rate  Section    ====================*/}
      <section>
-  
+     <div style={{textAlign:'right', margin:0, paddingRight:'15px'}}>
+     <Link to="admin" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-cogs" aria-hidden="true"> ADMIN</i></Link>
+     <Link to="/addproducts" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-plus-circle" aria-hidden="true"> ADD Product</i></Link>
+      </div>
       <Container fluid>
         <Container >
         <div className="container">
     <div className="row justify-content-center">
     <div className="col-sm-6 col-md-5 col-lg-6">
               <div className="container-fluid containerColor marginBottomCont">
-               <h1 className="text-center">Update Sales Tax Rate</h1> 
+               <h1 className="text-center">Update Sales Tax Rate</h1>
                   <div>
                     <form id={1}  key={1}>
                       <label className="label" htmlFor="stateID">State Name</label>
@@ -116,7 +121,7 @@ function SalesTax() {
                           <option value="PA">Pennsylvania</option>
                           <option value="RI">Rhode Island</option>
                           <option value="SC">South Carolina</option>
-                          <option value="SD">South Dakota</option>  
+                          <option value="SD">South Dakota</option>
                           <option value="TN">Tennessee</option>
                           <option value="TX">Texas</option>
                           <option value="UT">Utah</option>
@@ -141,7 +146,7 @@ function SalesTax() {
       </div>
         </Container>
       </Container>
-    
+
       </section>
         </div>
 

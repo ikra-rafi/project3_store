@@ -11,6 +11,8 @@ function Comments(props) {
     useEffect(() => {
         if(!state.loggedIn) {
             $("#comBtn").addClass("hideSelf");
+            const ratings = props.ratings;
+            console.log(props);
         }
     }, []);
 
@@ -25,20 +27,45 @@ function Comments(props) {
     // Returns a Write Review button and list of Reviews associated with the product
     return(
         <div className="container">
-            <div className="project_btn text-center">
+            {/* <div className="project_btn text-center"> */}
+            <div className="project_btn">
             <button id="comBtn"onClick={writeReview}>Write Review</button>
-            <div><h2 style={{fontWeight:'bold', textDecoration:'underline'}}>Reviews</h2></div>
-            {props.product.map(res => (
-                console.log(res),
-                <div className="comment" key = {res._id}>
-                    <h3>{res.title}</h3>
-                    <p>{res.userComment}</p>
-                    <p>{new Date(res.date).toLocaleDateString()}</p>
+            <h2 style={{fontWeight:'bold', textDecoration:'underline'}}>Customer Reviews</h2>
+            <div>
+                <div>
+                    <div className="col">
 
+                    </div>
+                    <div className="col">
+                        <div className="row">
+                            {/* <div className="col-3">
+
+                            </div> */}
+                            <div className="col">
+                                {props.product.map(res => (
+                                // console.log(res),
+                                    <div className="comment" key = {res._id}>
+                                        <div className="row">
+                                            <div className="col-10">
+                                                <h3>{res.title}</h3>
+                                            </div>
+                                            <div className="col-2" style={{textAlign:'right'}}>
+                                                <p>{new Date(res.date).toLocaleDateString()}</p>
+                                            </div>
+                                        </div>
+
+                                        <p>{res.userComment}</p>
+
+                                    </div>
+                                 ))}
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+            </div>
 
 
-            ))}
 </div>
         </div>
     );

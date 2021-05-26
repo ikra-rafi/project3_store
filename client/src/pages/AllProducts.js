@@ -4,8 +4,9 @@ import ProductContext from "../utils/productContext";
 import ProductsContainer from "../components/ProductsContainer";
 import MetaTags from "react-meta-tags";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
+import $ from "jquery";
 
-function AllProducts() {
+function AllProducts(props) {
 
   const [product, setProduct] = useState({});
   const [products, setProducts] = useState([]);
@@ -16,6 +17,11 @@ function AllProducts() {
 useEffect(() => {
   window.scrollTo(0, 0);
   loadProducts();
+  const family = window.location.href.split("/").pop();
+    if (family !== "products"){
+      console.log(family)
+      $("#filterDropdown").val(family);
+    }
 }, []);
 
 /* getProducts() makes an API call to get the Products from the store and sets them in a products array.
@@ -26,9 +32,11 @@ function loadProducts() {
       setProducts(products);
       setFilteredProducts(products);
       setProduct(products[0]);
+
     })
     .catch(err => console.log(err));
 }
+
 
 // This function handles the onchange event for the search box. The results are filtered based on user input
 function handleInputChange(event)  {
@@ -41,7 +49,9 @@ function handleInputChange(event)  {
 
 // This function filters the product results based on the Family drop down
 function filterResults(event) {
+  console.log(event.target);
   const filter = event.target.value;
+
   if (filter === "baking"){
     const baking = products.filter(result => (result.family.baking === true));
     setFilteredProducts(baking);
@@ -134,7 +144,7 @@ Container as props */
         <option value = "teas">Teas</option>
       </select>
 
-      <select class="custom-select d-block w-100" name="filter2" id="filterDropdown2" style={{margin:'2px'}} onChange= {filterResults2}>
+      <select className="custom-select d-block w-100" name="filter2" id="filterDropdown2" style={{margin:'2px'}} onChange= {filterResults2}>
         <option value = "">Select a region...</option>
         <option value = "india">India</option>
         <option value = "asia">Asia</option>

@@ -5,6 +5,7 @@ import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
+import { Link } from 'react-router-dom';
 
 function AddProducts() {
   // setup references to fields on page
@@ -43,11 +44,12 @@ function AddProducts() {
     latinAmerica: false,
     europe: false
     }
-    
+
     useEffect(() => {
       if(!state.admin) {
         history.push("/");
       }
+      window.scrollTo(0, 0);
     }, [])
 
 
@@ -61,7 +63,7 @@ function AddProducts() {
       setFamily({...family, baking: e.target.checked});
   }
 
-  function handleGrillingCheck(e) { 
+  function handleGrillingCheck(e) {
       setFamily({...family, grilling: e.target.checked});
   }
 
@@ -109,7 +111,7 @@ function AddProducts() {
   function handleSubmitBtnClick(e) {
     e.preventDefault();
     // object to capture product info before saving to database
-    const ProductInfo = 
+    const ProductInfo =
     {
       name: name.current.value,
       description: description.current.value,
@@ -152,13 +154,13 @@ function AddProducts() {
         // check if successful save
         if(res.status === 200) {
         }
-      }) 
+      })
       .catch(err => console.log(err));
   }
 
   // function to upload spice photo to Cloudinary using their widget
   function showWidget() {
-  
+
     window.cloudinary.openUploadWidget({
       cloudName: process.env.REACT_APP_CLOUD_NAME,
       uploadPreset: process.env.REACT_APP_UPLOAD_PRESET,
@@ -219,20 +221,24 @@ function AddProducts() {
         {/*====================  breadcrumb area ====================*/}
 
         <Breadcrumb title="Add Product" />
-        
-        {/*====================  End of breadcrumb area  ====================*/} 
+
+        {/*====================  End of breadcrumb area  ====================*/}
 
 
-        {/*====================  Start of Checkout  Section    ====================*/}  
+        {/*====================  Start of Checkout  Section    ====================*/}
      <section>
-  
+
+     <div style={{textAlign:'right', margin:0, paddingRight:'15px'}}>
+     <Link to="admin" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-cogs" aria-hidden="true"> ADMIN</i></Link>
+        <Link to="/salestax" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-wrench" aria-hidden="true"> UPDATE SALES TAX</i></Link>
+      </div>
       <Container fluid>
         <Container >
         <div className="container">
     <div className="row justify-content-center">
     <div className="col-sm-6 col-md-5 col-lg-6">
               <div className="container-fluid containerColor marginBottomCont">
-               <h1 className="text-center">Add Products Page</h1> 
+               <h1 className="text-center">Add Products Page</h1>
                   <div>
                     <form id={1}  key={1}>
                       <label className="label" htmlFor="name">Name of Product</label>
@@ -252,7 +258,7 @@ function AddProducts() {
                       <label className="label" htmlFor="packagingPrice2">Package Price 2</label>
                       <input name="packgingPrice2" ref={packagingPrice2} id="packagingPrice2" className="form-control form-control-lg" placeholder="Package Price 2" />
                       <label className="label" htmlFor="packagingQuantity2">Package Quantity 2</label>
-                      <input name="packagingQuantity2" ref={packagingQuantity2} id="packagingQuantity2" className="form-control form-control-lg" placeholder="Package Quantity 2" /> 
+                      <input name="packagingQuantity2" ref={packagingQuantity2} id="packagingQuantity2" className="form-control form-control-lg" placeholder="Package Quantity 2" />
                       <label className="label" htmlFor="healthBenefit">Health Benefit Link</label>
                       <input name="healthBenefit" ref={healthBenefit} id="healthBenefit" className="form-control form-control-lg" placeholder="Health Benefit Link" />
                       <br />
@@ -326,7 +332,7 @@ function AddProducts() {
       </div>
         </Container>
       </Container>
-    
+
       </section>
         </div>
 

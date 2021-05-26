@@ -6,6 +6,7 @@ import { useTodoContext} from "../utils/store";
 import { Link } from 'react-router-dom';
 import MetaTags from "react-meta-tags";
 import Jumbotron from '../components/Jumbotron';
+import $ from "jquery";
 
 function Home() {
 
@@ -32,6 +33,10 @@ function loadProducts() {
     .then(products => {
       // set state
       setProducts(products);
+      dispatch({
+        type: "products",
+        products: products
+      })
       setProduct(products[0]);
       filterResults(products);
     })
@@ -70,20 +75,23 @@ function loadProducts() {
           content="Organic Spices."
         />
       </MetaTags>
+      <div style={{textAlign:'right', margin:0, paddingRight:'15px'}}>
+        <Link to="admin" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-cogs" aria-hidden="true"> ADMIN</i></Link>
+      </div>
       <Jumbotron />
 
-    <ProductContext.Provider value={{product, products}}>
+    {/* <ProductContext.Provider value={{product, products}}> */}
 
       <div>
       <section className="product-section">
-      <div className="container">
-          <div className="base-header">
-              <small> Our Featured Items</small>
-              <h3>Organic products</h3>
-          </div>
+        <div className="container">
+            <div className="base-header">
+                <small> Our Featured Items</small>
+                <h3>Organic products</h3>
+            </div>
 
-      </div>
-  </section>
+        </div>
+      </section>
 
         <h1 className="base-header" style={{color:'black'}}>Baking</h1>
         <ProductsContainer
@@ -114,14 +122,14 @@ function loadProducts() {
         <div className="project_btn text-center">
           <Link className="more-link" to={{
             pathname:"/products",
-            state: {products: {products}}
+            // state: {products: {products}}
           }}>View All</Link>
         </div>
         <br className="footer-spacing"></br>
         </div>
       </div>
 
-    </ProductContext.Provider>
+    {/* </ProductContext.Provider> */}
 </>
   )
 

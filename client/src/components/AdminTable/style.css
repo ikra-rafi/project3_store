@@ -66,7 +66,7 @@ width: 50px;
 }
 
 .tdIn{
-  width:70%;
+  width:50%;
   text-align: right;
   margin: 0 auto;
   padding: 2px 10px;
@@ -86,7 +86,6 @@ text-align: center;
 
 #adminTable td {
 vertical-align:middle;
-/* margin: auto 0; */
 padding: 2px;
 }
 
@@ -102,8 +101,6 @@ padding:10px;
 font-size: 17px;
 border: 1px solid  #aedf04;
 border-top:1px solid  #aedf04;
-
-
 }
 
 .adminBtn{
@@ -116,6 +113,5 @@ background: #303030;
 }
 
 #picCol {
-/* width: 100px; */
 padding: 2px;
 }

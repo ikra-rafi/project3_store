@@ -63,7 +63,7 @@ function handleInputChange(event)  {
   setFilteredProducts(filteredResults);
 }
 
-// function to filter the results 
+// function to filter the results
 function filterResults(event) {
   const filter = event.target.value;
   if (filter === "baking"){
@@ -85,18 +85,18 @@ function filterResults(event) {
     setFilteredProducts(products);
   }
 };
-  
+
   const triggerSearch = () => {
     const offcanvasMobileMenu = document.querySelector(".search_icon_inr");
     offcanvasMobileMenu.classList.toggle("active");
   };
 
   return (
- 
-<div className="menu_area">	
+
+<div className="menu_area">
     {/* Start: header navigation */}
     <div className="navigation">
-        <div className="container"> 
+        <div className="container">
                 <div className="logo">
                     <Link to="/" >
                     	<img src="/assets/logo/spice-a-holic_logo-horizontal.png" alt="spiceaholic" width="225"/>
@@ -104,7 +104,7 @@ function filterResults(event) {
                 </div>
 
                 <div className="meun_wrp">
-                    <nav expand="lg" sticky="top" id="navigation">  
+                    <nav expand="lg" sticky="top" id="navigation">
                         <nav className="mr-auto">
                             <ul>
                                 <li className="active">
@@ -112,15 +112,15 @@ function filterResults(event) {
                                 </li>
                                 <li className="has-sub"><Link to="/products">Products</Link>
                                     <ul className="subMenu">
-                                        <li><Link to="/baking">Baking</Link>
+                                        <li><Link to="/filtered/products/baking">Baking</Link>
                                         </li>
-                                        <li><Link to="/grilling">Grilling</Link>
+                                        <li><Link to="/filtered/products/grilling">Grilling</Link>
                                         </li>
-                                        <li><Link to="/seasoning">Seasoning</Link>
+                                        <li><Link to="/filtered/products/seasoning">Seasoning</Link>
                                         </li>
-                                        <li><Link to="/extract">Extract</Link>
+                                        <li><Link to="/filtered/products/extract">Extract</Link>
                                         </li>
-                                        <li><Link to="/teas">Teas</Link>
+                                        <li><Link to="/filtered/products/teas">Teas</Link>
                                         </li>
 
                                     </ul>
@@ -130,12 +130,12 @@ function filterResults(event) {
                                         <li><a href="https://www.marksdailyapple.com/health-benefits-turmeric/">Turmeric</a>
                                         </li>
                                         <li><a href="https://www.marksdailyapple.com/cumin/">Cumin</a>
-                                        </li> 
+                                        </li>
                                         <li><a href="https://www.marksdailyapple.com/salt-what-is-it-good-for/">Salt</a>
                                         </li>
                                     </ul>
                                 </li>
-                                
+
                                 <li><Link to="/regions">Regions</Link>
                                 <ul>
                                         <li><a href="india">India</a>
@@ -150,17 +150,17 @@ function filterResults(event) {
                                         </li>
                                         <li><a href="europe">Europe</a>
                                         </li>
-                                    </ul>                                
+                                    </ul>
                                 </li>
                             </ul>
-                        </nav> 
+                        </nav>
                     </nav>
                 </div>
-                
+
 
                 {/* Mobile Menu */}
 
-                <MobileBtn /> 
+                <MobileBtn />
 
                 <MobileMenu />
 
@@ -171,23 +171,23 @@ function filterResults(event) {
                 <div className="header_cart">
                     <ul>
                         <li className="header_search">
-                        <Link to="/products" 
-                        className="cart-toggler search_icon" 
+                        <Link to="/products"
+                        className="cart-toggler search_icon"
                                  type="button" id="searchInput" onKeyUp={handleInputChange}
                                  onClick={() => triggerSearch()}
                                  ><i className="fa fa-search"></i></Link>
-                            
-          
+
+
                             <div className="search_icon_inr">
                                 <form action="#" method="POST">
                                     <div className="form-group">
-                                        <input placeholder="Search" type="text" /> 
+                                        <input placeholder="Search" type="text" />
                                         <button className="btn-search" type="submit">
                                         <img src="assets/icons/search.png" className="bi bi-search" />
                                         </button>
                                     </div>
                                 </form>
-                            </div> 
+                            </div>
                           </li>
                         <li className="header_cart_icon">
                             <Link to="/cart"><i className="fa fa-shopping-cart"></i><span className="number_cart">{state.numItems}</span></Link>
@@ -195,13 +195,13 @@ function filterResults(event) {
                     </ul>
                 </div>
                  {/* End: Cart  */}
- 
+
         </div>
-        {/* container */} 
+        {/* container */}
     </div>
     {/* End: header navigation */}
 </div>
- 
+
   );
 }
 

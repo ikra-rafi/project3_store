@@ -68,6 +68,7 @@ function Product(props) {
 
   // Sets item state
   const setState = () => {
+    // console.log(props.product.packaging)
     setItem({
       name: props.product.name,
       productID: props.product.productID,
@@ -122,7 +123,11 @@ function Product(props) {
   }
 
   // Handles select size drop downs. And sets the item state when changed
-  const selectSize = () => {
+  const selectSize = (e) => {
+    // console.log(e.target.value);
+    const qTotal = e.target.value.split("-")[2];
+    // document.getElementById(`addCart-${props.product_id}`).disabled = true;
+    // console.log(qTotal);
     const pkgs = document.getElementById("packaging-" + props.product._id).value;
     const quantity = document.getElementById(props.product._id);
     const val = parseInt(quantity.value);
@@ -214,23 +219,21 @@ function Product(props) {
                       <div className ="col-7">
                       <select onChange={selectSize} className="packaging-choices" id={`packaging-${props.product._id}`} >
                           <option  value = "Null">---Select Size---</option>
-                          <option value = {`${props.product.packaging[0].size}-${props.product.packaging[0].price}`}>${props.product.packaging[0].price}  {props.product.packaging[0].size}</option>
-                          <option value = {`${props.product.packaging[1].size}-${props.product.packaging[1].price}`}>${props.product.packaging[1].price}  {props.product.packaging[1].size}</option>
+                          {props.product.packaging.map (result => {
+                            return <option key={props.product._id + result.size} value = {`${result.size}-${result.price}-${result.quantity}`}>${result.price}  {result.size}</option>
+                          })}
                         </select>
                         <div id = "quantityDiv">
                           <button className="fa fa-minus inline btn no-margin" id={"decrementBtn-" + props.product._id} onClick={handleDecrement} ></button>
                           <input type="text" className="inline quantity productQuantity no-margin" id={props.product._id} defaultValue = "1"></input>
                           <button className="fa fa-plus buttons inline btn no-margin" id={"incrementBtn-" + props.product._id} onClick={handleIncrement}></button>
-
                         </div>
                       </div>
                       <div className="col-5">
-                        <button id="addCart" onClick = {addToCartProducts}><i className="fa fa-shopping-cart" ></i></button>
+                        <button id={`addCart`} onClick = {addToCartProducts}><i className="fa fa-shopping-cart addCart" ></i></button>
+                        <p className="hideSelf">Out of stock</p>
                       </div>
                     </div>
-
-
-
               </div>
             </div>
           </div>

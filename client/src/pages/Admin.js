@@ -6,6 +6,7 @@ import AdminTable from "../components/AdminTable";
 import MetaTags from "react-meta-tags";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 
+
 function Admin() {
 
   const [products, setProducts]= useState([]);
@@ -15,14 +16,14 @@ function Admin() {
   // The useEffect() scrolls to the top of the page on render.
   // It checks to see if the logged in user is an admin and then calls getProducts().  If not, they are re-directed to the home page.
   useEffect(() => {
-    console.log("product Effect");
+    console.log(state);
     window.scrollTo(0, 0);
-    // if(!state.admin) {
-    //   history.push("/");
-    // } else
-    // {
+    if(!state.admin) {
+      history.push("/");
+    } else
+    {
       getProducts();
-    // }
+    }
 
   }, [])
 
@@ -56,7 +57,7 @@ function Admin() {
       />
     </MetaTags>
 
-   <div className="contact-page">
+   {/* <div className="contact-page"> */}
 
      {/*====================  breadcrumb area ====================*/}
 
@@ -68,7 +69,7 @@ function Admin() {
       {/*====================  Contact Form  area  ====================*/}
 
         <AdminTable />
-    </div>
+    {/* </div> */}
         </Fragment>
 
   );
