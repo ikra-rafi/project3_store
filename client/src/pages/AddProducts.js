@@ -229,7 +229,8 @@ function AddProducts() {
      <section className="py-5">
      <div style={{textAlign:'right', margin:0, paddingRight:'15px'}}>
      <Link to="admin" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-cogs" aria-hidden="true"> ADMIN</i></Link>
-        <Link to="/salestax" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-wrench" aria-hidden="true"> UPDATE SALES TAX</i></Link>
+        <Link to="/salestax" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-wrench" aria-hidden="true"> UPDATE SALES TAX</i></Link>
+        <Link to="/shipping" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-truck" aria-hidden="true"> UPDATE SHIPPING COSTS</i></Link>
       </div>
       <Container fluid>
         <Container >
