@@ -129,7 +129,8 @@ function AdminTable() {
    <div className="container-fluid">
    <div style={{textAlign:'right', margin:0, paddingRight:'15px'}}>
         <Link to="/addproducts" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-plus-circle" aria-hidden="true"> ADD Product</i></Link>
-        <Link to="/salestax" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-wrench" aria-hidden="true"> UPDATE SALES TAX</i></Link>
+        <Link to="/salestax" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-wrench" aria-hidden="true"> UPDATE SALES TAX</i></Link>
+        <Link to="/shipping" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-truck" aria-hidden="true"> UPDATE SHIPPING COSTS</i></Link>
       </div>
      <div className="table-responsive">
      <table id="adminTable" className="table table-hover">

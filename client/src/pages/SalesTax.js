@@ -65,7 +65,8 @@ function SalesTax() {
      <section>
      <div style={{textAlign:'right', margin:0, paddingRight:'15px'}}>
      <Link to="admin" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-cogs" aria-hidden="true"> ADMIN</i></Link>
-     <Link to="/addproducts" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-plus-circle" aria-hidden="true"> ADD Product</i></Link>
+     <Link to="/addproducts" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-plus-circle" aria-hidden="true"> ADD Product</i></Link>
+     <Link to="/shipping" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-truck" aria-hidden="true"> UPDATE SHIPPING COSTS</i></Link>
       </div>
       <Container fluid>
         <Container >

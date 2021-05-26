@@ -5,6 +5,7 @@ import API from "../utils/API";
 import { useTodoContext} from "../utils/store";
 import Breadcrumb from "../components/Breadcrumbs/Breadcrumbs";
 import MetaTags from "react-meta-tags";
+import { Link } from 'react-router-dom';
 
 function ShippingCosts() {
   // setup references to fields on page
@@ -15,7 +16,7 @@ function ShippingCosts() {
   const [state, dispatch] = useTodoContext();
   const [shipList, setShipList] = useState([]);
   let history = useHistory();
-    
+
     useEffect(() => {
       if(!state.admin) {
         history.push("/");
@@ -45,7 +46,7 @@ function ShippingCosts() {
   function handleSubmitBtnClick(e) {
     e.preventDefault();
     // object to capture shipping cost info before saving to database
-    const shipInfo = 
+    const shipInfo =
     {
       id: shipID,
       shipCost: parseFloat(shipCost.current.value)
@@ -58,7 +59,7 @@ function ShippingCosts() {
         // check if successful save
         if(res.status === 200) {
         }
-      }) 
+      })
       .catch(err => console.log(err));
   }
 
@@ -92,20 +93,25 @@ function ShippingCosts() {
         {/*====================  breadcrumb area ====================*/}
 
         <Breadcrumb title="Update Shipping Costs" />
-        
-        {/*====================  End of breadcrumb area  ====================*/} 
+
+        {/*====================  End of breadcrumb area  ====================*/}
 
 
-        {/*====================  Start of Update Shipping Costs  Section    ====================*/}  
+        {/*====================  Start of Update Shipping Costs  Section    ====================*/}
      <section>
-  
+
+     <div style={{textAlign:'right', margin:0, paddingRight:'15px'}}>
+     <Link to="admin" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-cogs" aria-hidden="true"> ADMIN</i></Link>
+     <Link to="/addproducts" id="adminBtn" className="slider_btn_one more-link" style={{marginRight:"15px"}}><i className="fa fa-plus-circle" aria-hidden="true"> ADD Product</i></Link>
+     <Link to="/salestax" id="adminBtn" className="slider_btn_one more-link"><i className="fa fa-wrench" aria-hidden="true"> UPDATE SALES TAX</i></Link>
+      </div>
       <Container fluid>
         <Container >
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-sm-6 col-md-5 col-lg-6">
               <div className="container-fluid containerColor marginBottomCont">
-                <h1 className="text-center">Update Shipping Costs</h1> 
+                <h1 className="text-center">Update Shipping Costs</h1>
                   <div>
                     <form>
                       <select className="custom-select d-block w-100" ref={shipWeight} id="shipWeight" defaultValue="" onChange={selectWeight} required="">
@@ -128,7 +134,7 @@ function ShippingCosts() {
       </div>
         </Container>
       </Container>
-    
+
       </section>
         </div>
 
