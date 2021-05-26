@@ -336,8 +336,9 @@ function AddProducts() {
                               <input type="checkbox" id="regionEurope" onClick={handleEurope} name="regionEurope" value="Europe"/>
                           </div>
                           <br />
-                          <label className="label" htmlFor="productID">Product ID</label>
-                          <input name="productID" ref={productID} id="productID=" className="form-control form-control-lg" placeholder="Product ID" />
+                          <div className="mb-3">  
+                              <input name="productID" ref={productID} id="productID=" className="form-control form-control-lg" placeholder="Product ID" />
+                          </div>
                           </fieldset>
              </div>
 
